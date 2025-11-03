@@ -1,0 +1,461 @@
+% % \documentclass[aps, prl, preprint]{revtex4-2}
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{dcolumn}
+% \usepackage{array,multirow,adjustbox}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{braket}
+% \usepackage{siunitx}
+
+% % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% \let\originalleft\left
+% \let\originalright\right
+% \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% \newcommand{\im}{\mathrm{i}}
+% \newcommand{\e}{\mathrm{e}}
+% \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% \newcommand{\diff}{\mathrm{d}}
+
+% \DeclareMathOperator{\atantwo}{atan2}
+
+% \begin{document}
+
+The most unique feature of Cantankerous Impurity, as far as it is known to the
+author, is the use of the exact Laguerre polynomials in our basis functions without truncations. As such, we wish to devote some time to discussion of the computations use of these polynomials entails.
+
+For our purposes, we have defined the \emph{precalculated coefficients} in
+Appendix \ref{appendix:elements} as a set of numbers that must be computed
+analytically to get accurate results, and are important parts of the integrands
+used to compute the matrix elements. These computations of analytical numbers
+are potentially time consume; as such, we have chosen to assemble these
+coefficients as needed when the program is compiled. The precalculated
+coefficients are then stored in a database and called into active memory at the
+start of the program run. Only those coefficients needed to represent the
+user-designated \emph{sub-} and \emph{superbasis} states are loaded into active
+memory. As this database persists from run to run, recompiling the program to
+change various physical or technical parameters does not necessitate adding to
+the database. This is only required if states with new discrete indices are
+added to the basis being considered.
+
+We note many of these values we are computing must be stored as exact analytical
+values. For this reason, we have implemented much of this code within SymPy,
+storing our values as SymPy objects which represent exact quantities and may be
+manipulated according to the rules of conventional computer algebra implemented
+within SymPy. We will also find that the collection of values we are computing
+and storing have coefficients that don't make conventional rectangular storage
+easy. As such, much of these arrays of values are implemented as Python
+dictionaries, allowing easy association between a particular set of coefficients
+and the desired analytical SymPy object.
+
+As derived in Appendix \ref{appendix:elements}, these coefficients go as
+\begin{align}
+\mathfrak{A}_{\mathfrak{d}\left(su\right)_{01}w}
+    &=
+        \left(-1\right)^{u_{0}+u_{1}+w}
+        \Gamma\left[
+            \frac{\mathfrak{h}_{\mathfrak{d}\left(s\right)_{01}}}{W}+w
+        \right]
+        \mathfrak{A}_{\left(su\right)_{01}w}^{\prime}
+\tag{\ref{appendix:elements:precalc-coeffs-0}}
+,\\
+\mathfrak{A}_{\left(su\right)_{01}w}^{\prime}
+    &=
+        \sum
+        _{ v = \text{Max}\left[0,\mathfrak{K}_{0}+u_{1}-w\right] }
+        ^{ \text{Min}\left[
+            \mathfrak{K}_{0}-u_{0},\mathfrak{K}_{0}+\mathfrak{K}_{1}-w
+        \right] }
+        \mathfrak{A}_{\left(su\right)_{0}v}^{\prime\prime}
+        \mathfrak{A}
+        _{\left(su\right)_{1}\left(\mathfrak{K}_{0}+\mathfrak{K}_{1}-v-w\right)}
+        ^{\prime\prime}
+\tag{\ref{appendix:elements:precalc-coeffs-1}$^{\prime}$}
+,\\
+\mathfrak{A}_{suv}^{\prime\prime}
+    &=
+        \frac{1}{\sqrt{k!\left(k+\mathfrak{l}\right)!}}
+        \begin{pmatrix}\mathfrak{K}\\u\end{pmatrix}
+        \begin{pmatrix}\mathfrak{K}-u\\v\end{pmatrix}
+        \left(k+\mathfrak{l}\right)^{\underline{v}}
+        \left(1 + \mathfrak{u}\mathfrak{I}_{sv}\right)
+.
+\tag{\ref{appendix:elements:precalc-coeffs-2}$^{\prime}$}
+\end{align}
+The primed equations above and below feature minor modifications to their forms
+as compared to the versions attested in Appendix \ref{appendix:elements} but as
+the changes are straightforward, we do not anticipate this will generate
+confusion. We show in Appendix \ref{appendix:elements} that
+\begin{align}
+\mathfrak{I}_{sv}
+    &=
+        \frac
+        { \mathfrak{H}_{sv}^{\prime} }
+        {\left(k+\mathfrak{l}+2-v\right)\left(k+\mathfrak{l}+1-v\right)}
+            -
+        1
+\tag{\ref{appendix:elements:precalc-coeffs-3}}
+,\\
+\mathfrak{H}_{sv}^{\prime}
+    &=
+        \sum_{t=0}^{\text{Min}\left[v,3+\delta_{s\bar{1}}\right]}
+        v^{t}
+        \mathfrak{G}_{st}
+\tag{\ref{appendix:elements:precalc-coeffs-4}}
+,\\
+\mathfrak{G}_{st}
+    &=  
+        g_{kl,s\left(1+\delta_{s\bar{1}}-t\right)}
+        \sqrt
+        {
+            \frac{ \left(k+1+\delta_{s\bar{1}}-t\right)! }{ k! }
+            \frac
+            { \left(k+\mathfrak{l}+2-t\right)! }
+            { \left(k+\mathfrak{l}\right)! }
+        }
+\tag{\ref{appendix:elements:precalc-coeffs-5}}
+.
+\end{align}
+As mentioned in Appendix \ref{appendix:elements}, the formulae to find the
+values of $g_{kl,st}$ are cumbersome to write and derive. The formulae for these
+coefficients may be found in the
+\href{https://gitlab.com/cantankerous-impurity/Documentation/-/tree/core/SUNY--Buffalo/Dissertation/Supplementary%20Materials?ref_type=heads}{Supplementary Materials}.
+
+When the appropriate values of the coefficients $g$ are used we may write
+\begin{align}
+\mathfrak{I}_{\bar{1}v}
+    & =
+        -(k+1+v)(k+2+v)+2v-1
+        +
+        \delta_{W,1}\mathfrak{I}_{\bar{1}v}^{\prime}
+,\\
+\mathfrak{I}_{\bar{1}v}^{\prime}
+    & =
+        \frac{6v(k+2-v)}{\alpha+1-v}
+            +
+        \frac{12v(v-1)}{\alpha+2-v}
+,\\
+\mathfrak{I}_{0v}
+    & =
+        k+v
+            +
+        \frac
+        {2v\left(k-\delta_{W,1}\left(v-1\right)+\delta_{W,2}v\right)}
+        {\alpha+1-v}
+            +
+        \delta_{W,1}\frac{4(v-1)v}{\alpha+2-v}
+,\\
+\mathfrak{I}_{1v}
+    & =
+        k-x
+            +
+        \frac{2x(2x(k+\delta_{W,2}-x)+\delta_{W,1})}{\alpha+1-x}
+            +
+        \frac{4x(-k+x-\delta_{W,2})(x-1)}{\alpha+2-x}
+.
+\end{align}
+So let's consider what information is required to know from each state to know
+which precalculated coefficients to precalculate. To calculate
+$\mathfrak{I}_{sv}$ we need to specify a given set of $ \left(W;kl\right) $. Once
+we know those three pieces of information, we know that the coefficients to
+calculate for $\mathfrak{I}_{sv}$ have $ 0 \le v \le k + 1 + \delta_{s\bar{1}}$
+and $ s \in \left\{-1,0,+1\right\}$.
+
+We introduce the following notational convention. In this section, \emph{bolded}
+quantities represent sequences or arrays of objects. These objects themselves
+depend upon certain quantities we can use to denote to identify a particular
+entry of the array, which we will consider to be \emph{array indices}. Any
+remaining quantities necessary to compute the values of a given array will be
+called \emph{array parameters}. As array indices are conventionally denoted as
+subscripts, we will denote parameters as superscripts. Of course, the
+distinction between these two concepts is somewhat arbitrary, and depends upon
+the requirements to implement the structures in code. In the following
+discussion, any particular choice to identify as a value as a array index or
+array parameter should be considered provisional, and ultimately dependent upon
+the code's final production implementation. Finally, it is possible to imagine
+multidimensional arrays constructed as an array or arrays, or as a
+concatenation of arrays. In that case, we can imagine an array parameter in the
+subarray becoming an array index in the larger superarray.
+
+When we define each bold symbol, we will use set notation to identify and give
+the limits of the array indices. For $\bm{\mathfrak{I}}$ we give
+\begin{equation}
+\bm{\mathfrak{I}}^{\left(W;kl\right)}
+    \coloneqq
+        \left\{
+            \mathfrak{I}_{sv}
+                |
+            s = -1,0,1 \text{ and }
+            0 \le v \le k + 1 + \delta_{s\bar{1}}
+        \right\}
+\end{equation}
+
+So for the basis specified by the user, the precalculation coefficient checker
+must determine if $ \bm{\mathfrak{I}}^{\left(W;kl\right)} $ has been calculated
+for all $ \left( W; lk \right) $ present in the specification of the user's
+basis. We expect that, while it is possible that a user may wish to have a
+subbasis or superbasis that employs a mix of $W = 1$ and $W = 2$, we expect the
+likelihood of such an event to be low. Right now our program doesn't implement
+mixing states of different $W$, and we require the user to specify if their
+overall superbasis uses $W = 1$ (Slater) or $W = 2$ (Gaussian) envelope
+functions exclusively. A positive integer $W \ne 1,2$ is possible, but well
+beyond the scope of the current software.
+
+As we move up the computation chain, our next goal will be to calculate
+$\mathfrak{A}^{\prime\prime}$. This coefficient, like before, depends on the
+$\left(W;kl\right)$ quantities from only one state. However, this coefficient
+will have two forms depending on whether the kinetic toggle $\mathfrak{u} =
+0$ or $\mathfrak{u}=1$. 
+
+To simplify this, we may consider the following
+\begin{equation}
+\mathfrak{A}_{suv}^{\prime\prime\left(\mathfrak{j}\right)}
+    \coloneqq
+        \left(
+            \frac{1}{\sqrt{k!}}
+            \begin{pmatrix}k + \mathfrak{j}\\u\end{pmatrix}
+            \begin{pmatrix}k + \mathfrak{j} - u\\v\end{pmatrix}
+        \right)
+        \frac
+        {\left(k+\mathfrak{l}\right)^{\underline{v}}}
+        {\sqrt{\left(k+\mathfrak{l}\right)!}}
+.
+\end{equation}
+Above, we grouped factors of the formula to point out places where defining and
+memoizing relevant subfunctions used to compute the coefficients would be very
+useful. For example we can consider the function
+\begin{equation}
+\mathcal{V}_{x,v}
+    \coloneqq
+        \frac{\left(x\right)^{\underline{v}}}{\sqrt{x!}}.
+\end{equation}
+We note that we can use $\mathcal{V}_{k+\mathfrak{l},v}$ when computing part of
+the above equation. We can expect integer $x=k+2l+2$ when $W = 1$ and
+half-integer $x=k+l+\frac{1}{2}$ when $W = 2$. It is clear that multiple
+particular combinations of $\left(W;kl\right)$ could correspond to the same
+value of $k + \mathfrak{l}$. Memoizing a function is a computer science term
+that describes implementing a function with the ability to record and recall
+some aspect of past computations, such as return values or earlier internal
+states. This can be quite convenient when optimizing or trying to speed up a
+computation, such as those of the precalculated coefficients. In this document
+we are most interested in the broader program structure and flow. While we will
+not often describe the fine details of specific computations, such as a specific
+definition and memoizing scheme for useful subfunctions, we note that some
+notational and stylistic choices in the following sections are made to make
+clear opportunities to optimize computation with memoization. 
+
+Above, $\mathfrak{A}^{\prime\prime\left(\mathfrak{j}\right)}$ will have
+$\mathfrak{j} = 0, 1, 2$. The value of $\mathfrak{j}$ determines the limits of
+$s$, $u$, and $v$. When $\mathfrak{j} = 0$ it must be that $\mathfrak{u} = 0$ so
+$\mathfrak{K} = k$ and $s = 0$. Taking into account the possible values of
+$\mathcal{A}^{\prime\prime}$ given a particular value of $\mathfrak{j}$, we can
+compute the following arrays of values. 
+
+An important accessory set to define is the set of values $\left(u,v\right)$ to
+run over as indices. We also wish to define a set that includes the possible
+tuples $\left(s,u\right)$ for a given $\mathfrak{u} = 0, 1$. Let us define
+\begin{align}
+\bm{\mathfrak{S}}^{\left(\mathfrak{u}\right)}
+    &\coloneqq
+        \left\{
+            s \in \mathbb{Z}
+                |
+            -\mathfrak{u} \le s \le +\mathfrak{u}
+        \right\}
+,\\
+\bm{\mathfrak{U}}^{\left(\mathfrak{K}\right)}
+    &\coloneqq
+        \left\{ u \in \mathbb{Z} | 0 \le u \le \mathfrak{K} \right\}
+,\\
+\bm{\mathfrak{V}}^{\left(\mathfrak{K}\right)}
+    &\coloneqq
+        \left\{
+            \left(u,v\right)
+                |
+            u \in \bm{\mathfrak{U}}^{\left(\mathfrak{K}\right)}
+                    \text{ and }
+            v \in \bm{\mathfrak{U}}^{\left(\mathfrak{K}-u\right)}
+        \right\}
+.
+\end{align}
+This provides a convenient short-hand we can refer to at points later in this
+documentation. Note that $\bm{\mathfrak{V}}^{\left(\mathfrak{K}\right)}$ is not
+a conventional rectangular array, as the limits of the trailing dimension $v$
+depends on the value of the leading dimension $u$. This will be true of many of
+the arrays generated for this section.
+
+Our array of the $\bm{\mathfrak{A}} _{ W;kl } ^{ \prime\prime } $ values with
+indices $s, u, v$, and $\mathfrak{u}$ may be define as
+\begin{equation}
+\bm{\mathfrak{A}}_{W;kl}^{\prime\prime}
+    \coloneqq
+        \left\{
+            \mathfrak{A}
+            _{suv}
+            ^{\prime\prime\left(\mathfrak{u}+\delta_{s\bar{1}}\right)}
+                |
+            \left(u,v\right)
+                \in
+            \bm{\mathfrak{V}}^{\left(k+\mathfrak{u}+\delta_{s\bar{1}}\right)}
+                \text{ and }
+            \mathfrak{u} \in \left\{ 0,1 \right\}
+                \text{ and }
+            s \in \mathfrak{S}^{\left(\mathfrak{u}\right)}
+        \right\}
+.
+\end{equation}
+Since we expect every use of the code to include operators with both $
+\mathfrak{u} = 0 $ and $ \mathfrak{u} = 1 $ both will be needed during each
+program run. As such, we treat it as an array index rather then an array
+parameter depending upon the user's operator specification.
+
+Up to now, we've been dealing with precalculated coefficients that depend only
+upon parameters from a single state in the basis. As we move forward to the
+coefficients that depend upon pairs of states, we can exploit some of the
+symmetry property of the coefficients. We note it may be shown that
+\begin{equation}
+\mathfrak{A}
+_{\left(su\mathfrak{u}\right)_{0}\left(su\mathfrak{u}\right)_{1}w}
+^{\left(W;\left(lk\right)_{0}\left(lk\right)_{1}\right)}
+    =
+        \mathfrak{A}
+        _{\left(su\mathfrak{u}\right)_{1}\left(su\mathfrak{u}\right)_{0}w}
+        ^{\left(W;\left(lk\right)_{1}\left(lk\right)_{0}\right)}
+\end{equation}
+This symmetric behavior allows us to roughly half the number of precalculated
+coefficients with an efficient implementation. Since two different sets of
+indices map to the same final value, it's necessary to have a consistent rule to
+be able map either of the two possibilities to the same final value without
+repeating the storage of that value unnecessarily. This is equivalent to
+assigning an ordering scheme to each possible set of $\left(kl\right)$
+indices.In general, we do not presume a "canonical" ordering to the possible
+values of $\left(kl\right)$ a user may use to construct a basis. Instead, the
+database itself keeps an list specifying the order of $\left(kl\right)$ as they
+are added. We expect that changes to the order of states within the basis made
+by the user within the configuration phase of deployment to be invisibly handled
+by the Precalculation module. More details may be found in the forthcoming
+Supplementary Materials.
+
+In this document, we won't pay too much attention to the state order. It is
+sufficient to realize that, for given pair of states, our code implementation
+will ensure that the appropriate values are calculated and dispatched
+appropriately as efficiently as necessary. In any case, now that we are
+considering the two-state precalculated coefficients, it's worthwhile to define
+accessory sets of indices that go as
+\begin{align}
+\bm{\mathfrak{W}}^{\left(\mathfrak{u}\right)}
+    &=
+        \left\{
+            \left(s,u\right)
+                |
+            s \in \mathfrak{S}^{\left(\mathfrak{u}\right)}
+                \text{ and }
+            u
+                \in 
+            \mathfrak{U}^{\left(k+\mathfrak{u}+\delta_{s_{0\bar1}}\right)}
+        \right\}
+,\\
+\bm{\mathfrak{Y}}^{\left(\mathfrak{u}\right)}
+    &=
+        \left\{
+            \left(\left(s,u\right)_{01}, w^{\prime}+u_{0}+u_{1}\right)
+                |
+            \left(s,u\right)_{01}
+                \in
+            \bm{\mathfrak{W}}^{\left(\mathfrak{u}\right)_{01}}
+                \text{ and }
+            w^{\prime}
+                \in
+            \bm{\mathfrak{U}}
+            _{
+                \mathfrak{K}_{0}
+                    +
+                \mathfrak{K}_{1}
+            }
+        \right\}
+.
+\end{align}
+where we recall that, for a given basis state, $\mathfrak{K} = k + \mathfrak{u}
++ \delta_{s\bar{1}}$.
+
+The final step necessary to calculate the general precalculated coefficients is
+\begin{equation}
+\mathfrak{A}
+_{\left(su\right)_{01}w}
+^{\left(W\mathfrak{d};\left(lks\right)_{0}\left(lks\right)_{1}\right)}
+    =
+        \left(-1\right)^{u_{0}+u_{1}+w}
+        \Gamma\left[
+            \frac{\mathfrak{h}_{\mathfrak{d}\left(s\right)_{01}}}{W}+w
+        \right]
+        \mathfrak{A}_{\left(su\right)_{01}w}^{\prime}
+\tag{\ref{appendix:elements:precalc-coeffs-0} }
+\end{equation}
+We note that $\mathfrak{h}_{\mathfrak{d}\left(s\right)_{01}} = l_{0} + l_{1}
+-\delta_{W1}\left(\mathfrak{u}_{0}+\mathfrak{u}_{1}\right) + \mathfrak{d} + 3$.
+This is straightforward to calculate from $
+\mathfrak{A}_{\left(su\right)_{01}w}^{\prime} $ with one caveat. Up till now,
+the precalculated coefficients haven't depended upon the potential model.
+However, with the introduction of $\mathfrak{d}$ into the formulae, we will need
+knowledge of the user-made operator specification. Thus, both the basis and the
+potential model need to be specified at compile time. We make no assumptions
+about $\mathfrak{d}$ other than $\mathfrak{d}\in\mathbb{R}$ and $\mathfrak{d} >
+-2$ as $\mathfrak{d} \le 2$ makes the matrix element integrals divergent.
+
+Finally, the summations found in the integrand of our matrix elements will
+simplify when certain conditions are met, something we expect will emerge in
+most use cases of the software. One of the difficulties in using the terms of
+the Laguerre polynomials emerges in these cases, as we end up needing to compute
+the summation of sequences of alternating sign. Even using the Kahan summation
+algorithm, we find these summations are very ill-conditioned when computed using
+floating point numbers. As such, rather then computing these summations in the
+matrix element integrand, we compute coefficients that may be used in  the
+simplified sums. To wit, for each $\mathfrak{A}$ we must also compute the
+following values.
+
+\begin{align}
+\mathfrak{A}_{\left(s\right)_{01}uw}
+    &=
+        \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+        \delta_{u,u_{0}+u_{1}}
+        \left(-1\right)^{u_{0}}
+        \mathfrak{A}_{\left(su\right)_{01}w}
+,\\
+\mathfrak{A}_{\left(s\right)_{01}uw}^{\prime}
+    &=
+        \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+        \delta_{u,u_{0}+u_{1}}
+        \mathfrak{A}_{\left(su\right)_{01}w}
+,\\
+\mathfrak{A}_{\left(s\right)_{01}w}
+    &=
+        \mathfrak{A}_{\left(s0\right)_{01}w}
+,\\
+\mathfrak{a}_{\left(s\right)_{01}u}
+    &=
+        \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+        \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \delta_{u,u_{0}+u_{1}}
+        \left(-1\right)^{u_{0}}
+        \mathfrak{A}_{\left(su\right)_{01}w}
+,\\
+\mathfrak{a}_{\left(s\right)_{01}u}^{\prime}
+    &=
+        \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+        \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \delta_{u,u_{0}+u_{1}}
+        \mathfrak{A}_{\left(su\right)_{01}w}
+,\\
+\mathfrak{a}_{\left(s\right)_{01}}
+    &=
+        \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\left(s0\right)_{01}w}
+.
+\end{align}
+    

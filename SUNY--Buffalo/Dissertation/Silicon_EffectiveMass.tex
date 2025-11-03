@@ -1,0 +1,70 @@
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{dcolumn}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{braket}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+%\newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\mathrm{e}}
+%\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+%
+%\begin{document}
+
+\subsection{The silicon effective mass.}
+So far the analysis has been somewhat general, applicable to all ``shallow''
+potentials in the semiconductor bulk. The system of most interest in this
+document is the phosphorous donor in silicon. As such, we want to consider the
+meaning of ``effective mass'' in the context of silicon band structure. In
+silicon, the six equivalent conduction band minima each lie along one of the
+three crystallographic axes, $\hat{x}$, $\hat{y}$, or $\hat{z}$. The
+crystal momentum of the Bloch function of each valley may be identified as
+\begin{equation}
+  \bm{k}_{\pm q} = \pm k_{0}\hat{q}
+  \label{def_val}
+\end{equation}
+where $\hat{q} = \hat{x}, \hat{y}, \hat{z}$ and $k_{0} \approx .85
+\left(\frac{2\pi}{a_0}\right)$. We identify $a_{0}$ as the lattice constant of
+silicon.
+
+Significantly, each valley is anisotropic. To the second order in the valley at
+$\bm{k}_{q} = k_{0}\hat{k}_{q}$, we find that the conduction band energy goes as
+\begin{equation}
+  E^{(q)}_{\bm{k}}
+  \approx 
+  \frac{\hbar^2}{2 m_\parallel}\left(k_q - k_0\right)^2
+  + \frac{\hbar^2}{2 m_\perp}\left(k_{r}^2 + k_{s}^2\right)
+  \label{emin}
+\end{equation}
+We take $q$, $r$, and $s$ to respectively denote each of the three
+crystallographic axes in silicon. The quantities $m_{\parallel}$ and $m_{\perp}$
+are defined here from the empirical structure of the silicon conduction band,
+and they take the role of an effective and anisotropic mass in the kinetic
+expectation energy. As a result of Eq. \eqref{emin} we may define the effective
+kinetic energy operator $\hat{T}^{(q)}$ as
+\begin{equation}
+  \hat{T}^{(q)}
+  =
+  - \frac{\hbar^2}{2m_\parallel}\frac{\partial^2}{\partial r_{q}^2}
+  - \frac{\hbar^2}{2m_\perp}\left(
+  \frac{\partial^2}{\partial r_{r}^2}
+  + \frac{\partial^2}{\partial r_{s}^2}
+  \right),
+\end{equation}
+which more completely specifies the general differential operator
+$\hat{T}^{(q)}$ introduced in Eq. \eqref{opr_func} by specifying the inverse
+effective mass tensor of the system under consideration, namely a silicon donor.
+
+We see that the band structure of silicon influences the motion of excess
+electrons bound to the shallow impurity, emerging as an ellipsoidal anisotropic
+effective mass. Since an electron occupying a particular bandstructure valley is
+effectively heavier along the longitudinal axis of the valley, we expect that
+the individual components of the complete wavefunction corresponding to each
+valley will show a deformation, leading to an expected anisotropic ellipsoidal
+structure for the envelope function, rather then the spherical structure that
+might be assumed as the solution to a more hydrogenic problem.

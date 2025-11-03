@@ -1,0 +1,102 @@
+We defined our kinetic matrix element $\mathcal{T}$ in \eqref{element:kinetic}.
+To do so, we introduced in the integrand an effective kinetic operator
+\eqref{operator:kinetic}. This operator is valley-indexed, and only acts upon
+overall envelope functions with the same valley-index. Note that as we saw in
+section \ref{section:full_wavefunctions}, the overall envelope for a given axis
+may be constructed from naive envelope functions indexed with perpendicular
+valleys. Here, we are focusing on the overall valley-index, associated with the
+Bloch function factor of the term under consideration.
+
+For our software, we incorporate the application of the kinetic operator into
+the wavefunction. This manifests as a variable toggle $\mathfrak{u} = 0,1$ we
+use to control the form of the wavefunction integrand when computing our
+overlap, Hamiltonian, and Hamiltonian-squared elements. We may define a
+"generalized" state including the toggle and its affect by defining
+\begin{equation}
+  \Phi_{\lambda\eta}^{\left(q\mathfrak{u}\right)}
+  =
+  \left[1 + \mathfrak{u}\hat{T}^{\left(q\right)}\right]
+  \Phi_{\lambda\eta}^{\left(q\right)}.
+\label{definition:envelope:full:generalized}
+\end{equation}
+
+Above $q = x,y,z$ denote the three crystalographic axes. We note that we may use
+the cycling relationships to define the functions associated with the $x$ and $y$ axes in terms of the $z$ axis by noting that
+\begin{align}
+\Phi_{\lambda\eta}^{\left(x\mathfrak{u}\right)}
+  &=
+    \left(yzx\right)\Phi^{\left(z\mathfrak{u}\right)}
+,\\
+\Phi_{\lambda\eta}^{\left(y\mathfrak{u}\right)}
+  &=
+    \left(zxy\right)\Phi^{\left(z\mathfrak{u}\right)}
+.
+\end{align}
+
+To construct the "generalized" state we use in our computations, we must
+determine the effect of the effective kinetic operator upon our naive envelope
+basis states. We examine 
+\begin{align}
+\hat{T}^{(z)}\Phi_{\lambda\eta}^{\left(z\right)}
+  & =
+    \left[
+      - \frac{\hbar^2}{2m_\perp}\left(
+          \frac{\partial^2}{\partial x^2}
+          +
+          \frac{\partial^2}{\partial y^2}
+        \right)
+      - \frac{\hbar^2}{2m_\parallel}\frac{\partial^2}{\partial z^2}
+    \right]
+    \Phi_{\lambda\eta}^{\left(z\right)}
+,\\
+  & =
+    - \frac{\hbar^2}{2m_\perp}
+    \left[
+      \left(
+          \frac{\partial^2}{\partial x^2}
+          +
+          \frac{\partial^2}{\partial y^2}
+        \right)
+      +\gamma\frac{\partial^2}{\partial z^2}
+    \right]
+    \Phi_{\lambda\eta}^{\left(z\right)}
+.
+\end{align}
+Above we introduced a mass anisotropy parameter $\gamma  =
+\frac{m_\perp}{m_\parallel}$. When we examined the symmetry properties of our envelope functions, we note that a function indexed by the $z$-axis may be constructed from functions indexed by $x$- and $y$-axes. As such we must be clear which form of $\Phi_{\lambda\eta}^{\left(z\right)}$ we are employing.
+
+We note that we had introduced
+variational parameters into the naive envelope function by introducing variable
+transformations $r \rightarrow r/\eta$ and $z \rightarrow \lambda z$. We can
+reverse these transformations to simplify the function being acted upon, as long
+as we reapply these transformations to the end results. As such, we can write
+\begin{align}
+\hat{T}^{(z)}\Phi^{\left(z\right)}
+  & =
+  \left(
+    - \frac{\hbar^2}{2m_\perp\eta^{2}}
+    \left[
+      \left(
+          \frac{\partial^2}{\partial x^2}
+          +
+          \frac{\partial^2}{\partial y^2}
+        \right)
+      +\lambda^{2}\gamma\frac{\partial^2}{\partial z^2}
+    \right]
+    \Phi^{\left(z\right)}
+  \right|_{\substack{r \rightarrow r/\eta \\ z \rightarrow \lambda z}}
+% ,\\
+%     - \frac{\hbar^2}{2m_\perp\eta^{2}}
+%     \left[
+%       \mathfrak{r}^{2}\nabla^{2}
+%       +\left(\gamma-1\right)\frac{\partial^2}{\partial z^2}
+%     \right]
+%     \Phi^{\left(z\right)}
+.
+\end{align}
+
+
+Above we introduced a new functions
+\begin{equation}
+  \Phi_{\lambda\eta} = \left(\Phi^{\left(z\right)}\right|
+\end{equation}

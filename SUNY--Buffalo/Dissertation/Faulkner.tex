@@ -1,0 +1,115 @@
+% % % \documentclass[aps, prl, preprint]{revtex4-2}
+% % \documentclass{report}
+
+% % \usepackage{graphicx}
+% % \usepackage{dcolumn}
+% % \usepackage{array,multirow,adjustbox}
+% % \usepackage{bm}
+% % \usepackage{amsfonts, amssymb, amsmath}
+% % \usepackage{braket}
+% % \usepackage{siunitx}
+
+% % % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% % \let\originalleft\left
+% % \let\originalright\right
+% % \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% % \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% % \newcommand{\im}{\mathrm{i}}
+% % \newcommand{\e}{\mathrm{e}}
+% % \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% % \newcommand{\diff}{\mathrm{d}}
+
+% % \DeclareMathOperator{\atantwo}{atan2}
+
+% % \title{An open source software package to compare and extend effective mass models of the phosphorous donor in silicon}
+% % \author{Luke Pendo}
+% % \date{}
+
+% % \begin{document}
+
+\subsection{Faulkner and the Ritz method}
+
+In a 1969 paper\cite{Faulkner}, R.A. Faulkner took KL's idea and applied the
+Ritz method. The Ritz method consists of the observation that a trial function
+of the form
+\begin{equation}
+    \ket{\Psi} = \sum_{i}^{N} c_{i}\ket{\Psi_{i}},
+\end{equation}
+where $\Psi_{i}$ comes from a finite set of known functions. They are not
+required to be orthogonal. The expectation energy of this state has the form
+\begin{equation}
+\varepsilon
+    =
+        \frac
+        { \sum_{ij}c_{i}^{*}c_{j}\Braket{\Psi_{i} | \hat{H} | \Psi_{j}} }
+        { \sum_{ij}c_{i}^{*}c_{j}\braket{\Psi_{i} | \Psi_{j}} }.
+\end{equation}
+It can be shown that applying the variational method to the $c$ coefficients
+generates the following result
+\begin{equation}
+    \left|\mathcal{H}\bm{c}-\varepsilon\mathcal{S}\bm{c}\right| = 0.
+\end{equation}
+where
+\begin{align}
+    \mathcal{H}_{ij} &= \braket{\Psi_{i} | \hat{H} | \Psi_{j}}, \\
+    \mathcal{S}_{ij} &= \braket{\Psi_{i} | \Psi_{j}}.
+\end{align}
+We can state this conclusion another way; namely, the variational method applied
+to a state constructed from a finite non-orthogonal basis is equivalent to the
+\emph{generalized eigenvalue problem} of the form
+\begin{equation}
+    \mathcal{H}\bm{c} = \varepsilon\mathcal{S}\bm{c}.
+\end{equation}
+
+Faulkner added an additional feature to this model. He added additional
+variational parameters to the trial wavefunctions themselves, which allows the
+Ritz eigenvalues to be optimized. Working from the same model of the
+single-valley equation for the envelope function that KL used, namely
+\eqref{defintion:SV-envelope}, Faulkner postulated a trial wavefunction of the
+form
+\begin{equation}
+F_{\bm{r}}
+    =
+        \sum_{nlm} c_{nlm}\left(\frac{\beta}{\gamma}\right)^{\frac{1}{4}}
+        \Psi_{nlm;}\left(
+            \alpha_{lm}x,\alpha_{lm}y,
+            \alpha_{lm}\left(\beta/\gamma\right)^{1/2}z
+        \right)
+.
+\end{equation}
+with $\gamma = m_{\perp} / m_{\parallel}$. Faulkner chose the bound states of
+the hydrogen atom as his basis, which we denote as $\Psi_{nlm}$. Faulkner
+introduced variational parameters, an overall anisotropy parameter $\beta$ as
+well as a radial parameter of the form $r \rightarrow r\alpha_{lm}$. 
+
+This method proved quite effective at matching the energies of the excited
+states of donors in both silicon and germanium, but we see three primary
+problems with Faulkner's methodology.
+\begin{enumerate}
+    \item As before, by neglecting the multi-valley effects, the predicted
+    ground state is 6-fold degenerate rather then being separated into the
+    $A_{1}$, $E$ and $T_{2}$ states.
+    \item The bound states of the hydrogen donor do not constitute a complete
+    set of functions spanning the separable Hilbert space. This is somewhat
+    relieved by allowing the $\alpha$ radial parameter to rescale the hydrogen
+    wavefunctions, meaning it can capture smaller features. However, to maintain
+    orthonormality, all $\alpha_{ml}$ parameters of functions with the same $m$
+    and $l$ are set equal. This limits the degree of angular structure that can
+    be present within the function.
+    \item We have found it practically difficult to find a single set of
+    orthonormal basis functions that converge well to all desired states. In
+    fact, we might suggest that the only other such orthonormal complete set
+    that might suffice with great efficiency to cover all desired eigenstates is
+    the actual energy eigenstates themselves, though we cannot explicitly prove
+    this point. For our purposes, we consider joined sets of multiple
+    orthonormal bases with independent variational parameters. We term the
+    orthonormal subsets the \emph{subbases}. Each subbasis has its own set of
+    anisotropic and radial variational parameters. The collected joined
+    non-orthonormal set of all basis functions is termed the \emph{superbasis}.
+\end{enumerate}
+
+% We can use our basis to compare to Faulkner in the single-valley context. As before we will continue to ignore.

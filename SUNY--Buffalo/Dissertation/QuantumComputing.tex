@@ -1,0 +1,173 @@
+\subsection{Why quantum computing?}
+
+Interest in quantum computing is high, reaching well beyond academic interest,
+with many extant public and private sector projects seeking to develop, display,
+and eventually exploit quantum computation. This interest motivates a great deal
+of intellectual and economic investment in physics, computation, and information
+science. On the commercial side IBM, NTT, Intel, and Toshiba lead the way in
+patent applications as of 2020\cite{CommercialLandscape}. Additionally,
+governments around the world have invested the equivalent of billions of USD in
+initiatives on quantum technologies, such as the European Union, France,
+Germany, Japan, Canada, and the US among others\cite{DownToBusiness}.
+
+Attempting to prophesy on the future feasibility of useful quantum computation
+is well beyond the scope of this document and the author's knowledge and
+abilities, of course. John Preskill, a leading researcher in this field, labels
+the current era of quantum computing to be the NISQ era, the era of \emph{noisy
+intermediate-scale quantum} computing\cite{PreskillNISQ}. As such we are not
+able yet able to leverage quantum computing to accomplish many of the most
+referenced applications of quantum computing.
+
+However, the author feels that such global interest in the fundamental ideas of
+quantum mechanics and in understanding of computation and information beyond the
+classical represents an exciting chance to learn ever more about the deeper
+nature of our universe and reality. 
+
+Our understanding of the world is not well posed to process quantum information.
+To some degree, this can be reflected in our idea of "measurement" within
+quantum mechanics. Consider the Stern-Gerlach experiment\cite{SternGerlach}.
+After a stream of silver atoms are passed through an appropriately directed
+inhomogenous magnetic field, the path of the silver atoms will be deflected
+according to relative orientation between the magnetic field and the atom's
+magnetic moment. The path of the atom may be recorded as a spot on the receiving
+plate. When the experiment is performed many times two clear clusters of spots
+emerge, corresponding respectively to the orientation of the atom's magnetic
+moment completely along or against the external magnetic field. This was an
+early success of quantum mechanics, as the theory predicted such an outcome
+would be seen. Both quantum mechanics and classical mechanics predict that,
+prior to the interaction of the silver atom with the external magnetic field,
+the atom exists in a state of arbitrary orientation. Classically, an atom in
+such a state would have a component of its magnetic moment lying along or
+against the external magnetic field. The magnitude of this component is
+arbitrary, and so is the degree of deflection. Quantum mechanics, on the other
+hand, predicts the arbitrary initial state of the magnetic moment to take the
+form of a superposed wavefunction with components lying entirely along or
+against the external magnetic field. Such a two-level system is important to
+quantum computing, as we will describe later, and is conventionally represented
+as
+\begin{equation}
+    \ket{\state{\Psi}} = \alpha\ket{\state{0}} + \beta\ket{\state{1}}
+\end{equation}
+As such, the effect of the external magnetic field upon the moment of the atom
+is discrete, as should be the position of the atom upon the detector plate. But
+when does the superposition of states become one or the other? We can easily
+formulate the two recorded positions of the atom on the detector plate as being
+in a superposition. Does the resolution of the superposition happen when the
+atom interacts with the magnetic field.  Perhaps it occurs in the human eye
+recording the spot on the plate, or perhaps even further as result of visual
+information processing in the human brain, or perhaps we have to resort to a
+semi-mystical idea of a "consciousness" that measures the state of a human's
+physical brain?
+
+Such debates are well beyond the scope of this document, the author, and unless
+clear experiments can be devised to test the implications of such
+interpretations, they are firmly beyond the scope of physics. For our purposes,
+we informally term "measurement" as the process by which classical information
+is extracted from a quantum system. Perhaps anticipating the adage "shut up and
+calculate!" variously attributed to Dirac or Feynman, Von Neumann discussed this
+process and concluded that the exact place where the "measurement" takes place
+has no impact upon the fundamental mathematics of the theory\cite{VonNeumann}.
+
+Much of quantum computing's promise comes from the idea that quantum information
+is a more robust concept then classical information, where an exchange of
+information between particles at a point in time allows for more correlation
+between those particles' states when later examined than is possible in a
+classical setting, as discussed by Bell in his famous paper on Bell's
+inequalities\cite{BellTheorem}. This property, known as \emph{entanglement}, can
+be interpreted as an exchange of classical information in a nonlocal fashion, or
+an example of reality's failure to be governed purely by classical information.
+This indescribability of the quantum universe in classical terms may be asserted
+in the form of a principle that might be called "counterfactual definiteness" or
+in the idea associated with the so-called Everett Many-world hypothesis that
+measurement fundamentally doesn't physically exist. A result to a classical
+entity that has a single classical outcome has, in fact, many classical outcomes
+that exist as part of the superposition of a larger quantum system including the
+system at hand, its environment, and the observer. While the present author
+subscribes somewhat to the "shut up and calculate!" adage, in the interests of
+full disclosure, the present author has found the most conceptually useful
+philosophical framework for anchoring his mathematical and physical work to be
+Everett's many worlds with decoherence models for wave functions collapse. We
+disclose this not to firmly assert a "correct belief" or factional affiliation
+but because we want to aid communication with the reader. We anticipate that
+while such philosophical sympathies might color our mode of description we
+believe the results stand on their own physically and mathematically.
+
+One of the ways in which quantum information might be said to be more robust
+than classical information lies in the possibilities of encoding classical
+information.  Firstly, quantum particles exist in a superposition of classically
+ponderable states. We saw this above when we considered the state of the
+Stern-Gerlach particle prior to measurement. To that end, we will formally
+define the \emph{qubit}. Quantum error correction as a field recognizes a
+difference between the simple physical qubit and the logical qubit. The logical
+qubit is an assemblage of associated physical qubits working together to produce
+a qubit of information that may be robustly involved in quantum computation
+without unacceptable error. We focus in this document on the physical qubit. At
+its core the physical qubit is a two-level system that may be described by a
+two-term wavefunction of the form introduced above
+\begin{equation}
+\ket{\Psi}
+    =
+    \cos\left(\thetaup/2\right)\ket{0} + 
+    \sin\left(\thetaup/2\right)\e^{\im\phiup}\ket{1}.
+\end{equation}
+With $\thetaup \in \left[0,\pi\right)$ and $\phiup \in \left(-\pi,+\pi\right]$
+we can compare this to classical physical bits, which are likewise two-level
+physical systems, but in the bit the system is either in the state $\ket{0}$ or
+$\ket{1}$. We can already see that storing the precise state of a two-level
+quantum system in a classical computer will require two complex numbers, or
+about $256$ bits of storage. For the qubit and other two-level systems,
+asserting a normalization condition and dropping an overall phase factor allows
+us to represent a qubit using two real numbers $\thetaup$ and $\phiup$ as above.
+Two real numbers are about $128$ bits in most computing systems. Already we can
+see a clear difference between qubit and bit, but for one qubit it is not so
+difficult to find $128$ spare bits to work with. We might be tempted to imagine
+that a system of bits could be represented with two complex numbers for each
+qubit. This is not the case. A linear increase in the number of qubits requires
+an exponential increase in the number of bits due to the aforementioned
+entanglement. The arbitrary states of a two-level quantum system are described
+by a wavefunction of the form
+\begin{equation}
+    \ket{\Psi}
+    =
+    a_{00}\ket{00}
+        +
+    a_{01}\ket{01}
+        +
+    a_{10}\ket{10}
+        +
+    a_{11}\ket{11}
+\end{equation}
+which requires four complex numbers. Asserting normalization and arbitrary
+overall phase only reduces the representation budget by $128$ bits, and becomes
+increasingly irrelevant as system size increases. As we examine the
+wavefunctions of larger and larger systems of qubits, we can see that the number
+of complex numbers needed to represent the system goes as $\approx 2^{N}$. This
+makes many-body systems with many quantum degrees of free very difficult to
+simulate classically in general, though perhaps for individual problems
+simplifications and analytic shortcuts can be found to reduce the computational
+overhead. Still, bespoke solutions to computational expense just swaps computer
+workhours for human ones, and generally human work hours are more expensive.
+
+This then, is the most exciting prospect of quantum computing for the present
+author. A truly digital, general quantum computer will make entire domains of
+problems much more amenable to simulation and free some of those expensive human
+workhours to survey much broader swathes of physics and physical understanding.
+
+Beyond the promise of quantum simulation, the quantum computing project is
+fundamentally a practical one, with much of its motivation focused on the
+applications of a quantum computing device to specific problems. Some of the
+well-known algorithms that are use to demonstrate a quantum advantage include
+Shor's algorithm\cite{Shor} and Grover's search algorithm\cite{Grover}. Shor's
+algorithm is a way to factor numbers, such as $15$ into $3$ and $5$, in
+polynomial time. This is far from a trivial application -- easy factoring of
+numbers has dramatic practical implications, particularly in RSA
+cryptography\cite{RSA}. For RSA cryptography, a key component involves the idea
+that the complexity for factoring a number scales expoenentially with the size
+of the number. To date, no polynomial time algorithm to factor numbers for
+classical computers has not been found. While it is has been proven that
+classical polynomial factoring is impossible, it is not expected to be found
+anytime in the near future. This is not the case for Shor's algorithm, which can
+factor in polynomial time. As easy factoring would break RSA encryption, and as
+RSA encryption underlies much of the secure communication over the internet, a
+practical implementation of Shor's algorithm would have devasting security
+conseqences as a zero day exploit.

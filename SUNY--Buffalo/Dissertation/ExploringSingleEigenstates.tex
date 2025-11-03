@@ -1,0 +1,85 @@
+% % % \documentclass[aps, prl, preprint]{revtex4-2}
+% % \documentclass{report}
+
+% % \usepackage{graphicx}
+% % \usepackage{dcolumn}
+% % \usepackage{array,multirow,adjustbox}
+% % \usepackage{bm}
+% % \usepackage{amsfonts, amssymb, amsmath}
+% % \usepackage{braket}
+% % \usepackage{siunitx}
+
+% % % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% % \let\originalleft\left
+% % \let\originalright\right
+% % \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% % \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% % \newcommand{\im}{\mathrm{i}}
+% % \newcommand{\e}{\mathrm{e}}
+% % \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% % \newcommand{\diff}{\mathrm{d}}
+
+% % \DeclareMathOperator{\atantwo}{atan2}
+
+% % \title{An open source software package to compare and extend effective mass models of the phosphorous donor in silicon}
+% % \author{Luke Pendo}
+% % \date{}
+
+% % \begin{document}
+
+\subsection{Exploring Single Eigenstates, Single-Valley}
+
+The first feature of our program we want to explore is a benchmarking against
+the single-valley Kohn-Luttinger and Faulkner results. Below we present plots of
+a single subbasis as we sweep the radial and anisotropic variational parameters
+of that subbasis. In the single state basis, our program generates results
+identical to what Kohn-Luttinger found for their ground states. However, as we
+increase the size of the basis the energy surface flattens. This is to be
+expected as the basis coefficients themselves are variational parameters that
+are set by the process of computing the solution to the generalized eigenvalue
+problem. In short, as the basis size increases, the number of variational
+parameters set by the eigensolver increases, while the number of free parameters
+per subbasis stays the same. This means the importance of the free variational
+parameters decreases.
+
+\begin{figure}
+\centering
+\subfloat[Basis: (0,0,0)]
+{
+    \includegraphics[width=64mm]{1705755560867.png}
+}
+\subfloat[Basis: (0,0,0),(0,0,1),(0,0,2)]
+{
+    \includegraphics[width=64mm]{1705756052609.png}
+}
+\hspace{0mm}
+\subfloat[Basis: (0,0,0),(0,2,0),(0,4,0)]
+{
+    \includegraphics[width=64mm]{1705761176692.png}
+}
+\subfloat[Basis: (0,0,0),(0,0,1),(0,0,2),(0,2,0),(0,2,0),(0,4,0)]
+{
+    \includegraphics[width=64mm]{1705762460639.png}
+}
+\hspace{0mm}
+\subfloat[Basis: (12 states) \newline $0\le k\le 2,l=\{0,2,4,6\},m=\{0\}$]
+{
+    \includegraphics[width=64mm]{1705763044520.png}
+}
+\subfloat[Basis: (16 states) \newline $0\le k \le 3,l=\{0,2,4,6\},m=\{0\}$]
+{
+    \includegraphics[width=64mm]{1705883338769.png}
+}
+\caption{This figure shows the effect of basis size on the related variational problem. As the basis size increases, the energy surface becomes less sensitive to changes in the radial and anisotropic parameters within a certain neighborhood of the parameter space.}
+\label{sv-basis-size}
+\end{figure}
+
+Benchmarking of this software is on-going, especially as regards to the
+multi-valley states. In particular, there are still ambiguities in regards to
+the use of the Bloch functions within Cantankerous Impurity. Further
+benchmarking results can be found in the \href{https://gitlab.com/cantankerous-impurity/Documentation/-/tree/core/SUNY--Buffalo/Dissertation/Supplementary%20Materials?ref_type=heads}{Supplementary Materials}.
+

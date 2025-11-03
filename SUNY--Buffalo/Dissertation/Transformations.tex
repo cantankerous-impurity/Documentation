@@ -1,0 +1,513 @@
+Our underlying scaled basis function was defined in Eq. \eqref{scaled_wf} as
+\begin{equation}
+  \phi_{klm;\eta\lambda;\bm{r}}^{(Wq)}
+  =
+  F_{lk;\eta\lambda;r\chi_{q}}^{\left(W\right)}
+  Y_{lm;\lambda;\chi_{q}\phi_{q}}.
+\end{equation}
+We will examine the transformation qualities of this function, and identify a
+construction with particular transformation properties that will systematize
+constructing the full envelope-valley wavefunctions.
+
+
+
+\begin{align}
+  F_{lk;\eta\lambda;r\chi_{q}}^{\left(W\right)}
+  & = 
+  \left(\frac{\vartheta_{\lambda;\chi_{q}}}{\eta}\right)^{\frac{3}{2}}
+  F_{lk;\eta_{\lambda\chi_{q}};r}^{\left(W\right)}
+  \quad\quad
+  \eta_{\lambda;\chi_{q}}
+  =
+  \frac{\eta}{\vartheta_{\lambda;\chi_{q}}}
+  \tag{\ref{scaled_wf:radial_part}}
+  \\
+  Y_{lm;\lambda;\chi_{q}\phi_{q}}
+  & =
+  \sqrt{ \frac{\lambda}{\vartheta_{\lambda;\chi_{q}}^{3}} }
+  Y_{
+    lm;
+    \chi_{\lambda}^{\left(q\right)}
+    \phi_{q}
+  }
+  \quad\quad
+  \chi_{\lambda}^{\left(q\right)}
+  =
+  \frac{\lambda\chi_{q}}{\vartheta_{\lambda;\chi_{q}}}
+  \tag{\ref{scaled_wf:aniso_part}}
+\end{align}
+
+
+
+
+We note that much like the $T$ states, our basis states may be indexed by the
+crystallographic axes. To clarify, we expect the following relationships to hold
+for functions indexed by the crystallographic axes,
+\begin{align}
+  f^{\left(x\right)}
+  & =
+    \left(yzx\right)f^{\left(z\right)},
+  \\
+  f^{\left(y\right)}
+  & =
+    \left(zxy\right)f^{\left(z\right)},
+  \\
+  f^{\left(y\right)}
+  & =
+    \left(yzx\right)f^{\left(x\right)}.
+\end{align}
+We note that these three transformations $\left(xyz\right)$, $\left(yzx\right)$,
+and $\left(zxy\right)$ are part of the factored projection operator defined in
+\eqref{indexing_proj}. For ease of nomenclature, we'll call these the indexing
+transformations. We see of course that $\Phi^{\left(z\right)}$ can be indexed by
+$z$. However, we should also note that the combination $\Phi^{\left(x\right)}
+\pm \Phi^{\left(y\right)}$ can also be indexed by $z$ in the sense established
+above. We will explore this further below.
+
+After the introduction of the anisotropic scaling, the "radial" part
+$F^{\left(q\right)}$ of the basis state is no longer isotropic, and gains a
+dependence upon a valley-indexed coordinate $\chi_{q}$. As such, it will be
+expected to transform under the action some of the symmetry transformations.
+This is true for the indexing transformations. However, $\chi_{q}$ emerges in
+the function $F$ only to the second order. As such, $F$ is invariant under the
+action of double inversions. Finally, as $F$ depends only upon one
+valley-indexed coordinates, it is invariant under acyclic swaps. To present this
+argument clearly and schematically, we will list the effects of the double
+inversion and acyclic swap below for $F$,
+\begin{equation}
+  F^{\left(z\right)}
+  =
+    \left(\bar{x}\bar{y}z\right)F^{\left(z\right)}
+  =
+    \left(\bar{x}y\bar{z}\right)F^{\left(z\right)}
+  =
+    \left(x\bar{y}\bar{z}\right)F^{\left(z\right)}
+  =
+    \left(yxz\right)F^{\left(z\right)}.
+\end{equation}
+
+We see that the symmetry contributions of the "radial" part of the basis state
+are still simple and mostly invariant, even with the introduction of the
+anisotropic scaling. Conversely the spherical harmonics $Y$, as might also have
+been expected, have the most significant impacts upon symmetry. The spherical
+harmonics are straightforwardly seperable in longitudinal and azimuthal
+coordinates as
+\begin{equation}
+  Y_{lm;\chi\phi}
+  \propto
+  P_{lm;\chi}
+  \e^{\im m \phi}
+\end{equation}
+where the $P$ functions are identified as the associated Legendre polynomials in
+$\chi = z/r = \cos\left(\theta\right)$. When introducing the variational
+anisotropy, we redefined the "spherical harmonics" as
+\begin{equation}
+Y_{lm;\lambda;\chi_{q}\phi_{q}}
+=
+\sqrt{ \frac{\lambda}{\vartheta_{\lambda;\chi_{q}}^{3}} }
+Y_{
+  lm;
+  \chi_{\lambda}^{\left(q\right)}
+  \phi_{q}
+}
+\quad\quad
+\chi_{\lambda}^{\left(q\right)}
+=
+\frac{\lambda\chi_{q}}{\vartheta_{\lambda;\chi_{q}}}
+\end{equation}
+We note that this form can still be "seperated" by coordinates, focusing on the
+valley-indexed coordinates $\chi_{q}$ and $\phi_{q}$. We consider
+\begin{equation}
+  Y_{lm;\lambda;\chi_{q}\phi_{q}}
+  =
+  P_{lm;\lambda;\chi_{q}}
+  Q_{m;\phi_{q}}.
+\end{equation}
+where the "longitudinal" part of the stretched spherical harmonics can be
+identified as
+\begin{equation}
+  P_{lm;\lambda;\chi_{q}}
+  =
+  \sqrt{ \frac{\lambda}{\vartheta_{\lambda;\chi_{q}}^{3}} }
+  P_{lm;\chi_{\lambda}^{\left(q\right)}}.
+  \label{scaled_wf:long_part}
+\end{equation}
+
+
+
+% We introduced variational anisotropy to our basis states, defined a set of
+% "radial" and "solid angle" functions in \eqref{scaled_wf:radial_part} and
+% \eqref{scaled_wf:aniso_part}. The functions defined in those equations utilize
+% anisotropic analogues to those coordinates. We can further factor the effective
+% "solid angle" function to separate the effective "longitudinal" and "azimuthal"
+% coordinates. To wit, we have
+% \begin{equation}
+%   P_{lm;\lambda;\chi_{q}}
+%   =
+%   \sqrt{ \frac{\lambda}{\vartheta_{\lambda;\chi_{q}}^{3}} }
+%   P_{lm;\chi_{\lambda}^{\left(q\right)}},
+%   \label{long_def}
+% \end{equation}
+% and
+% \begin{equation}
+%   Q_{m\zeta;\phi_{q}}
+%   \equiv
+%   \delta_{m0}
+%   \left( 1 - \delta_{\zeta\bar{1}} \right)
+%   % \left( \frac{ 1 + \zeta }{ 2 } \right)
+%   +
+%   \left(1-\delta_{m0}\right)
+%   \left(
+%     \frac{ \e^{\im m \phi_{q}} + \zeta\e^{-\im m \phi_{q}} }{  \sqrt{2} }
+%   \right),
+%   \label{azi_def}
+% \end{equation}
+
+
+
+The "longitudinal" function $P^{\left(q\right)}$ defined above in Eq.
+\eqref{scaled_wf:long_part} can be valley-indexed much as the "radial" function
+$F$ was indexed above. Further, we list the effects of the double inversion and
+acyclic swap below,
+\begin{align}
+  P^{\left(z\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)P^{\left(z\right)},
+  \\
+  \left(-1\right)^{l+m}P^{\left(z\right)}
+  & =
+    \left(\bar{x}y\bar{z}\right)P^{\left(z\right)}
+  =
+    \left(x\bar{y}\bar{z}\right)P^{\left(z\right)},
+  \\
+  P^{\left(z\right)}
+  & =
+    \left(yxz\right)P^{\left(z\right)}.
+  \label{azi_def}
+\end{align}
+From this set of equations, we can see that the behavior of $P$ is very similiar
+to that of $F$, with both being straightforwardly described by the
+transformation equations. Another way to state this is to say that $F$ and $P$
+are both eigenstates of the transformations in the set $\mathcal{S} = \left\{
+\left(\bar{x}\bar{y}z\right), \left(\bar{x}y\bar{z}\right),
+\left(x\bar{y}\bar{z}\right), \left(yxz\right) \right\}$.
+
+The standard definition of the azimuthal part of the spherical harmonics would
+have $Q_{m;\phi_{q}} = \e^{\im m \phi_{q}}$ where $m$ is an integer.
+Unfortunately, it can be shown that the azimuthal function $\e^{ \im m\phi }$ is
+not an eigenstate of the transformations in $\mathcal{S}$. To wit,
+\begin{align}
+  \left(-1\right)^{m}\e^{\im m \phi}
+  & =
+    \left(\bar{x}\bar{y}z\right)
+    \e^{\im m \phi},
+  \\
+  \left(-1\right)^{m}\e^{-\im m \phi}
+  & =
+    \left(\bar{x}y\bar{z}\right)
+    \e^{\im m \phi},
+  \\
+  \e^{-\im m \phi}
+  & =
+    \left(x\bar{y}\bar{z}\right)
+    \e^{\im m \phi},
+  \\
+  \im^{m}\e^{-\im m \phi}
+  & =
+    \left(yxz\right)
+    \e^{\im m \phi}.
+\end{align}
+While $\e^{\im m \phi}$ is an eigenstate of $\left(\bar{x}\bar{y}z\right)$, for
+the other transformations we have $\e^{\im m \phi} \rightarrow \e^{-\im m \phi}$
+and so it cannot be an eigenstate of the remaining transformations in
+$\mathcal{S}$.
+
+To somewhat resolve this, we introduce the following useful construction to find
+the highly symmetric states we seek,
+% \begin{equation}
+%   Q_{m\zeta;\phi_{q}}
+%   \equiv
+%   \frac{ \e^{\im m \phi_{q}} + \zeta\e^{-\im m \phi_{q}} }
+%   { \left(1+\zeta\right)\delta_{m0} + \sqrt{2}\left(1-\delta_{m0}\right) },  
+% \end{equation}
+\begin{equation}
+  Q_{m\zeta;\phi_{q}}
+  \equiv
+  \delta_{m0}
+  \left( 1 - \delta_{\zeta\bar{1}} \right)
+  % \left( \frac{ 1 + \zeta }{ 2 } \right)
+  +
+  \left(1-\delta_{m0}\right)
+  \left(
+    \frac{ \e^{\im m \phi_{q}} + \zeta\e^{-\im m \phi_{q}} }{  \sqrt{2} }
+  \right),
+  \label{scaled_wf:azim_part}
+\end{equation}
+where $m$ is a nonnegative integer and $\left|\zeta\right| = 1$. Applying the  same set of transformations yields the following relationships
+\begin{align}
+  \left(-1\right)^{m}Q_{\zeta}^{\left(z\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)
+    Q_{\zeta}^{\left(z\right)},
+  \\
+  \left(-1\right)^{m}\zeta Q_{\zeta^{*}}^{\left(z\right)}
+  & =
+    \left(\bar{x}y\bar{z}\right)
+    Q_{\zeta}^{\left(z\right)},
+  \\
+  \zeta Q_{\zeta^{*}}^{\left(z\right)}
+  & =
+    \left(x\bar{y}\bar{z}\right)
+    Q_{\zeta}^{\left(z\right)},
+  \\
+  \zeta\im^{-m}Q_{\left(-1\right)^{m}\zeta^{*}}^{\left(z\right)}
+  & =
+    \left(yxz\right)
+    Q_{\zeta}^{\left(z\right)}.
+\end{align}
+For real $\zeta$ and even $m$ this form of $Q$ works well. In particular,  we
+can assert $\sigma = \pm 1$ when $\zeta = \sigma\im^{m}$. We can also identify a
+double inversion eigenvalue $\omega = \zeta = \sigma\im^{m}$. For odd $m$,
+however, we find that the $Q$ functions are not eigenstates under the action of
+most of the operators of $\mathcal{S}$. Judicious choice of $\zeta$ can
+ameliorate this effect for some of the transformations, not all. For example,
+asserting that $\zeta$ is real allows us to assert that $Q$ is an eigenfunctiion
+of $\left(x\bar{y}\bar{z}\right)$ and $\left(\bar{x}y\bar{z}\right)$. For $Q$ to
+be an eigenstate of $\left(yxz\right)$, if $m$ is odd then $\zeta$ must be
+purely imaginary. Thus there seems to be no choice of $\zeta$ that ensures $Q$
+is an eigenstate of all transformations in $\mathcal{S}$, so long as $Q^{
+\left(z\right) } = Q_{ ml\zeta;\phi_{z} }$. However, as mentioned above, we must
+consider combinations of the form $ \Phi^{ \left(x\right) } \pm \Phi^{
+\left(y\right) } $ as candidates.
+
+For this composite form, we would replicate the analysis above. This time we'll
+examine envelope functions indexed by $x$ and $y$ instead of $z$ directly. The
+"radial" part $F^{ \left(q\right) }$ will go as 
+\begin{equation}
+  F^{\left(q\right)}
+  =
+    \left(\bar{x}\bar{y}z\right)F^{\left(q\right)}
+  =
+    \left(\bar{x}y\bar{z}\right)F^{\left(q\right)}
+  =
+    \left(x\bar{y}\bar{z}\right)F^{\left(q\right)}
+\end{equation}
+for any choice of $q = x,y,z$. However, for the acyclic swap we find
+\begin{align}
+  F^{\left(y\right)}
+  & =
+    \left(yxz\right)F^{\left(x\right)},
+  \\
+  F^{\left(x\right)}
+  & =
+    \left(yxz\right)F^{\left(y\right)},
+\end{align}
+and we see the effect of the acyclic swap is to swap the valley axis indices $y
+\leftrightarrow x$.
+
+
+Similiarily, we can examine the "longitudinal" part $P^{\left(q\right)}$ and
+find the following relationships. For the double inversion operators of
+$\mathcal{S}$ acting on $P^{\left(x\right)}$
+\begin{align}
+  P^{\left(x\right)}
+  & =
+    \left(x\bar{y}\bar{z}\right)P^{\left(x\right)},
+  \\
+  \left(-1\right)^{l+m}P^{\left(x\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)P^{\left(x\right)}
+  =
+    \left(\bar{x}y\bar{z}\right)P^{\left(x\right)},
+\end{align}
+and acting on $P^{\left(y\right)}$
+\begin{align}
+  P^{\left(y\right)}
+  & =
+    \left(\bar{x}y\bar{z}\right)P^{\left(y\right)},
+  \\
+  \left(-1\right)^{l+m}P^{\left(y\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)P^{\left(y\right)}
+  =
+    \left(x\bar{y}\bar{z}\right)P^{\left(y\right)}.
+\end{align}
+The effect of the double inversion operators of $\mathcal{S}$ upon $P$ can be
+summarized as such; if the double inversion operator includes an inversion of
+the coordinate $q$ valley-indexed by $P^{\left(q\right)}$, that operator
+acts to multiply $P^{\left(q\right)}$ by the factor $\left(-1\right)^{m+l}$.
+
+The effects of the acyclic operator on $P$ are the same as on the "radial" $F$,
+swapping the valley axis index of the function.
+\begin{align}
+  P^{\left(y\right)}
+  & =
+    \left(yxz\right)P^{\left(x\right)},
+  \\
+  P^{\left(x\right)}
+  & =
+    \left(yxz\right)P^{\left(y\right)}.
+\end{align}
+
+Moving onto the "azimuthal" part, we find the following relationships. For the
+double inversion, we group the equations by effect. Important to understanding
+the effects is the idea of cyclic order. For our purposes, in cyclic order $x$
+preceeds $y$ which preceeds $z$ which preceeds $x$ to close the cycle. When the
+double inversion involves the valley index of operand and the coordinate
+preceeding the valley index in cyclic order, we see the following effect.
+\begin{align}
+  \zeta Q_{\zeta^{*}}^{\left(y\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)
+    Q_{\zeta}^{\left(y\right)},
+  \\
+  \zeta Q_{\zeta^{*}}^{\left(x\right)}
+  & =
+    \left(\bar{x}y\bar{z}\right)
+    Q_{\zeta}^{\left(x\right)}.
+\end{align}
+The following effect holds for operators inverting the valley index and the
+coordinate following the valley index in cyclic order.
+\begin{align}
+  \left(-1\right)^{m}\zeta Q_{\zeta^{*}}^{\left(y\right)}
+  & =
+    \left(x\bar{y}\bar{z}\right)
+    Q_{\zeta}^{\left(y\right)},
+  \\
+  \left(-1\right)^{m}\zeta Q_{\zeta^{*}}^{\left(x\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)
+    Q_{\zeta}^{\left(x\right)}.
+\end{align}
+Finally, when the double inversion operator doesn't include the valley indexed
+by the operand, we see
+\begin{align}
+  \left(-1\right)^{m}Q_{\zeta}^{\left(y\right)}
+  & =
+    \left(\bar{x}y\bar{z}\right)
+    Q_{\zeta}^{\left(y\right)},
+  \\
+  \left(-1\right)^{m}Q_{\zeta}^{\left(x\right)}
+  & =
+    \left(x\bar{y}\bar{z}\right)
+    Q_{\zeta}^{\left(x\right)}.
+\end{align}
+We note that some of the double inversion operator transformations involve
+complex conjugation of $\zeta$.
+
+Considering the effect of the acyclic swap we find 
+\begin{align}
+  \zeta\im^{-m}Q_{\left(-1\right)^{m}\zeta^{*}}^{\left(x\right)}
+  & =
+    \left(yxz\right)
+    Q_{\zeta}^{\left(y\right)},
+  \\
+  \zeta\im^{-m}Q_{\left(-1\right)^{m}\zeta^{*}}^{\left(y\right)}
+  & =
+    \left(yxz\right)
+    Q_{\zeta}^{\left(x\right)}.
+\end{align}
+As such, we can construct an eigenstate of the acyclic swap by combining $Q_{
+\zeta }^{ \left(y\right) }$ and $Q_{ \left(-1\right)^m \zeta^{*} }^{
+\left(x\right) }$. This is consistent with our earlier observation that
+functions valley indexed by $x$ and $y$ can be combined in a way to generate a
+function that can be described as being indexed by $z$ rather then $x$ and $y$.
+However, to reduce computational and numerical complexity, we do not introduce a
+symmetrization for each part, $F$, $P$, and $Q$, of the basis function. We have
+chosen to symmetrize the full naive variational basis function. In short, we are
+defining our envelope basis functions as 
+\begin{equation}
+    \phi_{ \zeta }^{\left(q\right)}
+    =
+    F^{\left(q\right)}P^{\left(q\right)}Q_{ \zeta }^{\left(q\right)}.
+\end{equation}
+We can examine the effects of 
+\begin{align}
+  \left(-1\right)^{m}
+  \phi_{ \zeta }^{\left(z\right)}
+  & =
+      \left(\bar{x}\bar{y}z\right)
+      \phi_{ \zeta }^{\left(z\right)},
+\label{dblinv:z-state:z}
+\\
+  \zeta\left(-1\right)^{l}
+  \phi_{ \zeta^{*} }^{\left(z\right)}
+  & =
+      \left(\bar{x}y\bar{z}\right)
+      \phi_{ \zeta }^{\left(z\right)},
+\label{dblinv:y-state:z}
+\\
+  \zeta\left(-1\right)^{l+m}
+  \phi_{ \zeta^{*} }^{\left(z\right)}
+  & =
+      \left(x\bar{y}\bar{z}\right)
+      \phi_{ \zeta }^{\left(z\right)},
+\label{dblinv:x-state:z}
+\\
+  \zeta\im^{-m}
+  \phi_{ \left(-1\right)^{m}\zeta^{*} }^{\left(z\right)}
+  & =
+      \left(yxz\right)
+      \phi_{ \zeta }^{\left(z\right)}.
+\label{acyc:z-state:z}
+\end{align}
+
+\begin{align}
+  \zeta\left(-1\right)^{l+m}
+  \phi_{ \zeta^{*} }^{\left(y\right)}
+  & =
+      \left(\bar{x}\bar{y}z\right)
+      \phi_{ \zeta }^{\left(y\right)},
+\label{dblinv:z-state:y}
+\\
+  \left(-1\right)^{m}
+  \phi_{ \zeta }^{\left(y\right)}
+  & =
+      \left(\bar{x}y\bar{z}\right)
+      \phi_{ \zeta }^{\left(y\right)},
+\label{dblinv:y-state:y}
+\\
+  \zeta\left(-1\right)^{l}
+  \phi_{ \zeta^{*} }^{\left(y\right)}
+  & =
+      \left(x\bar{y}\bar{z}\right)
+      \phi_{ \zeta }^{\left(y\right)},
+\label{dblinv:x-state:y}
+\\
+  \zeta\im^{-m}
+  \phi_{ \left(-1\right)^{m}\zeta^{*} }^{\left(x\right)}
+  & =
+      \left(yxz\right)
+      \phi_{ \zeta }^{\left(y\right)}.
+\label{acyc:z-state:y}
+\end{align}
+    
+\begin{align}
+  \zeta\left(-1\right)^{l}
+  \phi_{ \zeta^{*} }^{\left(x\right)}
+  & =
+      \left(\bar{x}\bar{y}z\right)
+      \phi_{ \zeta }^{\left(x\right)},
+\label{dblinv:z-state:x}
+\\
+  \zeta\left(-1\right)^{l+m}
+  \phi_{ \zeta^{*} }^{\left(x\right)}
+  & =
+      \left(\bar{x}y\bar{z}\right)
+      \phi_{ \zeta }^{\left(x\right)},
+\label{dblinv:y-state:x}
+\\
+  \left(-1\right)^{m}
+  \phi_{ \zeta }^{\left(x\right)}
+  & =
+      \left(x\bar{y}\bar{z}\right)
+      \phi_{ \zeta }^{\left(x\right)},
+\label{dblinv:x-state:x}
+\\
+  \zeta\im^{-m}
+  \phi_{ \left(-1\right)^{m}\zeta^{*} }^{\left(y\right)}
+  & =
+  \left(yxz\right)
+  \phi_{ \zeta }^{\left(x\right)}.
+\label{acyc:z-state:x}
+\end{align}

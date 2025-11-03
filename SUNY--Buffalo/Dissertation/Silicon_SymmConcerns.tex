@@ -1,0 +1,139 @@
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{dcolumn}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{braket}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+%\newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\mathrm{e}}
+%\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+
+%\begin{document}
+
+\subsection{Symmetry concerns within silicon}
+\label{subsection:symm_silicon}
+
+The operations of the point-group symmetry of our system, a silicon donor, can
+be conveniently grouped into a few categories. These categories are defined by
+their transformation effects upon functions with crystalline Cartesian
+coordinate domain. For convenience, we'll denote the function transformation
+operators compactly such that $\left(\bar{y}x\bar{z}\right)$ indicates an
+operator acting such that $\left(\bar{y}x\bar{z}\right) f_{xyz} =
+f_{\bar{y}x\bar{z}}$. For our purposes we recognize 
+\begin{itemize}
+  \item cyclic permutation e.g. $\left(zxy\right)$,
+  \item acyclic swap e.g. $\left(yxz\right)$,
+  \item double inversion e.g. $\left(x\bar{y}\bar{z}\right)$.
+\end{itemize}
+An operation in the point group can be part of two categories. An operator in
+two categories will be a member of the double inversion category, as well as
+either the cyclic or acyclic category. An example of such is
+$\left(\bar{y}x\bar{z}\right)$. These categories form the basis of our
+particular representation of the symmetries of silicon. Within our formulation
+of the group, most of the representations of the $T_{d}$ point symmetry group of
+silicon can be considered as having definite even or odd symmetry under acyclic
+swaps and double inversion. For example, functions belonging to the $A_{1},
+A_{2}$ representations are invariant under double inversion, but are
+respectively classified as even or odd under acyclic swap. In comparison,
+functions belonging to the $T_{1}, T_{2}$ representations are odd under double
+inversion, but are respectively classified as odd or even under acyclic swap.
+Note that $A_{1}, T_{2}$ are even and $A_{2}, T_{1}$ are odd under acyclic swap. The final representation, $E$, is invariant under double inversion, but cannot be said to be simply even or odd under acyclic swaps. 
+
+This categorization of the operators of the point-group of our system allows a further useful observation; namely, we may factor the projection operator based upon these categories. To wit,
+\begin{equation}
+  \mathcal{P}_{ii}^{\left(\kappa\right)}
+  =
+  \mathcal{V}_{\kappa,i}
+  \mathcal{A}_{z}^{\left(\kappa\right)}
+  \mathcal{D}_{z}^{\left(\kappa\right)}
+  \mathcal{V}_{\kappa,i}^{\dagger}
+  ,
+\label{symm-operator}
+\end{equation}
+where the factored operators have been determined to be
+\begin{align}
+  \mathcal{V}_{\kappa,i}
+  & \equiv
+  \alpha_{0}^{\left(\kappa,i\right)}\left(xyz\right)
+  + \alpha_{1}^{\left(\kappa,i\right)}\left(yzx\right)
+  + \alpha_{2}^{\left(\kappa,i\right)}\left(zxy\right),
+  \label{indexing_proj}
+  \\
+  \mathcal{A}_{z}^{\left(\kappa\right)}
+  & \equiv
+  \frac{1+\delta_{E\kappa}}{2}
+  \left\{
+    \left(xyz\right) + \sigma^{\left(\kappa\right)}\left(yxz\right)
+  \right\}
+  \label{acyclic_proj}
+  \\
+  \mathcal{D}_{z}^{\left(\kappa\right)}
+  & \equiv
+  \frac{1}{4}
+  \left\{
+    \left(xyz\right)
+    +
+    \left(\bar{x}\bar{y}z\right)
+    +
+    \omega^{\left(\kappa\right)}
+    \left(\bar{x}y\bar{z}\right)
+    +
+    \omega^{\left(\kappa\right)}
+    \left(x\bar{y}\bar{z}\right)
+  \right\}
+  .
+  \label{dblinv_proj}
+\end{align}
+
+Above, $\kappa$ denotes the symmetry representation, while $i$ indexes
+degenerate states. The $A_{1}$ and $A_{2}$ states are nondegenerate, and do not
+require indexing. The $E$ states are doubly degenerate and the $T_{1}$ and
+$T_{2}$ states are triply degenerate. With our particular irreducible
+representation for the $T$ symmetries, each of the triply degenerate $T$ states
+can be indexed by the three valley axes. The values of the $\omega$ and $\sigma$
+constants in the expressions above follow from the discussion below. 
+% \begin{equation} \omega_{qr}^{\left(\kappa,i\right)}
+%   =
+%   \omega_{q}^{\left(\kappa,i\right)} \omega_{r}^{\left(\kappa,i\right)}
+%   \end{equation}
+Namely for the states where $\kappa = A_{1},A_{2},E$ we have $ \omega^{
+\left(\kappa\right) } = +1 $ and $\kappa = T_{1},T_{2}$ we have $ \omega^{
+\left(\kappa\right) } = -1 $. 
+% For $T$ states the value of $\omega_{q}$ varies between the three degenerate $T$
+% states as
+% \begin{equation}
+%   \omega_{q}^{ \left(T_{n}, i\right) }
+%   = -\delta_{iq}+\delta_{ir}+\delta_{is}.
+% \end{equation}
+For $A_{1}, T_{2}$ states we find $\sigma = +1$ and for $A_{2}, T_{1}$ states we
+find $\sigma = -1$. The $E$ states have $\sigma = 0$. Finally the valley axis
+combination vector given by $\bm{\alpha}$ is determined for $A$, $E$, and $T$
+states respectively. We find,
+\begin{equation}
+  \bm{\alpha}^{\left(A_{n}\right)}
+  = \frac{1}{3}\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix},
+\end{equation}
+\begin{equation}
+  \bm{\alpha}^{\left(E,0\right)}
+  = \frac{1}{3}\begin{pmatrix} 1 \\ \tau^{2} \\ \tau \end{pmatrix},
+\quad\quad
+  \bm{\alpha}^{\left(E,1\right)}
+  = \frac{1}{3}\begin{pmatrix} 1 \\ \tau \\ \tau^{2} \end{pmatrix},
+\end{equation}
+and finally,
+\begin{equation}
+  \bm{\alpha}^{\left(T_{n},x\right)} = \begin{pmatrix} 0 \\ 1 \\ 0\end{pmatrix},
+\quad\quad
+  \bm{\alpha}^{\left(T_{n},y\right)} = \begin{pmatrix} 0 \\ 0 \\ 1\end{pmatrix},
+\quad\quad
+  \bm{\alpha}^{\left(T_{n},z\right)} = \begin{pmatrix} 1 \\ 0 \\ 0\end{pmatrix}.
+\end{equation}
+Above $\tau = \mathrm{e}^{\im\frac{2\pi}{3}}$, one of the third roots of unity.
+We will explore further how these symmmetry effects from the silicon media
+influence the development of our donor electron's basis state.

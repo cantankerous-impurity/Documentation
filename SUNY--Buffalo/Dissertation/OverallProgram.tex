@@ -1,0 +1,91 @@
+% % \documentclass[aps, prl, preprint]{revtex4-2}
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{subfig}
+% \usepackage{dcolumn}
+% \usepackage{array,multirow,adjustbox}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{mathtools}
+% \usepackage{braket}
+% \usepackage{siunitx}
+
+% % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% \let\originalleft\left
+% \let\originalright\right
+% \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% \newcommand{\im}{\mathrm{i}}
+% \newcommand{\e}{\mathrm{e}}
+% \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% \newcommand{\diff}{\mathrm{d}}
+
+% \DeclareMathOperator{\atantwo}{atan2}
+
+% \title{An open source software package to compare and extend effective mass models of the phosphorous donor in silicon}
+% \author{Luke Pendo}
+% \date{}
+
+\subsection{Overall Program Flow and Structure}
+\label{subsection:program-flow}
+
+This software, \href{https://gitlab.com/cantankerous-impurity/}{Cantankerous
+Impurity} has been designed to be easily configurable to the end user. In
+essence, the user may specify one or more \emph{subbases} as a set of
+$\left(mlk\right)$ tuples along with a radial parameter $\eta$ and an
+anisotropic parameter $\lambda$. Multiple subbases, with independent radial and
+anisotropic parameters for each subbases, may be collected together as a
+\emph{superbasis}. Finally the user designates a radial character $W$ for the
+whole superbasis, being either $W = 1$ (Slater) or $W = 2$ (Gaussian).
+
+The potential model is very flexible as well, going as
+\begin{equation}
+    \tilde{\mathcal{U}}_{\left\{\bm{r}\right\}}
+    \coloneqq
+        \mathfrak{E}^{\mathfrak{s}}
+        \sum_{i}
+        \left(\frac{r}{\mathfrak{r}}\right)^{\mathfrak{d}_{i}}
+        \mathcal{U}_{i\left\{\Omega\right\}}
+        \e^{
+            -\tilde{\alpha}_{i\left\{\Omega\right\}}
+            \frac{r}{\mathfrak{r}}
+        }
+        \e^{
+            -\beta_{i\left\{\Omega\right\}}
+            \left(\frac{r}{\mathfrak{r}}\right)^{2}
+        }
+\tag{\ref{definition:potential:general}}
+.
+\end{equation}
+For each term of the potential, the user specifies $\mathfrak{d}\in\mathbb{R}$
+such that  $\mathfrak{d} > -2$ as $\mathfrak{d} \le 2$ leads to a divergent
+integral and make computation of the matrix elements impossible. The user also
+specifies, for each term of the potential model, the solid-angle functions
+$\mathcal{U}_{\left\{\Omega\right\}}$, $\tilde{\alpha}_{\left\{\Omega\right\}}$,
+and $\beta_{\left\{\Omega\right\}}$. To make sure that symmetry is respected by
+the user-defined potential model, we intend to make a set of easy to use
+function builder tools. At time of writting, these tools are still under
+development, but as more information becomes available, it will be reported in
+the
+\href{https://gitlab.com/cantankerous-impurity/Documentation/-/tree/core/SUNY--Buffalo/Dissertation/Supplementary%20Materials?ref_type=heads}{Supplementary Materials}.
+
+Since we are endeavoring to develop variance as a metric to evaluate our
+approximate eigenstates, the code must also be able to generate the terms of the
+potential squared, ideally without extra work on the part of the user. This also features in our generic potential form, which is easy to square.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=150mm]{
+        CantankerousImpuritySoftwareStructure_ver2.png
+    }
+    \caption{Overall Cantankerous Impurity structure.}
+\label{flowchart}
+\end{figure}
+
+In figure \ref{flowchart} we present a map of the flow and structure of
+Cantankerous Impurity.

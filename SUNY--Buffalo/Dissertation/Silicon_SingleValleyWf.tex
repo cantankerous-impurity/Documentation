@@ -1,0 +1,779 @@
+% \documentclass{report}
+
+% \usepackage{graphicx} \usepackage{dcolumn} \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath} \usepackage{braket}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2
+%\right\rangle\right. \displaystyle} \newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\e} \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+%
+%\begin{document}
+
+\subsection{Silicon envelope functions and single axis wavefunctions.}
+
+With this discussion on the overall wavefunction and its implications upon the
+envelope functions in mind, we examine our envelope function basis. In appendix
+\ref{appendix:transformations} we explored the transformation properties of the
+state defined below,
+\begin{equation}
+  \phi_{klm;\eta\lambda;\bm{r}}^{(Wq)}
+  =
+  F_{lk;\eta\lambda;r\chi_{q}}^{\left(W\right)}
+  P_{lm;\lambda;\chi_{q}}
+  Q_{m;\phi_{q}}
+  ,
+\end{equation}
+where each part may be defined as below. The naive radial part is defined in
+\ref{subsection:variational-anisotropy} in equation
+\eqref{scaled_wf:radial_part}
+\begin{equation}
+  F_{kl;\eta;r}^{\left(W\right)}
+  =
+  \sqrt{\frac{W}{\eta^{3}}}
+  L_{k;\rho^{W}}^{\left(\alpha\right)}
+  \mathrm{e}^{-\frac{\rho^{W}}{2}}
+  \rho^{l},
+  \quad\quad
+  \rho = \frac{r}{\eta}
+  .
+  \tag{\ref{naive_wf:radial_part}}
+\end{equation}
+In the equation above, $l$ and $k$ are nonnegative integers and $\eta > 0$ is a
+variational radial scaling parameter. The function $L$ is a generalized Laguerre
+polynomial of $k$-th order and $\alpha = \frac{2l + 3 - W}{W}$. We expect $W =
+1$ or $2$.
+
+When variational anisotropy $\chi_{q} \rightarrow \lambda \chi_{q}$ is
+introduced, we can define a new "radial" function as follows, by introducing a
+scaling of the radial parameter that goes as $r \rightarrow r
+\vartheta_{\lambda\chi_{q}}$. This emerges as a modification of the radial
+parameters $\eta$ with angular dependence. We may write it as
+\begin{equation}
+  F_{lk;\eta\lambda;r\chi_{q}}^{\left(W\right)}
+  = 
+  F_{lk;\eta_{\lambda\chi_{q}};r}^{\left(W\right)}
+  \quad\quad
+  \eta_{\lambda;\chi_{q}}
+  =
+  \frac{\eta}{\vartheta_{\lambda\chi_{q}}}
+  .
+  \tag{\ref{scaled_wf:radial_part}}
+\end{equation}
+The "longitudinal" part can be defined as below, with the function $P$ being the
+associated Legendre polynomials with degree $l$ and order $m$. $m$ is
+nonnegative and $l$ is an integer such that $l \ge m$.
+\begin{equation}
+  P_{lm;\lambda;\chi_{q}}
+  =
+  \sqrt{ \frac{\lambda}{\vartheta_{\lambda\chi_{q}}^{3}} }
+  P_{lm;\chi_{\lambda}^{\left(q\right)}}
+  .
+  \tag{\ref{scaled_wf:long_part}}
+\end{equation}
+The azimuthal part of the envelope basis function are unaffected by the
+introduction of the variational anisotropy. As discussed in Appendix
+\ref{appendix:transformations} the standard definition of the spherical
+harmonics has been changed to better accommodate the symmetry of our system.
+\begin{equation}
+Q_{m\zeta;\phi_{q}}
+  \coloneqq
+    \delta_{m0}
+    \left( 1 - \delta_{\zeta\bar{1}} \right)
+    % \left( \frac{ 1 + \zeta }{ 2 } \right)
+    +
+    \left(1-\delta_{m0}\right)
+    \left(
+      \frac{ \e^{\im m \phi_{q}} + \zeta\e^{-\im m \phi_{q}} }{  \sqrt{2} }
+    \right)
+\tag{\ref{scaled_wf:azim_part}}
+.
+\end{equation}
+As before $m$ is a nonnegative integer. We consider $\zeta$ complex such that
+$\left|\zeta\right| = 1$.
+
+We define the following as our \emph{naive envelope basis function} with
+anisotropy included as follows,
+\begin{equation}
+\phi_{klm\zeta;\eta\lambda;\bm{r}}^{(Wq)}
+  \coloneqq
+    F_{lk;\eta\lambda;r\chi_{q}}^{\left(W\right)}
+    P_{lm;\lambda;\chi_{q}}
+    Q_{m\zeta;\phi_{q}}
+,
+\label{env:naive}
+\end{equation}
+Earlier, we introduced the concept of valley-indexing. We see of course that
+naive basis function $\phi^{\left(z\right)}$ can be directly indexed by $z$, as
+can any arbitrary function. However, we should also note that the combination of
+rotated functions $\phi^{\left(x\right)} \pm
+\sigma\left(yxz\right)\phi^{\left(y\right)}$ can also be indexed by $z$ in the
+same sense as $\phi^{\left(z\right)}$. As such, we shall consider the following
+generic form for our valley-indexed envelope function.
+\begin{equation}
+  \Phi_{\upsilon q}
+  \coloneqq
+  a_{z}^{\left(q\right)}
+  \phi_{ \zeta_{z}^{\left(q\right)} }^{\left(z\right)}
+    +
+  a_{x}^{\left(q\right)}
+  \phi_{ \zeta_{x}^{\left(q\right)} }^{\left(x\right)}
+    +
+  a_{y}^{\left(q\right)}
+  \phi_{ \zeta_{y}^{\left(q\right)} }^{\left(y\right)}
+\label{env:full:q}
+\end{equation}  
+We can examine the effect of the transformations that form the $\mathcal{A}_{z}$
+and $\mathcal{D}_{z}^{\left(\kappa\right)}$ factor operators upon our naive
+envelope basis function defined in \eqref{env:naive}. For such a basis function,
+we previously elucidated in Appendix \ref{appendix:transformations} the effects
+of the transformations under consideration. To wit, for the $z$-index we found
+\begin{align}
+  \zeta\im^{-m}
+  \phi_{ \left(-1\right)^{m}\zeta^{*} }^{\left(z\right)}
+  & =
+    \left(yxz\right)
+    \phi_{ \zeta }^{\left(z\right)}
+\tag{\ref{acyc:z-state:z}}
+,\\
+\zeta\left(-1\right)^{l+m}
+\phi_{ \zeta^{*} }^{\left(z\right)}
+& =
+    \left(x\bar{y}\bar{z}\right)
+    \phi_{ \zeta }^{\left(z\right)},
+\tag{\ref{dblinv:x-state:z}}
+\\
+  \left(-1\right)^{m}
+  \phi_{ \zeta }^{ \left(z\right) }
+  & =
+    \left(\bar{x}\bar{y}z\right)
+    \phi_{ \zeta }^{\left(z\right)}
+\tag{\ref{dblinv:z-state:z}}
+,\\
+  \zeta\left(-1\right)^{l}
+  \phi_{ \zeta^{*} }^{\left(z\right)}
+  & =
+    \left(\bar{x}y\bar{z}\right)
+    \phi_{ \zeta }^{\left(z\right)}
+\tag{\ref{dblinv:y-state:z}}
+.
+\end{align}
+For the $y$-index functions we found
+\begin{align}
+  \zeta\im^{-m}
+  \phi_{ \left(-1\right)^{m}\zeta^{*} }^{\left(x\right)}
+  & =
+    \left(yxz\right)
+    \phi_{ \zeta }^{\left(y\right)}
+\tag{\ref{acyc:z-state:y}}
+,\\
+  \zeta\left(-1\right)^{l}
+  \phi_{ \zeta^{*} }^{\left(y\right)}
+  & =
+    \left(x\bar{y}\bar{z}\right)
+    \phi_{ \zeta }^{\left(y\right)},
+\tag{\ref{dblinv:x-state:y}}
+\\
+  \zeta\left(-1\right)^{l+m}
+  \phi_{ \zeta^{*} }^{\left(y\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)
+    \phi_{ \zeta }^{\left(y\right)}
+\tag{\ref{dblinv:z-state:y}}
+,\\
+  \left(-1\right)^{m}
+  \phi_{ \zeta }^{\left(y\right)}
+  & =
+      \left(\bar{x}y\bar{z}\right)
+      \phi_{ \zeta }^{\left(y\right)}
+\tag{\ref{dblinv:y-state:y}}
+.
+\end{align}
+Finally, for the $x$-index functions we found
+\begin{align}
+\zeta\im^{-m}
+\phi_{ \left(-1\right)^{m}\zeta^{*} }^{\left(y\right)}
+  & =
+    \left(yxz\right)
+    \phi_{ \zeta }^{\left(x\right)}
+\tag{\ref{acyc:z-state:x}}
+,\\
+\left(-1\right)^{m}
+\phi_{ \zeta }^{\left(x\right)}
+  & =
+    \left(x\bar{y}\bar{z}\right)
+    \phi_{ \zeta }^{\left(x\right)},
+\tag{\ref{dblinv:x-state:x}}
+\\
+\zeta\left(-1\right)^{l}
+\phi_{ \zeta^{*} }^{\left(x\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)
+    \phi_{ \zeta }^{\left(x\right)}
+\tag{\ref{dblinv:z-state:x}}
+,\\
+\zeta\left(-1\right)^{l+m}
+\phi_{ \zeta^{*} }^{\left(x\right)}
+  & =
+    \left(\bar{x}y\bar{z}\right)
+    \phi_{ \zeta }^{\left(x\right)}
+\tag{\ref{dblinv:y-state:x}}
+.
+\end{align}
+
+In the previous section, we determined that our $z$-indexed envelope functions
+must obey these conditions,
+\begin{align}
+  \Phi_{\lambda z}
+  & =
+  \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\lambda z}
+  ,
+\tag{\ref{acyc:z}}
+\\
+  \Phi_{\lambda z}
+  & =
+  \left(\bar{x}\bar{y}z\right)
+  \Phi_{\lambda z}
+  .
+\tag{\ref{dblinv:z:para}}
+\end{align}
+For $\kappa = A,E$ the envelope functions valley-indexed by $x$ and $y$ may be
+found from the $z$- indexed function via \eqref{idx:env:xz} and
+\eqref{idx:env:yz}. For $\kappa = T$ we also need to define independent $x$- and
+$y$-indexed envelopes. They will follow these relationships.
+\begin{align}
+\Phi_{\upsilon x}
+  &=
+    \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon y}
+\tag{\ref{acyc:x-y}}
+,\\
+\Phi_{\upsilon x}
+  & =
+    -
+    \left(x\bar{y}\bar{z}\right)
+    \Phi_{\upsilon x}
+\tag{\ref{dblinv:x:para}}
+,\\
+\Phi_{\upsilon y}
+  &=
+    \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon x}
+\tag{\ref{acyc:y-x}}
+,\\
+\Phi_{\upsilon y}
+  & =
+    -
+    \left(\bar{x}y\bar{z}\right)
+    \Phi_{\upsilon y}
+\tag{\ref{dblinv:y:para}}
+.
+\end{align}
+It can be shown quite directly that \eqref{acyc:x-y} and \eqref{acyc:y-x} are
+equivalent. Additionally, if \eqref{acyc:x-y} is true then it can be shown that
+that \eqref{dblinv:x:para} and \eqref{dblinv:y:para} are also equivalent. As
+such, we can examine the implications of just \eqref{acyc:x-y} and
+\eqref{dblinv:x:para}.
+
+Let's start by exploring the implications of \eqref{acyc:z} and
+\eqref{dblinv:z:para} upon \eqref{env:full:q} for $q = z$. In particular we can
+set $\zeta_{z}^{\left(z\right)} = \sigma \im^{+m}$. This yields
+\begin{align}
+  \left(yxz\right)
+  \phi_{ \sigma\im^{+m} }^{\left(z\right)}
+  & =
+    \sigma
+    \phi_{ \sigma\im^{+m} }^{\left(z\right)}
+,\\
+  \left(\bar{x}\bar{y}z\right)
+  \phi_{ \sigma\im^{+m} }^{\left(z\right)}
+  & =
+    \left(-1\right)^{m}
+    \phi_{ \sigma\im^{+m} }^{ \left(z\right) }
+.
+\end{align}
+For $\kappa = A,T$ we can satisfy equation \eqref{acyc:z} if we set $\sigma =
+\sigma^{\left(\kappa\right)}$. For $\kappa = E$ we recall that
+$\sigma^{\left(\kappa\right)} = 0$. For $E$-states we can take $\sigma = \pm 1$
+as a free index, similar to $m$, $l$, and $k$. We note that
+\eqref{dblinv:z:para} can only be satisfied for $\Phi^{\left(z\right)}$ when $m$
+is even. When $m$ is odd, we are unable to construct an appropriate envelope
+function from $\Phi_{ \sigma\im^{+m} }^{\left(z\right)}$. As such, we'll set
+\begin{equation}
+  a_{z}^{\left(z\right)}
+    \rightarrow
+  \left(\frac{1+\left(-1\right)^{m}}{2}\right)a_{z}^{\left(z\right)}
+\label{state:z-a:z-constraint}
+\end{equation}
+Moving forward, we consider the implications of \eqref{dblinv:z:para} and
+\eqref{acyc:z} upon the $x$- and $y$-indexed functions. To begin, let's examine
+the implications of \eqref{dblinv:z:para} and \eqref{acyc:z} upon our
+$x,y$-indexed naive envelopes, namely
+\begin{align}
+  \left(\bar{x}\bar{y}z\right)
+  \phi_{ \left(-1\right)^{l} }^{\left(x\right)}
+  & =
+    \phi_{ \left(-1\right)^{l} }^{\left(x\right)}
+,\\
+  \left(\bar{x}\bar{y}z\right)
+  \phi_{ \left(-1\right)^{l+m} }^{\left(y\right)}
+  & =
+    \phi_{ \left(-1\right)^{l+m} }^{\left(y\right)}
+,\\
+  \sigma\left(yxz\right)
+  \phi_{ \left(-1\right)^{l} }^{\left(x\right)}
+  & =
+    \sigma\left(-1\right)^{l}\im^{-m}
+    \phi_{ \left(-1\right)^{l+m} }^{\left(y\right)}
+  ,\\
+  \sigma\left(yxz\right)
+  \phi_{ \left(-1\right)^{l+m} }^{\left(y\right)}
+  & =
+    \sigma\left(-1\right)^{l+m}\im^{-m}
+    \phi_{ \left(-1\right)^{l} }^{\left(x\right)}
+.
+\end{align}
+Above, we set $\zeta_{x}^{\left(z\right)}= \left(-1\right)^{l}$ and
+$\zeta_{y}^{\left(z\right)}= \left(-1\right)^{l+m}$. At this juncture we find it
+convenient to define the following constant,
+\begin{equation}
+  \Omega \coloneqq \sigma\omega\left(-1\right)^{l+m}\im^{+m}.
+\end{equation}
+Next, consider the following function. 
+\begin{equation}
+  \phi_{\sigma}^{\left(yx\right)}
+  =
+    \phi_{ \left(-1\right)^{l} }^{\left(x\right)}
+    +
+    \omega\Omega
+    \phi_{ \left(-1\right)^{l+m} }^{\left(y\right)}
+    .
+\label{env:long:z:1}
+\end{equation}
+This function obeys \eqref{dblinv:z:para} and \eqref{acyc:z} with no caveats.
+\begin{align}
+  \phi_{\sigma}^{\left(yx\right)}
+  & =
+    \sigma
+    \left(yxz\right)
+    \phi_{\sigma}^{\left(yx\right)}
+  ,
+\\
+  \phi_{\sigma}^{\left(yx\right)}
+  & =
+    \left(\bar{x}\bar{y}z\right)
+    \phi_{\sigma}^{\left(yx\right)}
+    .
+\end{align}
+We note that if we set our coefficients in \eqref{env:full:q} for $q = z$ to go
+as 
+\begin{align}
+  a_{x}^{\left(z\right)}
+    &\rightarrow
+  a_{xy}^{\left(z\right)},
+\\
+  a_{y}^{\left(z\right)}
+    &\rightarrow
+    \omega\Omega
+  a_{xy}^{\left(z\right)},
+\end{align}
+we find that our $+z$ envelope functions goes as
+\begin{equation}
+  \Phi_{+z}
+    =
+      a_{z}^{\left(z\right)}
+      \left(\frac{1+\left(-1\right)^{m}}{2}\right)
+      \phi_{ \sigma\im^{+m} }^{\left(z\right)}
+        +
+      a_{xy}^{\left(z\right)}
+      \phi_{\sigma}^{\left(yx\right)}
+\end{equation}
+Note that the coefficients $a^{\left(z\right)}$ in $\Phi_{+z}$ above remain
+arbitrary. As such, for our purposes we find it convenient within our software
+methodology to treat these terms as different states within our basis. To that
+end, we can write our $z$-indexed envelope functions as
+\begin{align}
+  \Phi_{\parallel_{0},+z;\sigma}
+    &\coloneqq
+      \left(\frac{1+\left(-1\right)^{m}}{2}\right)
+      \phi_{ \sigma\im^{+m} }^{\left(z\right)}
+\label{envelope:longitudinal:z:0}
+,\\
+  \Phi_{\parallel_{1},+z;\sigma}
+    &\coloneqq
+      \phi_{ \left(-1\right)^{l} }^{\left(x\right)}
+      +
+      \sigma\im^{+m}\left(-1\right)^{l+m}
+      \phi_{ \left(-1\right)^{l+m} }^{\left(y\right)}
+\label{envelope:longitudinal:z:1}
+.
+\end{align}
+Recall that for $\kappa = A,T$ the index $\sigma = \pm 1$ is set by the
+symmetry, while for $\kappa = E$ it is a free index.
+
+Moving forward, we can utilize \eqref{dblinv:z:anti} as a definition. Namely, we
+can define the negative valley index envelope functions as
+\begin{equation}
+  \Phi_{-z}
+  \coloneqq
+    \omega^{\left(\kappa\right)}
+    \left(
+      \frac{\left(\bar{x}y\bar{z}\right)+\left(x\bar{y}\bar{z}\right)}{2}
+    \right)
+    \Phi_{+z}
+    .
+\end{equation}
+Applying these to our envelope basis functions yields
+\begin{align}
+\Phi_{\parallel_{0},-z;\sigma}
+  &\coloneqq
+    \omega
+    \left(
+      \frac
+      {
+        \left(\bar{x}y\bar{z}\right)
+        +
+        \left(x\bar{y}\bar{z}\right)
+      }
+      {2}
+    \right)
+    \Phi_{\parallel_{0},+z;\sigma}
+      =
+        \sigma\omega\im^{+m}\left(-1\right)^{l+m}
+        \Phi_{\parallel_{0},+z;\sigma}
+,\\
+\Phi_{\parallel_{1},-z;\sigma}
+  &\coloneqq
+    \omega
+    \left(
+      \frac
+      {
+        \left(\bar{x}y\bar{z}\right)
+        +
+        \left(x\bar{y}\bar{z}\right)
+      }
+      {2}
+    \right)
+    \Phi_{\parallel_{1},+z;\sigma}
+      =
+        \omega
+        \left(-1\right)^{m}
+        \Phi_{\parallel_{1},+z;\sigma}
+.
+\end{align}
+Having defined our $z$-indexed envelope function we can introduce
+\emph{single-axis} wavefunctions, combining the single axis wavefunctions of
+opposite valleys lying along one axis. To that end, we can introduce the
+following \emph{axial Bloch function},
+\begin{equation}
+\Theta^{\left(q\right)}_{\xi}
+  =
+    \theta^{\left(+q\right)} + \xi \theta^{\left(-q\right)}
+\end{equation}
+We write our $z$-axis wavefunction, including the axial Bloch functions.
+\begin{align}
+\psi_{\parallel_{0},\sigma\omega}^{\left(z\right)}
+  & \coloneqq
+    \left(\frac{1+\left(-1\right)^{m}}{2}\right)
+    \Phi_{\parallel_{0},+z;\sigma}
+    \Theta^{\left(z\right)}_{\sigma\omega\im^{+m}\left(-1\right)^{l+m}}
+\label{single-axis:longitudinal:z:0}
+,\\
+\psi_{\parallel_{1},\sigma\omega}^{\left(z\right)}
+  & \coloneqq
+    \Phi_{\parallel_{1},+z;\sigma}
+    \Theta^{\left(z\right)}_{\omega\left(-1\right)^{m}}
+.
+\label{single-axis:longitudinal:z:1}
+\end{align}
+This forms the core of the definition of our single axis states for $\kappa = A,
+E$, as we can find the $x$- and $y$-axis single axis states using the cyclic
+transformations given in \eqref{idx:env:xz} and \eqref{idx:env:yz}.
+
+However, for the $\kappa = T$ states, the $x$- and $y$-indexed perpendicular
+envelope functions cannot be found from the $z$-indexed longitudinal envelope
+function. We invoke \eqref{acyc:x-y} and \eqref{dblinv:x:para} to specify
+conditions upon our perpendicular envelopes and again utilize \eqref{env:full:q}
+as our general form. With this in mind we will explore the qualities of forms
+suitable for transverse $\Phi_{+x}$ and $\Phi_{+y}$. In particular, let's
+consider the effect of the operator used in \eqref{dblinv:x:para} upon our naive
+envelope functions.
+\begin{align}
+\omega\left(x\bar{y}\bar{z}\right)
+\phi_{ \zeta_{x}^{\left(x\right)} }^{\left(x\right)}
+  & =
+    \omega\left(-1\right)^{m}
+    \phi_{ \zeta_{x}^{\left(x\right)} }^{\left(x\right)}
+\tag{\ref{dblinv:x-state:x}a}
+\label{dblinv:x-state:x-a}
+,\\
+\omega\left(x\bar{y}\bar{z}\right)
+\phi_{ \zeta_{y}^{\left(x\right)} }^{\left(y\right)}
+    & =
+    \omega\zeta_{y}^{\left(x\right)} \left(-1\right)^{l}
+    \phi_{ \left\{\zeta_{y}^{\left(x\right)}\right\}^{*} }^{\left(y\right)}
+\tag{\ref{dblinv:x-state:y}a}
+,\\
+\omega\left(x\bar{y}\bar{z}\right)
+\phi_{ \zeta_{z}^{\left(x\right)}  }^{\left(z\right)}
+    & =
+      \omega\zeta_{z}^{\left(x\right)}\left(-1\right)^{l+m}
+      \phi_{ \left\{\zeta_{z}^{\left(x\right)}\right\}^{*} }^{\left(z\right)}
+\tag{\ref{dblinv:x-state:z}a}
+.
+\end{align}
+In light of the above information, to ensure we satisfy \eqref{dblinv:x:para}
+for the terms in $\Phi_{+x}$ we set $ \zeta_{z}^{\left(x\right)} =
+\omega\left(-1\right)^{l+m} $ and $ \zeta_{y}^{\left(x\right)} =
+\omega\left(-1\right)^{l} $. However, none of the above conditions defining the
+envelope functions determine $\zeta_{x}^{\left(x\right)}$.  Since the $\zeta$
+indices for the other functions have been determined at this point, we may drop
+the upper and lower valley indices on $\zeta_{x}^{\left(x\right)}$ without
+ambiguity. It is convenient for our purposes, with some loss of generality, to
+have this arbitrary $\zeta$ real, so that $\zeta = \pm 1$. We will see how this
+simplifies the expression of the $\psi_{-x}$ and $\psi_{-y}$, in particular
+allowing the Bloch and envelope functions to be factored apart from each other.
+We do this to simplify the integration expression, helping both analytical and
+numerical computation of the integrals required to compute the Hamiltonian
+matrix elements. We can also note that for \eqref{dblinv:x-state:x-a} it must be
+the case for the $x$-indexed term that $\omega\left(-1\right)^{m} = 1$ or
+$\Phi^{\left(x\right)} = 0$. This can be accomplished by the same strategy as in
+\eqref{state:z-a:z-constraint}. In light of the above discussion, we can state
+the $+x$ envelope as 
+\begin{equation}
+\Phi_{+x}
+  =
+    a_{x}
+    \left(\frac{1+\omega\left(-1\right)^{m}}{2}\right)
+    \phi_{ \zeta }^{\left(x\right)}
+      +
+    a_{y}
+    \phi_{ \omega\left(-1\right)^{l} }^{\left(y\right)}
+      +
+    a_{z}
+    \phi_{ \omega\left(-1\right)^{l+m} }^{\left(z\right)}
+.
+\end{equation}
+We note that since the coefficients in this expression are shared between the
+$x$- and $y$-valley indexed envelope, the upper valley index on these
+coefficients are superfluous and can be dropped. In fact, much as we did for the
+longitudinal envelopes in the equations \eqref{envelope:longitudinal:z:0} and
+\eqref{envelope:longitudinal:z:1} we can separate out our basis functions.
+\begin{align}
+\Phi_{\perp_{0},+x;\zeta\omega}
+  &\coloneqq
+    \left(\frac{1+\omega\left(-1\right)^{m}}{2}\right)
+    \phi_{ \zeta }^{\left(x\right)}
+,\\
+\Phi_{\perp_{1},+x;\omega}
+  &\coloneqq
+    \phi_{ \omega\left(-1\right)^{l} }^{\left(y\right)}
+,\\
+\Phi_{\perp_{2},+x;\omega}
+  &\coloneqq
+    \phi_{ \omega\left(-1\right)^{l+m} }^{\left(z\right)}
+\end{align}
+
+Now, to find $\Phi_{-x}$ we apply our $x$-indexed opposite valley operator to
+the $\Phi_{+x}$ envelope basis states. We tabulate the effect of the operator on
+the naive envelope basis states below.
+\begin{align}
+\zeta\left(-1\right)^{l}
+\left( \frac{ 1+\omega\left(-1\right)^{m} }{ 2 } \right)
+\phi_{ \zeta^{*} }^{\left(x\right)}
+  & =
+    \left(
+      \frac
+      { \left(\bar{x}\bar{y}z\right) + \omega\left(\bar{x}y\bar{z}\right) }
+      { 2 }
+    \right)
+    \phi_{ \zeta }^{\left(x\right)}
+\tag{\ref{dblinv:z-state:x}+\ref{dblinv:y-state:x}}
+,\\
+\omega\left(-1\right)^{m}
+\phi_{ \omega\left(-1\right)^{l} }^{\left(y\right)}
+  & =
+    \left(
+      \frac
+      { \left(\bar{x}\bar{y}z\right) + \omega\left(\bar{x}y\bar{z}\right) }
+      { 2 }
+    \right)
+    \phi_{ \omega\left(-1\right)^{l} }^{\left(y\right)}
+\tag{\ref{dblinv:z-state:y}+\ref{dblinv:y-state:y}}
+,\\
+\left(-1\right)^{m}
+\phi_{ \omega\left(-1\right)^{l+m} }^{ \left(z\right) }
+  & =
+    \left(
+      \frac
+      { \left(\bar{x}\bar{y}z\right) + \omega\left(\bar{x}y\bar{z}\right) }
+      { 2 }
+    \right)
+    \phi_{ \omega\left(-1\right)^{l+m} }^{\left(z\right)}
+\tag{\ref{dblinv:z-state:z}+\ref{dblinv:y-state:z}}
+.
+\end{align}
+As such, we find the following for $\Phi_{-x}$
+\begin{align}
+\Phi_{\perp_{0},-x;\zeta\omega}
+& \coloneqq
+  \left(
+    \frac
+    {
+      \left(\bar{x}\bar{y}z\right)
+      +
+      \omega
+      \left(\bar{x}y\bar{z}\right)
+    }
+    {2}
+  \right)
+  \Phi_{\perp_{0},+x;\zeta\omega}
+  = 
+  \zeta\left(-1\right)^{l}
+  \Phi_{\perp_{0},+x;\zeta\omega}
+,\\
+\Phi_{\perp_{1},-x;\omega}
+& \coloneqq
+  \left(
+    \frac
+    {
+      \left(\bar{x}\bar{y}z\right)
+      +
+      \omega
+      \left(\bar{x}y\bar{z}\right)
+    }
+    {2}
+  \right)
+  \Phi_{\perp_{1},+x;\omega}
+  =
+  \omega\left(-1\right)^{m}
+  \Phi_{\perp_{1},+x;\omega}
+,\\
+\Phi_{\perp_{2},-x;\omega}
+& \coloneqq
+  \left(
+    \frac
+    {
+      \left(\bar{x}\bar{y}z\right)
+      +
+      \omega
+      \left(\bar{x}y\bar{z}\right)
+    }
+    {2}
+  \right)
+  \Phi_{\perp_{2},+x;\omega}
+=
+  \left(-1\right)^{m}
+  \Phi_{\perp_{2},+x;\zeta\omega}
+.
+\end{align}
+We may now define our single axial $x$-axis wavefunctions, going as
+\begin{align}
+\psi^{\left(x\right)}_{\perp_{0},\zeta\omega}
+  &=
+    \left(\frac{1+\omega\left(-1\right)^{m}}{2}\right)
+    \phi_{ \zeta }^{\left(x\right)}
+    \Theta_{ \zeta\left(-1\right)^{l} }^{\left(x\right)}
+,\\
+\psi^{\left(x\right)}_{\perp_{1},\omega}
+  &=
+    \phi_{ \omega\left(-1\right)^{l} }^{\left(y\right)}
+    \Theta_{ \omega\left(-1\right)^{m} }^{\left(x\right)}
+,\\
+\psi^{\left(x\right)}_{\perp_{2},\omega}
+  &=
+    \phi_{ \omega\left(-1\right)^{l+m} }^{\left(z\right)}
+    \Theta_{ \left(-1\right)^{m} }^{\left(x\right)}
+.
+\end{align}
+
+We can take \eqref{acyc:y-x} as definitional for $\psi^{\left(y\right)}$, namely
+\begin{equation}
+\psi_{\aleph,\sigma\omega}^{\left(y\right)}
+  \coloneqq
+    \sigma\left(yxz\right)\psi_{\aleph,\omega}^{\left(x\right)}
+\end{equation}
+To further this analysis let's examine the effect of the acyclic swap upon our
+naive envelope functions. This yields
+\begin{align}
+\sigma\left(yxz\right)
+\phi_{ \zeta }^{\left(x\right)}
+  & =
+    \zeta\omega\left(-1\right)^{l}\Omega
+    \phi_{ \left(-1\right)^{m}\zeta }^{\left(y\right)}
+\tag{\ref{acyc:z-state:x}}
+,\\
+\sigma\left(yxz\right)
+\phi_{ \omega\left(-1\right)^{l} }^{\left(y\right)}
+  & =
+    \Omega
+    \phi_{ \omega\left(-1\right)^{l+m} }^{\left(x\right)}
+\tag{\ref{acyc:z-state:y}a}
+,\\
+\sigma\left(yxz\right)
+\phi_{ \omega\left(-1\right)^{l+m} }^{\left(z\right)}
+  & =
+    \left(-1\right)^{m}\Omega
+    \phi_{ \omega\left(-1\right)^{l} }^{\left(z\right)}
+\tag{\ref{acyc:z-state:z}a}
+.
+\end{align}
+Considering the above expressions involving our naive envelope basis functions
+yield the following expressions for our $y$-indexed perpendicular single-axis wavefunctions.
+\begin{align}
+\psi^{\left(y\right)}_{\perp_{0},\zeta\omega}
+  &=
+    \zeta\omega\left(-1\right)^{l}\Omega
+    \left(\frac{1+\omega\left(-1\right)^{m}}{2}\right)
+    \phi_{ \omega\zeta }^{\left(y\right)}
+    \Theta_{ \zeta\left(-1\right)^{l} }^{\left(y\right)}
+,\\
+\psi^{\left(y\right)}_{\perp_{1},\omega}
+  &=
+    \Omega
+    \phi_{ \omega\left(-1\right)^{l+m} }^{\left(x\right)}
+    \Theta_{ \omega\left(-1\right)^{m} }^{\left(y\right)}
+,\\
+\psi^{\left(y\right)}_{\perp_{2},\omega}
+  &=
+    \left(-1\right)^{m}\Omega
+    \phi_{ \omega\left(-1\right)^{l} }^{\left(z\right)}
+    \Theta_{ \left(-1\right)^{m} }^{\left(y\right)}
+.
+\end{align}
+
+% [THIS WILL BE UPDATED BUT I DON'T WANT TO DELETE IT.]
+% \begin{align}
+%   \psi_{\perp_{0}}^{\left(T,z\right)}
+%     &=
+%       \left(\frac{1-\left(-1\right)^{m}}{2}\right)
+%       \left(
+%         \phi_{\zeta}^{\left(x\right)}
+%         \Theta^{\left(x\right)}_{\zeta\left(-1\right)^{l}}
+%         -
+%         \zeta\sigma\im^{+m}
+%         \phi_{-\zeta}^{\left(y\right)}
+%         \Theta^{\left(y\right)}_{\zeta\left(-1\right)^{l}}
+%       \right)
+% ,\\
+%   \psi_{\perp_{1}}^{\left(T,z\right)}
+%     &=
+%       \phi_{-\left(-1\right)^{l}}^{\left(y\right)}
+%       \Theta^{\left(x\right)}_{-\left(-1\right)^{m}}
+%       +
+%       \Omega
+%       \phi_{-\left(-1\right)^{l+m}}^{\left(x\right)}
+%       \Theta^{\left(y\right)}_{-\left(-1\right)^{m}}
+% ,\\
+%   \psi_{\perp_{2}}^{\left(T,z\right)}
+%     &=
+%       \phi_{-\left(-1\right)^{l+m}}^{\left(z\right)}
+%       \Theta^{\left(x\right)}_{\left(-1\right)^{m}}
+%       +
+%       \left(-1\right)^{m}\Omega
+%       \phi_{-\left(-1\right)^{l}}^{\left(z\right)}
+%       \Theta^{\left(y\right)}_{\left(-1\right)^{m}}
+% .
+% \end{align}
+% Above we recall that for $\kappa = T$ states, $\omega^{\left(T\right)} =
+% -1$.

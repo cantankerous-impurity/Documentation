@@ -1,0 +1,74 @@
+% % % \documentclass[aps, prl, preprint]{revtex4-2}
+% % \documentclass{report}
+
+% % \usepackage{graphicx}
+% % \usepackage{dcolumn}
+% % \usepackage{array,multirow,adjustbox}
+% % \usepackage{bm}
+% % \usepackage{amsfonts, amssymb, amsmath}
+% % \usepackage{braket}
+% % \usepackage{siunitx}
+
+% % % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% % \let\originalleft\left
+% % \let\originalright\right
+% % \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% % \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% % \newcommand{\im}{\mathrm{i}}
+% % \newcommand{\e}{\mathrm{e}}
+% % \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% % \newcommand{\diff}{\mathrm{d}}
+
+% % \DeclareMathOperator{\atantwo}{atan2}
+
+% % \title{An open source software package to compare and extend effective mass models of the phosphorous donor in silicon}
+% % \author{Luke Pendo}
+% % \date{}
+
+% % \begin{document}
+
+\subsection{Gamble and a tetrahedral potential}
+
+In a 2015 paper\cite{Gamble}, J.K. Gamble et al. employed the Shindo-Nara EMA
+equations for the silicon donor and used Fourier expansions of the Bloch
+function. Gamble found that including these contributions from the Bloch
+functions necessitates including a tetrahedral model potential as a central cell
+correction to the screened Coulomb potential of the excess positive charge of
+the substitutional donor atom. This central cell correction, by employing
+potential "wings" lying along the bond directions as well as a central
+potential, is seen to have the same $T_{d}$ point symmetry as the donor
+point-defect system. Gamble applied this tetrahedral model potential and
+employed a Ritz basis of Gaussian trial wavefunctions to examine the spatial
+energy wavefunctions of the donor electron. A recent direct measurement of the
+donor \cite{Salfi} wavefunctions found agreement with the predictions of another
+method to model the donor system, that of atomistic tight-binding simulations.
+% \cite{AtomisticTB}.
+
+The particular interest here of Gamble et al. was examining the factors under
+which a particular EMA model of the donor wavefunction could made to agree with
+the tight-binding results and the measured reality. Of particular note, the
+Gamble method involved optimization of the parameters of the central cell
+correction to fix the resultant energies of the donor model to the
+experimentally measured energies.In a 2015 paper\cite{Gamble}, J.K. Gamble et
+al. employed the Shindo-Nara EMA equations for the silicon donor and used
+Fourier expansions of the Bloch function. Gamble found that including these
+contributions from the Bloch functions necessitates including a tetrahedral
+model potential of the same symmetry as the donor point-defect system.
+
+To the present author, Gamble et al.'s largest contribution to this work
+consisted in recognizing the importance of inclusion of the full Bloch functions
+in computations involving the EMA and the importance of symmetry upon the
+central cell corrections. As well, the Gamble paper's commentary on the ways in
+which small differences or different approximations employed in the EMA model
+can lead to very different quantitative predictions inspired the present
+author's own research along these lines. It led us to focus instead on capturing
+the broader landscape of theories that may exist in a single computational tool.
+As well, it inspired us to consider the distinction between \emph{technical}
+error, and \emph{model} error. We will define what we mean by these terms below.
+However, the distinction is fundamentally prompted by these questions; "Can EMA
+models be brought in line with experimental data? If they cannot, what does that
+tell us about what models can be used to analyze a shallow donor system?"

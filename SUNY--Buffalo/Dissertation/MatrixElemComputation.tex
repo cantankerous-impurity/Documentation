@@ -1,0 +1,376 @@
+% % \documentclass[aps, prl, preprint]{revtex4-2}
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{subfig}
+% \usepackage{dcolumn}
+% \usepackage{array,multirow,adjustbox}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{mathtools}
+% \usepackage{braket}
+% \usepackage{siunitx}
+
+% % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% \let\originalleft\left
+% \let\originalright\right
+% \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% \newcommand{\im}{\mathrm{i}}
+% \newcommand{\e}{\mathrm{e}}
+% \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% \newcommand{\diff}{\mathrm{d}}
+
+% \DeclareMathOperator{\atantwo}{atan2}
+
+% \title{An open source software package to compare and extend effective mass models of the phosphorous donor in silicon}
+% \author{Luke Pendo}
+% \date{}
+
+\subsection{Matrix Element Computations}
+\label{subsection:mat-elem-comp}
+
+The following formulae were derived in Appendix \ref{appendix:elements}. Some quantities were assumed to be unitful in the analytic derivation, however here we will assume that the numerical representation within the code will be unitless. Essentially we transform
+\begin{align}
+\left(\mathcal{M}\right)_{01}
+    &\rightarrow
+        \mathfrak{E}^{\mathfrak{u}_{0}+\mathfrak{u}_{1}+\mathfrak{s}}
+        \left(\mathcal{M}\right)_{01}
+,\\
+\eta_{n}
+    &\rightarrow
+        \mathfrak{r}\eta_{n}
+,\\
+\hat{\eta}
+    &\rightarrow
+        \mathfrak{r}\hat{\eta}
+,\\
+\check{r}
+    &\rightarrow
+        \mathfrak{r}\check{r}
+.
+\end{align}
+As such, when reporting output to users of the software, we should be clear if a
+quantity is unitless or is unitful.
+
+The equation we implement within our code will go as
+\begin{align}
+\left(\mathcal{M}\right)_{\aleph,01}^{\left(\kappa^{\prime},j\right)}
+    &=
+        \frac
+        { \xi_{0} }
+        {
+            \left[
+                \left(\frac{\eta}{\hat{\eta}}\right)
+                ^{\frac{\mathfrak{L}}{2}+2\mathfrak{u}}
+            \right]_{01}
+            \hat{\eta}^{ 2\mathfrak{u}_{0} + 2\mathfrak{u}_{1} }
+        }
+        \mathcal{I}_{\left\{\Omega\right\}}
+\label{ex:first_use_of_bracket_summation}
+,\\
+\mathcal{I}_{\left\{\Omega\right\}}
+    &\coloneqq
+        \int_{\mathcal{S}_{0}}\diff\Omega
+        \,
+        \left[
+            \left(
+                \frac
+                {\vartheta_{\left\{\Omega\right\}}}
+                {\hat{\vartheta}_{\left\{\Omega\right\}}}
+            \right)^{\frac{\mathfrak{L}}{2}}
+            Q_{m\zeta\left\{\phi_{q}\right\}}
+        \right]_{01}
+        \mathcal{S}_{\left\{\Omega\right\}}
+,\\
+\mathcal{S}_{\left\{\Omega\right\}}
+    &\coloneqq
+        \left[\sum_{s=-\mathfrak{u}}^{s=+\mathfrak{u}}\right]_{01}
+        \sum_{i}
+        \bm{\mathcal{P}}_{\left(s\right)_{01}\left\{\Omega\right\}}
+        \mathcal{X}_{\mathfrak{d}_{i}\left\{\Omega\right\}}
+        \mathcal{V}_{i\left\{\Omega\right\}}
+        \mathcal{R}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{P}}_{\left(s\right)_{01}\left\{\Omega\right\}}
+    &\coloneqq
+        \left[
+            \frac
+            { k!\mathfrak{H}_{ml;\lambda,s}^{\left(\kappa\right)} }
+            { 
+                \mathfrak{K}!
+                \left(
+                    \frac
+                    {
+                        \vartheta_{\left\{\Omega\right\}}
+                        \check{r}_{\left\{\Omega\right\}}
+                    }
+                    {\eta}
+                \right)^{W\delta_{s\bar{1}}}
+            }
+            P_{\left(l+2s\right)m;\lambda\left\{\chi_{q}\right\}}
+        \right]_{01}
+,\\
+\mathcal{X}_{\mathfrak{d}\left\{\Omega\right\}}
+    &\coloneqq
+        \left(
+            \hat{\eta}\hat{\vartheta}_{\left\{\Omega\right\}}
+        \right)^{-\mathfrak{d}}
+        \left( \Xi_{\left\{\Omega\right\}} \right)
+        ^{ -\hat{\mathfrak{L}}_{\mathfrak{d}} }
+.
+\end{align}
+
+
+
+
+
+
+We have completed the radial integration analytically. Previously we found
+equation \eqref{equation:radial-integral}, repeated below
+\begin{equation}
+\mathcal{R}_{i\left(s\right)_{01}}
+    =
+        \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+        \sum_{w=u_{0}+u_{1}}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\mathfrak{d}_{i}\left(su\right)_{01}w}
+        \tilde{\bm{\mathcal{F}}}_{i\left(su\right)_{01}w}
+\tag{\ref{equation:radial-integral}}
+.
+\end{equation}
+Above we have defined the following constants,
+\begin{align}
+\mathfrak{K}
+    &\coloneqq
+        k + \mathfrak{u} + \delta_{s\bar{1}}
+,\\
+\mathfrak{h}_{\mathfrak{d}\left(s\right)_{01}}
+    &\coloneqq
+        \hat{\mathfrak{L}}_{\mathfrak{d}}
+        - W\left(\delta_{s_{0}\bar{1}} + \delta_{s_{1}\bar{1}}\right)
+,\\
+\hat{\mathfrak{L}}_{\mathfrak{d}}
+    &\coloneqq
+        l_{0} + l_{1}
+        -\delta_{W1}\left(\mathfrak{u}_{0}+\mathfrak{u}_{1}\right)
+        +\mathfrak{d}+3
+,
+\end{align}
+the following sequence of values computed during each integrand evaluation.
+\begin{equation}
+\tilde{\bm{\mathcal{F}}}_{i\left(su\right)_{01}w}
+    \coloneqq
+        \mathcal{F}
+        _{
+            i\mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}};
+            \left(su\right)_{01}w
+            \left\{
+                \Delta
+                \tilde{\mathcal{Z}}_{i0}
+                \tilde{\mathcal{Z}}_{i1}
+            \right\}
+        }
+        ^{\left(W\right)}
+.
+\end{equation}
+The sequence values may be calculated with the follow accessory functions.
+\begin{align}
+\tilde{\mathcal{F}}
+_{
+    iL;\left(u\right)_{01}w
+    \left\{\Delta\tilde{\mathcal{Z}}_{i0}\tilde{\mathcal{Z}}_{i1}\right\}
+}
+^{\left(W\right)}
+    &\coloneqq
+        \tilde{\mathcal{G}}
+        _{
+            L;\left(u\right)_{01}
+            \left\{\Delta\tilde{\mathcal{Z}}_{i0}\right\}
+        }
+        \tilde{\mathcal{H}}
+        ^{\left(W\right)}
+        _{
+            \left(L+Ww\right)
+            \left\{\tilde{\mathcal{Z}}_{i1}\right\}
+        }
+,\\
+\tilde{\mathcal{G}}
+_{L;\left(u\right)_{01}\left\{\Delta\tilde{\mathcal{Z}}\right\}}
+^{\left(W\right)}
+    &\coloneqq
+        \left(1-\tilde{\mathcal{Z}}\left(1+\Delta\right)\right)^{u_{0}}
+        \left(1-\tilde{\mathcal{Z}}\left(1-\Delta\right)\right)^{u_{1}}
+        \tilde{\mathcal{Z}}^{\frac{L}{W}}
+,\\
+\tilde{\mathcal{H}}_{M\left\{\tilde{\mathcal{Z}}\right\}}^{\left(W\right)}
+    &\coloneqq
+        \left(
+            \delta_{W1}
+            \frac{\sqrt{\pi}}{\Gamma\left[\frac{M+1}{2}\right]}
+            \tilde{\mathcal{Z}}^{M}
+            +
+            \delta_{W2}
+        \right)
+        h_{M\left\{\tilde{\mathcal{Z}}\right\}}
+,\\
+\tilde{\mathcal{Z}}_{i0\left\{\Omega\right\}}
+    &=
+        \frac
+        {1}
+        {
+            1
+                +
+            \delta_{W1}
+            \left(
+                \frac
+                { 
+                    \tilde{\alpha}_{i\left\{\Omega\right\}}
+                    \check{r}_{\left\{\Omega\right\}}
+                }
+                {2}
+            \right)
+                +
+            \delta_{W2}
+            \beta_{i\left\{\Omega\right\}}
+            \check{r}_{\left\{\Omega\right\}}^{2}
+        }
+,\\
+\tilde{\mathcal{Z}}_{1\left\{\Omega\right\}}
+    &=
+        \frac
+        {
+            \delta_{W1}
+                +
+            \tilde{\alpha}_{i\left\{\Omega\right\}}
+            \check{r}_{\left\{\Omega\right\}}
+        }
+        {
+            \sqrt{
+                \delta_{W2}
+                    +
+                \beta_{i\left\{\Omega\right\}}
+                \check{r}_{\left\{\Omega\right\}}^{2}
+            }
+        }    
+.
+\end{align}
+
+
+
+
+
+
+
+With the above precalculated constants defined, we can articulate the necessary
+summation structure depending on various conditions. There are three conditions
+which define which form should be used. They are
+\begin{align}
+    \delta_{W1}\tilde{\alpha}_{i} + \delta_{W2}\beta_{i} = 0
+    \quad\quad &\Rightarrow \quad\quad
+    \tilde{\mathcal{Z}}_{i0} \equiv 1,
+\label{condition:1a}\tag{C1a}
+,\\
+    \eta_{0} = \eta_{1}
+    \text{ and }
+    \lambda_{0} = \lambda_{1}
+    \text{ and }
+    q_{0} = q_{1}
+    \quad\quad &\Rightarrow \quad\quad
+    \Delta \equiv 0,
+\label{condition:1b}\tag{C1b}
+,\\
+    \delta_{W1}\beta_{i} + \delta_{W2}\tilde{\alpha}_{i} = 0
+    \quad\quad &\Rightarrow \quad\quad
+    \tilde{\mathcal{H}} \equiv 1
+\label{condition:2}\tag{C2}
+.
+\end{align}
+If condition \eqref{condition:2} is not true, then the radially integrated part
+of the integrand will go as
+\begin{align}
+\mathcal{R}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:1a}}\right)}
+    &=
+        \sum_{u=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\left(s\right)_{01}uw}
+        \bm{\mathcal{G}}_{u\left\{\Omega\right\}}
+        \tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+,\\
+\mathcal{R}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:1b}}\right)}
+    &=
+        \sum_{u=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\left(s\right)_{01}uw}^{\prime}
+        \tilde{\bm{\mathcal{G}}}_{iu\left(s\right)_{01}\left\{\Omega\right\}}
+        \tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+,\\
+\mathcal{R}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:1a}}+\text{\ref{condition:1b}}\right)}
+    &=
+        \sum_{w=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\left(s\right)_{01}w}
+        \tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+.
+\end{align}
+However, if condition \eqref{condition:2} is true, then the radially integrated
+part of the integrand will go as
+\begin{align}
+\mathcal{R}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:2}};\text{\ref{condition:1a}}\right)}
+    &=
+        \sum_{u=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{a}_{\left(s\right)_{01}u}
+        \bm{\mathcal{G}}_{u\left\{\Omega\right\}}
+,\\
+\mathcal{R}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:2}};\text{\ref{condition:1b}}\right)}
+    &=
+        \sum_{u=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{a}_{\left(s\right)_{01}u}^{\prime}
+        \tilde{\bm{\mathcal{G}}}_{iu\left(s\right)_{01}\left\{\Omega\right\}}
+,\\
+\mathcal{R}
+_{i\left(s\right)_{01}}
+^{
+    \left(\text{\ref{condition:2}};
+    \text{\ref{condition:1a}}+\text{\ref{condition:1b}}\right)
+}
+    &= \mathfrak{a}_{\left(s\right)_{01}}
+.
+\end{align}
+where we employ sequences of the form
+\begin{align}
+\bm{\mathcal{G}}_{u\left\{\Omega\right\}}
+    &\coloneqq
+        \Delta_{\left\{\Omega\right\}}^{u}
+,\\
+\tilde{\bm{\mathcal{G}}}_{iu\left(s\right)_{01}\left\{\Omega\right\}}
+    &\coloneqq
+        \tilde{\mathcal{G}}
+        _{
+            \mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}};u
+            \left\{\tilde{\mathcal{Z}}_{i0\left\{\Omega\right\}}\right\}
+        }
+        ^{\left(W\right)}
+,\\
+\tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+    &\coloneqq
+        \tilde{\mathcal{H}}
+        _{
+            \left(\mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}}+Ww\right);
+            \left\{\tilde{\mathcal{Z}}_{i1\left\{\Omega\right\}}\right\}
+        }
+        ^{\left(W\right)}
+.
+\end{align}

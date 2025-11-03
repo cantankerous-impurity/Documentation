@@ -1,0 +1,10 @@
+Cantankerous Impurity is an attempt to completely and adequately describe the spectrum and wavefunction of silicon donors / point-like impurities by extending and completing the effective mass model.
+
+Silicon crystals can be host to impurities that attract excess electrons. If the impurity potential is weak enough, we expect that the electron's state will be localized near conduction band minima. Through a few simple and somewhat persuasive approximations, we can smear out the silicon background. As such, we model the electron's interactions with the surrounding media and the impurity using an effective Hamiltonian. We expect this Hamiltonian to contain a kinetic energy-like term with a modified effective mass as well as a potential term intended to effectively capture all deviations from the pure Silicon crystal potential.
+
+It is unclear to what extent an isolated donor in a silicon crystal can be said to defy the effective mass approximation (EMA). As such, it is unclear what is lost in qualitative and descriptive power when employing the EMA. This is complicated by the fact that existing effective mass models often contain unquantified amounts of truncation and approximation error. It is not clear how much error comes from physical approximations (such as assuming that the electron wavefunction is strongly localized within k-space at conduction band minima) and how much error comes from mathematical approximations (such as those introduced by using "approximate" wavefunctions such as variational wavefunctions or truncated bases)
+
+In Cantankerous Impurity we seek to accomplish two primary goals:
+
+* Quantify to what degree a particular wavefunction can be said to "solve" the implicit problem posed by an effective mass model.
+* Explore substantial additions and corrections to the effective mass model. In particular, we wish to consider how to model the exchange and correlation effects of the core valence electrons of silicon atoms close to the donor.

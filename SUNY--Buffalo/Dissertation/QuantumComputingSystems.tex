@@ -1,0 +1,73 @@
+\subsection{Implementing quantum computing}
+
+In 2000, DiVincenzo presented a set of five criteria a physical system would
+need to be able to demonstrate to be considered a workable implementation of quantum computing.
+\begin{enumerate}
+    \item A scalable physical system with well characterized qubits.
+    \item The ability to initialize the state of the qubits.
+    \item Long relevant decoherence times, much longer than the gate operation
+    time.
+    \item A "universal" set of quantum gates.
+    \item A qubit-specific measurement capability.
+\end{enumerate}
+
+The proposal for quantum computing currently seeing the most interest in the
+field is superconducting qubits. These qubits use superconducting Josephson
+junctions to create and address two-level systems. These two-level systems are
+generated, in essence, through anharmonic charge/current quantum oscillations
+produced as a result of the nonlinear inductance of the Josephson junction. The
+anharmonicity is necessary to lift the equal level spacing between states of the
+linear harmonic oscillator. Thus, such anharmonicity allows the levels acting as
+$\ket{0}$ and $\ket{1}$ to separately addressed from the other oscillator
+levels\cite{UniversalQuantumSimulators,SuperconductingStateOfPlay}. As these
+qubits are produced using extant solid state techniques, they can take advantage
+of the preexisting techniques and community that has developed around micro- and
+nanomanufacturing of silicon for the classical computing industry. However, the
+superconducting nature of these qubits require substantial cooling apparatus,
+which increases the physical footprint of each qubit substantially. This large
+physical footprint makes scalability and practical commercial production
+difficult. Additionally, since the qubits are manufactured, their energy levels
+and other characteristics are not consistent from qubit to qubit. To ensure
+desired and predictable operation of the quantum computer, many control
+parameters have calibrated, and the number of control parameters increases
+superlinearly as the number of qubits
+increases\cite{SnakeOptimizerQuantumControl,SuperconductingCalibrationWithoutReset}.
+
+Another popular proposal involves using ionized atoms laser-cooled and suspended
+by electric fields. These ions are held in linear chains. The qubits are encoded
+on two atomic levels, with either hyperfine separation in the ground state or
+optical energy separation between the atomic ground and first excited state.
+Unlike with superconducting qubits, characterization and calibration are not a
+potential problem; The properties of each ion are essentially identical. However
+the trapped ion qubits display problems with scalability -- it is difficult to
+create longer chains of trapped ions. The problem is not with trapping the ions
+-- many numbers of ions can be trapped at a time, but such large numbers of ions
+do not permit individual addressability and readout. The bottleneck lies in
+developing the optical and electronic control of the trapped ions as the chains
+increase in size.
+
+In addition to the superconducting and trapped ion qubits, there are more
+technologies being explored. Of some interest in the field are qubits hosted in
+semiconductor systems without superconductivity, and so without the cooling
+requirements of the superconducting qubit. Our interest in this field are
+specifically  in the proposals that use systems embedded in silicon crystals.
+Silicon is an economically significant material, with it being used in the
+construction of integrated circuits. The importance of the integrated circuit as
+well as other semiconductor components to modern life cannot easily be
+overstated, with electronic devices made up of semiconductor components present
+in some fashion in every sector of the world economy. Proposals for quantum
+computing that focus on silicon recognize that humanity, as a whole, has
+developed substantial skills in understanding and manipulating silicon. The
+previous quantum computing proposals come with not-insubstantial requirements
+for accessory technologies, with much development time likely required to
+reduce the size and both initial and ongoing cost of these secondary components.
+
+Due to the importance and maturity of the extant semiconductor electronics
+industry, the requirements for the secondary accessory technologies to create
+silicon quantum computers are expected to be much less strenuous as compared to
+those of the superconducting and trapped ion qubits. However, silicon quantum
+computing still needs to show the ability to satisfy the DiVincenzo criteria. In
+particular, groups struggle to make high-fidelity two-qubit gates, which has
+implications for scalability. However quantum algorithms have been implemented
+on a programming two-qubit processor.
+% \cite{Programmable2QubitProcessor}.

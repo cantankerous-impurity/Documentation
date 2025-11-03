@@ -1,0 +1,1909 @@
+
+
+Now, as we build up our multi-valley wavefunctions we consider what we will
+describe here as the \emph{longitudinal single-axis basis wavefunction}. We
+found that, for $\left(\kappa,i\right) = \left(A_{n},0\right)$,
+$\left(E,i\right)$, and $\left(T_{n},z\right)$ the part of the wavefunction
+lying along the $z$-axial Bloch function have the following forms
+\begin{align}
+    \psi_{\parallel_{0},m_{e}lk\sigma}^{\left(\kappa,z\right)}
+        & \coloneqq
+        \Phi_{\parallel_{0},m_{e}lk\sigma}^{\left(\kappa,z\right)}
+        \eta^{\left(z\right)}_{\Omega^{\left(\kappa\right)}_{m_{e}l\sigma}}
+\tag{\ref{single-axis:longitudinal:z:0}a}
+,\\
+    \psi_{\parallel_{1},mlk\sigma}^{\left(\kappa,z\right)}
+        & \coloneqq
+        \Phi_{\parallel_{1},mlk\sigma}^{\left(\kappa,z\right)}
+        \eta^{\left(z\right)}_{\omega^{\left(\kappa\right)}\left(-1\right)^{m}}
+\tag{\ref{single-axis:longitudinal:z:1}a}
+.
+\end{align}
+The envelope basis functions associated with the basis wavefunctions above are constructed from our naive envelope basis functions and go as follows
+\begin{align}
+    \Phi_{\parallel_{0},m_{e}lk\sigma}^{\left(\kappa,z\right)}
+        &=
+            \phi_{klm_{e}\sigma;\left(-1\right)^{m_{e}/2}}^{(z)}
+,\\
+    \Phi_{\parallel_{1},mlk\sigma}^{\left(\kappa,z\right)}
+        &=
+          \phi_{klm\sigma;\left(-1\right)^{l}}^{(x)}
+          +
+          \omega^{\left(\kappa\right)}\Omega^{\left(\kappa\right)}_{ml\sigma}
+          \phi_{klm\sigma;\left(-1\right)^{l+m}}^{(y)}
+\tag{\ref{env:long:z:1}a}
+.
+\end{align}
+Above we introduced the following constant.
+\begin{equation}
+\Omega^{\left(\kappa\right)}_{ml\sigma}
+    \coloneqq
+        \sigma\omega^{\left(\kappa\right)}
+        \left(-1\right)^{l+m}\im^{+m}.
+\end{equation}
+
+
+
+
+
+
+
+
+A quick word on a notational brevity introduced above. We denote the two basis
+states above by the subscripts $0$ and $1$. Each index on the wavefunction
+belongs to that wavefunction, and should properly be subscripted by this label.
+Since the author suspects that will introduce an untenable amount of cognitive
+load within the reader, we use the convention that terms or tuples surrounded by
+parentheses subscripted by $0$ and $1$ individually or $01$ together are
+understood to have indices that are likewise subscripted by that index. As an
+example, consider below.
+\begin{equation}
+\left(
+    \tilde{\Psi}
+    _{\varrho,mlk\xi}^{\left(\kappa,q\right)\left(\mathfrak{u}\right)}
+\right)_{0}
+    =
+        \tilde{\Psi}
+        _{
+            \varrho_{0},m_{0}l_{0}k_{0}
+            \xi_{0}}^{\left(\kappa_{0},q_{0}\right)\left(\mathfrak{u}_{0}\right)
+        }
+\end{equation}
+We also extend this convention to superscripted or subscripted indices of
+functions, namely
+\begin{equation}
+\tilde{\mathcal{V}}_{\parallel\left\{\bm{r}\right\}}
+^{\left(\kappa,i\right)_{01}}
+    =
+        \tilde{\mathcal{V}}_{\parallel\left\{\bm{r}\right\}}
+        ^{\left(\kappa_{0},i_{0},\kappa_{1},i_{1}\right)}
+\end{equation}
+This also serves as an example to show how parenthesis subscripted by $01$
+should be interpreted. Finally, terms surrounded by brackets subscripted by $01$
+are understood to be repeated, first with the subscript $0$ and then with
+subscript $1$. Often, this means the repeated symbols inside the bracket are to
+be multiplied together, for example
+\begin{equation}
+\left[
+    \tilde{\Psi}
+    _{\varrho,mlk\xi}^{\left(\kappa,q\right)\left(\mathfrak{u}\right)}
+\right]_{01}
+    =
+        \tilde{\Psi}
+        _{
+            \varrho_{0},m_{0}l_{0}k_{0}
+            \xi_{0}}
+                ^{\left(\kappa_{0},q_{0}\right)\left(\mathfrak{u}_{0}\right)
+        }
+        \tilde{\Psi}
+        _{
+            \varrho_{1},m_{1}l_{1}k_{1}
+            \xi_{1}}
+                ^{\left(\kappa_{1},q_{1}\right)\left(\mathfrak{u}_{1}\right)
+        }
+.
+\end{equation}
+
+In the interests of making use of this software as flexible as possible, we
+employ a potential of the form
+\begin{equation}
+\tilde{\mathcal{U}}_{\left\{\bm{r}\right\}}
+    \coloneqq
+        \mathfrak{E}^{\mathfrak{s}}
+        \sum_{i}
+        \left(\frac{r}{\mathfrak{r}}\right)^{\mathfrak{d}_{i}}
+        \mathcal{U}_{i\left\{\Omega\right\}}
+        \e^{
+            -\tilde{\alpha}_{i\left\{\Omega\right\}}
+            \frac{r}{\mathfrak{r}}
+        }
+        \e^{
+            -\beta_{i\left\{\Omega\right\}}
+            \left(\frac{r}{\mathfrak{r}}\right)^{2}
+        }
+\label{definition:potential:general}
+\end{equation}
+Above we introduce the integration "variable" $\left\{\Omega\right\}$. This
+symbol denotes a solid angle functional dependence and we consider it
+interchangeable with an expression using our angular spherical coordinates,
+namely that $\left\{\Omega\right\} = \left\{\chi\phi\right\}$. As well,
+$\mathfrak{E}$ represents the energy scale of our system and $\mathfrak{r}$
+represents the length scale. Both have been defined in Appendix
+\ref{appendix:units}. While we described the expression above as a "potential",
+we see that by judicious choice of the constants (such as $\mathfrak{s}$,
+$\mathfrak{d}$ and $\mathfrak{U}$) and functions (such as $\mathcal{U}$,
+$\tilde{\alpha}$ and $\beta$) above this expression can be used for both the
+overlap and Hamiltonian squared matrix elements in addition to the regular
+Hamiltonian elements. We consider the potential above to be "complex" and apply
+a tilde because while we expect the overall potential to be nondispersive and
+real it is possible for individual terms to have complex coefficients and
+functional dependence, depending upon how that potential is formulated.
+
+
+
+
+
+
+We can start to simplify our integration by taking advantage of the cyclic
+nature of the single-axis wavefunction. To wit, we may expand the full
+wavefunctions in the matrix element formula and group by similar pairs of
+valley-indices. Further we may exploit the transformation properties of the
+single-axis wavefunction by using the cyclic transformations as a change of
+integration variables to show that several terms of the integrand may be "folded
+back over" each other. To that end, we may write
+\begin{equation}
+\left(\mathcal{M}\right)_{01}
+    =
+        \left(\mathcal{M}\right)_{\parallel,01}
+            +
+        \left(\mathcal{M}\right)_{\perp,01}
+\end{equation}
+where
+\begin{equation}
+\left(\mathcal{M}\right)_{\parallel,01}
+    =
+        \int_{-\pi}^{+\pi}\diff\phi
+        \int_{-1}^{+1}\diff\chi
+        \int_{0}^{\infty} r^2\diff{r}
+        \,
+        \left(
+            \tilde{\psi}
+            _{\varrho,mlk\xi}^{\left(\kappa,z\right)\left(\mathfrak{u}\right)}
+        \right)_{0}^{*}
+        \tilde{\mathcal{V}}_{\parallel\left\{\bm{r}\right\}}
+        ^{\left(\kappa,i\right)_{01}}
+        \left(
+            \tilde{\psi}
+            _{\varrho,mlk\xi}^{\left(\kappa,z\right)\left(\mathfrak{u}\right)}
+        \right)_{1},
+\end{equation}
+and
+\begin{equation}
+\left(\mathcal{M}\right)_{\perp,01}
+    =
+        \int_{-\pi}^{+\pi}\diff\phi
+        \int_{-1}^{+1}\diff\chi
+        \int_{0}^{\infty} r^2\diff{r}
+        \,
+        \left(
+            \tilde{\psi}
+            _{\varrho,mlk\xi}^{\left(\kappa,y\right)\left(\mathfrak{u}\right)}
+        \right)_{0}^{*}
+        \tilde{\mathcal{V}}_{\perp\left\{\bm{r}\right\}}
+        ^{\left(\kappa,i\right)_{01}}
+        \left(
+            \tilde{\psi}
+            _{\varrho,mlk\xi}^{\left(\kappa,x\right)\left(\mathfrak{u}\right)}
+        \right)_{1} .       
+\end{equation}
+The expressions denoted by $\tilde{\mathcal{V}}$ are the original general
+potential form "folded over" together after change of integration variables
+using the $T_{d}$ symmetry operations. These new forms may be compactly
+expressed as below.
+\begin{equation}
+\tilde{\mathcal{V}}_{\parallel\left\{\bm{r}\right\}}
+^{\left(\kappa,i\right)_{01}}
+    \coloneqq
+        \left\{\bm{\alpha}^{\left(\kappa,i\right)_{0}}\right\}^{\dagger}
+        \begin{pmatrix}
+            \tilde{\mathcal{U}}_{\left\{xyz\right\}} & 0 & 0 \\
+            0 & \tilde{\mathcal{U}}_{\left\{zxy\right\}} & 0 \\
+            0 & 0 & \tilde{\mathcal{U}}_{\left\{yzx\right\}} \\
+        \end{pmatrix}
+        \bm{\alpha}^{\left(\kappa,i\right)_{1}}
+,
+\end{equation}
+and
+\begin{equation}
+\tilde{\mathcal{V}}_{\perp\left\{\bm{r}\right\}}
+^{\left(\kappa,i\right)_{01}}
+    \coloneqq
+        \left\{\bm{\alpha}^{\left(\kappa,i\right)_{0}}\right\}^{\dagger}
+        \begin{pmatrix}
+            0
+            & \xi_{0}\xi_{1}\tilde{\mathcal{U}}_{\left\{xzy\right\}}
+            & \tilde{\mathcal{U}}_{\left\{zxy\right\}}
+        \\
+            \tilde{\mathcal{U}}_{\left\{yzx\right\}}
+            & 0
+            & \xi_{0}\xi_{1}\tilde{\mathcal{U}}_{\left\{yxz\right\}}
+        \\
+            \xi_{0}\xi_{1}\tilde{\mathcal{U}}_{\left\{zyx\right\}}
+            & \tilde{\mathcal{U}}_{\left\{xyz\right\}}
+            & 0
+        \\
+        \end{pmatrix}
+        \bm{\alpha}^{\left(\kappa,i\right)_{1}}
+,
+\end{equation}
+We note that we haven't a priori set $\kappa_{0} = \kappa_{1}$, because we wish
+to examine and include, in addition to the potential of the system, other
+external potentials such as applied electric fields that might break the
+symmetry and allowing mixing of states with different $\kappa$. For our purposes
+here, we note that while a general potential of the form we gave for
+$\tilde{\mathcal{U}}$ does not have any particular sense of symmetry, it is well
+known that general functions can be written as a sum of functions of definite
+symmetry. To wit,
+\begin{equation}
+\tilde{\mathcal{U}}
+    =
+    \tilde{\mathcal{U}}^{\left(A_{1}\right)}
+        +
+    \tilde{\mathcal{U}}^{\left(A_{2}\right)}
+        +
+    \tilde{\mathcal{U}}^{\left(E,0\right)}
+        +
+    \tilde{\mathcal{U}}^{\left(E,1\right)}
+        +
+    \sum_{q=x,y,z}
+    \left(
+        \tilde{\mathcal{U}}^{\left(T_{1},q\right)}
+            +
+        \tilde{\mathcal{U}}^{\left(T_{2},q\right)}
+    \right)
+\end{equation}
+We examine such selection rules and how they might simplify the above
+expressions for $\tilde{\mathcal{V}}$ in the
+\href{https://gitlab.com/cantankerous-impurity/Documentation/-/tree/core/SUNY--Buffalo/Dissertation/Supplementary%20Materials?ref_type=heads}{Supplementary Materials}. In any case, for this
+derivation we only consider potentials of a given symmetry. The process of
+resolving a general potential into symmetric components doesn't significantly
+alter the underlying summation structure of the potential we defined in
+\eqref{definition:potential:general} and so we will continue to use it. To that
+end, we write
+\begin{equation}
+\tilde{\mathcal{V}}_{\aleph\left\{\bm{r}\right\}}
+^{\left(\kappa^{\prime},j\right)\left(\kappa,i\right)_{01}}
+    =
+        \mathfrak{E}^{\mathfrak{s}}
+        \sum_{i}
+            \left(\frac{r}{\mathfrak{r}}\right)^{\mathfrak{d}_{i}}
+            \mathcal{V}_{i\left\{\chi,\phi\right\}}
+            \e^{
+                -\tilde{\alpha}_{i\left\{\chi,\phi\right\}}
+                \frac{r}{\mathfrak{r}}
+            }
+            \e^{
+                -\beta_{i\left\{\chi,\phi\right\}}
+                \left(\frac{r}{\mathfrak{r}}\right)^{2}
+            }
+\label{definition:potential:symmetrize}
+.
+\end{equation}
+
+We may employ this form within our integration formula. One of the computational
+benefits of the potential form we have chosen is that we may complete the radial
+integration analytically, which we have seen will simplify the numerical
+computational complexity of the integration over the solid angle degrees of
+freedom.
+\begin{align}
+\left(\mathcal{M}\right)_{\aleph,01}^{\left(\varkappa,j\right)}
+    &=
+        \int_{-\pi}^{+\pi}\diff\phi
+        \int_{-1}^{+1}\diff\chi
+        \int_{0}^{\infty} r^2\diff{r}
+        \,
+        \xi_{0}
+        \left[
+            \tilde{\psi}
+            _{
+                \varrho,mlk\xi}^{\left(\kappa,q_{\aleph}\right)
+                \left(\mathfrak{u}\right)
+            }
+        \right]_{01}
+        \tilde{\mathcal{V}}_{\aleph\left\{\bm{r}\right\}}
+        ^{\left(\kappa^{\prime},j\right)\left(\kappa,i\right)_{01}}
+,\\
+    &=
+        \int_{\mathcal{S}_{0}}\diff\Omega
+        \,
+        \sum_{i}
+        \sum_{s_{0}=-\mathfrak{u}_{0}}^{s_{0}=+\mathfrak{u}_{0}}
+        \sum_{s_{1}=-\mathfrak{u}_{1}}^{s_{1}=+\mathfrak{u}_{1}}
+        \mathfrak{C}
+            _{i\left(ml;\eta\lambda,s\right)_{01}}
+            ^{\left(\mathfrak{u}\right)_{01}}
+        \mathcal{I}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+,\\
+\mathfrak{C}
+    _{i\left(ml;\eta\lambda,s\right)_{01}}
+    ^{\left(\mathfrak{u}\right)_{01}}
+    &\coloneqq
+        \xi_{0}
+        \mathfrak{E}^{\mathfrak{u}_{0}+\mathfrak{u}_{1}+\mathfrak{s}}
+        \mathfrak{r}^{-\mathfrak{d}_{i}}
+        \left[
+            \frac
+            { k!\mathfrak{H}_{ml;\lambda,s}^{\left(\mathfrak{u}\right)} }
+            % { \mathfrak{K}!\left(\eta/\mathfrak{r}\right)^{2\mathfrak{u}} }
+            {
+                \mathfrak{K}!
+                \left(\frac{\eta}{\mathfrak{r}}\right)^{2\mathfrak{u}}
+            }
+        \right]_{01}
+.
+\end{align}
+We will see $\mathfrak{K}$ emerge later in this appendix. For now, we merely
+remark that
+\begin{equation}
+    \mathfrak{K}_{n} = \left(k + \mathfrak{u} + \delta_{s\bar{1}}\right)_{n}
+.
+\end{equation}
+Because we expect that, in general, the integration over solid angle will be
+conducted numerically, we do not exploit the linear nature of integration to
+pull out the summation symbols. We find that for our integrals it is
+computationally much simpler and faster to compute one numerical integration
+for a summed-over integrand rather then complete many numerical integrations
+that are then summed. We have introduced a few sequences which we will define
+below,
+\begin{align}
+\bm{\mathcal{I}}_{i\left(s\right)_{01}\left\{\chi,\phi\right\}}
+    &\coloneqq
+        \left[
+            P_{\left(l+2s\right)m;\lambda\left\{\chi_{q}\right\}}
+            Q_{m\zeta\left\{\phi_{q}\right\}}
+        \right]_{01}
+        \mathcal{V}_{i\left\{\Omega\right\}}
+        \mathcal{R}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{R}}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+    &\coloneqq
+        \int_{0}^{\infty} \diff{r}\,
+        r^{\mathfrak{d}_{i}+2}
+        \left[
+            \frac{\mathfrak{K}!}{k!}
+            \left(F_{s}^{\prime}\right)
+            _{lk;\eta\lambda\left\{r\chi_{q}\right\}}
+            ^{\left(W\mathfrak{u}\right)}
+            \Theta^{\left(q\right)}
+        \right]_{01}
+        \e^
+        {
+                -
+            \tilde{\alpha}_{i\left\{\Omega\right\}}\frac{r}{\mathfrak{r}}
+                -
+            \beta_{i\left\{\Omega\right\}}
+            \left(\frac{r}{\mathfrak{r}}\right)^{2}
+        }
+.
+\end{align}
+We might note here that we have not explicitly included the Bloch functions in
+our formulae above. However, with this form, incorporation of the Bloch
+functions is fair straightforward. More details on how the full Bloch functions
+may be incorporated into these formulae without much additional complexity may
+be found in the
+\href{https://gitlab.com/cantankerous-impurity/Documentation/-/tree/core/SUNY--Buffalo/Dissertation/Supplementary%20Materials?ref_type=heads}{Supplementary Materials}.
+
+We recall that 
+\begin{align}
+\left[
+    \left(F_{s}^{\prime}\right)
+    _{lk;\eta\lambda\left\{r\chi_{q}\right\}}
+    ^{\left(W\mathfrak{u}\right)}
+\right]_{01}
+    &=
+        \left[
+            \left(\sqrt{\frac{\vartheta}{\eta}}\right)^{3}
+            \sqrt{W}
+            \rho^{
+                \frac{l}{W}
+                -\mathfrak{u}\delta_{W1}-\delta_{s\bar{1}}
+            }
+            \e^{-\frac{\rho}{2}}
+        \right]_{01}
+        \mathcal{L}_{\left(s\left\{\rho\right\}\right)_{01}}
+,\\
+    &=
+        r^{-3}W
+        \left[
+            \rho^{
+                \frac{l+\frac{3}{2}}{W}
+                -\mathfrak{u}\delta_{W1}-\delta_{s\bar{1}}
+            }
+            \e^{-\frac{\rho}{2}}
+        \right]_{01}
+        \mathcal{L}_{\left(s\left\{\rho\right\}\right)_{01}}
+,\\
+\mathcal{L}_{\left(s\left\{\rho\right\}\right)_{01}}
+    &\coloneqq
+        \left[
+            \frac{\mathfrak{K}!}{k!}
+            \sum_{t=-2\mathfrak{u}}^{\mathfrak{u}+\delta_{s\bar{1}}}
+            h^{\left(\mathfrak{u}\right)}_{kl,st}
+            L
+            _{\left(k+t\right)\left\{\rho\right\}}
+            ^{\left(\mathfrak{l}+\mathfrak{u}-\delta_{s\bar{1}}\right)}
+        \right]_{01}
+.   
+\end{align}
+We may make our notation even further compact. If we introduce
+\begin{equation}
+G_{\left\{r\right\}\left(s\left\{\chi_{q}\right\}\right)_{01}}
+    \coloneqq
+        W
+        r^{\mathfrak{d}_{i}-1}
+        \left[
+            \rho^{
+                \frac{l+\frac{3}{2}}{W}
+                -\mathfrak{u}\delta_{W1}-\delta_{s\bar{1}}
+            }
+            \e^{-\frac{\rho}{2}}
+        \right]_{01}
+,
+\end{equation}
+than we may write our analytic integral as
+\begin{equation}
+\mathcal{R}_{i\left\{\Omega\right\}}
+    =
+        \int_{0}^{\infty} \diff{r}\,
+        G_{\left\{r\right\}\left(s\left\{\chi_{q}\right\}\right)_{01}}
+        \mathcal{L}_{\left(s\left\{\rho\right\}\right)_{01}}
+        \e^
+        {
+                -
+            \tilde{\alpha}_{i\left\{\Omega\right\}}
+            \frac{r}{\mathfrak{r}}
+                -
+            \beta_{i\left\{\Omega\right\}}
+            \left(\frac{r}{\mathfrak{r}}\right)^{2}
+        }
+.
+\end{equation}
+We do not assume that the anisotropy of the two states are the same in general,
+and so $\rho_{0} \not\equiv \rho_{1}$ over the integration domain. We introduce
+a new "averaged" variable. We define
+\begin{equation}
+\hat{\rho}_{\left\{\Omega\right\}}
+    \coloneqq \frac{\rho_{0} + \rho_{1}}{2}
+\end{equation}
+which yields
+\begin{equation}
+\left[
+    \e^{-\frac{\rho}{2}}
+\right]_{01}
+    =
+        \e^{-\hat{\rho}}.
+\end{equation}
+We find it convenient to introduce a new radial scaling $\check{r}$ with solid
+angle dependence so that we may write our "averaged" $\hat{\rho}$ as
+\begin{equation}
+\hat{\rho}_{\left\{\Omega\right\}}
+    =
+        \left(\frac{r}{\check{r}_{\left\{\Omega\right\}}}\right)^{W}
+.
+\label{definition:hat-rho}
+\end{equation}
+We will define $\check{r}$ below. If we employ this form of $\hat{\rho}$ we can
+define our original $\rho_{n}$ in the following terms below
+\begin{align}
+\Gamma_{n\left\{\Omega\right\}}
+    &\coloneqq
+        \sqrt{
+            \check{r}_{\left\{\Omega\right\}}
+            \left(\frac{\vartheta_{\left\{\Omega\right\}}}{\eta}\right)_{n}
+        },
+\\
+\rho_{n}
+    &=
+        \Gamma_{n\left\{\Omega\right\}}^{2W}\hat{\rho}
+.
+\end{align}
+Using these new expressions we can simplify and rewrite part of our integrand
+using $\hat{\rho}$ as
+\begin{align}
+\left[
+    \rho^{
+        \frac{l+\frac{3}{2}}{W}
+        -\mathfrak{u}\delta_{W1}-\delta_{s\bar{1}}
+    }
+\right]_{01}
+   & =
+        \left[
+            \Gamma
+            _{\left\{\Omega\right\}}
+            ^{\mathfrak{L}-2W\delta_{s\bar{1}}}
+        \right]_{01}
+        \hat{\rho}^{
+            \frac{\mathfrak{L}_{0}+\mathfrak{L}_{1}}{2W}
+            -\delta_{s_{0}\bar{1}}-\delta_{s_{1}\bar{1}}
+        }
+,\\
+\mathfrak{L}_{n}
+    &\coloneqq
+        2l_{n} + 3 - 2\mathfrak{u}_{n}\delta_{W1}
+.
+\end{align}
+
+Through experience, we have found it convenient in the development of our
+software to rewrite $\rho$ in terms of some accessory constants. We have an effective radial functions that goes as
+\begin{equation}
+\check{r}_{\left\{\Omega\right\}}
+    \coloneqq
+        \frac
+        {\hat{\eta}}
+        {\hat{\vartheta}_{\left\{\Omega\right\}}\Xi_{\left\{\Omega\right\}}}
+\end{equation}
+where we defined an additional parameter
+\begin{equation}
+\hat{\eta}^{W}
+    \coloneqq
+        \frac
+        { 2\left(\eta_{0}\eta_{1}\right)^{W} }
+        { \eta_{0}^{W} + \eta_{1}^{W} }
+\end{equation}
+and some additional functions
+\begin{align}
+\hat{\vartheta}_{\left\{\Omega\right\}}^{W}
+    &\coloneqq
+        \frac{
+            \vartheta_{0\left\{\Omega\right\}}^{W}
+                +
+            \vartheta_{1\left\{\Omega\right\}}^{W}
+        }
+        {2}
+\\
+\Xi_{\left\{\Omega\right\}}^{W}
+    &\coloneqq
+        1 + \mathfrak{f}\epsilon_{\left\{\Omega\right\}}
+\end{align}
+The $\Xi$ function depends on the mismatch between the parameters of the states,
+which go as
+\begin{align}
+\mathfrak{f}
+    & \coloneqq 
+        \frac{\eta_{1}^{W}-\eta_{0}^{W}}{\eta_{0}^{W}+\eta_{1}^{W}}
+\\
+\epsilon_{\left\{\Omega\right\}}
+    & \coloneqq 
+        \frac
+        {\vartheta_{0}^{W}-\vartheta_{1}^{W}}
+        {\vartheta_{0}^{W}+\vartheta_{1}^{W}}
+\end{align}
+Within a subbasis $\eta_{0} = \eta_{1}$ and $\lambda_{0} = \lambda_{1}$ so many
+of the above expressions simplify. However, $\epsilon \ne 0$ can emerge when
+integrating over matrix elements involving single-valley states of different
+axes.
+
+With these accessor functions and parameters, we can rewrite one of the factors
+of our integrand as such
+\begin{align}
+G_{\left\{r\right\}\left(s\left\{\chi_{q}\right\}\right)_{01}}
+    &=
+        W
+        r^{\mathfrak{d}_{i}-1}
+        \left[
+            \rho^{
+                \frac{l+\frac{3}{2}}{W}
+                -\mathfrak{u}\delta_{W1}-\delta_{s\bar{1}}
+            }
+            \e^{-\frac{\rho}{2}}
+        \right]_{01}
+,\\
+    &=
+        W
+        \left(
+            \hat{\rho}^{\frac{1}{W}}\check{r}_{\left\{\Omega\right\}}
+        \right)
+        ^{\mathfrak{d}_{i}-1}
+        \left[
+            \Gamma
+            _{\left\{\Omega\right\}}
+            ^{\mathfrak{L}-2W\delta_{s\bar{1}}}
+        \right]_{01}
+        \hat{\rho}^{
+            \frac{\mathfrak{L}_{0}+\mathfrak{L}_{1}}{2W}
+            -\delta_{s_{0}\bar{1}}-\delta_{s_{1}\bar{1}}
+        }
+        \e^{-\hat{\rho}}
+,\\
+    &=
+        \frac{W}{\check{r}_{\left\{\Omega\right\}}}
+        \hat{\rho}^{1-\frac{1}{W}}
+        H_{\left\{\hat{\rho}\right\}\left(s\left\{\chi_{q}\right\}\right)_{01}}
+        \e^{-\hat{\rho}}
+.
+\end{align}
+Above we have introduced a new function and some associated constants, which go
+as
+\begin{align}
+H_{\left\{\hat{\rho}\right\}\left(s\left\{\chi_{q}\right\}\right)_{01}}
+    &\coloneqq
+        \check{r}_{\left\{\Omega\right\}}^{\mathfrak{d}_{i}}
+        \left[
+            \Gamma_{\left\{\Omega\right\}}^{\mathfrak{L}-2W\delta_{s\bar{1}}}
+        \right]_{01}
+        \hat{\rho}^{
+            \frac{\hat{\mathfrak{L}}_{\mathfrak{d}_{i}}}{W}
+            -\delta_{s_{0}\bar{1}}-\delta_{s_{1}\bar{1}}
+            -1
+        }
+,\\
+\hat{\mathfrak{L}}_{\mathfrak{d}}
+    &\coloneqq
+        \frac{\mathfrak{L}_{0}+\mathfrak{L}_{1}}{2} + \mathfrak{d}
+    = 
+        l_{0} + l_{1}
+        - \delta_{W1}\left(\mathfrak{u}_{0}+\mathfrak{u}_{1}\right)
+        + \mathfrak{d} + 3
+.
+\end{align}
+We note that 
+\begin{equation}
+\diff\hat{\rho}
+    =
+        \frac{W}{\hat{r}}\hat{\rho}^{1-\frac{1}{W}}\diff r
+\end{equation} as such we may write
+\begin{equation}
+\diff r\,
+G_{\left\{r\right\}\left(s\left\{\chi_{q}\right\}\right)_{01}}
+    =
+\diff\hat{\rho}\,
+H_{\left\{\hat{\rho}\right\}\left(s\left\{\chi_{q}\right\}\right)_{01}}
+\end{equation}
+The expressions above suggests we should redefine
+$\hat{\rho}_{\left\{\Omega\right\}}$ as our integration variable. Over the
+radial integration we can consider $\left\{\Omega\right\}$ to be constant, and
+so we will drop this subscript from expressions that form the radial integrand.
+We will restore this subscripts as needed, and once the analytical radial
+integration is completed we will ensure these subscripts are included in the
+numerical solid-angle integrand. With this in mind we may write our analytic
+integral over $\hat{\rho}$ as
+\begin{equation}
+\mathcal{R}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+    =
+        \int_{0}^{\infty} \diff{\hat{\rho}}\,
+        H_{\left\{\hat{\rho}\right\}\left(s\right)_{01}}
+        \mathcal{L}_{\left(s\left\{\rho\right\}\right)_{01}}
+        \e^{-\mathcal{F}_{i\left\{\hat{\rho}\right\}}}
+.
+\end{equation}
+Expanding $H$ as previously defined yields
+\begin{equation}
+\mathcal{R}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+    =
+        \check{r}_{\left\{\Omega\right\}}^{\mathfrak{d}_{i}}
+        \left[
+            \Gamma_{\left\{\Omega\right\}}^{\mathfrak{L}-2W\delta_{s\bar{1}}}
+        \right]_{01}
+        \bm{\mathcal{R}}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+,
+\end{equation}
+with the radial integral partitioned as $\bm{\mathcal{R}}$. We'll focus on the
+radial integral, namely  
+\begin{align}
+\bm{\mathcal{R}}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+    &\coloneqq
+        \int_{0}^{\infty}\diff\hat{\rho}\,
+        \hat{\rho}^{
+            \frac{\hat{\mathfrak{L}}_{\mathfrak{d}_{i}}}{W}
+            -\delta_{s_{0}\bar{1}}-\delta_{s_{1}\bar{1}}
+            -1
+        }
+        \mathcal{L}_{\left(s\left\{\rho\right\}\right)_{01}}
+        \e^{-\mathcal{F}_{i\left\{\hat{\rho}\right\}}}
+,\\
+\mathcal{L}_{\left(s\left\{\rho\right\}\right)_{01}}
+    &\coloneqq
+        \left[
+            \frac{\mathfrak{K}!}{k!}
+            \sum_{t=-2\mathfrak{u}}^{\mathfrak{u}+\delta_{s\bar{1}}}
+            h^{\left(\mathfrak{u}\right)}_{kl,st}
+            L
+            _{\left(k+t\right)\left\{\rho\right\}}
+            ^{\left(\mathfrak{l}+\mathfrak{u}-\delta_{s\bar{1}}\right)}
+        \right]_{01}
+\label{ex:sometimes_repeated_symbols_means_multiply}
+.
+\end{align}
+In the analytical radial integral above we introduced a new function, 
+\begin{align}
+\mathcal{F}_{i\left\{\hat{\rho}\right\}}
+    &\coloneqq
+        \hat{\rho}
+            +
+        \tilde{\alpha}_{i}\left(\frac{\check{r}}{\mathfrak{r}}\right)
+        \hat{\rho}^{\frac{1}{W}}
+            +
+        \beta_{i}\left(\frac{\check{r}}{\mathfrak{r}}\right)^{2}
+        \hat{\rho}^{\frac{2}{W}}
+,\\
+    &=
+        \left(1+\mathcal{A}_{i}\right)\hat{\rho}
+            +
+        \mathcal{B}_{i}\hat{\rho}^{\frac{2}{W^{2}}}
+,
+\end{align}
+where 
+\begin{align}
+\mathcal{A}_{i}
+    &\coloneqq
+    \delta_{W1}
+    \tilde{\alpha}_{i}
+    \left(\frac{\check{r}}{\mathfrak{r}}\right)
+        +
+    \delta_{W2}
+    \beta_{i}
+    \left(\frac{\check{r}}{\mathfrak{r}}\right)^{2}
+\label{def:A}
+,\\
+\mathcal{B}_{i}
+    &\coloneqq
+    \delta_{W1}
+    \beta_{i}
+    \left(\frac{\check{r}}{\mathfrak{r}}\right)^{2}
+        +
+    \delta_{W2}
+    \tilde{\alpha}_{i}
+    \left(\frac{\check{r}}{\mathfrak{r}}\right)
+\label{def:B}
+\end{align}
+We can rewrite $\bm{\mathcal{R}}$ by pulling the summation over
+$\left(t\right)_{01}$ outside the analytical radial integration.
+\begin{align}
+\bm{\mathcal{R}}_{i\left(s\right)_{01}}
+    &=
+        \left[
+            \sum_{t=-2\mathfrak{u}}^{\mathfrak{u}+\delta_{s\bar{1}}}
+            \frac{\mathfrak{K}!}{k!}
+            h^{\left(\mathfrak{u}\right)}_{\left(kl,st\right)}
+        \right]_{01}
+        \mathcal{R}_{i\left(st\right)_{01}}^{\prime}
+,\\
+\mathcal{R}_{i\left(st\right)_{01}}^{\prime}
+    &\coloneqq
+        \int_{0}^{\infty}\diff\hat{\rho}\,
+            \hat{\rho}^{
+                \frac{\hat{\mathfrak{L}}_{\mathfrak{d}_{i}}}{W}
+                -\delta_{s_{0}\bar{1}}-\delta_{s_{1}\bar{1}}
+                -1
+            }
+            \left[
+                L
+                _{\left(k+v\right)\left\{\rho\right\}}
+                ^{\left(\mathfrak{l}+\mathfrak{u}-\delta_{s\bar{1}}\right)}
+            \right]_{01}
+            \e^{-\mathcal{F}_{i\left\{\hat{\rho}\right\}}}
+.
+\end{align}
+In analogy to our rules for subscripted brackets, we introduce a related rule
+for summation symbols when they are the only symbols included in the brackets.
+We want to be clear that this rule might be counterintuitive when first seen
+because it represents an abuse of commonly understood rules of parenthesis and
+bracket in arithmetic. However, we think the formal meaning of repeated symbols
+is clear and it can be understood by the reader that in certain contexts
+repeated symbols do necessarily mean "product" exclusively. As such, we want to
+make it clear that symbols outside and to the right of subscripted brackets are
+understood to be part of the summation, not outside it as might be expected.
+Namely, we define the following.
+\begin{equation}
+\left[\sum_{n=a}^{b}\right]_{01}
+\left(f_{n}\right)_{01}
+    \coloneqq
+        \sum_{n_{0}=a_{0}}^{b_{0}}
+        \sum_{n_{1}=a_{1}}^{b_{1}}
+        f_{n_{0}n_{1}}
+\end{equation}
+For example, equation \eqref{ex:first_use_of_bracket_summation} above can be
+considered and understood in light of the definition above to be such that
+\begin{equation}
+\left[\sum_{s=-\mathfrak{u}}^{s=+\mathfrak{u}}\right]_{01}
+\left(
+    \mathfrak{C}
+    _{i\left(ml;\eta\lambda,s\right)}
+    ^{\left(\mathfrak{u}\right)}
+    \mathcal{I}_{i\left(s\right)\left\{\Omega\right\}}^{\prime}
+\right)_{01}
+    =
+        \sum_{s_{0}=-\mathfrak{u}_{0}}^{s_{0}=+\mathfrak{u}_{0}}
+        \sum_{s_{1}=-\mathfrak{u}_{1}}^{s_{1}=+\mathfrak{u}_{1}}
+        \mathfrak{C}
+        _{i\left(ml;\eta\lambda,s\right)_{01}}
+        ^{\left(\mathfrak{u}\right)_{01}}
+        \mathcal{I}_{i\left(s\right)_{01}\left\{\Omega\right\}}^{\prime}
+.
+\end{equation}
+While it represents a slight abuse of standard bracket notation, we hope that it
+is clear that this notation has the benefit of compacting otherwise long and
+repetitive expressions involving double or greater summation. To prevent
+confusion, we note that forms with brackets containing summation symbol AND
+summations terms, for example as in equation
+\eqref{ex:sometimes_repeated_symbols_means_multiply}
+should continue to be understood as a product of terms subscripted with $0$ and
+$1$ respectively.
+
+To complete the radial integration, we consider an integral of the form given
+below.
+\begin{align}
+\mathcal{R}^{\prime}
+&\coloneqq
+    \int_{0}^{\infty}\diff\rho\,
+        \rho^{\mathfrak{g}-1}
+        L
+        _{\mathfrak{T}_{0}\left\{\rho\left(1+\Delta\right)\right\}}
+        ^{\left(\mathfrak{a}_{0}\right)}
+        L
+        _{\mathfrak{T}_{1}\left\{\rho\left(1-\Delta\right)\right\}}
+        ^{\left(\mathfrak{a}_{1}\right)}
+        \e^{
+            -\left(1+\mathcal{A}\right)\rho
+            -\mathcal{B}\rho^{\frac{2}{W^{2}}}
+        }
+,\\
+&=
+    \left[
+        \sum_{u=0}^{\mathfrak{T}}
+        \sum_{v=u}^{\mathfrak{T}}
+    \right]_{01}
+    \mathfrak{F}_{\mathfrak{g}\left(uv\right)_{01}}
+    \mathcal{G}
+    _{
+        \left(W\mathfrak{g}\right);
+        \left(u\right)_{01}\left\{\Delta\mathcal{Z}_{\mathcal{G}}\right\}
+    }
+    ^{\left(W\right)}
+    \mathcal{H}
+    _{\left(W\mathfrak{g}+Ww\right)\left\{\mathcal{Z}_{\mathcal{H}}\right\}}
+    ^{\left(W\right)}
+.
+\end{align}
+
+The $L$ functions used above are the associated Laguerre functions. The
+significance of the above expression is that it includes the coefficients of the
+Laguerre polynomials. It should be noted that the summations above can involve
+sequences of terms of near magnitude but alternating sign. This is a computation
+ill-posed to be completed numerically, so we will endeavor to simplify the
+expressions as much as possible. Some of the expressions used in the formula
+above are defined below
+\begin{align}
+\mathfrak{F}_{\mathfrak{g}\left(uv\right)_{01}}
+    &\coloneqq
+        \left[
+            \frac
+            {
+                \left(-1\right)^{u+v}
+                \sqrt{
+                    \mathfrak{T}!
+                    \left(\mathfrak{T}+\mathfrak{a}\right)!
+                }
+            }
+            {
+                \left(\mathfrak{T}-v\right)!
+                \left(\mathfrak{a}+v\right)!
+                u!
+                \left(v-u\right)!
+            }
+        \right]_{01}
+        \Gamma\left(\mathfrak{g}+v_{0}+v_{1}\right)
+,\\
+\mathcal{G}
+_{L;\left(u\right)_{01}\left\{\Delta\mathcal{Z}\right\}}
+^{\left(W\right)}
+    &\coloneqq
+        \left(1-\mathcal{Z}\left(1+\Delta\right)\right)^{u_{0}}
+        \left(1-\mathcal{Z}\left(1-\Delta\right)\right)^{u_{1}}
+        \mathcal{Z}^{\frac{L}{W}}
+,\\
+\mathcal{H}_{M\left\{\mathcal{Z}\right\}}^{\left(W\right)}
+    &\coloneqq
+        \left(
+            \delta_{W1}
+            \frac{\sqrt{\pi}}{\Gamma\left[\frac{M+1}{2}\right]}
+            \mathcal{Z}^{M}
+            +
+            \delta_{W2}
+        \right)
+        h_{M\left\{\mathcal{Z}\right\}}
+,\\
+\mathcal{Z}_{\mathcal{G}} &\coloneqq \frac{1}{1+\mathcal{A}}
+\label{def:Z0}
+,\\
+\mathcal{Z}_{\mathcal{H}}
+    &\coloneqq
+        \delta_{W1}
+        \left(
+            \frac{1+\mathcal{A}}{2\sqrt{\mathcal{B}}}
+        \right)
+            +
+        \delta_{W2}
+        \left(
+            \frac{\mathcal{B}}{2\sqrt{1+\mathcal{A}}}
+        \right)
+        \label{def:Z1}
+.
+\end{align}
+Tthe expression $h_{WL}$ refers to the hypergeometric function defined in the
+\href{https://gitlab.com/cantankerous-impurity/Documentation/-/tree/core/SUNY--Buffalo/Dissertation/Supplementary%20Materials?ref_type=heads}{Supplementary Materials}.
+
+We can use the above expressions if we set the constants to appropriate values.
+As we are defining new quantities and functions, we've taken the liberty of
+explicitly including the dependence over solid-angle in the final expression of
+indirect integration variables. We define or set the following
+\begin{align}
+\mathfrak{h}_{\mathfrak{d}\left(s\right)_{01}}
+    &\coloneqq
+W\mathfrak{g}
+    =
+    \hat{\mathfrak{L}}_{\mathfrak{d}}
+    -W\left(\delta_{s_{0}\bar{1}}+\delta_{s_{1}\bar{1}}\right)
+,\\
+\mathfrak{a}_{n}
+    &\coloneqq
+        \left(\mathfrak{l}+\mathfrak{u}-\delta_{s\bar{1}}\right)_{n}
+,\\
+\mathfrak{T}_{n}
+    &\coloneqq
+        \left(k+t\right)_{n}
+,\\
+\Delta
+    &\coloneqq
+        \frac{\rho_{0}-\rho_{1}}{2\hat{\rho}}
+.
+\end{align}
+We can further refine $\Delta$.
+\begin{align}
+\Delta
+    &=
+        \frac{\Gamma_{0}^{2W}-\Gamma_{1}^{2W}}{2}
+        =
+        \frac{\check{r}^{W}}{2}
+        \left[
+            \left(\frac{\vartheta}{\eta}\right)_{0}^{W}
+                -
+            \left(\frac{\vartheta}{\eta}\right)_{1}^{W}
+        \right]
+,\\
+    &=
+    \frac{1}{2}
+    \left(\frac{\hat{\eta}}{\hat{\vartheta}\Xi}\right)^{W}
+    \left(
+        \frac
+        {
+            \left(\eta_{1}\vartheta_{0}\right)^{W}
+                -
+            \left(\eta_{0}\vartheta_{1}\right)^{W}
+        }
+        {\left[\eta\right]_{01}^{W}}
+    \right)
+,\\
+&=
+    \frac{1}{2}
+    \left(
+        \frac
+        {
+            4\left[\eta\right]_{01}^{W}
+        }
+        {
+            \left(\eta_{0}^{W} + \eta_{1}^{W}\right)
+            \left( \vartheta_{0}^{W} + \vartheta_{1}^{W} \right)
+            \Xi^{W}
+        }
+    \right)
+    \left(
+        \frac
+        {
+            \left(\eta_{1}\vartheta_{0}\right)^{W}
+                -
+            \left(\eta_{0}\vartheta_{1}\right)^{W}
+        }
+        {
+            \left[\eta\right]_{01}^{W}
+        }
+    \right)
+,\\
+&=
+    \frac
+    {
+        \left( \eta_{1}^{W} - \eta_{0}^{W} \right)
+        \left( \vartheta_{0}^{W} + \vartheta_{1}^{W} \right)
+            +
+        \left( \eta_{0}^{W} + \eta_{1}^{W} \right)
+        \left( \vartheta_{0}^{W} - \vartheta_{1}^{W} \right)
+    }
+    {
+        \left( \vartheta_{0}^{W} + \vartheta_{1}^{W} \right)
+        \left(\eta_{0}^{W} + \eta_{1}^{W}\right)
+        \Xi^{W}
+    }
+.
+\end{align}
+Distributing the denominator through the sum in the numerator, and identifying
+existing quantities, we may state our final expression for $\Delta$ to be
+\begin{equation}
+\Delta_{\left\{\Omega\right\}}
+    =
+        \frac
+        {\mathfrak{f}+\epsilon_{\left\{\Omega\right\}}}
+        {1+\mathfrak{f}\epsilon_{\left\{\Omega\right\}}}
+\end{equation}
+
+We must also consider $\mathcal{Z}_{\mathcal{G}}$ and
+$\mathcal{Z}_{\mathcal{H}}$. We had defined these quantities in terms of
+$\mathcal{A}$ and $\mathcal{B}$. Here we recall that we had previously
+identified those quantities as indirect integration variables, namely
+\begin{align}
+\tilde{\mathcal{A}}_{i}
+    &\coloneqq
+        \delta_{W1}
+        \tilde{\alpha}_{i}
+        \left(\frac{\check{r}}{\mathfrak{r}}\right)
+            +
+        \delta_{W2}
+        \beta_{i}
+        \left(\frac{\check{r}}{\mathfrak{r}}\right)^{2}
+\tag{\ref{def:A}a}
+,\\
+\tilde{\mathcal{B}}_{i}
+    &\coloneqq
+        \delta_{W1}
+        \beta_{i}
+        \left(\frac{\check{r}}{\mathfrak{r}}\right)^{2}
+            +
+        \delta_{W2}
+        \tilde{\alpha}_{i}
+        \left(\frac{\check{r}}{\mathfrak{r}}\right) 
+\tag{\ref{def:B}a}
+\end{align}
+Using these expressions for $\mathcal{A}$ and $\mathcal{B}$, we can write the
+particular $\mathcal{Z}_{\mathcal{G}}$ and $\mathcal{Z}_{\mathcal{H}}$ we wish
+to use as functions over solid-angle. To wit,
+\begin{align}
+\tilde{\mathcal{Z}}_{i\mathcal{G}\left\{\Omega\right\}}
+&=
+    \frac
+    {1}
+    {
+        1
+            +
+        \delta_{W1}
+        \tilde{\alpha}_{i\left\{\Omega\right\}}
+        \left(\frac{ \check{r}_{\left\{\Omega\right\}} }{ \mathfrak{r} }\right)
+            +
+        \delta_{W2}
+        \beta_{i\left\{\Omega\right\}}
+        \left(
+            \frac{ \check{r}_{\left\{\Omega\right\}} }{ \mathfrak{r} }
+        \right)^{2}
+    }
+,\\
+\tilde{\mathcal{Z}}_{i\mathcal{H}\left\{\Omega\right\}}
+&=
+    \frac
+    {
+        \delta_{W1}
+            +
+        \tilde{\alpha}_{i\left\{\Omega\right\}}
+        \left(\frac{ \check{r}_{\left\{\Omega\right\}} }{ \mathfrak{r} }\right)
+    }
+    {
+        \sqrt{
+            \delta_{W2}
+                +
+            \beta_{i\left\{\Omega\right\}}
+            \left(
+                \frac{ \check{r}_{\left\{\Omega\right\}} }{ \mathfrak{r} }
+            \right)^{2}
+        }
+    }    
+.
+\end{align}
+While we wanted to ensure the solid-angle dependence of $\Delta$ and the
+$\mathcal{Z}$ were clear in the expressions above, we will resume dropping this
+dependence in expressions while examining the analytic radial integration. In
+light of the arguments above, we can write
+\begin{align}
+\bm{\mathcal{R}}_{i\left(s\right)_{01}}
+    &=
+        \left[
+            \sum_{t=-2\mathfrak{u}}^{\mathfrak{u}+\delta_{s\bar{1}}}
+            \frac{\mathfrak{K}!}{k!}
+            h^{\left(\mathfrak{u}\right)}_{\left(kl,st\right)}
+        \right]_{01}
+        \mathcal{R}_{i\left(st\right)_{01}}^{\prime}
+,\\
+\mathcal{R}_{i\left(st\right)_{01}}^{\prime}
+    &=
+        \left[
+            \sum_{u=0}^{k+t}
+            \sum_{v=u}^{k+t}
+        \right]_{01}
+        \mathfrak{F}
+        _{
+            \left(
+                \frac{\mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}}}{W}
+            \right)
+            \left(uv\right)_{01}
+        }
+        \bm{\mathcal{G}}_{i\left(su\right)_{01}}
+        \bm{\mathcal{H}}_{i\left(s\right)_{01}\left(v_{0}+v_{1}\right)}
+.
+\end{align}
+where we found it convenient to introduce the following sequences
+\begin{align}
+\bm{\mathcal{G}}_{i\left(su\right)_{01}}
+    &\coloneqq
+        \mathcal{G}
+        _{
+            \mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}};
+            \left(u\right)_{01}
+            \left\{\Delta\tilde{\mathcal{Z}}_{i\mathcal{G}}\right\}
+        }
+        ^{\left(W\right)}
+\label{definition:G-array}
+,\\
+\bm{\mathcal{H}}_{i\left(s\right)_{01}w}
+    &\coloneqq
+        \mathcal{H}_{
+            \left(
+                \mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}}
+                +Ww
+            \right)
+            \left\{\tilde{\mathcal{Z}}_{i\mathcal{H}}\right\}
+        }^{\left(W\right)}
+\label{definition:H-array}
+.
+\end{align}
+
+Earlier, we had pulled out the summation over $t$ to complete the radial
+integration analytically. We can reorganize the terms of the double summation in
+$\mathcal{R}$ to allow the summation over $t$ to be completed. We introduce a
+new limit for summations that goes as
+\begin{equation}
+    \mathfrak{K}_{n} = \left(k + \mathfrak{u} + \delta_{s\bar{1}}\right)_{n}.
+\end{equation}
+We recognize that $u$ can range from $0$ to $\mathfrak{K}$, $v$ can range from
+$u$ to $\mathfrak{K}$, and $t$ must always be larger then $v-k$. We reorganize
+the order of our summations, and we pull out to the front summations over
+$u_{0}$, and $u_{1}$. We may write
+\begin{equation}
+\bm{\mathcal{R}}_{i\left(s\right)_{01}}
+    =
+        \left[
+            \sum_{u=0}^{\mathfrak{K}}
+            \sum_{v=u}^{\mathfrak{K}}
+        \right]_{01}
+        \mathfrak{A}_{\mathfrak{d}_{i}\left(suv\right)_{01}}
+        \bm{\mathcal{G}}_{i\left(su\right)_{01}}
+        \bm{\mathcal{H}}_{i\left(s\right)_{01}\left(v_{0}+v_{1}\right)}
+\end{equation}
+where we introduced
+\begin{equation}
+\mathfrak{A}_{\mathfrak{d}\left(suv\right)_{01}}
+    \coloneqq
+        \left[
+            \sum
+            _{t=\text{Max}\left[v-k,-2\mathfrak{u}\right]}
+            ^{\mathfrak{u}+\delta_{s\bar{1}}}
+            \frac{\mathfrak{K}!}{k!}
+            h^{\left(\mathfrak{u}\right)}_{\left(kl,st\right)}
+        \right]_{01}
+        \mathfrak{F}_{
+            \left(\frac{\mathfrak{h}_{\mathfrak{d}}}{W}\right)
+            \left(uv\right)_{01}
+        }
+\end{equation}
+However, we can further simplify this from a four-index summation to a
+three-index summation by introducing $w = v_{0}+v_{1}$. We do this by
+introducing a summation over a Kronecker delta, going as
+\begin{align}
+\bm{\mathcal{R}}_{i\left(s\right)_{01}}
+    &=
+        \left[
+            \sum_{u=0}^{\mathfrak{K}}
+            \sum_{v=u}^{\mathfrak{K}}
+        \right]_{01}
+        \mathfrak{A}_{\mathfrak{d}_{i}\left(suv\right)_{01}}
+        \bm{\mathcal{G}}_{i\left(su\right)_{01}}
+        \sum_{w=u_{0}+u_{1}}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \delta_{w,v_{0}+v_{1}}
+        \bm{\mathcal{H}}_{i\left(s\right)_{01}w}
+,\\
+    &=
+        \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+        \sum_{w=u_{0}+u_{1}}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\mathfrak{d}_{i}\left(su\right)_{01}w}
+        \bm{\mathcal{G}}_{i\left(su\right)_{01}}
+        \bm{\mathcal{H}}_{i\left(s\right)_{01}w}
+\label{equation:radial-integral}
+.
+\end{align}
+where we introduce a new constant
+\begin{equation}
+\mathfrak{A}_{\mathfrak{d}\left(su\right)_{01}w}
+    \coloneqq
+        \left[ \sum_{v=u}^{\mathfrak{K}} \right]_{01}
+        \delta_{w,v_{0}+v_{1}}\mathfrak{A}_{\mathfrak{d}\left(suv\right)_{01}}
+.
+\end{equation}
+$\mathfrak{A}$ is constant over integration, and in particular its value does not
+depend on any runtime parameters, as long as the basis and operator/potential
+specification occurs at or prior to compile time. It is a potentially
+complicated expression, and we take some effort to simplify it and attempt to
+find a form of the expression that may be computed in reusable pieces. We can
+consider 
+\begin{align}
+\mathfrak{A}_{\mathfrak{d}\left(su\right)_{01}w}
+    &=
+        \left(-1\right)^{u_{0}+u_{1}+w}
+        \Gamma\left[
+            \frac{\mathfrak{h}_{\mathfrak{d}\left(s\right)_{01}}}{W}+w
+        \right]
+        \mathfrak{A}_{\left(su\right)_{01}w}^{\prime}
+\label{appendix:elements:precalc-coeffs-0}
+,\\
+\mathfrak{A}_{\left(su\right)_{01}w}^{\prime}
+    &=
+        \left[\sum_{v=u}^{\mathfrak{K}}\right]_{01}
+        \delta_{w,v_{0}+v_{1}}
+        \left[\mathfrak{A}_{suv}^{\prime\prime}\right]_{01}
+.
+\end{align}
+The product of coefficients above has factors that depend only on information
+from a single state. We can write this single-state coefficient as so,
+\begin{align}
+\mathfrak{A}_{suv}^{\prime\prime}
+    &=
+        \frac{1}{\sqrt{k!\left(k+\mathfrak{l}\right)!}}
+        \frac{\mathfrak{K}!}{u!\left(v-u\right)!\left(\mathfrak{K}-v\right)!}
+        \frac
+        {\left(k+\mathfrak{l}\right)!}
+        {\left(\mathfrak{a}-2\mathfrak{u}+v\right)!}
+        \mathfrak{G}_{sv}
+,\\
+    &=
+        \frac{1}{\sqrt{k!\left(k+\mathfrak{l}\right)!}}
+        \begin{pmatrix}\mathfrak{K}\\u\end{pmatrix}
+        \begin{pmatrix}\mathfrak{K}-u\\\mathfrak{K}-v\end{pmatrix}
+        \left(k+\mathfrak{l}\right)^{\underline{\mathfrak{K}-v}}
+        \mathfrak{G}_{sv}
+,\\
+\mathfrak{G}_{sv}
+    &=
+        \frac
+        {\left(\mathfrak{a}-2\mathfrak{u} + v\right)!}
+        {\left(\mathfrak{a}+ v\right)!}
+        \mathfrak{H}_{sv}^{\left(\mathfrak{u}\right)}
+,\\
+    &=
+        \left(1-\mathfrak{u}\right)\mathfrak{H}_{sv}^{\left(0\right)}
+            +
+        \mathfrak{u}
+        \frac
+        { \mathfrak{H}_{sv}^{\left(1\right)} }
+        {
+            \left(\mathfrak{l}-\delta_{s\bar{1}}+v+1\right)
+            \left(\mathfrak{l}-\delta_{s\bar{1}}+v\right) }
+.
+\end{align}
+We have
+\begin{equation}
+\mathfrak{H}_{sv}^{\left(\mathfrak{u}\right)}
+    =
+        \sum
+        _{t=\text{Max}\left[v-k,-2\mathfrak{u}\right]}
+        ^{\mathfrak{u}+\delta_{s\bar{1}}}
+        h^{\left(\mathfrak{u}\right)}_{kl,st}
+        \frac
+        {
+            \left(\mathfrak{K}-v\right)!
+            \sqrt{\left(k+t\right)!\left(k+t+\mathfrak{a}\right)!}
+        }
+        {\left(k+t-v\right)!\sqrt{k!\left(k+\mathfrak{l}\right)!}}
+.
+\end{equation}
+We also find it convenient to explicitly the separate the $\mathfrak{u} = 0$
+(kinetic-off) and the $\mathfrak{u} = 1$ (kinetic-on) forms somewhat. I note
+that when the kinetic operator is "off" that $s = 0$ and that $v-k\le 0$. This
+means
+\begin{equation}
+\mathfrak{H}_{sv}^{\left(0\right)} = 1
+.
+\end{equation}
+We also have
+\begin{equation}
+    \mathfrak{H}_{sv}^{\left(1\right)}
+        =
+            \sum_{t=\text{Max}\left[v-k,-2\right]}^{1+\delta_{s\bar{1}}}
+            g_{kl,st}
+            \frac
+            {
+                \left(\mathfrak{K}-v\right)!
+                \sqrt{
+                    \left(k+t\right)!
+                    \left(k+t+\mathfrak{l}+1-\delta_{s\bar{1}}\right)!
+                }
+            }
+            {\left(k+t-v\right)!\sqrt{k!\left(k+\mathfrak{l}\right)!}}
+.
+\end{equation}
+We note that we can treat this summation as a polynomial in $\mathfrak{K}-v$.
+Let us define
+\begin{align}
+\mathfrak{H}^{\prime}_{sv}
+    &=
+        \sum
+        _{t=0}
+        ^{\text{Min}\left[\mathfrak{N},3+\delta_{s\bar{1}}\right]}
+        v^{t}
+        \mathfrak{G}_{st}
+,\\
+\mathfrak{G}_{st}
+    &\coloneqq
+        g_{kl,s\left(1+\delta_{s\bar{1}}-t\right)}
+        \frac
+        {
+            \sqrt{
+                \left(k+1+\delta_{s\bar{1}}-t\right)!
+                \left(k+\mathfrak{l}+2-t\right)!
+            }
+        }
+        {
+            \sqrt{k!\left(k+\mathfrak{l}\right)!}
+        }
+.
+\end{align}
+We may pull together these realizations and write
+\begin{align}
+\mathfrak{A}_{su\left(\mathfrak{K}-v\right)}^{\prime\prime}
+    &=
+        \frac{1}{\sqrt{k!\left(k+\mathfrak{l}\right)!}}
+        \begin{pmatrix}\mathfrak{K}\\u\end{pmatrix}
+        \begin{pmatrix}\mathfrak{K}-u\\v\end{pmatrix}
+        \left(k+\mathfrak{l}\right)^{\underline{v}}
+        \left(1 + \mathfrak{u}\mathfrak{I}_{sv}\right)
+\label{appendix:elements:precalc-coeffs-2}
+,\\
+\mathfrak{I}_{sv}
+    &=
+        \frac
+        { \mathfrak{H}_{sv}^{\prime} }
+        { \left(k+\mathfrak{l}+2-v\right)\left(k+\mathfrak{l}+1-v\right) }
+            -
+        1
+\label{appendix:elements:precalc-coeffs-3}
+,\\
+\mathfrak{H}_{sv}^{\prime}
+    &=
+        \sum
+        _{t=0}
+        ^{\text{Min}\left[v,3+\delta_{s\bar{1}}\right]}
+        v^{t}
+        \mathfrak{G}_{st}
+\label{appendix:elements:precalc-coeffs-4}
+,\\
+\mathfrak{G}_{st}
+    &=
+        g_{kl,s\left(1+\delta_{s\bar{1}}-t\right)}
+        \frac
+        {
+            \sqrt
+            {
+                \left(k+1+\delta_{s\bar{1}}-t\right)!
+                \left(k+\mathfrak{l}+2-t\right)!
+            }
+        }
+        {
+            \sqrt{k!\left(k+\mathfrak{l}\right)!}
+        }
+.
+\label{appendix:elements:precalc-coeffs-5}
+\end{align}
+Please note that, in the interests of space and clarity, we did not make
+explicit the fact that $\mathfrak{A}^{\prime\prime}$ and the various basis
+indices and parameters within the expression should be indexed by the state
+identifiers $0$ or $1$. 
+
+It is generally less computationally intense to use the Kronecker delta to
+reduce the above double summation to a single summation to implement, rather
+than implementing a double summation with many zero terms. To accomplish this we
+let $v_{0} \rightarrow \mathfrak{K}_{0}-v$ and $v_{1} \rightarrow
+w-\mathfrak{K}_{0}+v$. Our expression becomes
+\begin{equation}
+\mathfrak{A}_{\left(su\right)_{01}w}^{\prime}
+    =
+        \sum
+        _{v = \text{Max}\left[0,\mathfrak{K}_{0}+u_{1}-w\right]}
+        ^{\text{Min}\left[
+            \mathfrak{K}_{0}-u_{0},\mathfrak{K}_{0}+\mathfrak{K}_{1}-w
+        \right]}
+        \mathfrak{A}
+        _{\left(su\right)_{0}\left(\mathfrak{K}_{0}-v\right)}
+        ^{\prime\prime}
+        \mathfrak{A}
+        _{
+            \left(su\right)_{1}
+            \left(w-\mathfrak{K}_{0}+v\right)
+        }
+        ^{\prime\prime}
+\label{appendix:elements:precalc-coeffs-1}
+.
+\end{equation}
+
+Earlier we found some sequences of values we needed to compute to generate our matrix elements.
+\begin{align}
+\tilde{\bm{\mathcal{G}}}_{i\left(su\right)_{01}}
+    &\coloneqq
+        \mathcal{G}
+        _{
+            \mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}};
+            \left(u\right)_{01}
+            \left\{\Delta\tilde{\mathcal{Z}}_{i\mathcal{G}}\right\}
+        }
+        ^{\left(W\right)}
+\tag{\ref{definition:G-array}}
+,\\
+\tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w}
+    &\coloneqq
+        \mathcal{H}_{
+            \left(
+                \mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}}
+                +Ww
+            \right)
+            \left\{\tilde{\mathcal{Z}}_{i\mathcal{H}}\right\}
+        }^{\left(W\right)}
+\tag{\ref{definition:H-array}}
+.
+\end{align}
+We note that $\mathcal{G}$ and $\mathcal{H}$ above will simplify to less
+complicated forms depending on the values of $\tilde{\mathcal{Z}}$ which
+themselves depend on the functions $\tilde{\alpha}$, $\beta$ and constant $W$.
+If both $\delta_{W1}\tilde{\alpha} \equiv 0$ and $\delta_{W2}\beta \equiv 0$
+identically, then $\mathcal{Z}_{\mathcal{G}} \equiv 1$. We also see another
+simplification when $\Delta \equiv 0$ identically as well. There is a third form
+when both conditions apply. To wit, we have
+\begin{align}
+\tilde{\mathcal{G}}_{
+    L;\left(u\right)_{01}
+    \left\{\Delta\left(1\right)\right\}
+}^{\left(W\right)}
+    &= 
+        \left(-1\right)^{u_{0}}
+        \Delta^{u_{0}+u_{1}}
+    % && 
+    %     \delta_{W1}\tilde{\alpha}_{\left\{\Omega\right\}}
+    %         +
+    %     \delta_{W2}\beta_{\left\{\Omega\right\}} = 0
+,\\
+\tilde{\mathcal{G}}_{
+    L;\left(u\right)_{01}
+    \left\{\left(0\right)\tilde{\mathcal{Z}}_{\mathcal{G}}\right\}
+}^{\left(W\right)}
+    &=
+        \left(1-\tilde{\mathcal{Z}}_{\mathcal{G}}\right)^{u_{0}+u_{1}}
+        \tilde{\mathcal{Z}}_{\mathcal{G}}^{\frac{L}{W}}
+,\\
+\tilde{\mathcal{G}}_{
+        L;\left(u\right)_{01}
+        \left\{\left(0\right)\left(1\right)\right\}
+}^{\left(W\right)}
+    &=
+        \delta_{0,u_{0}+u_{1}}
+.
+\end{align}
+We can also simplify $\tilde{\mathcal{H}}$. In the case when $W = 1$ and $\beta
+= 0$ we see that $\tilde{\mathcal{Z}}_{\mathcal{H}}$ becomes ill-defined.
+Returning to the original analytical integration we can see that in such a case,
+$\tilde{\mathcal{H}} \equiv 1$. This can also be shown as a limit to complex
+infinity, which we will denote as $\infty_{\mathbb{C}}$. Namely, we see $
+\lim_{\mathcal{Z}_{\mathcal{H}}\rightarrow\infty_{\mathbb{C}}}
+\tilde{\mathcal{H}} = 1 $. In essence, as $\beta$ tends to become identically
+zero, it is the case that $\tilde{\mathcal{H}}$ tends to become identically
+unity. A similar effect emerges when $W = 2$ and $\tilde{\alpha} \equiv 0$, but
+in that case $\mathcal{Z}_{\mathcal{H}} \equiv 0$. However,
+$\tilde{\mathcal{H}}$ becomes undefined for that value of
+$\mathcal{Z}_{\mathcal{G}}$. As before, examining the analytic continuation
+versus direct recalculation with $\tilde{\alpha} = 0$ yields the same result --
+as before, under these conditions $\tilde{\mathcal{H}} \equiv 1$.
+
+These changes to the terms of the summation over $u_{0}$, $u_{1}$, and $w$
+significantly alters the structure of the summation. We present the following
+contractions of the main precalculated coefficients, namely
+\begin{align}
+\mathfrak{A}_{\mathfrak{d}\left(s\right)_{01}uw}
+    &=
+        \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+        \delta_{u,u_{0}+u_{1}}
+        \left(-1\right)^{u_{0}}
+        \mathfrak{A}_{\mathfrak{d}\left(su\right)_{01}w}
+,\\
+\mathfrak{A}_{\mathfrak{d}\left(s\right)_{01}uw}^{\prime}
+    &=
+        \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+        \delta_{u,u_{0}+u_{1}}
+        \mathfrak{A}_{\mathfrak{d}\left(su\right)_{01}w}
+,\\
+\mathfrak{A}_{\mathfrak{d}\left(s\right)_{01}w}
+    &=
+        \mathfrak{A}_{\mathfrak{d}\left(s0\right)_{01}w}
+.
+\end{align}
+In instances when $\tilde{\mathcal{H}} \equiv 1$ we find an additional
+contraction along the $w$ index, which provides the following
+\begin{align}
+    \mathfrak{a}_{\mathfrak{d}\left(su\right)_{01}}
+        &=
+            \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+            \mathfrak{A}_{\mathfrak{d}\left(su\right)_{01}w}
+    ,\\
+    \mathfrak{a}_{\mathfrak{d}\left(s\right)_{01}u}
+        &=
+            \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+            \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+            \delta_{u,u_{0}+u_{1}}
+            \left(-1\right)^{u_{0}}
+            \mathfrak{A}_{\mathfrak{d}\left(su\right)_{01}w}
+    ,\\
+    \mathfrak{a}_{\left(s\right)_{01}u}^{\prime}
+        &=
+            \left[ \sum_{u=0}^{\mathfrak{K}} \right]_{01}
+            \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+            \delta_{u,u_{0}+u_{1}}
+            \mathfrak{A}_{\mathfrak{d}\left(su\right)_{01}w}
+    ,\\
+    \mathfrak{a}_{\left(s\right)_{01}}
+        &=
+            \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+            \mathfrak{A}_{\mathfrak{d}\left(s0\right)_{01}w}
+    .
+\end{align}
+As before, we note that the summations to generate these coefficients feature
+alternating signs, making this computations ill-posed to be done using standard
+floating-point computations. Additionally, the coefficients themselves can
+become quite large. These summations have problems with both overflow and
+underflow error when floating point numbers are used.
+
+To work with this form within our numerical integrator, which will use standard
+floating-point numerical computation, we opted to compute the coefficients
+analytically and store the results as a floating point number. The analytic
+computation can be achieved and automated with a computer algebra system, and
+for this work we used the SymPy Python package. We can then store the results as
+floating-point numbers in a database that can be recalled as needed. More
+information is available in \ref{section:precalculation}.
+
+Such a database can be constructed at compile time, or may be referenced from
+previous runs of the software. As such, we call this set of coefficients the
+\emph{precalculated coefficients}. Unfortunately, the database does prove to be
+quite large, making portability between systems an issue. Additionally, we find
+that pulling the needed coefficients from the database into runtime does add a
+non-negligible amount of time to add computation. However, this is anticipated
+to be a one-time expenditure of memory access time during a computation, one
+which is anticipated to scale linearly with problem size.
+
+In light of these simplifications and considerations we can attempt to rewrite
+our integral by assessing and partitioning certain expressions. Our goal with
+this formulation of the matrix elements is based on minimizing repeated
+computations as well as exploiting certain features of our subbases/superbasis
+structure. In particular, within a subbasis, we will have $ \eta_{0} = \eta_{1}
+= \hat{\eta} $ and so we will also have $\mathfrak{f} = 0$,
+$\Xi_{\left\{\Omega\right\}} \equiv 1$, and quantities such as
+$\hat{\eta}/\eta_{n} = 1$. Additionally, when considering matrix elements with
+$q_{0} = q_{1} = z$ within the same subbasis, we find that $\vartheta_{0} \equiv
+\vartheta_{1}$ which also permits further simplifications in the expressions we
+formulate below.
+\begin{align}
+\left(\mathcal{M}\right)_{\aleph,01}^{\left(\kappa^{\prime},j\right)}
+    &\coloneqq
+        \mathfrak{E}^{\mathfrak{u}_{0}+\mathfrak{u}_{1}+\mathfrak{s}}
+        \mathfrak{C}
+        \mathcal{I}
+\label{ex:first_use_of_bracket_summation}
+,\\
+\mathfrak{C}
+    &\coloneqq
+        \frac
+        { \xi_{0} }
+        {
+            \left[
+                \left(\frac{\eta}{\hat{\eta}}\right)
+                ^{\frac{\mathfrak{L}}{2}+2\mathfrak{u}}
+            \right]_{01}
+            \left(\frac{\hat{\eta}}{\mathfrak{r}}\right)
+            ^{ 2\mathfrak{u}_{0} + 2\mathfrak{u}_{1} }
+        }
+,\\
+\mathcal{I}
+    &\coloneqq
+        \int_{\mathcal{S}_{0}}\diff\Omega
+        \,
+        \left[
+            \left(
+                \frac
+                {\vartheta_{\left\{\Omega\right\}}}
+                {\hat{\vartheta}_{\left\{\Omega\right\}}}
+            \right)^{\frac{\mathfrak{L}}{2}}
+            Q_{m\zeta\left\{\phi_{q}\right\}}
+        \right]_{01}
+        \mathcal{S}_{\left\{\Omega\right\}}
+,\\
+\mathcal{S}_{\left\{\Omega\right\}}
+    &\coloneqq
+        \left[\sum_{s=-\mathfrak{u}}^{s=+\mathfrak{u}}\right]_{01}
+        \sum_{i}
+        \bm{\mathcal{P}}_{\left(s\right)_{01}\left\{\Omega\right\}}
+        \bm{\mathcal{X}}_{\mathfrak{d}_{i}\left\{\Omega\right\}}
+        \bm{\mathcal{V}}_{i\left\{\Omega\right\}}
+        \bm{\mathcal{R}}_{i\left(s\right)_{01}\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{P}}_{\left(s\right)_{01}\left\{\Omega\right\}}
+    &\coloneqq
+        \left[
+            \frac
+            { k!\mathfrak{H}_{ml;\lambda,s}^{\left(\kappa\right)} }
+            { 
+                \mathfrak{K}!
+                \left(
+                    \frac
+                    {
+                        \vartheta_{\left\{\Omega\right\}}
+                        \check{r}_{\left\{\Omega\right\}}
+                    }
+                    {\eta}
+                \right)^{W\delta_{s\bar{1}}}
+            }
+            P_{\left(l+2s\right)m;\lambda\left\{\chi_{q}\right\}}
+        \right]_{01}
+,\\
+\bm{\mathcal{X}}_{\mathfrak{d}\left\{\Omega\right\}}
+    &\coloneqq
+        \left(
+            \frac
+            { \hat{\eta} }
+            { \mathfrak{r}\hat{\vartheta} }
+        \right)^{\mathfrak{d}}
+        \left( \Xi_{\left\{\Omega\right\}} \right)
+        ^{ -\hat{\mathfrak{L}}_{\mathfrak{d}} }
+.
+\end{align}
+Above we have defined the following constants,
+\begin{align}
+\mathfrak{K}
+    &\coloneqq
+        k + \mathfrak{u} + \delta_{s\bar{1}}
+,\\
+\hat{\mathfrak{L}}_{\mathfrak{d}}
+    &\coloneqq
+        l_{0} + l_{1}
+        -\delta_{W1}\left(\mathfrak{u}_{0}+\mathfrak{u}_{1}\right)
+        +\mathfrak{d}+3
+.
+\end{align}
+We can articulate the various conditions that affect the summation structure of
+$\bm{\mathcal{R}}$. There are three conditions that determine which form should
+be used. They are
+\begin{align}
+    \delta_{W1}\tilde{\alpha}_{i} + \delta_{W2}\beta_{i} = 0
+    \quad\quad &\Rightarrow \quad\quad
+    \tilde{\mathcal{Z}}_{i\mathcal{G}} \equiv 1
+\label{condition:1a}\tag{C1a}
+,\\
+    \eta_{0} = \eta_{1}
+    \text{ and }
+    \lambda_{0} = \lambda_{1}
+    \text{ and }
+    q_{0} = q_{1}
+    \quad\quad &\Rightarrow \quad\quad
+    \Delta \equiv 0
+\label{condition:1b}\tag{C1b}
+,\\
+    \delta_{W1}\beta_{i} + \delta_{W2}\tilde{\alpha}_{i} = 0
+    \quad\quad &\Rightarrow \quad\quad
+    \tilde{\mathcal{H}} \equiv 1
+\label{condition:2}\tag{C2}
+.
+\end{align}
+If condition \eqref{condition:2} is not true, then the radially integrated part
+of the integrand will go as
+\begin{align}
+\bm{\mathcal{R}}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+    &=
+        \left[\sum_{u=0}^{\mathfrak{K}}\right]_{01}
+        \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\mathfrak{d}_{i}\left(su\right)_{01}w}
+        \bm{\mathcal{G}}_{i\left(u\right)_{01}\left\{\Omega\right\}}
+        \tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{R}}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:1a}}\right)}
+    &=
+        \sum_{u=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\mathfrak{d}_{i}\left(s\right)_{01}uw}
+        \bm{\mathcal{G}}_{u\left\{\Omega\right\}}
+        \tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{R}}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:1b}}\right)}
+    &=
+        \sum_{u=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \sum_{w=u}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\mathfrak{d}_{i}\left(s\right)_{01}uw}^{\prime}
+        \tilde{\bm{\mathcal{G}}}_{i\left(s\right)_{01}u\left\{\Omega\right\}}
+        \tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{R}}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:1a}}+\text{\ref{condition:1b}}\right)}
+    &=
+        \sum_{w=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{A}_{\mathfrak{d}_{i}\left(s\right)_{01}w}
+        \tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+.
+\end{align}
+However, if condition \eqref{condition:2} is true, then the radially integrated
+part of the integrand will go as
+\begin{align}
+\bm{\mathcal{R}}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:2}}\right)}
+    &=
+        \left[\sum_{u=0}^{\mathfrak{K}}\right]_{01}
+        \mathfrak{a}_{\mathfrak{d}_{i}\left(su\right)_{01}}
+        \tilde{\bm{\mathcal{G}}}_{\left(u\right)_{01}\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{R}}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:2}};\text{\ref{condition:1a}}\right)}
+    &=
+        \sum_{u=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{a}_{\mathfrak{d}_{i}\left(s\right)_{01}u}
+        \bm{\mathcal{G}}_{u\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{R}}
+_{i\left(s\right)_{01}\left\{\Omega\right\}}
+^{\left(\text{\ref{condition:2}};\text{\ref{condition:1b}}\right)}
+    &=
+        \sum_{u=0}^{\mathfrak{K}_{0}+\mathfrak{K}_{1}}
+        \mathfrak{a}_{\mathfrak{d}_{i}\left(s\right)_{01}u}^{\prime}
+        \tilde{\bm{\mathcal{G}}}_{i\left(s\right)_{01}u\left\{\Omega\right\}}
+,\\
+\bm{\mathcal{R}}
+_{i\left(s\right)_{01}}
+^{
+    \left(\text{\ref{condition:2}};
+    \text{\ref{condition:1a}}+\text{\ref{condition:1b}}\right)
+}
+    &= \mathfrak{a}_{\mathfrak{d}_{i}\left(s\right)_{01}}
+.
+\end{align}
+where we employ sequences of the form
+\begin{align}
+\tilde{\bm{\mathcal{G}}}_{i\left(su\right)_{01}\left\{\Omega\right\}}
+    &\coloneqq
+        \tilde{\mathcal{G}}
+        _{
+            \mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}};
+            \left(u\right)_{01}
+            \left\{
+                \Delta_{\left\{\Omega\right\}}
+                \tilde{\mathcal{Z}}_{i\mathcal{G}\left\{\Omega\right\}}
+            \right\}
+        }
+        ^{\left(W\right)}
+,\\
+\bm{\mathcal{G}}_{u\left\{\Omega\right\}}
+    &\coloneqq
+        \Delta_{\left\{\Omega\right\}}^{u}
+,\\
+\tilde{\bm{\mathcal{G}}}_{i\left(s\right)_{01}u\left\{\Omega\right\}}
+    &\coloneqq
+        \tilde{\mathcal{G}}
+        _{
+            \mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}};u
+            \left\{\tilde{\mathcal{Z}}_{i\mathcal{G}\left\{\Omega\right\}}\right\}
+        }
+        ^{\left(W\right)}
+,\\
+\tilde{\bm{\mathcal{H}}}_{i\left(s\right)_{01}w\left\{\Omega\right\}}
+    &\coloneqq
+        \tilde{\mathcal{H}}
+        _{
+            \left(\mathfrak{h}_{\mathfrak{d}_{i}\left(s\right)_{01}}+Ww\right);
+            \left\{
+                \tilde{\mathcal{Z}}_{i\mathcal{H}\left\{\Omega\right\}}
+            \right\}
+        }
+        ^{\left(W\right)}
+.
+\end{align}
+The sequence values may be calculated with the following constant
+\begin{equation}
+\mathfrak{h}_{\mathfrak{d}\left(s\right)_{01}}
+    \coloneqq
+        \hat{\mathfrak{L}}_{\mathfrak{d}}
+        - W\left(\delta_{s_{0}\bar{1}} + \delta_{s_{1}\bar{1}}\right)
+,
+\end{equation}
+and with the following accessory functions.
+\begin{align}
+\tilde{\mathcal{G}}
+_{L;\left(u\right)_{01}\left\{\Delta\tilde{\mathcal{Z}}\right\}}
+^{\left(W\right)}
+    &\coloneqq
+        \left(1-\tilde{\mathcal{Z}}\left(1+\Delta\right)\right)^{u_{0}}
+        \left(1-\tilde{\mathcal{Z}}\left(1-\Delta\right)\right)^{u_{1}}
+        \tilde{\mathcal{Z}}^{\frac{L}{W}}
+,\\
+\tilde{\mathcal{G}}
+_{L;u\left\{\tilde{\mathcal{Z}}\right\}}
+^{\left(W\right)}
+    &\coloneqq
+        \left(1-\tilde{\mathcal{Z}}\right)^{u}
+        \tilde{\mathcal{Z}}^{\frac{L}{W}}
+,\\
+\tilde{\mathcal{H}}_{M\left\{\tilde{\mathcal{Z}}\right\}}^{\left(W\right)}
+    &\coloneqq
+        \left(
+            \delta_{W1}
+            \frac{\sqrt{\pi}}{\Gamma\left[\frac{M+1}{2}\right]}
+            \tilde{\mathcal{Z}}^{M}
+            +
+            \delta_{W2}
+        \right)
+        h_{M\left\{\tilde{\mathcal{Z}}\right\}}
+,\\
+\Delta_{\left\{\Omega\right\}}
+    &=
+        \frac
+        { \mathfrak{f}+\epsilon_{\left\{\Omega\right\}} }
+        { 1 + \mathfrak{f}\epsilon_{\left\{\Omega\right\}} }
+,\\
+\tilde{\mathcal{Z}}_{i\mathcal{G}\left\{\Omega\right\}}
+&=
+    \frac
+    {1}
+    {
+        1
+            +
+        \delta_{W1}
+        \tilde{\alpha}_{i\left\{\Omega\right\}}
+        \left(\frac{ \check{r}_{\left\{\Omega\right\}} }{ \mathfrak{r} }\right)
+            +
+        \delta_{W2}
+        \beta_{i\left\{\Omega\right\}}
+        \left(
+            \frac{ \check{r}_{\left\{\Omega\right\}} }{ \mathfrak{r} }
+        \right)^{2}
+    }
+,\\
+\tilde{\mathcal{Z}}_{i\mathcal{H}\left\{\Omega\right\}}
+&=
+    \frac
+    {
+        \delta_{W1}
+            +
+        \tilde{\alpha}_{i\left\{\Omega\right\}}
+        \left(\frac{ \check{r}_{\left\{\Omega\right\}} }{ \mathfrak{r} }\right)
+    }
+    {
+        \sqrt{
+            \delta_{W2}
+                +
+            \beta_{i\left\{\Omega\right\}}
+            \left(
+                \frac{ \check{r}_{\left\{\Omega\right\}} }{ \mathfrak{r} }
+            \right)^{2}
+        }
+    }    
+.
+\end{align}

@@ -1,0 +1,372 @@
+%\documentclass[aps, prl, preprint]{revtex4-1}
+
+%\usepackage{graphicx}
+%\usepackage{dcolumn}
+%\usepackage{bm}
+%\usepackage{amsfonts, amssymb, amsmath}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+%\newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\mathrm{e}}
+%\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+
+%\begin{document}
+
+\subsection{Shallow semiconductor heterostructures in the bulk}
+The interruption of the crystalline structure of the semicondctor, as
+with impurities or heterostructures, can serve to capture excess
+electrons within the semiconductor. We wish to examine the physics of
+these captured electrons. The Hamiltonian of such a system may be
+written as
+\begin{equation}
+\left[\frac{\hat{\bm{p}}^2}{2 m_e} + \hat{V}^0 +
+  \hat{U}\right]\ket{\Psi} = E\ket{\Psi},
+\end{equation}
+where $\hat{V}^0$ is the periodic potential of the crystalline
+lattice, $\hat{U}$ is the potential introduced by a defect in the lattice
+through an impurity or other means, and $E$ has energy zero at the
+lowest conduction band minima.
+
+We understand that, in the absence of defect, the wavefunction
+resulting from the periodic crystal potential will be a Bloch
+function. The acceptable energies for free electrons occur in discrete
+bands that may be separated, resulting in disallowed energies. Each
+Bloch function is denoted by a wavevector and an index indicating
+membership in one of these bands. The wavefunction of each Bloch state
+follows the form
+\begin{gather}
+\braket{\bm{r}}{n\bm{k}} = \varphi_{n\bm{k}}(\bm{r}) = \exp\left(\im
+\bm{k}\cdot\bm{r}\right)u_{n\bm{k}}(\bm{r}),
+\end{gather}
+where $u_{n\bm{k}}$ may be a complicated function, but one which
+always has the periodicity of the lattice. The Bloch state is the
+eigenstate of a nearly free electron travelling through a silicon
+lattice. As such, the Schr\"{o}dinger equation of the pure system may
+be written as
+\begin{gather}
+\left[\frac{\hat{\bm{p}}^2}{2 m_e} + \hat{V}^0\right]\ket{n\bm{k}}
+= E_{n\bm{k}}\ket{n\bm{k}}
+\end{gather}
+$V^0$ is the periodic potential of silicon and $E_{n\bm{k}}$ is the energy
+of a nearly free electron travelling through silicon in the $n$th
+conduction band given the wavevector $k$.
+
+We assume that Bloch functions taken from the first Brillouin zone and
+from all bands form a complete basis to be used to contruct the state
+of an excess electron bound to an impurity or heterostructure.  As
+such, we represent the complete wavefunction as
+\begin{gather}
+\ket{\Psi} = \sum_n \int_{BZ} \diff\bm{k} \,
+A_n\left(\bm{k}\right)\ket{n\bm{k}}
+\end{gather}
+We write the Schr\"{o}dinger equation in the Bloch basis, letting $U$
+be the impurity potential,
+\begin{gather}
+\left(E_{n\bm{k}} - E\right)A_{n}(\bm{k}) +
+\sum_{n^\prime}\int_{BZ}\diff\bm{k}^\prime\,A_{n^\prime}(\bm{k}^\prime)\bra{n\bm{k}}
+\hat{U}\ket{n^\prime\bm{k}^\prime} = 0
+\end{gather}
+
+We can clearly see the role of the impurity potential in mixing
+together different bands, as well as causing the state to spread
+through each band. However, this equation proves difficult to solve
+directly, since it relies on the interplay between the Fourier
+components of the impurity potential and the periodic function
+$u_{n\bm{k}}$.
+
+To resolve these difficulties we employ a variational method. In the
+variational method one calculates $E\left[\Psi\right]$ from
+\begin{gather}
+\bra{\Psi}\frac{\hat{\bm{p}}^2}{2 m_e} + \hat{V}^0 + \hat{U} 
+- E[\Psi]\ket{\Psi} = 0,
+\end{gather}
+where the state $\Psi$ is judiciously chosen, with variational
+parameters, to solve the problem approximately. Minimization of the
+energy with respect to the parameters provides the best possible
+approximate solution to the problem using the state
+$\Psi$. Reforumlating the Sch\"{o}dinger equation in light of the
+variational method yields
+\begin{gather}
+\sum_{n}\int_{BZ}\diff\bm{k}\,\left|A_n(\bm{k})\right|^2
+\left(E_{n\bm{k}} - E\right) +
+\sum_{n,n^\prime}\iint_{BZ}\diff\bm{k}\,\diff\bm{k}^\prime
+A_{n}(\bm{k})^*A_{n^\prime}(\bm{k}^\prime)\bra{n\bm{k}}\hat{U}
+\ket{n^\prime\bm{k}^\prime}
+=0.
+\label{kspacevar}
+\end{gather}
+
+\subsection{Shallow donor electron states}
+At this point, we explicitly restrict our concern to ``shallow''
+potentials. For our purposes, the ``shallowness'' of a potential
+depends on its effect in mixing and occupying the free electron
+states. Namely, the bound state of a shallow potential only significantly
+occupies the lowest conduction band and occupation within that band is
+centered steeply around any minima. As such, the bound state posseses
+non-periodic structure that emerges at a scale much longer then the
+characteristic wavelength of the Bloch function at the conduction band
+minima. The shallowness assumptions leads to a series of conclusions:
+\begin{enumerate}
+\item The potential does not cause significant band occupation outside
+  the lowest conduction band, and so terms $n \ne 0$ may be ignored.
+\item The band occupation will mostly occur in ``valleys'' -- the
+  $k$-space energy minima of the lowest conduction band. As such, we
+  write the occupation as $A_0(\bm{k}) = \sum_{q} \alpha_{q}
+  A^{(q)}(\bm{k})$ where the coefficients $\alpha_{q}$ are determined
+  from group theoretic symmetry concerns and $A^{(q)}(\bm{k})$ are
+  sharply peaked functions centered at the $q$th minimum of the
+  conduction band.
+\end{enumerate}
+
+Because we expect the $A^{(q)}(\bm{k})$ to be sharply peaked at a
+particular valley in the conduction band, we can expand $E_n(\bm{k})$
+in Eq. \eqref{kspacevar} up to the second order in $\bm{k}$ at each
+valley. Since the valleys are minima, the energy will only contain
+second order terms, making it analogous to the kinetic energy. This
+analogy is the source of the effective mass that gives the
+approximation its name. In general, the minima is anisotropic in
+$\bm{k}$, leading to multiple effective masses.
+
+We wish to see the effect of these assumptions upon
+Eq. \eqref{kspacevar}. The diagonal part is straight forward, and so
+we can write
+\begin{equation}
+  \bra{\Psi}\frac{\hat{\bm{p}}^2}{2 m_e} + \hat{V}^0 - E\ket{\Psi}
+  =
+  \sum_{q}
+  \left|\alpha^{(q)}\right|^2
+  \int_{BZ}
+  \diff\bm{k}\,
+  \left|A^{(q)}(\bm{k})\right|^2\left(E^{(q)}(\bm{k})-E\right)
+  \label{kin0}
+\end{equation}
+where $E^{(q)}(\bm{k})$ is the second order expansion of $E_0(\bm{k})$
+around the $q$th valley. Turning our concern to the impurity term in
+Eq. \eqref{kspacevar} yields
+\begin{equation}
+  \bra{\Psi}\hat{U}\ket{\Psi} 
+  =
+  \sum_{q,q^\prime}
+  \alpha_{q}^*\alpha_{q^\prime}
+  \iint_{BZ}\diff\bm{k}\,\diff\bm{k}^\prime\,
+  A^{(q)}(\bm{k})^{*}A^{(q^\prime)}(\bm{k}^\prime)
+  \bra{0\bm{k}}\hat{U}\ket{0\bm{k}^\prime},
+\end{equation}
+The matrix element is computed as as
+\begin{equation}
+  \bra{0\bm{k}}\hat{U}\ket{0\bm{k}^\prime}
+  =
+  \int \diff\bm{r}\,
+  U(\bm{r})
+  \mathrm{e}^{\im\left(\bm{k}^\prime - \bm{k}\right)\cdot\bm{r}}
+  u_{0\bm{k}}^*(\bm{r})u_{0\bm{k}^\prime}^{}(\bm{r}), 
+\end{equation}
+so I can write the impurity term as
+\begin{equation}
+  \bra{\Psi}\hat{U}\ket{\Psi} 
+  = \
+  \sum_{q,q^\prime}
+  \alpha_{q}^*\alpha_{q^\prime}
+  \int \diff\bm{r}\, U(\bm{r})
+  \iint_{BZ}\diff\bm{k}\,\diff\bm{k}^\prime\,
+  A^{(q)}(\bm{k})^{*}\mathrm{e}^{-\im\bm{k}\cdot\bm{r}}u_{0\bm{k}}^*(\bm{r})
+  A^{(q^\prime)}(\bm{k}^\prime)\mathrm{e}^{\im\bm{k}^{\prime}\cdot\bm{r}}
+  u_{0\bm{k}^\prime}^{}(\bm{r})
+\end{equation}
+If we wish to examine the long scale physics, it's convenient to
+introduce a shifted inverse truncated Fourier transform of the
+occupation function,
+\begin{equation}
+  F^{(q)}(\bm{r}) = 
+  \frac{1}{\left(2\pi\right)^{3/2}}
+  \int_{BZ}\diff\bm{k}\,
+  A^{(q)}(\bm{k})
+  \mathrm{e}^{\im\left(\bm{k}-\bm{k}_{q}\right)\cdot\bm{r}}
+\end{equation}
+which is often called the ``envelope function'' since it predicts the
+long-scale behavior of the wavefunction. With this definition of the
+envelope function and because $A^{(q)}(\bm{k})$ is so steeply peaked about
+the valley minima, we approximate write the $\bm{k}$-space integrals
+in the impurity term as
+\begin{equation}
+  F^{(q)}(\bm{r})
+  \mathrm{e}^{\im\bm{k}_{q}\cdot\bm{r}}
+  u_{0\bm{k}_{q}}(\bm{r})
+  \approx 
+  \frac{1}{\left(2\pi\right)^{3/2}}
+  \int_{BZ}\diff\bm{k}\,
+  A^{(q)}(\bm{k})
+  \mathrm{e}^{\im\bm{k}\cdot\bm{r}}
+  u_{0\bm{k}}(\bm{r})
+\end{equation}
+With this approximation, we find the impurity term is
+\begin{equation}
+  \bra{\Psi}\hat{U}\ket{\Psi} 
+  = 
+  \left(2\pi\right)^3
+  \sum_{q,q^\prime}
+  \alpha_{q}^*\alpha_{q^\prime}
+  \int \diff\bm{r}\, U(\bm{r})
+  F^{(q)}(\bm{r})^{*}
+  \mathrm{e}^{-\im\bm{k}_{q}\cdot\bm{r}}
+  u^{*}_{0\bm{k}_{q}}(\bm{r})
+  F^{(q^\prime)}(\bm{r})
+  \mathrm{e}^{\im\bm{k}_{q^\prime}\cdot\bm{r}}
+  u_{0\bm{k}_{q^\prime}}(\bm{r})
+  \label{pot}
+\end{equation}
+
+We can also reexpress the diagonal part of the variational Hamiltonian
+using the envelope function. I introduce an effective kinetic energy
+operator for each valley $\hat{T}^{(q)}$ such that
+\begin{equation}
+  \hat{T}^{(q)} F^{(q)}(\bm{r})
+  =
+  \frac{1}{\left(2\pi\right)^3}
+  \int_{BZ}\diff\bm{k}\, 
+  E^{(q)}(\bm{k})A^{(q)}(\bm{k})
+  \mathrm{e}^{\im\left(\bm{k} - \bm{k}_{q}\right)\cdot\bm{r}}.
+\label{tdef}
+\end{equation}
+As well, it can be shown that 
+\begin{equation}
+  \int_{BZ}\diff\bm{k}\,
+  \left|A^{(q)}\left(\bm{k}\right)\right|^2
+  = 
+  \int\diff\bm{r}\,
+  \left|F^{(q)}\left(\bm{r}\right)\right|^2
+  \label{sdef}
+\end{equation}
+This allows us to restate equation \eqref{kin0} as
+\begin{equation}
+  \bra{\Psi}\frac{\hat{\bm{p}}^2}{2 m_e} + \hat{V}^0 - E\ket{\Psi} =
+  \sum_{q}\left|\alpha^{(q)}\right|^2
+  \int\diff\bm{r}\,
+  F^{(q)}\left(\bm{r}\right)^{*}
+  \left(\hat{T}^{(q)}-E\right)
+  F^{(q)}\left(\bm{r}\right)
+  \label{kin1}
+\end{equation}
+
+With the state given in terms of the envelope function we can combine
+Eqs. \eqref{pot} and \eqref{kin1} as the following variational
+equation, which may be solved explicitly for the functional
+expectation energy $E$,
+\begin{equation}
+  E
+  =
+  \sum_{q,q^\prime}\alpha_{q}^*\alpha_{q^\prime}^{}
+  \left(\delta_{qq^\prime}T^{(q)} + U^{(qq^\prime)}\right),
+  \label{var1}
+\end{equation}
+where 
+\begin{gather}
+  T^{(q)}
+  =
+  \int\diff\bm{r}\,
+  F^{(q)}(\bm{r})^{*}\hat{T}^{(q)}F^{(q)}(\bm{r}),
+  \label{tidef}\\
+  U^{(qq^\prime)}
+  =
+  \int\diff\bm{r}\,
+  \left(2\pi\right)^{3}
+  u^{*}_{0\bm{k}_{q}}(\bm{r})u_{0\bm{k}_{q^\prime}}(\bm{r})
+  \mathrm{e}^{\im(\bm{k}_{q^\prime}-\bm{k}_{q})\cdot\bm{r}}
+  F^{(q)}(\bm{r})^{*}F^{(q^\prime)}(\bm{r})
+  U(\bm{r})
+  , \\
+  \sum_{q}\left|\alpha_{q}\right|^2
+  \int\diff\bm{r}\,
+  \left|F^{(q)}(\bm{r})\right|^2
+  =
+  1.
+\end{gather}
+The concern turns now to an adequate choice of functions $F^{(q)}$ so that
+the variational method may yield adequate results. The choice of $F^{(q)}$
+will depend strongly on the band structure of the hosting material. In
+the absense of information about the host material, we can still
+represent the envelope function by expanding it in a known basis. As
+such, we write
+\begin{equation}
+  F^{(q)}\left(\bm{r}\right)
+  =
+  \sum_{i} c_{i}^{(q)} \Phi^{(q)}_{i}\left(\bm{r};\Omega_{i}^{(q)}\right)
+  \label{Fexp}
+\end{equation}
+We equip our basis with a set of variational parameters $\Omega$ to
+better explore the state space and to minimize the spectrum. If we
+insert \eqref{Fexp} into \eqref{var1} we are able to write our
+variational equation as
+\begin{equation}
+  E\left(\Omega_1,\Omega_2\right)
+  \sum_{iq,(iq)^\prime}
+  \beta_{iq}^{*}
+  \beta_{(iq)^\prime}
+  S_{ii^\prime}^{(qq^\prime)}
+  =
+  \sum_{iq,(iq)^\prime}
+  \beta_{iq}^{*}
+  \beta_{(iq)^\prime}
+  \left(T_{ii^\prime}^{(qq^\prime)} + U_{ii^\prime}^{(qq^\prime)}\right)
+\end{equation}
+where $S$, $T$, and $U$ are understood as matrices with elements given as
+\begin{gather}
+  S_{ii^\prime}^{(qq^\prime)} 
+  =
+  \delta_{qq^\prime}
+  \int
+  \diff\bm{r}\,
+  {\Phi^{(q)}_{i}}^{*}
+  \Phi^{(q)}_{i^\prime} \\
+  T_{ii^\prime}^{(qq^\prime)}
+  =
+  \delta_{qq^\prime}
+  \int
+  \diff\bm{r}\,
+  {\Phi^{(q)}_{i}}^{*}
+  \hat{T}^{q}
+  \Phi^{(q)}_{j} \\
+  U_{ii^\prime}^{(qq^\prime)}
+  =
+  \int
+  \diff\bm{r}\,
+  \left(2\pi\right)^{3}
+  {u_{0\bm{k}_{q}}}^{*}
+  u_{0\bm{k}_{q^\prime}}
+  \mathrm{e}^{\mathrm{i}\left(\bm{k}_{q^\prime}-\bm{k}_{q}\right)\cdot\bm{r}}
+  {\Phi_{i}^{(q)}}^{*}
+  {\Phi_{i^\prime}^{(q^\prime)}}
+  U\left(\bm{r}\right) \\
+  \beta_{iq}
+  =
+  c_{i}^{(q)}\alpha_{q}
+\end{gather}
+We solve the variational equation above by solving the associated
+generalized eigenvalue problem, 
+\begin{equation}
+  E\left(\Omega_{1},\Omega_{2}\right)
+  \bm{S}\bm{\beta} = \left(\bm{T} + \bm{U}\right)\bm{\beta},
+\end{equation}
+where $E$ and $\bm{\beta} = \left(c_{i}^{(q)}\alpha_{q}\right)$ is the
+generalized eigenvalue and -vector, respectively. The eigenvector may
+be normalized by satisfying 
+\begin{equation}
+  \bm{\beta}^{T}\bm{S}\bm{\beta} = 1.
+\end{equation}
+From the generalized eigenvalue problem, we acquire information both
+about the energy and the state associated with a state of variational
+parameters, and we can write such a state, then, in terms of our basis
+and our variational parameters as
+\begin{equation}
+  \braket{\bm{r}}{\Psi\left(\Omega\right)} \approx
+  \sum_{iq}
+  \beta_{iq}
+  \Phi_{i}^{(q)}\left(\bm{r};\Omega_{i}^{(q)}\right)
+  \mathrm{e}^{\mathrm{i}\bm{k}_{q}\cdot\bm{r}}
+  \left(2\pi\right)^{3/2}u_{\bm{k}_{q}}\left(\bm{r}\right).
+\end{equation}
+
+%\end{document}

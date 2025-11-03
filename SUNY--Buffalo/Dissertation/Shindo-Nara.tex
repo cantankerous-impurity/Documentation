@@ -1,0 +1,87 @@
+% % % \documentclass[aps, prl, preprint]{revtex4-2}
+% % \documentclass{report}
+
+% % \usepackage{graphicx}
+% % \usepackage{dcolumn}
+% % \usepackage{array,multirow,adjustbox}
+% % \usepackage{bm}
+% % \usepackage{amsfonts, amssymb, amsmath}
+% % \usepackage{braket}
+% % \usepackage{siunitx}
+
+% % % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% % \let\originalleft\left
+% % \let\originalright\right
+% % \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% % \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% % \newcommand{\im}{\mathrm{i}}
+% % \newcommand{\e}{\mathrm{e}}
+% % \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% % \newcommand{\diff}{\mathrm{d}}
+
+% % \DeclareMathOperator{\atantwo}{atan2}
+
+% % \title{An open source software package to compare and extend effective mass models of the phosphorous donor in silicon}
+% % \author{Luke Pendo}
+% % \date{}
+
+% % \begin{document}
+
+\subsection{Shindo-Nara and the multi-valley EMA equation}
+
+The first known attempt to extend the single-valley Kohn-Luttinger theory of
+silicon donors can be found in an appendix to a 1962 paper by H.
+Fritzsche\cite{Fritzsche}. The appendix was authored authored by W. D.
+Twose\cite{Twose}. This multi-valley EMA equation was used by some authors as
+they explored the best form of the impurity potential to get good quantitative
+results that match experiment. In 1976, Shindo and Nara\cite{ShindoNara}
+presented a paper that noted the Twose EMA equation made two assumptions in its
+derivation, namely
+\begin{equation}
+    \frac{1}{\left(2\pi\right)^{3}}
+    \int\diff\bm{k}\,
+    \e^{\im\bm{k}\left(\bm{r}-\bm{r}^{\prime}\right)}u_{\bm{k}_{q}\bm{r}}
+    \rightarrow u_{\bm{k}_{q}\bm{r}}.
+\end{equation}
+and that
+\begin{equation}
+    u_{\bm{k}_{p}\bm{r}}^{*}u_{\bm{k}_{q}\bm{r}} = 1.
+\end{equation}
+Even at the time, Twose noted that these assumptions would likely need to be
+abandoned as central cell corrections to the impurity potential were introduced,
+especially since the strongly real-space localized central corrections would be
+quite broad in $\bm{k}$-space.
+
+We shall henceforth refer to Shindo and Nara collectively as SN in this section.
+To move beyond the assumptions above, SN introduced and derived a new
+multi-valley expression that included the Bloch functions, including their
+complicated periodic factors, explicitly. For our own work, we find including as
+much detail about the Bloch functions as possible within the initial derivation
+of our model to be the most useful way to construct the model. If computational
+resources are limited, the Bloch functions can always be approximated by
+simplified or truncated forms at a later point in the model derivation or in the
+explicit construction of the overlap, Hamiltonian, and Hamiltonian-squared
+matrix elements. We replicate this feature within our software, with the ability
+to turn on or off the Bloch function contributions selectively.
+
+The equation we derive in Chapter \ref{AnalyticalModel} owes heavily to SN's
+derivation, though we expand the derivation by computing an EMA expression for
+the Hamiltonian-squared matrix, and by extension, an EMA estimate of the
+variance of our approximate energy eigenstates. We hope to use the variance in
+the future to provide an additional metric on the quality of our approximate
+eigenstates, in addition to spectrum replication.
+
+Another way in which our derivation differs from SN lies in that SN remove
+intervalley terms involving the effective kinetic operator. Our own explorations
+with the variance of our states suggested dropping these terms introduces
+negative variances. While we agree that in computations, we should expect that
+these terms will be very small compared to the other contributions, we believe
+that these terms should be minimized by an appropriate choice of impurity
+potential and center cell correction, rather then being removed entirely. As it
+is conventional to drop these terms in most explorations of the EMA, we
+implemented a toggle within the code to allow the user to include the
+intervalley kinetic terms if desired.

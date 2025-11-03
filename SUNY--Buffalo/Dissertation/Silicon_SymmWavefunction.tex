@@ -1,0 +1,932 @@
+% \documentclass{report}
+
+% \usepackage{graphicx} \usepackage{dcolumn} \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath} \usepackage{braket}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2
+%\right\rangle\right. \displaystyle} \newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\e} \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+%
+%\begin{document}
+
+\subsection{Symmetry concerns within the silicon wavefunctions.}
+
+We expect our full wavefunction to have the form
+\begin{equation}
+\Psi^{\left(\kappa,i\right)}
+  =
+    \sum_{p}
+    \Phi_{p}\mathrm{e}^{\im\bm{k}_{p}\cdot\bm{r}}u_{\bm{k}_{p}\bm{r}}^{}
+\label{form:full-symmetric-wavefunction}
+\end{equation}
+The transformation of the Bloch function terms above is straight-forward, but
+the symmetry of the full wavefunction involves symmetrization of the product of
+the Bloch and envelope terms. To understand the symmetry properties of the
+envelope function requires us to understand the symmetrization of the full
+wavefunction.
+
+To understand the symmetrization of our full wavefunction, we apply our
+projection symmetrization operator defined in \eqref{symm-operator} to a general
+wavefunction. We assert that the full wavefunction is already symmetrized, and
+as such, the operator leaves our full wavefunction invariant. In essence, we are
+asserting that $\Psi$ is such that
+\begin{equation}
+  \Psi = \mathcal{P}_{ii}^{\left(\kappa\right)}\Psi.
+\end{equation}
+By expanding $\Psi$ in terms of the form articulated above in
+\eqref{form:full-symmetric-wavefunction} and matching terms we can assert
+symmetrization conditions upon the envelope functions.
+
+Our first step involves the following form, namely
+\begin{equation}
+\mathcal{V}_{\kappa,i}^{\dagger}\Psi
+  =
+    \left(\alpha_{0}^{\left(\kappa,i\right)}\right)^{*}
+    \left(xyz\right)
+    \Psi
+    +
+    \left(\alpha_{1}^{\left(\kappa,i\right)}\right)^{*}
+    \left(zxy\right)
+    \Psi
+    +
+    \left(\alpha_{2}^{\left(\kappa,i\right)}\right)^{*}
+    \left(yzx\right)
+    \Psi.
+\end{equation}
+It is useful to examine the operators included in $ \mathcal{V} _{\kappa,i}
+^{\dagger} $ above. To wit, we can define a set of ancillary functions based off
+an initial function. We describe these functions as being "valley indexed" by a
+particular crystallographic axis. 
+\begin{align}
+  f_{z} & \equiv \left(xyz\right)f, \label{idx:z}\\
+  f_{x} & \equiv \left(yzx\right)f, \label{idx:x}\\
+  f_{y} & \equiv \left(zxy\right)f. \label{idx:y}
+\end{align}
+It is useful to note these ancillary functions have the following relationships,
+\begin{align}
+  f_{z} & = \left(zxy\right)f_{x} = \left(yzx\right)f_{y}, \\
+  f_{x} & = \left(yzx\right)f_{z} = \left(zxy\right)f_{y}, \\
+  f_{y} & = \left(zxy\right)f_{z} = \left(yzx\right)f_{x}.
+\end{align}
+For ease of nomenclature, we'll call these three transformations
+$\left(xyz\right)$, $\left(yzx\right)$, and $\left(zxy\right)$ the indexing
+transformations.
+
+Since we've introduced the concept of valley indexed functions, we'll introduce
+an additional stipulation upon $\Psi$, namely that
+\begin{equation}
+  \Psi = c_{z}\psi_{z} + c_{x}\psi_{x} + c_{y}\psi_{y}.
+\label{wf_raw}
+\end{equation}
+Above, the three functions $\psi_{x}$, $\psi_{y}$, and $\psi_{z}$ are arbitrary
+but linked by valley indexing relationships introduced in \eqref{idx:z},
+\eqref{idx:x}, and \eqref{idx:y}. To be consistent with definition
+\eqref{wf_raw} and equation \eqref{form:full-symmetric-wavefunction} we expect
+the valley-linked $\psi_{q}$ terms of the full wavefunction to themselves be
+constructed from terms involving the product of the envelope and valley-indexed
+Bloch functions. We can group those terms by Bloch function axes, and so we
+expect the following
+\begin{equation}
+  \psi_{z} = \psi_{\parallel,z} + \psi_{\perp_{1},x} + \psi_{\perp_{2},y},
+\label{single-term:form}
+\end{equation}
+where 
+\begin{equation}
+  \psi_{\aleph,q}
+    =
+    \Phi_{\aleph,+q}
+    \theta^{\left(+q\right)}
+      +
+    \Phi_{\aleph,-q}
+    \theta^{\left(-q\right)}
+.
+\label{single-axis:form0}
+\end{equation}
+where the Bloch functions $\theta^{\left(q\right)}$ are given as
+\begin{equation}
+  \theta^{\left(q\right)} 
+  =
+    \mathrm{e}^{\im\bm{k}_{q}\cdot\bm{r}}
+    u_{\bm{k}_{q}\bm{r}}^{}
+.
+\end{equation}
+
+The indexing relations may be used to construct $\psi_{x}$ and $\psi_{y}$ from
+$\psi_{z}$. We may alternatively write the valley-indexed terms of the full
+wavefunction as
+\begin{equation}
+  \psi_{q}
+  =
+  \psi_{\aleph_{qz},z} + \psi_{\aleph_{qx},x} + \psi_{\aleph_{qy},y}.
+\tag{\ref{single-term:form}a}
+\label{single-term:form-a}
+\end{equation}
+with possible values for $\aleph_{qq^{\prime}}$ going as $\aleph_{qq} =
+\parallel$, $\aleph_{qr} = \perp_{1}$ for $qr \in \left\{yz,zx,xy\right\}$, and
+$\aleph_{qs} = \perp_{2}$ for $qs \in \left\{xz,yx,zy\right\}$.
+
+When we apply the first factor operator of the symmetrization projection
+operator to the form in \eqref{wf_raw}, we'll find different results depending
+on the particular symmetry we are projecting upon. For $\kappa = A,E$ we can
+note the following relation involving the $\alpha$ coefficients, with
+\begin{equation}
+9\alpha_{1}\alpha_{2} = 1.
+\end{equation}
+If, in addition to the relationship above, we also note the following relation
+\begin{equation}
+\mathcal{V}_{\kappa,i}^{\dagger}\psi_{z}
+  =
+3\alpha_{1}^{\left(\kappa,i\right)}\mathcal{V}_{\kappa,i}^{\dagger}\psi_{x}
+  =
+3\alpha_{2}^{\left(\kappa,i\right)}\mathcal{V}_{\kappa,i}^{\dagger}\psi_{y}
+,
+\end{equation}
+we may find for a $\kappa = A,E$ state that
+\begin{equation}
+\mathcal{V}_{\kappa,i}^{\dagger}\Psi
+  =
+  \left(c_{z}+3c_{x}\alpha_{2}+3c_{y}\alpha_{1}\right)
+  \left(
+    \alpha_{0}^{\left(\kappa,i\right)}\psi_{z}
+    +
+    \alpha_{1}^{\left(\kappa,i\right)}\psi_{x}
+    +
+    \alpha_{2}^{\left(\kappa,i\right)}\psi_{y}
+  \right)
+  .
+\end{equation}
+This shows a clear projection form, with a resulting symmetrized function form
+multiplied by a overall factor indicating how much of the original function can
+be said to "lie along" the symmetrized form. For $\kappa = A,E$ then, we can
+take the $c$ coefficients to have the following form, with $ c_{z} = C/3 $, $
+c_{x} = C \alpha_{ 1 } $, and $c_{y} = C \alpha_{ 2 } $, where $C$ is a complex
+factor useful for normalization. If we define the $c_{q}$ coefficients as such,
+we'll find that
+\begin{equation}
+\mathcal{V}_{\kappa,i}^{\dagger}
+\Psi
+  =
+\Psi
+  =
+C
+\left(
+  \alpha_{0}^{\left(\kappa,i\right)}\psi_{z}
+  +
+  \alpha_{1}^{\left(\kappa,i\right)}\psi_{x}
+  +
+  \alpha_{2}^{\left(\kappa,i\right)}\psi_{y}
+\right)
+\label{wf_symm:a}
+\end{equation}
+
+In the case of $\kappa = T$, the $\alpha$ go as
+\begin{gather}
+  \alpha_{0}^{\left(T_{n},i\right)} = \delta_{iz}, \quad\quad
+  \alpha_{1}^{\left(T_{n},i\right)} = \delta_{ix}, \quad\quad
+  \alpha_{2}^{\left(T_{n},i\right)} = \delta_{iy}.
+  % \alpha_{q}^{2} &= \alpha_{q}, \\
+  % \alpha_{q}^{*} &= \alpha_{q}, \\
+  % \alpha_{q}\alpha_{r} &= \delta_{iq}\delta_{qr}.
+\end{gather}
+This means application of the $\mathcal{V}^{\dagger}$ operator yields the
+following effect upon our wavefunction, namely
+\begin{align}
+  \mathcal{V}_{T_{n},i}^{\dagger}
+  \Psi
+  & =
+  d_{z}\psi_{z}
+  +
+  d_{x}\psi_{x}
+  +
+  d_{y}\psi_{y}
+  ,
+\label{wf_symm:b}
+\\
+  d_{z}
+  & =
+  \delta_{iz}c_{z}
+  +
+  \delta_{ix}c_{x}
+  +
+  \delta_{iy}c_{y}
+  ,
+\\
+  d_{x}
+  & =
+  \delta_{iz}c_{x}
+  +
+  \delta_{ix}c_{y}
+  +
+  \delta_{iy}c_{z}
+  ,
+\\
+  d_{y}
+  & =
+  \delta_{iz}c_{y}
+  +
+  \delta_{ix}c_{z}
+  +
+  \delta_{iy}c_{x}
+  .
+\end{align}
+Alternatively, we can state
+\begin{align}
+  \mathcal{V}_{T_{n},i}^{\dagger}
+  \Psi
+  & =
+  \delta_{iz}\psi_{0}
+  +
+  \delta_{ix}\psi_{1}
+  +
+  \delta_{iy}
+  \psi_{2}
+  ,
+\label{wf_symm2}
+\\
+  \psi_{0} & = c_{z}\psi_{z}+c_{x}\psi_{x}+c_{y}\psi_{y},
+\\
+  \psi_{1} & = c_{x}\psi_{z}+c_{y}\psi_{x}+c_{z}\psi_{y},
+\\
+  \psi_{2} & = c_{y}\psi_{z}+c_{z}\psi_{x}+c_{x}\psi_{y}
+  .
+\end{align}
+We see a marked difference between the effect of the
+$\mathcal{V}_{T_{n},i}^{\dagger}$ factor operator and the
+$\mathcal{V}_{A_{n},i}^{\dagger}$, $\mathcal{V}_{E,i}^{\dagger}$ operators. For
+$\kappa = T$, in essence the effect of the valley mixing/rotation factor
+operator $\mathcal{V}_{T_{n},i}^{\dagger}$ is to generate a cyclic permutation
+of the $c$ coefficients without an overall change of function form. Another way
+to interpret the effect of the $\mathcal{V}_{T_{n},i}^{\dagger}$ factor operator
+is that it aligns the $z$-axis of the function with the $T$-states' axes of
+symmetry. In the case of $\kappa = A,E$ we find that the factor operator
+redistributes the weight of each valley.
+
+With appropriate choice of the $\beta$ coefficients below, we can group results for all symmetries in the following form,
+\begin{equation}
+  \mathcal{V}_{\kappa,i}^{\dagger}
+  \Psi
+  =
+  \beta_{z}^{\left(\kappa,i\right)}\psi_{z}
+  +
+  \beta_{x}^{\left(\kappa,i\right)}\psi_{x}
+  +
+  \beta_{y}^{\left(\kappa,i\right)}\psi_{y}.
+\label{multi-term_form}
+\end{equation}
+We can group the terms solely by Bloch axes, which will give us 
+\begin{align}
+  \mathcal{V}_{\kappa,i}^{\dagger}
+  \Psi
+  &=
+  \psi_{z}^{\prime} + \psi_{x}^{\prime} + \psi_{y}^{\prime},
+\label{single-term:form-b}
+\\
+  \psi_{z}^{\prime}
+  &=
+  \beta_{z}^{\left(\kappa,i\right)}\psi_{\parallel,z}
+  +
+  \beta_{y}^{\left(\kappa,i\right)}\psi_{\perp_{1},z}
+  +
+  \beta_{x}^{\left(\kappa,i\right)}\psi_{\perp_{2},z}
+  ,
+\label{single-axis:form:z}
+\\
+  \psi_{x}^{\prime}
+  &=
+  \beta_{x}^{\left(\kappa,i\right)}\psi_{\parallel,x}
+  +
+  \beta_{z}^{\left(\kappa,i\right)}\psi_{\perp_{1},x}
+  +
+  \beta_{y}^{\left(\kappa,i\right)}\psi_{\perp_{2},x}
+  ,
+\label{single-axis:form:x}
+\\
+  \psi_{y}^{\prime}
+  &=
+  \beta_{y}^{\left(\kappa,i\right)}\psi_{\parallel,y}
+  +
+  \beta_{x}^{\left(\kappa,i\right)}\psi_{\perp_{1},y}
+  +
+  \beta_{z}^{\left(\kappa,i\right)}\psi_{\perp_{2},y}
+  .
+\label{single-axis:form:y}
+\end{align}
+We can rewrite this expression to make the underlying envelope-Bloch product
+form explicit.
+\begin{align}
+\psi_{q}^{\prime}
+  &=
+    \sum_{\upsilon = +,-}
+    \Phi_{\upsilon q}
+    \theta^{\left(\upsilon q\right)}
+,
+\label{single-axis:form1}
+\\
+  \Phi_{\upsilon z}
+  & =
+  \beta_{z}^{\left(\kappa,i\right)}\Phi_{\parallel,\upsilon z}
+  +
+  \beta_{y}^{\left(\kappa,i\right)}\Phi_{\perp_{1},\upsilon z}
+  +
+  \beta_{x}^{\left(\kappa,i\right)}\Phi_{\perp_{2},\upsilon z},
+\\
+  \Phi_{\upsilon x}
+  & =
+  \beta_{x}^{\left(\kappa,i\right)}\Phi_{\parallel,\upsilon x}
+  +
+  \beta_{z}^{\left(\kappa,i\right)}\Phi_{\perp_{1},\upsilon x}
+  +
+  \beta_{y}^{\left(\kappa,i\right)}\Phi_{\perp_{2},\upsilon x}
+\\
+  \Phi_{\upsilon y}
+  & =
+  \beta_{y}^{\left(\kappa,i\right)}\Phi_{\parallel,\upsilon y}
+  +
+  \beta_{x}^{\left(\kappa,i\right)}\Phi_{\perp_{1},\upsilon y}
+  +
+  \beta_{z}^{\left(\kappa,i\right)}\Phi_{\perp_{2},\upsilon y}
+\end{align}
+It's worth noting that the symmetrizing operators can be extended down through
+the layers of definition introduced in \eqref{single-term:form} and
+\eqref{single-axis:form0} to the envelope functions $\Phi_{\aleph,\pm q}$
+because the operators are linear. We see the $\beta$ coefficients show up in our
+expressions above. The value of the $\beta$ coefficients depend upon the value
+of the symmetry index $\kappa$ and follow directly from \eqref{wf_symm:a} and
+\eqref{wf_symm:b}. There's an important distinction between $\beta$ for $\kappa
+= T$ and $\beta$ for $\kappa = A,E$. For the $A,E$ states the coefficients are
+not arbitrary, with $\beta_{q} = \alpha_{q}$. For the $T$ states, the value of
+$\beta_{q} = d_{q}$ and thus depends upon the value of the $c$ arbitrary
+constants. Since the factor operator for $\kappa = T$ does not remix the
+valleys, the weight of each valley remains arbitrary. As such we note that the
+envelope functions for states with $\kappa = T$ are not linked by the indexing
+expressions introduced in \eqref{idx:z}, \eqref{idx:x}, and \eqref{idx:y}. This
+is not the case for $\kappa = A,E$. Namely, we find the following
+valley-indexing relationships.
+\begin{align}
+  \Phi_{\upsilon x}
+  &=
+  3\alpha_{1}^{\left(\kappa,i\right)}\left(yzx\right)
+  \Phi_{\upsilon z},
+\label{idx:env:xz}
+\\
+  \Phi_{\upsilon y}
+  &=
+  3\alpha_{2}^{\left(\kappa,i\right)}\left(zxy\right)
+  \Phi_{\upsilon z},
+\label{idx:env:yz}
+\\
+  \Phi_{\upsilon y}
+  &=
+  3\alpha_{1}^{\left(\kappa,i\right)}\left(yzx\right)
+  \Phi_{\upsilon x}.
+\label{idx:env:yx}
+\end{align}
+
+Over the course of this section, we will determine the necessary properties of
+the envelope function to generate the desired symmetry. As we apply the rest of
+the projection operator factors to our full wavefunction, we'll explore how the
+interplay of the Bloch and envelope functions influences the process of
+symmetrization.
+
+Our next step will be to apply $\mathcal{A}_{z}^{\left(\kappa\right)}$ to our
+wavefunction. We note that for $\kappa = E$, the operator
+$\mathcal{A}_{z}^{\left(E\right)} = \left(xyz\right)$ and so the effect of the
+operator is trivial. For $\kappa = A,T$, the effect of this operator upon our
+terms are given below.
+
+Without much trouble we can assert that
+\begin{equation}
+  \mathcal{A}_{z}^{\left(\kappa\right)}\psi_{z}^{\prime} = \psi_{z}^{\prime}.
+\end{equation}
+Given the linearity of the symmetry transformations, we can achieve this on a
+per Bloch function term basis. For the $z$ term it is true that
+\begin{equation} 
+  \mathcal{A}_{z}^{\left(\kappa\right)}\Phi_{\upsilon z} = \Phi_{\upsilon z}
+\label{acyc-z:env-z}
+,
+\end{equation}
+if we also assert of our envelope function terms that
+\begin{equation}
+\Phi_{\upsilon z}
+  =
+    \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon z}
+\label{acyc:z}
+.
+\end{equation}
+However, there are subtleties when applying the acyclic operator
+$\mathcal{A}_{z}$ to states with Bloch function factors indexed by $x$ and $y$.
+Let's consider the following.
+\begin{align}
+  \mathcal{A}_{z}^{\left(\kappa\right)}
+  \Phi_{\upsilon x}\theta^{\left(\upsilon x\right)}
+  & =
+  \frac
+  {
+    \Phi_{\upsilon x}
+    \theta^{\left(\upsilon x\right)}
+    + 
+    \left[\sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon x}\right]
+    \theta^{\left(\upsilon y\right)}
+  }
+  {2}
+\label{acyc-z:x}
+,\\
+  \mathcal{A}_{z}^{\left(\kappa\right)}
+  \Phi_{\upsilon y}\theta^{\left(\upsilon y\right)}
+  & =
+  \frac
+  {
+    \Phi_{\upsilon y}
+    \theta^{\left(\upsilon y\right)}
+    + 
+    \left[\sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon y}\right]
+    \theta^{\left(\upsilon x\right)}
+  }
+  {2}
+\label{acyc-z:y}
+\end{align}
+Here we note that for $\kappa = T$ the envelope functions are not linked by the
+indexing relationships. However, we assert that
+\begin{equation}
+  \mathcal{A}_{z}^{\left(T\right)}
+  \left\{ 
+    \Phi_{\upsilon x}\theta^{\left(\upsilon x\right)}
+      +
+    \Phi_{\upsilon y}\theta^{\left(\upsilon y\right)}
+  \right\}
+= 
+  \Phi_{\upsilon x}\theta^{\left(\upsilon x\right)}
+    +
+  \Phi_{\upsilon y}\theta^{\left(\upsilon y\right)}
+.
+\label{acyc-z:env-xy}
+\end{equation}
+Combining \eqref{acyc-z:x} and \eqref{acyc-z:y} with \eqref{acyc-z:env-xy}
+yields
+\begin{align}
+  \Phi_{\upsilon x}
+  &=
+  \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon y}
+\label{acyc:x-y}
+\\
+  \Phi_{\upsilon y}
+  &=
+  \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon x}
+\tag{\ref{acyc:x-y}${}^{\prime}$}
+\label{acyc:y-x}
+\end{align}
+It should be noted that \eqref{acyc:x-y} and \eqref{acyc:y-x} are equivalent. We
+can clearly state that for $\kappa = T$ states there exists a relationship
+between the $\Phi_{\upsilon x}$ and $\Phi_{\upsilon y}$ envelopes, but no
+relationship between these envelopes and the $\Phi_{\upsilon z}$ envelopes can be
+derived.
+
+However, we saw above in the indexing relations \eqref{idx:env:xz},
+\eqref{idx:env:yz}, and \eqref{idx:env:yx} that relationships exist between the
+envelope functions of different valley-indices for $\kappa = A,E$. We also
+observe that
+\begin{equation}
+  \left(yzx\right)\left(yxz\right)\left(yzx\right)
+=
+  \left(zxy\right)\left(yxz\right)\left(zxy\right)
+=
+  \left(yxz\right).
+\end{equation}
+In particular, by combining the indexing relations with the observation above
+and utilizing \eqref{acyc:z} it may be shown that
+\begin{equation}
+\left(yxz\right)\Phi_{\upsilon x}
+  =
+    3\alpha_{2}^{\left(\kappa,i\right)}\sigma^{\left(\kappa\right)}
+    \Phi_{\upsilon y}
+\label{acyc:x}
+.
+\end{equation}
+or equivalently 
+\begin{equation}
+\left(yxz\right)\Phi_{\upsilon y}
+  =
+    3\alpha_{1}^{\left(\kappa,i\right)}\sigma^{\left(\kappa\right)}
+    \Phi_{\upsilon x}
+\tag{\ref{acyc:x}${}^{\prime}$}
+\label{acyc:y}
+.
+\end{equation}
+Since the $E$-states have a trivial acyclic operator, we'll keep our focus on
+the $A$-states. In light of this consideration, we find $
+3\alpha_{1}^{\left(A\right)} = 3\alpha_{2}^{\left(A\right)} = 1 $. If this is
+true than \eqref{acyc:x-y} is equivalent to \eqref{acyc:x} and \eqref{acyc:y-x}
+is equivalent to \eqref{acyc:y}. As such, it is fairly trivial to prove that
+\eqref{acyc:z} and \eqref{acyc:x-y} are equivalent relationships for functions
+linked by the valley-index relations. We should note here that, for $\kappa = T$
+states, \eqref{acyc:z} and \eqref{acyc:x-y} are not equivalent relationships, so
+while $\Phi_{\upsilon x}$ and $\Phi_{\upsilon y}$ are linked they are not linked
+with $\Phi_{\upsilon z}$.
+
+When constructing our envelope functions we find it convenient to use variations
+of the same underlying naive envelope function for all symmetric states. As
+such, we require our naive envelope states to satisfy \eqref{acyc:z}. However,
+we note that two such naive envelopes may independently satisfy \eqref{acyc:z}
+allowing us freedom to construct $\kappa = T$ states where $\Phi_{\upsilon z}$
+is independent of $\Phi_{\upsilon x}$ and $\Phi_{\upsilon y}$. In short, for
+$\kappa = T$ states we may have $\Phi_{\upsilon z}$ along with $\Phi_{\upsilon
+x} = \left(yzx\right)\Phi_{\upsilon z}^{\prime}$ and $\Phi_{\upsilon y} =
+\left(zxy\right)\Phi_{\upsilon z}^{\prime}$ where $\Phi_{\upsilon z} \ne
+\Phi_{\upsilon z}^{\prime}$ and both are such that
+\begin{align}
+\sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon z}
+  &=
+    \Phi_{\upsilon z}
+,\\
+\sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon z}^{\prime}
+  &=
+    \Phi_{\upsilon z}^{\prime}
+.
+\end{align}
+
+Now we should apply the double inversion factor operator $\mathcal{D}_{z}$ to
+the wavefunction. To ensure symmetrization we wish to allow
+\begin{align}
+  \mathcal{D}_{z}^{\left(\kappa\right)}\psi_{q}^{\prime}
+  &=
+  \psi_{q}^{\prime}
+  .
+\label{dblinv}
+\end{align}
+For \eqref{dblinv} to be true for $q = z$, it must be the case that
+\begin{equation}
+  \Phi_{\upsilon z}
+  =
+  \left(\frac{\left(xyz\right)+\left(\bar{x}\bar{y}z\right)}{4}\right)
+  \Phi_{\upsilon z}
+  +
+  \omega^{\left(\kappa\right)}
+  \left(
+    \frac
+    { \left(\bar{x}y\bar{z}\right)+\left(x\bar{y}\bar{z}\right) }
+    {4}
+  \right)
+  \Phi_{-\upsilon z}
+  .
+\label{dblinv:env:z}
+\end{equation}
+Some further arithmetic work on \eqref{dblinv:env:z} can establish the following
+relationships. We can show that
+\begin{align}
+  \Phi_{\upsilon z}
+  & =
+  \left(\bar{x}\bar{y}z\right)
+  \Phi_{\upsilon z}
+  ,
+\label{dblinv:z:para}
+\\
+  \Phi_{-\upsilon z}
+  & =
+  \omega^{\left(\kappa\right)}
+  \left(
+    \frac{\left(\bar{x}y\bar{z}\right)+\left(x\bar{y}\bar{z}\right)}{2}
+  \right)
+  \Phi_{\upsilon z}
+  .
+\label{dblinv:z:anti}
+\end{align}
+
+We saw in \eqref{acyc:x-y} that the presence of $x$-valley terms implies the
+presence of $y$-valley terms in our partially symmetrized wavefunction, and vice
+versa. Thus, for the valleys perpendicular to $z$ we must have both
+\begin{equation}
+  \Phi_{\upsilon x}
+  =
+  \left(
+    \frac
+    {
+      \left(xyz\right)
+      +
+      \omega^{\left(\kappa\right)}\left(x\bar{y}\bar{z}\right)
+    }
+    {4}
+  \right)
+  \Phi_{\upsilon x}
+  +
+  \left(
+    \frac
+    {
+      \left(\bar{x}\bar{y}z\right)
+      +
+      \omega^{\left(\kappa\right)}\left(\bar{x}y\bar{z}\right)
+    }
+    {4}
+  \right)
+  \Phi_{-\upsilon x}
+  ,
+\label{dblinv:x}
+\end{equation}
+and
+\begin{equation}
+  \Phi_{\upsilon y}
+  =
+  \left(
+    \frac
+    {
+      \left(xyz\right)
+      +
+      \omega^{\left(\kappa\right)}\left(\bar{x}y\bar{z}\right)
+    }
+    {4}
+  \right)
+  \Phi_{\upsilon y}
+  +
+  \left(
+    \frac
+    {
+      \left(\bar{x}\bar{y}z\right)
+      +
+      \omega^{\left(\kappa\right)}\left(x\bar{y}\bar{z}\right)
+    }
+    {4}
+  \right)
+  \Phi_{-\upsilon y}
+  .
+\label{dblinv:y}
+\end{equation}
+As before we can do some arithmetic work to simplify these expressions. If we
+assume that \eqref{dblinv:x} and \eqref{dblinv:y} are both true we find
+\begin{align}
+  \Phi_{\upsilon x}
+  & =
+  \omega^{\left(\kappa\right)}
+  \left(x\bar{y}\bar{z}\right)
+  \Phi_{\upsilon x}
+  ,
+\label{dblinv:x:para}
+\\
+  \Phi_{-\upsilon x}
+  & =
+  \left(
+    \frac
+    {
+      \left(\bar{x}\bar{y}z\right)
+      +
+      \omega^{\left(\kappa\right)}\left(\bar{x}y\bar{z}\right)
+    }
+    {2}
+  \right)
+  \Phi_{\upsilon x}
+  ,
+\label{dblinv:x:anti}
+\end{align}
+as well as
+\begin{align}
+  \Phi_{\upsilon y}
+  & =
+  \omega^{\left(\kappa\right)}
+  \left(\bar{x}y\bar{z}\right)
+  \Phi_{\upsilon y}
+  ,
+\label{dblinv:y:para}
+\\
+  \Phi_{-\upsilon y}
+  & =
+  \left(
+    \frac
+    {
+      \left(\bar{x}\bar{y}z\right)
+      +
+      \omega^{\left(\kappa\right)}\left(x\bar{y}\bar{z}\right)
+    }
+    {2}
+  \right)
+  \Phi_{\upsilon y}
+  .
+\label{dblinv:y:anti}
+\end{align}
+It is worth noting that if we assume \eqref{acyc:x-y} is true, and if we also
+observe that
+\begin{equation}
+\left(yxz\right)\left(\bar{x}y\bar{z}\right)\left(yxz\right)
+  =
+    \left(x\bar{y}\bar{z}\right)
+.
+\end{equation}
+then we see that \eqref{dblinv:x:para} is equivalent to \eqref{dblinv:y:para}
+and \eqref{dblinv:x:anti} is equivalent to \eqref{dblinv:y:anti}.
+
+As before, for the $\kappa = A,E$ states we can use the indexing relationships
+to try to find additional equivalencies between the above relationships. We once
+again invoke \eqref{idx:env:xz}, \eqref{idx:env:yz}, and \eqref{idx:env:yx}. In
+that spirit, note the following
+\begin{align}
+  \left(zxy\right)\left(x\bar{y}\bar{z}\right)\left(yzx\right)
+&=
+  \left(\bar{x}\bar{y}z\right)
+\\
+\left(yzx\right)\left(\bar{x}y\bar{z}\right)\left(zxy\right)
+&=
+  \left(\bar{x}\bar{y}z\right)
+\end{align}
+Applying these relationships to \eqref{dblinv:x:para} and \eqref{dblinv:y:para}
+yields
+\begin{equation}
+  \Phi_{\upsilon z}
+  =
+  \omega^{\left(\kappa\right)}
+  \left(\bar{x}\bar{y}z\right)
+  \Phi_{\upsilon z}
+  .
+\label{dblinv:xy:para}
+\end{equation}
+
+For both \eqref{dblinv:z:para} and \eqref{dblinv:xy:para} to be true, it must be
+the case that
+\begin{equation}
+  \omega^{\left(\kappa\right)} = +1.  \label{AE_cond}
+\end{equation}
+This condition is satisfied for states with $\kappa = A,E$.
+
+We can also examine the relationships between \eqref{dblinv:z:anti},
+\eqref{dblinv:x:anti}, and \eqref{dblinv:y:anti}. Examining the symmetry
+operators and their products, we assert that
+\begin{align}
+  \left(zxy\right)\left(\bar{x}\bar{y}z\right)\left(yzx\right)
+  & = 
+  \left(\bar{x}y\bar{z}\right)
+\\
+  \left(zxy\right)\left(\bar{x}y\bar{z}\right)\left(yzx\right)
+  & = 
+  \left(x\bar{y}\bar{z}\right)
+\\
+  \left(yzx\right)\left(\bar{x}\bar{y}z\right)\left(zxy\right)
+  & = 
+  \left(x\bar{y}\bar{z}\right)
+\\
+  \left(yzx\right)\left(x\bar{y}\bar{z}\right)\left(zxy\right)
+  & = 
+  \left(\bar{x}y\bar{z}\right)
+\end{align}
+Applying these relationships to \eqref{dblinv:x:anti}, and \eqref{dblinv:y:anti}
+we find
+\begin{align}
+  \Phi_{-\upsilon z}
+  & =
+  \left(
+    \frac
+    {
+      \left(\bar{x}y\bar{z}\right)
+      +
+      \omega^{\left(\kappa\right)}
+      \left(x\bar{y}\bar{z}\right)
+    }
+    {2}
+  \right)
+  \Phi_{\upsilon z}
+  ,
+\tag{\ref{dblinv:x:anti}a}
+\label{dblinv:x:anti-a}
+\\
+  \Phi_{-\upsilon z}
+  & =
+  \left(
+    \frac
+    {
+      \left(x\bar{y}\bar{z}\right)
+      +
+      \omega^{\left(\kappa\right)}
+      \left(\bar{x}y\bar{z}\right)
+    }
+    {2}
+  \right)
+  \Phi_{\upsilon z}
+  ,
+\tag{\ref{dblinv:y:anti}a}
+\label{dblinv:y:anti-a}
+\end{align}
+We note that if \eqref{AE_cond} is true, then \eqref{dblinv:z:anti},
+\eqref{dblinv:x:anti-a}, and \eqref{dblinv:y:anti-a} are equivalent. 
+
+So far we have found the form of the partially symmetrized wavefunction to
+be such that 
+\begin{equation}
+  \mathcal{D}_{z}^{\left(\kappa\right)}
+  \mathcal{A}_{z}^{\left(\kappa\right)}
+  \mathcal{V}_{\kappa,i}^{\dagger}\Psi
+  =
+  \mathcal{V}_{\kappa,i}^{\dagger}\Psi
+  .
+\tag{\ref{wf_raw}f}
+\label{multi-aleph:form1}
+\end{equation}
+In essence, the process by which we have applied the $\mathcal{A}_{z}$ acyclic
+operator and the $\mathcal{D}_{z}$ double inversion operator hasn't altered the
+overall structure of our wavefunction, but has exerted conditions upon the
+underlying envelope functions.
+
+It can be shown that the application of the final factor operator $\mathcal{V}$
+returns the wavefunction to its initial form. To ensure equality we find the
+following requirements upon our envelope functions. For the $\kappa = A,E$
+states the following requirements are sufficient.
+\begin{align}
+  \Phi_{\upsilon z}
+  &=
+  \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon z}
+  .
+\tag{\ref{acyc:z}}
+\\
+  \Phi_{\upsilon z}
+  & =
+  \left(\bar{x}\bar{y}z\right)
+  \Phi_{\upsilon z}
+  ,
+\tag{\ref{dblinv:z:para}}
+\\
+  \Phi_{-\upsilon z}
+  & =
+  \left(
+    \frac{\left(\bar{x}y\bar{z}\right)+\left(x\bar{y}\bar{z}\right)}{2}
+  \right)
+  \Phi_{\upsilon z}
+  .
+\tag{\ref{dblinv:z:anti}}
+\end{align}
+Due to the valley mixing of the $A$- and $E$-states the envelope functions of
+other valleys may be found from the following indexing relationships.
+\begin{align}
+  \Phi_{\upsilon x}
+  &=
+  3\alpha_{1}^{\left(\kappa,i\right)}\left(yzx\right)
+  \Phi_{\upsilon z}
+  ,
+\tag{\ref{idx:env:xz}}
+\\
+  \Phi_{\upsilon y}
+  &=
+  3\alpha_{2}^{\left(\kappa,i\right)}\left(zxy\right)
+  \Phi_{\upsilon z}
+  .
+\tag{\ref{idx:env:yz}}
+\end{align}
+
+For the $\kappa = T$ states, the symmetry picks out a longitudinal axis, with
+the other axes being perpendicular. The longitudinal envelope functions are
+independent of the transverse envelope functions. We can state the requirements
+on these envelope functions as such. For the longitudinal envelopes we see
+\begin{align}
+  \Phi_{\upsilon z}
+  &=
+  \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon z}
+  .
+\tag{\ref{acyc:z}}
+\\
+  \Phi_{\upsilon z}
+  & =
+  \left(\bar{x}\bar{y}z\right)
+  \Phi_{\upsilon z}
+  ,
+\tag{\ref{dblinv:z:para}}
+\\
+  \Phi_{-\upsilon z}
+  & =
+  -
+  \left(
+    \frac{\left(\bar{x}y\bar{z}\right)+\left(x\bar{y}\bar{z}\right)}{2}
+  \right)
+  \Phi_{\upsilon z}
+  .
+\tag{\ref{dblinv:z:anti}}
+\end{align}
+The transverse envelopes are independent of the longitudinal envelopes, but not
+independent of each other. The relationship between the transverse envelopes
+follows 
+\begin{equation}
+  \Phi_{\upsilon x}
+  =
+  \sigma^{\left(\kappa\right)}\left(yxz\right)\Phi_{\upsilon y}.
+\tag{\ref{acyc:x-y}}
+\end{equation}
+The transverse envelopes must also follow
+\begin{align}
+  \Phi_{\upsilon x}
+  & =
+  \omega^{\left(\kappa\right)}
+  \left(x\bar{y}\bar{z}\right)
+  \Phi_{\upsilon x}
+  ,
+\tag{\ref{dblinv:x:para}}
+\\
+  \Phi_{-\upsilon x}
+  & =
+  \left(
+    \frac
+    {
+      \left(\bar{x}\bar{y}z\right)
+      -
+      \left(\bar{x}y\bar{z}\right)
+    }
+    {2}
+  \right)
+  \Phi_{\upsilon x}
+  .
+\tag{\ref{dblinv:x:anti}}
+\end{align}

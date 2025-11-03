@@ -1,0 +1,44 @@
+MassAniso: 0.207901
+RelativeDielectric: 11.4
+
+Energy SU(meV): 19.9437
+Length SU(nm): 3.16673
+
+
+PotentialIdx,Exponent,Coefficient(Real),Coefficient(Imag),Symmetry,
+0,-1,-2,0,
+
+SolidAngleFunc
+PotentialIdx,E(Real),E(Imag),X(Real),X(Imag),Y(Real),Y(Imag),Z(Real),Z(Imag),XX(Real),XX(Imag),YY(Real),YY(Imag),ZZ(Real),ZZ(Imag),XY(Real),XY(Imag),XZ(Real),XZ(Imag),YZ(Real),YZ(Imag)
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+
+SlaterFunc
+PotentialIdx,E(Real),E(Imag),X(Real),X(Imag),Y(Real),Y(Imag),Z(Real),Z(Imag),XX(Real),XX(Imag),YY(Real),YY(Imag),ZZ(Real),ZZ(Imag),XY(Real),XY(Imag),XZ(Real),XZ(Imag),YZ(Real),YZ(Imag)
+0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0
+
+GaussFunc
+PotentialIdx,E(Real),E(Imag),X(Real),X(Imag),Y(Real),Y(Imag),Z(Real),Z(Imag),XX(Real),XX(Imag),YY(Real),YY(Imag),ZZ(Real),ZZ(Imag),XY(Real),XY(Imag),XZ(Real),XZ(Imag),YZ(Real),YZ(Imag)
+0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0,-0
+
+
+WavefunctionType: 1
+
+BasisIdx,m,l,k,Azimuth,Symmetry,
+0,0,0,0,1,E
+1,0,0,1,1,E
+2,0,0,2,1,E
+3,0,2,0,1,E
+4,0,2,1,1,E
+5,0,2,2,1,E
+6,0,4,0,1,E
+7,0,4,1,1,E
+8,0,4,2,1,E
+9,0,0,0,1,E
+10,0,0,1,1,E
+11,0,2,0,1,E
+12,0,2,1,1,E
+13,0,0,0,1,E
+
+
+Radius0(AU),Aniso0,Radius1(AU),Aniso1,Radius2(AU),Aniso2,Energy0(AU),Variance0,Energy1(AU),Variance1,Energy2(AU),Variance2,Energy3(AU),Variance3,Energy4(AU),Variance4,Energy5(AU),Variance5,Energy6(AU),Variance6,Energy7(AU),Variance7,Energy8(AU),Variance8,Energy9(AU),Variance9,Energy10(AU),Variance10,Energy11(AU),Variance11,Energy12(AU),Variance12,Energy13(AU),Variance13,Del
+0.62,1.54,1.24,1.72,1.8,2,-1.58112,-0.488088,-0.45473,-0.32254,-0.221973,-0.787167,-0.051021,176.935,0.123161,-25.3223,0.242377,-1.00942,0.515111,-0.484216,1.1176,0.406001,1.60506,0.27231,2.10925,-1.03918,3.76691,0.274393,5.68147,0.627045,9.24818,1.36227,291.871,-1.0021,3.2539

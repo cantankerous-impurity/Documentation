@@ -1,0 +1,38 @@
+\contentsline {chapter}{Acknowledgements}{iv}{chapter*.1}%
+\contentsline {chapter}{Abstract}{v}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Context}{8}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Overview of Quantum Computing}{8}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Why quantum computing?}{8}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Implementing quantum computing}{13}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Historical Narrative of EMA}{16}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Kohn-Luttinger and donor states in silicon}{16}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Faulkner and the Ritz method}{21}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Shindo-Nara and the multi-valley EMA equation}{23}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Gamble and a tetrahedral potential}{24}{subsection.1.2.4}%
+\contentsline {subsection}{\numberline {1.2.5}Modelling and sources of error}{26}{subsection.1.2.5}%
+\contentsline {chapter}{\numberline {2}Analytical Model}{28}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Derivation of EMA Energy Functional}{28}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Localized shallow semiconductor heterostructures in the bulk}{28}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Shallow one electron states}{30}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}The generalized eigenvalue problem emerges.}{35}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Considering symmetry}{37}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Introduction of a variational basis}{41}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}The silicon effective mass.}{45}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}Introducing variational anisotropy.}{47}{subsection.2.1.7}%
+\contentsline {subsection}{\numberline {2.1.8}Symmetry concerns within silicon}{49}{subsection.2.1.8}%
+\contentsline {subsection}{\numberline {2.1.9}Symmetry concerns within the silicon wavefunctions.}{51}{subsection.2.1.9}%
+\contentsline {subsection}{\numberline {2.1.10}Silicon envelope functions and single axis wavefunctions.}{63}{subsection.2.1.10}%
+\contentsline {subsection}{\numberline {2.1.11} Full symmetrized wavefunction, including envelope function anisotropy }{72}{subsection.2.1.11}%
+\contentsline {chapter}{\numberline {3}Computational Description}{86}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Overall Program Flow}{86}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Overall Program Flow and Structure}{86}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Precalculation}{87}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Benchmarking}{95}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Statically screened Coulomb potential}{95}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Exploring Single Eigenstates, Single-Valley}{95}{subsection.4.1.1}%
+\contentsline {chapter}{\numberline {5}Potential for future work}{98}{chapter.5}%
+\contentsline {chapter}{Appendices}{99}{appendix*.116}%
+\contentsline {section}{\numberline {A}System units}{99}{section.Alph0.1}%
+\contentsline {section}{\numberline {B}Transformations}{101}{section.Alph0.2}%
+\contentsline {section}{\numberline {C}Calculation of matrix elements I: Setup}{109}{section.Alph0.3}%
+\contentsline {section}{\numberline {D}Calculation of matrix elements II: Analytical results}{135}{section.Alph0.4}%

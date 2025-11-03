@@ -1,0 +1,40 @@
+% \subsection{Atomic units}
+For explicit numerical work, it is convenient to use a unitless formulation. In
+much the same way as is done in the standarnd treatment of the hydrogen atom
+problem, we introduce the unitful constants $\mathfrak{E}$ for energy and $\mathfrak{r}$ for
+length. We define these constants such that
+\begin{equation}
+  \mathfrak{E}
+  \equiv
+  \frac{\hbar^2}{2 m_\perp \mathfrak{r}^2}
+  =
+  \frac{e^2}{8\pi \epsilon \mathfrak{r}}.
+\end{equation}
+Using this relationship and solving for the length and energy directly we find
+\begin{align}
+  \mathfrak{r}
+  & =
+  \frac{4\pi \epsilon \hbar^2}{m_\perp e^2},
+  \\
+  \mathfrak{E}
+  & =
+  % \frac{m_\perp e^4}{32\pi^2\epsilon^2\hbar^2}.
+  \frac{m_\perp e^4}{2\left(4\pi\epsilon\hbar\right)^{2}}.
+\end{align}
+Please note that above $m_{\perp}$ and $\epsilon$ are not fundamental physical
+constants. $m_{\perp}$ is the transverse effective mass of the bound silicon
+donor electron, not the full electron mass. As such, $m_{\perp} \approx .1905
+m_{e}$. Additionally, it seems as though there is some question as to the best
+value for the dielectric constant of silicon $\epsilon$. If we take $\epsilon =
+\eta \epsilon_{0}$ with $\eta$ as a dimensionless parameter we have
+\begin{align}
+\mathfrak{r} &= .2778\eta\>\si{\nano\metre}, \\
+\mathfrak{E} &= \frac{2592}{\eta^{2}}\>\si{\milli\electronvolt}.
+\end{align}
+
+For a commonly quoted value of the silicon dielectric $\epsilon =
+11.4\epsilon_{0}$, we have explicitly
+\begin{align}
+\mathfrak{r} &= \SI{3.17}{\nano\metre}, \\
+\mathfrak{E} &= \SI{19.9}{\milli\electronvolt}.
+\end{align}

@@ -1,0 +1,109 @@
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{dcolumn}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{braket}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+%\newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\mathrm{e}}
+%\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+%
+%\begin{document}
+
+\subsection{Introducing variational anisotropy.}
+\label{subsection:variational-anisotropy}
+
+We previously stated in Eq. (\ref{basis-1}) that our variational subbases will
+go as 
+\begin{equation}
+  \Phi_{klm;\eta;\bm{r}}
+  \propto
+  F_{kl;\eta;r}^{\left(W\right)}
+  Y_{lm;\chi\phi}.
+\end{equation}
+To help capture the anisotropic quality of the wavefunctions introduced by the
+anisotropic effective mass, we introduce a scaling along the particular
+crystallographic axis. Without loss of generality, we can introduce a scaling
+$z\rightarrow \lambda z$ with $\lambda$ playing the role of a second variational
+parameter for the subbasis alongside $\eta$. In spherical coordinates, this
+scaling takes the form
+\begin{align}
+  r
+  \rightarrow &
+  r \vartheta_{\lambda\chi},
+  \\
+  \chi
+  \rightarrow &
+  \frac{\lambda\chi}{\vartheta_{\lambda\chi}},
+\end{align}
+where 
+\begin{align}
+  \vartheta_{\lambda\chi}
+  = &
+  \sqrt{ 1 + \left(\lambda^2 - 1\right)\chi^2 },
+\end{align}
+with $\chi = z/r = \cos\left(\theta\right)$.
+
+This argument can be specialized for the $x$- and $y$-axes as well. To
+accomplish this we can define a set of equivalent spherical coordinates
+$(\chi_{q},\phi_{q})$ defined in the standard way, but taking another axis as
+the zenith. To wit, we have
+\begin{align}
+  \chi_{x} &\equiv \frac{x}{r} = \sqrt{1-\chi^{2}}\cos\left(\phi\right) \\
+  \chi_{y} &\equiv \frac{y}{r} = \sqrt{1-\chi^{2}}\sin\left(\phi\right) \\
+  \chi_{z} &\equiv \frac{z}{r} = \chi
+\end{align}
+\begin{align}
+  \phi_{x} &\equiv \atantwo\left(\chi_{z},\chi_{y}\right)\\
+  \phi_{y} &\equiv \atantwo\left(\chi_{x},\chi_{z}\right)\\
+  \phi_{z} &\equiv \atantwo\left(\chi_{y},\chi_{x}\right) = \phi
+\end{align}
+where $\atantwo\left(b,a\right) = \text{Arg}\left(a+\im{b}\right)$.
+
+We will need to examine the implications of this introduced anisotropy upon the
+symmetry of the wavefunctions, particularly in the context of the symmetry of
+the silicon donor. For now, we can state our basis states with both radial and
+anisotropic scaling variational parameters as
+\begin{equation}
+  \Phi_{klm;\eta\lambda;\bm{r}}^{(Wq)}
+  =
+  F_{lk;\eta\lambda;r\chi_{q}}^{\left(W\right)}
+  Y_{lm;\lambda;\chi_{q}\phi_{q}},
+  \label{scaled_wf}
+\end{equation}
+where
+\begin{align}
+  F_{lk;\eta\lambda;r\chi_{q}}^{\left(W\right)}
+  & = 
+  F_{lk;\eta_{\lambda;\chi_{q}};r}^{\left(W\right)}
+  \quad\quad
+  \eta_{\lambda;\chi_{q}}
+  =
+  \frac{\eta}{\vartheta_{\lambda;\chi_{q}}}
+  \label{scaled_wf:radial_part}
+  \\
+  Y_{lm;\lambda;\chi_{q}\phi_{q}}
+  & =
+  \sqrt{ \frac{\lambda}{\vartheta_{\lambda;\chi_{q}}^{3}} }
+  Y_{
+    lm;
+    \chi_{\lambda}^{\left(q\right)}
+    \phi_{q}
+  }
+  \quad\quad
+  \chi_{\lambda}^{\left(q\right)}
+  =
+  \frac{\lambda\chi_{q}}{\vartheta_{\lambda;\chi_{q}}}
+  \label{scaled_wf:aniso_part}
+\end{align}
+The additional factors in front of the $F$ and $Y$ functions help to maintain a
+degree of independent normalization between the parts of the basis state, and
+makes the scaling transformation of some integrals within this project easier,
+aiding analytical simplification and helping numerical stability during
+computation.

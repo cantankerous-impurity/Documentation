@@ -1,0 +1,76 @@
+% % % \documentclass[aps, prl, preprint]{revtex4-2}
+% % \documentclass{report}
+
+% % \usepackage{graphicx}
+% % \usepackage{dcolumn}
+% % \usepackage{array,multirow,adjustbox}
+% % \usepackage{bm}
+% % \usepackage{amsfonts, amssymb, amsmath}
+% % \usepackage{braket}
+% % \usepackage{siunitx}
+
+% % % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% % \let\originalleft\left
+% % \let\originalright\right
+% % \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% % \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% % \newcommand{\im}{\mathrm{i}}
+% % \newcommand{\e}{\mathrm{e}}
+% % \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% % \newcommand{\diff}{\mathrm{d}}
+
+% % \DeclareMathOperator{\atantwo}{atan2}
+
+% % \title{An open source software package to compare and extend effective mass models of the phosphorous donor in silicon}
+% % \author{Luke Pendo}
+% % \date{}
+
+% % \begin{document}
+
+\subsection{Modelling and sources of error}
+
+In the previous section, we discussed a distinction between \emph{technical} and
+\emph{model} error. We consider a \emph{technical} error to result from
+computation, mathematical, or technical concerns. For example, the error that
+may be incurred as a result of employing numerical integration, or the error
+that results from using a variational wavefunction, or from truncating an
+infinite basis to allow conventional numerical eigensolver methods to be
+employed. We expect this error to be, by definition, able to be reduced by the
+allocation of more resources. The numerical integrator's error tolerance can be
+lowered, or the size of the finite basis can be expanded. These kinds of errors
+may not be practical to reduce, but we have designed our software to be scalable
+in principle so more resources can be delegated to reduce these technical
+errors.
+
+This is to be distinguished from \emph{model} error, which we consider to be
+those errors inherent to the set of approximations made in deriving the
+Shindo-Nara equations. If the reality of the donor wavefunction is that its
+$\bm{k}$-space wavefunction is not confined, in some sense, to the conduction
+band minima, we will see significant deviations between the results of the
+model and actual experiment as conducted on the donor.
+
+Of course, in some cases, we expect the division between these errors to be
+unclear, or possibly subjective. For example, the present author considers the
+best effective potential to use within the model to be an open question. It has
+been well-known that the screened Coulomb effective potential becomes
+increasingly inaccurate in the local environment of the donor, where the
+assumptions of the screening from the silicon crystal breaks down. It is thought
+by many that this potential model can be corrected by adding a central cell
+correction. Finding the best possible effective potential is an example of
+reducing technical error. Any errors that remain even when employing this
+hypothetic best potential, perhaps due to many-body effects that can't be
+represented with a mean field approximation, should be considered an example of model error.
+
+Additionally, by focusing on comparing the EMA wave functions with other methods
+and with experiment, Gamble et al. implicitly suggested that additional metrics
+are necessary to evaluate a particular model. This inspired us to compute a
+Shindo-Nara effective mass equation for the Hamiltonian-squared matrix. This
+allows us to estimate the variance of our approximate eigenfunctions, which will
+tend towards zero as our states becomes a better approximation for a particular
+eigenstate. We can compare and contrast this with the results obtained for the
+expectation energy of the same to get better insight into how these states
+converge to the exact wavefunctions predicted within the EMA.

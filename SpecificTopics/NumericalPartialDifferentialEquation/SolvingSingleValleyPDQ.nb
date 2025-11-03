@@ -1,0 +1,747 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28459,        739]
+NotebookOptionsPosition[     25859,        689]
+NotebookOutlinePosition[     26364,        708]
+CellTagsIndexPosition[     26321,        705]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Much", " ", "useful", " ", "information", " ", "found", " ", 
+    RowBox[{"here", " ", "--"}], "\[IndentingNewLine]", 
+    RowBox[{"https", ":"}]}], "//", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"mathematica", ".", "stackexchange", ".", "com"}], "/", 
+       "questions"}], "/", "236980"}], "/", "numeric"}], "-", "solution", "-",
+     "hydrogen", "-", "atom"}]}], "\[IndentingNewLine]", "*)"}]], "Input",
+ CellChangeTimes->{{3.890208593041919*^9, 3.890208618236754*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"83851956-ee47-4d24-864c-668d1c73a5b0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"H0", "[", "m_", "]"}], " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"D", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"{", 
+          RowBox[{"r", ",", "2"}], "}"}]}], "]"}]}], "-", 
+      RowBox[{
+       FractionBox["2", "r"], 
+       RowBox[{"D", "[", 
+        RowBox[{"#", ",", "r"}], "]"}]}], "-", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"1", "-", 
+         SuperscriptBox["\[Chi]", "2"]}], 
+        SuperscriptBox["r", "2"]], 
+       RowBox[{"D", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"{", 
+          RowBox[{"\[Chi]", ",", "2"}], "}"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"2", "\[Chi]"}], 
+        SuperscriptBox["r", "2"]], 
+       RowBox[{"D", "[", 
+        RowBox[{"#", ",", "\[Chi]"}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox["m", "2"], 
+        RowBox[{
+         SuperscriptBox["r", "2"], 
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           SuperscriptBox["\[Chi]", "2"]}], ")"}]}]], "#"}], "-", 
+      RowBox[{
+       FractionBox["2", "r"], "#"}]}], ")"}], "&"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"H1", "[", "\[Gamma]_", "]"}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", "\[Gamma]"}], ")"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["\[Chi]", "2"], 
+         RowBox[{"D", "[", 
+          RowBox[{"#", ",", 
+           RowBox[{"{", 
+            RowBox[{"r", ",", "2"}], "}"}]}], "]"}]}], "+", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"1", "-", 
+           SuperscriptBox["\[Chi]", "2"]}], "r"], 
+         RowBox[{"D", "[", 
+          RowBox[{"#", ",", "r"}], "]"}]}], "+", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"\[Chi]", 
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             SuperscriptBox["\[Chi]", "2"]}], ")"}]}], "r"], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"D", "[", 
+            RowBox[{"#", ",", "\[Chi]", ",", "r"}], "]"}], "+", 
+           RowBox[{"D", "[", 
+            RowBox[{"#", ",", "r", ",", "\[Chi]"}], "]"}]}], ")"}]}], "+", 
+        RowBox[{
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             SuperscriptBox["\[Chi]", "2"]}], ")"}], "2"], 
+          SuperscriptBox["r", "2"]], 
+         RowBox[{"D", "[", 
+          RowBox[{"#", ",", 
+           RowBox[{"{", 
+            RowBox[{"\[Chi]", ",", "2"}], "}"}]}], "]"}]}], "-", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"3", "\[Chi]", 
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             SuperscriptBox["\[Chi]", "2"]}], ")"}]}], 
+          SuperscriptBox["r", "2"]], 
+         RowBox[{"D", "[", 
+          RowBox[{"#", ",", "\[Chi]"}], "]"}]}]}], ")"}]}], "&"}]}], ";"}],
+  FontSize->12], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"H", "[", 
+    RowBox[{"m_", ",", "\[Gamma]_"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"H0", "[", "m", "]"}], "[", "#", "]"}], "+", 
+      RowBox[{
+       RowBox[{"H1", "[", "\[Gamma]", "]"}], "[", "#", "]"}]}], ")"}], 
+    "&"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8902020079890833`*^9, 3.890202172965664*^9}, {
+  3.8902022667578325`*^9, 3.890202303458459*^9}, {3.8902079580748224`*^9, 
+  3.890207969633662*^9}, {3.890382250811598*^9, 3.8903822561991625`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"9436a0af-d778-430c-a187-65c96e2c15da"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.890205599076047*^9, 3.890205716340914*^9}, 
+   3.890382249133382*^9},ExpressionUUID->"65159c5e-04a0-4280-b763-\
+b2f0c733af23"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8902057227627883`*^9, 3.890205744191115*^9}, 
+   3.8903822541273155`*^9},ExpressionUUID->"5ba0c200-417b-4a52-b210-\
+e06b8ae66bcc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"valsHH", ",", "funsHH"}], "}"}], "=", 
+   RowBox[{"NDEigensystem", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"H", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], "[", 
+           FractionBox[
+            RowBox[{"G", "[", 
+             RowBox[{"r", ",", "\[Chi]"}], "]"}], 
+            SuperscriptBox["r", "2"]], "]"}], 
+          SuperscriptBox["r", "2"]}], ")"}], "//", "Simplify"}], ",", 
+       RowBox[{"DirichletCondition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"G", "[", 
+           RowBox[{"r", ",", "\[Chi]"}], "]"}], "==", "0."}], ",", 
+         RowBox[{
+          RowBox[{"r", "==", "1000"}], "&&", 
+          RowBox[{
+           RowBox[{"-", "1"}], "<=", "\[Chi]", "<=", 
+           RowBox[{"+", "1"}]}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"G", "[", 
+      RowBox[{"r", ",", "\[Chi]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "0", ",", "1000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Chi]", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "5", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Method", "\[Rule]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"\"\<Eigensystem\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Arnoldi\>\"", ",", 
+           RowBox[{"\"\<Criteria\>\"", "->", "\"\<RealPart\>\""}], ",", 
+           RowBox[{"\"\<Shift\>\"", "->", 
+            RowBox[{"-", "3"}]}], ",", 
+           RowBox[{"\"\<MaxIterations\>\"", "->", "1500"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\"\<PDEDiscretization\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<FiniteElement\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<MeshOptions\>\"", "->", 
+             RowBox[{"{", 
+              RowBox[{"\"\<MaxCellMeasure\>\"", "->", ".001"}], "}"}]}], 
+            "}"}]}], "}"}]}]}], "\[IndentingNewLine]", "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "valsHH"}], "Input",
+ CellChangeTimes->{{3.8902102628792725`*^9, 3.89021026309643*^9}, {
+   3.890210327348975*^9, 3.8902103282491493`*^9}, {3.8902107517524986`*^9, 
+   3.890210754206542*^9}, {3.8902113114259253`*^9, 3.890211331931777*^9}, 
+   3.890211617317406*^9, {3.89021187288365*^9, 3.8902118851559916`*^9}, {
+   3.8902128907056046`*^9, 3.890212890913924*^9}, {3.8902129970389247`*^9, 
+   3.890213002181406*^9}, {3.8902147506691265`*^9, 3.8902147509385576`*^9}, {
+   3.890216436285545*^9, 3.8902164364200554`*^9}, {3.8902174693451185`*^9, 
+   3.8902174696169405`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"2fa15764-f8ae-4842-84d7-bc00d43446c6"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NDEigensystem", "femcscd", 
+   "\"The PDE is convection dominated and the result may not be stable. \
+Adding artificial diffusion may help.\"", 2, 5, 1, 24008374827983273803, 
+   "Ascertain"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8902103292503757`*^9, 3.890211333015417*^9, 
+  3.8902116243981647`*^9, 3.890211903057868*^9, 3.8902130039050713`*^9, 
+  3.890215090678957*^9, 3.890216628188258*^9, 3.890217475579152*^9},
+ CellLabel->
+  "During evaluation of \
+In[5]:=",ExpressionUUID->"6ba1034c-b50a-4657-9f9a-495f87999d5d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "0.11111111119380457`"}], ",", 
+   RowBox[{"-", "0.11115616607971246`"}], ",", 
+   RowBox[{"-", "0.24991873580280366`"}], ",", 
+   RowBox[{"-", "0.2501518101816367`"}], ",", 
+   RowBox[{"-", "1.0012031901626786`"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.8902133279101477`*^9, 3.8902154089462757`*^9, 
+  3.8902171850133605`*^9, 3.8902190758765655`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"707d9591-f188-45f0-9bb0-37658843c10a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"valsHH", ",", "funsHH"}], "}"}], "=", 
+   RowBox[{"NDEigensystem", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"H", "[", 
+         RowBox[{"0", ",", "1"}], "]"}], "[", 
+        RowBox[{"F", "[", 
+         RowBox[{"r", ",", "\[Chi]"}], "]"}], "]"}], ",", 
+       RowBox[{"DirichletCondition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"r", ",", "\[Chi]"}], "]"}], "==", "0."}], ",", 
+         RowBox[{
+          RowBox[{"r", "==", "1000"}], "&&", 
+          RowBox[{
+           RowBox[{"-", "1"}], "<=", "\[Chi]", "<=", 
+           RowBox[{"+", "1"}]}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"F", "[", 
+      RowBox[{"r", ",", "\[Chi]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "0", ",", "1000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Chi]", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "5", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Method", "\[Rule]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"\"\<Eigensystem\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Arnoldi\>\"", ",", 
+           RowBox[{"\"\<Criteria\>\"", "->", "\"\<RealPart\>\""}], ",", 
+           RowBox[{"\"\<Shift\>\"", "->", 
+            RowBox[{"-", "3"}]}], ",", 
+           RowBox[{"\"\<MaxIterations\>\"", "->", "1500"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\"\<PDEDiscretization\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<FiniteElement\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<MeshOptions\>\"", "->", 
+             RowBox[{"{", 
+              RowBox[{"\"\<MaxCellMeasure\>\"", "->", ".001"}], "}"}]}], 
+            "}"}]}], "}"}]}]}], "\[IndentingNewLine]", "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "valsHH"}], "Input",
+ CellChangeTimes->{{3.890219282760377*^9, 3.890219282904376*^9}, 
+   3.8902238832090178`*^9},
+ CellLabel->"In[17]:=",ExpressionUUID->"3369cce8-a95f-4581-965e-98369066d987"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NDEigensystem", "femcscd", 
+   "\"The PDE is convection dominated and the result may not be stable. \
+Adding artificial diffusion may help.\"", 2, 17, 9, 24008374827983273803, 
+   "Ascertain"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8902292183315153`*^9},
+ CellLabel->
+  "During evaluation of \
+In[17]:=",ExpressionUUID->"282d9d69-d401-4c49-be07-755dc11817f0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "0.11111112991708616`"}], ",", 
+   RowBox[{"-", "0.1111113624939275`"}], ",", 
+   RowBox[{"-", "0.25000006523293106`"}], ",", 
+   RowBox[{"-", "0.25000077406743904`"}], ",", 
+   RowBox[{"-", "1.0000061449660924`"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.890230542872118*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"1647eefc-8d4f-4228-ba7a-c023a9915eb5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"valsHH", ",", "funsHH"}], "}"}], "=", 
+   RowBox[{"NDEigensystem", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"H", "[", 
+         RowBox[{"0", ",", "1"}], "]"}], "[", 
+        RowBox[{"F", "[", 
+         RowBox[{"r", ",", "\[Chi]"}], "]"}], "]"}], ",", 
+       RowBox[{"DirichletCondition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"r", ",", "\[Chi]"}], "]"}], "==", "0."}], ",", 
+         RowBox[{
+          RowBox[{"r", "==", "1000"}], "&&", 
+          RowBox[{
+           RowBox[{"-", "1"}], "<=", "\[Chi]", "<=", 
+           RowBox[{"+", "1"}]}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"F", "[", 
+      RowBox[{"r", ",", "\[Chi]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "0", ",", "1000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Chi]", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "5", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Method", "\[Rule]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"\"\<Eigensystem\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Arnoldi\>\"", ",", 
+           RowBox[{"\"\<Criteria\>\"", "->", "\"\<RealPart\>\""}], ",", 
+           RowBox[{"\"\<Shift\>\"", "->", 
+            RowBox[{"-", "10"}]}], ",", 
+           RowBox[{"\"\<MaxIterations\>\"", "->", "2500"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\"\<PDEDiscretization\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<FiniteElement\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<MeshOptions\>\"", "->", 
+             RowBox[{"{", 
+              RowBox[{"\"\<MaxCellMeasure\>\"", "->", ".001"}], "}"}]}], 
+            "}"}]}], "}"}]}]}], "\[IndentingNewLine]", "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "valsHH"}], "Input",
+ CellChangeTimes->{{3.8902102628792725`*^9, 3.89021026309643*^9}, {
+   3.890210327348975*^9, 3.8902103282491493`*^9}, {3.8902107517524986`*^9, 
+   3.890210754206542*^9}, {3.8902113114259253`*^9, 3.890211331931777*^9}, 
+   3.890211617317406*^9, {3.89021187288365*^9, 3.8902118851559916`*^9}, {
+   3.890217466041899*^9, 3.8902174663105483`*^9}, {3.8902221570176296`*^9, 
+   3.890222157510597*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"064e515d-92ae-4d0b-bb00-e881fa52ce62"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NDEigensystem", "femcscd", 
+   "\"The PDE is convection dominated and the result may not be stable. \
+Adding artificial diffusion may help.\"", 2, 15, 8, 24008374827983273803, 
+   "Ascertain"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8902103292503757`*^9, 3.890211333015417*^9, 
+  3.8902116243981647`*^9, 3.890211903057868*^9, 3.890213347573573*^9, 
+  3.8902190760640707`*^9, 3.8902268329410486`*^9},
+ CellLabel->
+  "During evaluation of \
+In[15]:=",ExpressionUUID->"402634ff-4c71-4dc1-ad99-0ae4ed594b82"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "0.11111113693653962`"}], ",", 
+   RowBox[{"-", "0.11111138212783267`"}], ",", 
+   RowBox[{"-", "0.25000006523296037`"}], ",", 
+   RowBox[{"-", "0.2500007740675052`"}], ",", 
+   RowBox[{"-", "1.0000061449665374`"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.8902150905632677`*^9, 3.8902213982267003`*^9, 
+  3.8902292182349043`*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"91d78cd3-c422-40b7-9f9a-3771945904ed"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"valsHH", ",", "funsHH"}], "}"}], "=", 
+   RowBox[{"NDEigensystem", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"H", "[", 
+         RowBox[{"0", ",", ".9"}], "]"}], "[", 
+        RowBox[{"F", "[", 
+         RowBox[{"r", ",", "\[Chi]"}], "]"}], "]"}], ",", 
+       RowBox[{"DirichletCondition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"r", ",", "\[Chi]"}], "]"}], "==", "0."}], ",", 
+         RowBox[{
+          RowBox[{"r", "==", "1000"}], "&&", 
+          RowBox[{
+           RowBox[{"-", "1"}], "<=", "\[Chi]", "<=", 
+           RowBox[{"+", "1"}]}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"F", "[", 
+      RowBox[{"r", ",", "\[Chi]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "0", ",", "1000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Chi]", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "5", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Method", "\[Rule]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"\"\<Eigensystem\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Arnoldi\>\"", ",", 
+           RowBox[{"\"\<Criteria\>\"", "->", "\"\<RealPart\>\""}], ",", 
+           RowBox[{"\"\<Shift\>\"", "->", 
+            RowBox[{"-", "5"}]}], ",", 
+           RowBox[{"\"\<MaxIterations\>\"", "->", "1500"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\"\<PDEDiscretization\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<FiniteElement\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<MeshOptions\>\"", "->", 
+             RowBox[{"{", 
+              RowBox[{"\"\<MaxCellMeasure\>\"", "->", ".001"}], "}"}]}], 
+            "}"}]}], "}"}]}]}], "\[IndentingNewLine]", "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "valsHH"}], "Input",
+ CellChangeTimes->{{3.8902102628792725`*^9, 3.89021026309643*^9}, {
+   3.890210327348975*^9, 3.8902103282491493`*^9}, {3.8902107517524986`*^9, 
+   3.890210770728673*^9}, {3.890211341795729*^9, 3.890211353140725*^9}, {
+   3.8902116203980064`*^9, 3.8902116216830854`*^9}, {3.8902167478917894`*^9, 
+   3.8902167519385953`*^9}, {3.8902168898502445`*^9, 
+   3.8902168926805305`*^9}, {3.89021707932333*^9, 3.8902170848331575`*^9}, 
+   3.890217179827092*^9, {3.890217363523938*^9, 3.8902174446647167`*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"5bac3d01-5c5f-474b-9fe1-c3e669eca35c"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NDEigensystem", "femcscd", 
+   "\"The PDE is convection dominated and the result may not be stable. \
+Adding artificial diffusion may help.\"", 2, 9, 4, 24008374827983273803, 
+   "Ascertain"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.8902103292503757`*^9, 3.8902107721683645`*^9, 3.8902114563005176`*^9, 
+   3.8902172610759706`*^9, {3.890217369685584*^9, 3.890217414785197*^9}, 
+   3.890221398292733*^9},
+ CellLabel->
+  "During evaluation of \
+In[9]:=",ExpressionUUID->"8170c61d-6e79-49d4-93a8-dce5a80567a7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "0.11781756891099704`"}], ",", 
+   RowBox[{"-", "0.11835315218460085`"}], ",", 
+   RowBox[{"-", "0.25897923561653347`"}], ",", 
+   RowBox[{"-", "0.26618719179753914`"}], ",", 
+   RowBox[{"-", "1.0353927739506048`"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.8902231417268066`*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"58de03e3-a8a4-478d-bff6-69ad614de825"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"valsHH", ",", "funsHH"}], "}"}], "=", 
+   RowBox[{"NDEigensystem", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"H", "[", 
+         RowBox[{"0", ",", ".5"}], "]"}], "[", 
+        RowBox[{"F", "[", 
+         RowBox[{"r", ",", "\[Chi]"}], "]"}], "]"}], ",", 
+       RowBox[{"DirichletCondition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"r", ",", "\[Chi]"}], "]"}], "==", "0."}], ",", 
+         RowBox[{
+          RowBox[{"r", "==", "1000"}], "&&", 
+          RowBox[{
+           RowBox[{"-", "1"}], "<=", "\[Chi]", "<=", 
+           RowBox[{"+", "1"}]}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"F", "[", 
+      RowBox[{"r", ",", "\[Chi]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "0", ",", "1000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Chi]", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "5", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Method", "\[Rule]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"\"\<Eigensystem\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Arnoldi\>\"", ",", 
+           RowBox[{"\"\<Criteria\>\"", "->", "\"\<RealPart\>\""}], ",", 
+           RowBox[{"\"\<Shift\>\"", "->", 
+            RowBox[{"-", "5"}]}], ",", 
+           RowBox[{"\"\<MaxIterations\>\"", "->", "1500"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\"\<PDEDiscretization\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<FiniteElement\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<MeshOptions\>\"", "->", 
+             RowBox[{"{", 
+              RowBox[{"\"\<MaxCellMeasure\>\"", "->", ".001"}], "}"}]}], 
+            "}"}]}], "}"}]}]}], "\[IndentingNewLine]", "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "valsHH"}], "Input",
+ CellChangeTimes->{{3.8902102628792725`*^9, 3.89021026309643*^9}, {
+   3.890210327348975*^9, 3.8902103282491493`*^9}, {3.8902107517524986`*^9, 
+   3.890210770728673*^9}, {3.890211341795729*^9, 3.890211353140725*^9}, {
+   3.8902116203980064`*^9, 3.8902116216830854`*^9}, {3.8902167478917894`*^9, 
+   3.8902167519385953`*^9}, {3.8902168898502445`*^9, 
+   3.8902168926805305`*^9}, {3.89021707932333*^9, 3.8902170848331575`*^9}, 
+   3.890217179827092*^9, {3.890217363523938*^9, 3.8902174446647167`*^9}, {
+   3.890217808039484*^9, 3.8902178081514697`*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"7c127e3e-cace-4664-adaa-e78476a4d5cf"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NDEigensystem", "femcscd", 
+   "\"The PDE is convection dominated and the result may not be stable. \
+Adding artificial diffusion may help.\"", 2, 11, 5, 24008374827983273803, 
+   "Ascertain"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.8902103292503757`*^9, 3.8902107721683645`*^9, 3.8902114563005176`*^9, 
+   3.8902172610759706`*^9, {3.890217369685584*^9, 3.890217414785197*^9}, 
+   3.890223141804775*^9},
+ CellLabel->
+  "During evaluation of \
+In[11]:=",ExpressionUUID->"9d738047-4204-4cc5-8144-614d9ced734e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "0.15955466833291343`"}], ",", 
+   RowBox[{"-", "0.16762318618196215`"}], ",", 
+   RowBox[{"-", "0.3178403166225241`"}], ",", 
+   RowBox[{"-", "0.37111476760300555`"}], ",", 
+   RowBox[{"-", "1.2414368343613722`"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.8902244362130337`*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"0a1b9f74-6b2d-4424-b1a2-37977826a41a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"valsHH", ",", "funsHH"}], "}"}], "=", 
+   RowBox[{"NDEigensystem", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"H", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"0.1905", "/", "0.9163"}]}], "]"}], "[", 
+        RowBox[{"F", "[", 
+         RowBox[{"r", ",", "\[Chi]"}], "]"}], "]"}], ",", 
+       RowBox[{"DirichletCondition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"r", ",", "\[Chi]"}], "]"}], "==", "0."}], ",", 
+         RowBox[{
+          RowBox[{"r", "==", "1000"}], "&&", 
+          RowBox[{
+           RowBox[{"-", "1"}], "<=", "\[Chi]", "<=", 
+           RowBox[{"+", "1"}]}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"F", "[", 
+      RowBox[{"r", ",", "\[Chi]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "0", ",", "1000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Chi]", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "5", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Method", "\[Rule]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"\"\<Eigensystem\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Arnoldi\>\"", ",", 
+           RowBox[{"\"\<Criteria\>\"", "->", "\"\<RealPart\>\""}], ",", 
+           RowBox[{"\"\<Shift\>\"", "->", 
+            RowBox[{"-", "5"}]}], ",", 
+           RowBox[{"\"\<MaxIterations\>\"", "->", "2500"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\"\<PDEDiscretization\>\"", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<FiniteElement\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<MeshOptions\>\"", "->", 
+             RowBox[{"{", 
+              RowBox[{"\"\<MaxCellMeasure\>\"", "->", ".0001"}], "}"}]}], 
+            "}"}]}], "}"}]}]}], "\[IndentingNewLine]", "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "valsHH"}], "Input",
+ CellChangeTimes->{
+  3.890224666109909*^9, {3.8902318221961765`*^9, 3.89023182547341*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"813e8641-cd25-498e-b4fb-579cb2609a2c"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NDEigensystem", "femcscd", 
+   "\"The PDE is convection dominated and the result may not be stable. \
+Adding artificial diffusion may help.\"", 2, 4, 1, 24009458384754011698, 
+   "Ascertain"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8902305429174347`*^9, 3.8902318263009048`*^9, 
+  3.890382265833973*^9, 3.890382820702875*^9},
+ CellLabel->
+  "During evaluation of \
+In[4]:=",ExpressionUUID->"e8aa8297-bb64-43eb-aebb-346459a54a28"]
+}, Open  ]]
+},
+Evaluator->"Ascertain",
+WindowSize->{1092, 771},
+WindowMargins->{{-1363.5, Automatic}, {Automatic, 5.25}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>0.8 Inherited,
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"86afbb73-e4b0-4471-9c6c-5a16135bb287"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 655, 14, 70, "Input",ExpressionUUID->"83851956-ee47-4d24-864c-668d1c73a5b0"],
+Cell[1216, 36, 3646, 113, 172, "Input",ExpressionUUID->"9436a0af-d778-430c-a187-65c96e2c15da",
+ InitializationCell->True],
+Cell[4865, 151, 175, 3, 22, "Input",ExpressionUUID->"65159c5e-04a0-4280-b763-b2f0c733af23"],
+Cell[5043, 156, 179, 3, 22, "Input",ExpressionUUID->"5ba0c200-417b-4a52-b210-e06b8ae66bcc"],
+Cell[CellGroupData[{
+Cell[5247, 163, 2852, 67, 205, "Input",ExpressionUUID->"2fa15764-f8ae-4842-84d7-bc00d43446c6"],
+Cell[8102, 232, 577, 12, 23, "Message",ExpressionUUID->"6ba1034c-b50a-4657-9f9a-495f87999d5d"],
+Cell[8682, 246, 488, 10, 25, "Output",ExpressionUUID->"707d9591-f188-45f0-9bb0-37658843c10a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9207, 261, 2192, 55, 160, "Input",ExpressionUUID->"3369cce8-a95f-4581-965e-98369066d987"],
+Cell[11402, 318, 415, 10, 23, "Message",ExpressionUUID->"282d9d69-d401-4c49-be07-755dc11817f0"],
+Cell[11820, 330, 412, 9, 25, "Output",ExpressionUUID->"1647eefc-8d4f-4228-ba7a-c023a9915eb5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12269, 344, 2495, 59, 160, "Input",ExpressionUUID->"064e515d-92ae-4d0b-bb00-e881fa52ce62"],
+Cell[14767, 405, 559, 12, 23, "Message",ExpressionUUID->"402634ff-4c71-4dc1-ad99-0ae4ed594b82"],
+Cell[15329, 419, 465, 10, 25, "Output",ExpressionUUID->"91d78cd3-c422-40b7-9f9a-3771945904ed"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15831, 434, 2598, 60, 160, "Input",ExpressionUUID->"5bac3d01-5c5f-474b-9fe1-c3e669eca35c"],
+Cell[18432, 496, 564, 13, 23, "Message",ExpressionUUID->"8170c61d-6e79-49d4-93a8-dce5a80567a7"],
+Cell[18999, 511, 415, 9, 25, "Output",ExpressionUUID->"58de03e3-a8a4-478d-bff6-69ad614de825"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19451, 525, 2651, 61, 160, "Input",ExpressionUUID->"7c127e3e-cace-4664-adaa-e78476a4d5cf"],
+Cell[22105, 588, 566, 13, 23, "Message",ExpressionUUID->"9d738047-4204-4cc5-8144-614d9ced734e"],
+Cell[22674, 603, 414, 9, 25, "Output",ExpressionUUID->"0a1b9f74-6b2d-4424-b1a2-37977826a41a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23125, 617, 2231, 56, 160, "Input",ExpressionUUID->"813e8641-cd25-498e-b4fb-579cb2609a2c"],
+Cell[25359, 675, 484, 11, 22, "Message",ExpressionUUID->"e8aa8297-bb64-43eb-aebb-346459a54a28"]
+}, Open  ]]
+}
+]
+*)
+

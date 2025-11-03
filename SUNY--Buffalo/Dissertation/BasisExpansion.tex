@@ -1,0 +1,232 @@
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{dcolumn}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{braket}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+%\newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\mathrm{e}}
+%\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+
+%\begin{document}
+
+\subsection{Introduction of a variational basis}
+One of the concerns with the variational method is selection of the
+wavefunction. The wavefunction must reflect the form of the actual wavefunction,
+though this form may not be known in any detail. In this work, we consider
+replacing a single variational wavefunction with a "variational basis". In this
+section, we will introduce, define, and refine this idea. 
+
+To start with, we select a set of functions such that we may expand the envelope
+function of a valley as
+\begin{equation}
+  \Phi^{(q)}_{\bm{r}}
+  \equiv
+  \sum_{k} c_{k} \Phi_{k\bm{r}}.
+\end{equation}
+We wish to consider the bound states of our system. As such, we can assume that
+the function $F^{(z)}$ is part of the
+$L^{2}_{\mathbb{C}}\left(\mathbb{R}^{3}\right)$ function space. It also worth
+noting that this function space is also a separable Hilbert space. We seek a set
+of orthonormal functions that span this separable Hilbert space. In this work,
+we explore two possibilities for our complete basis. While a completely rigorous
+mathematically sound interpretation of the following statement is beyond the
+scope of this work, I'll state formally that the countable eigenstates of the
+Hamiltonian of the isotropic harmonic oscillator form a complete basis for the
+separable Hilbert space. As such, an obvious candidate for our orthonormal basis
+emerges from the energy eigenstates of the isotropic 3-D harmonic oscillator,
+namely
+\begin{equation}
+  \varphi_{klm;\eta;\bm{r}}
+  \propto
+  L_{k;\rho^{2}}^{\left(l+\frac{1}{2}\right)}
+  \mathrm{e}^{-\frac{\rho^2}{2}}
+  \rho^{l}
+  Y_{lm;\chi\phi}.
+\end{equation}
+Above, $L_{k}^{\left(\alpha\right)}$ denotes the generalized Laguerre
+polynomials with $k$ being a non-negative integer, and with $Y$ denoting the
+spherical harmonics such that $l$ is a non-negative integer and $m$ is an
+integer such that $\left|m\right| \le l$. Our polar spherical coordinate $\chi =
+z/r = \cos\left(\theta\right)$ is an alternate polar spherical coordinate we
+find more convenient to use in this work than $\theta$ directly. As well, $\rho
+= r/\eta$ is the radial coordinate rescaled to be dimensionless with $\eta$ as a
+unitful constant shared by each state in the basis. We pick this radial scaling
+$\eta$ to generate the best representation of our wavefunction. In the isotropic
+harmonic oscillator, $\eta = \sqrt{\frac{\hbar}{m\omega}}$ with mass $m$ and
+angular frequency $\omega$. In our system, this constant $\eta$ may be optimized
+to generate the lowest expectation energy for our system, thus giving it a
+variational character.
+
+More generally, we expect the wavefunction of an isolated donor to display some
+manner of near spherical or ellipsoidal symmetry. As such one of the building
+blocks of our basis set will be the aforementioned spherical harmonics, complete
+on $L^{2}_{\mathbb{C}}\left(S^{2}\right)$ where $S^{2}$ is the unit sphere. A
+further important observation as we design our basis involves the tensor product
+of Hilbert spaces. To wit, for Hilbert spaces $\mathcal{H}_{1}$ and
+$\mathcal{H}_{2}$ with orthonormal bases $\left\{\phi_{i}\right\}$ and
+$\left\{\eta_{j}\right\}$ respectively, it is true that
+$\left\{\phi_{i}\otimes\eta_{j}\right\}$ is an orthonormal basis for
+$\mathcal{H}_{1}\otimes\mathcal{H}_{2}$. Articulating the rigorous mathematical
+definition of the tensor product of Hilbert spaces is beyond the scope of this
+document. It is sufficient for our purposes to keep in mind that we can
+construct a basis for $L^{2}_{\mathbb{C}}\left(\mathbb{R}^{3}\right)$ by noting
+that this function space is isomorphic to the tensor product space
+$L^{2}_{\mathbb{C}}\left(S^{2}\right)
+\otimes
+L^{2}_{\mathbb{C}}\left(\mathbb{R}^{+},r^2\right)$.
+
+% https://aalexan3.math.ncsu.edu/articles/tensor.pdf
+% https://math.stackexchange.com/questions/1653561/how-to-construct-a-complete-set-in-l2-mathbbr3-starting-with-the-spheric
+
+To find a complete basis on $L^{2}_{\mathbb{C}}\left(\mathbb{R}^{3}\right)$
+then, we only need to find a complete basis on
+$L^{2}_{\mathbb{C}}\left(\mathbb{R}^{+},r^2\right)$. We've already seen such a
+set of basis functions emerge in the isotropic harmonic oscillator, namely  
+\begin{equation}
+  H_{kl;r}
+  \propto
+  L_{k;r^{2}}^{\left(l+\frac{1}{2}\right)}
+  \mathrm{e}^{-\frac{r^2}{2}}
+  r^{l}
+\end{equation}
+However, in addition to this basis, we also want to consider a basis with Slater
+exponential decay. The formula for the wavefunctions of the isotropic harmonic
+oscillator includes generalized Laguerre polynomials defined in the conventional
+way\cite{LaguerrePolynomials}. For our purposes, I note that the Laguerre
+polynomial $L_{k;x}^{\left(\alpha\right)}$ is complete over the Hilbert space
+$L^{2}\left(\mathbb{R}^{+},x^\alpha\mathrm{e}^{-x}\right)$. For the harmonic
+oscillator eigenstates with $x = r^{2}$ and $\alpha = l + \frac{1}{2}$, I note
+that $x^{\alpha}\e^{-x}\,\diff{x} \propto r^{2l+2}\e^{-r^{2}}\,\diff{r}$. As
+such, the above statement of completeness for the Laguerre polynomials is
+equivalent to the completeness of $H_{kl;r}$ on
+$L^{2}\left(\mathbb{R}^{+},r^{2}\right)$. 
+
+To arrive at our Slater-decay basis we will once more introduce the associated
+Laguerre polynomial as our building block. This time we shall take $x = r$.
+We introduce then
+\begin{equation}
+  G_{kl;r}
+  \propto
+  L_{k;r}^{\left(2l+2\right)}
+  \mathrm{e}^{-\frac{r}{2}}
+  r^{l}
+\end{equation}
+As $L$ above is complete over
+$L^{2}\left(\mathbb{R}^{+},r^\alpha\mathrm{e}^{-r}\right)$, then it can be
+shown that $G$ is complete over $L^{2}\left(\mathbb{R}^{+},\rho^{2}\right)$. As
+a final aside, we took $\alpha$ above to be such that $\alpha = 2l + 2$.
+Further discussion on why this choice has been made will be discussed in
+the \href{https://gitlab.com/cantankerous-impurity/Documentation/-/tree/core/SUNY--Buffalo/Dissertation/Supplementary%20Materials?ref_type=heads}{Supplementary Materials}.
+
+In short, the two forms above for the radial part of our basis can be combined
+and generalized for all positive integer $W$, though we are only concerns with
+$W = 1,2$. Appropriately normalized, the combined form is
+\begin{equation}
+  F_{kl;\eta;r}^{\left(W\right)}
+  =
+  \sqrt{\frac{W}{\eta^{3}}}
+  L_{k;\rho}^{\left(\alpha\right)}
+  \mathrm{e}^{-\frac{\rho}{2}}
+  \rho^{\frac{l}{W}},
+  \quad\quad
+  \rho = \left(\frac{r}{\eta}\right)^{W}
+\label{naive_wf:radial_part}
+.
+\end{equation}
+with $\alpha = \frac{2l+3-W}{W}$. With $W = 1,2$ the above function will be the
+radial part of our basis. Above, we assume that the Laguerre polynomials are
+defined conventionally and orthonormalized such that
+\begin{equation}
+\int\diff{\rho}\
+L_{k_{0};\rho}^{\left(\alpha\right)}L_{k_{1};\rho}^{\left(\alpha\right)}
+\rho^{\alpha}
+\e^{-\rho}
+  =
+    \delta_{k_{0}k_{1}}
+.
+\end{equation}
+
+Thus we may write the complete formula for our naive basis states with positive
+real $\eta$ acting as a variational parameter.
+\begin{equation}
+  \Phi_{klm;\eta;\bm{r}}^{\left(W\right)}
+  =
+  F_{kl;\eta;r}^{\left(W\right)}
+  Y_{lm;\chi\phi}.
+  \label{basis-1}
+\end{equation}
+In the above formula, we assume appropriate normalization factors have been
+applied to the radial function $F$ and the spherical harmonics $Y$ such that the
+resulting basis state $\Phi$ is normalized.
+
+We note that the envelope function with $W = 1$ yielding Slater-exponential
+decay bares a strong resemblance to the bound states of the hydrogen atom. As we
+consider using our basis states to represent the energy eigenstates of our
+system, this is an important point to consider. Of note, there are two points of
+divergence between the hydrogenic states and our Slater basis states.
+
+First, we want to be sure that our basis can conveniently represent the
+hydrogenic eigenstates. The hydrogenic wavefunctions have the form
+\begin{equation}
+  \Psi_{nlk}
+  \propto
+  L_{n-l-1;\rho}^{\left(2l+1\right)}
+  \mathrm{e}^{-\frac{\rho}{2}}
+  \rho^{l}
+  Y_{lm;\chi\phi}
+  \quad\quad
+  \rho 
+  =
+  \frac{r}{\eta_{n}}.
+\end{equation}
+It is trivial to reindex the wave function such that $n = k + l + 1$ and show
+that the two set of indices are isomorphic between the hydrogenic states and our
+Slater basis states. We note that the Laguerre parameter differs between the
+hydrogenic and Slater basis, being $\alpha_{\text{hydro}} = 2l+1$ and
+$\alpha_{\text{Slater}} = 2l+2$ respectively. Despite this, it is the case
+that $L_{k}^{\left(\alpha\right)} = L_{k}^{\left(\alpha+1\right)} -
+L_{k-1}^{\left(\alpha+1\right)}$. In light of the above facts, it is clear that
+each hydrogenic wavefunction can be represented by, at most, two states from our
+basis given the correct variational scaling factor $\eta$.
+
+Secondly, however, note that the scaling factor $\eta_{n}$ for each hydrogen
+state depends on the quantum numbers of the states. It goes as
+\begin{equation}
+  \eta_{n} = \frac{n}{2}r_{0}
+\end{equation}
+where 
+\begin{equation}
+  r_{0} = \frac{4\pi\epsilon_{0}\hbar^{2}}{me^{2}}
+\end{equation}
+We see a conflict between our complete basis with a single parameter $\eta$ and
+the bound hydrogenic states.  A larger orthonormal basis that tends towards
+completeness can represent any desired state in principle, of course. In our
+experience, however, the computational cost from expanding our orthonormal basis
+does not see a worthwhile increase in that basis's power to represent more than
+a single desired state.
+
+To resolve this, we introduce the concepts that we will call in this document
+the \emph{subbasis} and the \emph{superbasis}. A subbasis is defined to be a
+truncated orthonormal basis, tending towards completeness, which has been
+variationally optimized to minimize the energy of one particular state.
+Therefore, we expect a loose association between a subbasis and an energy
+eigenstate. The superbasis is a formed from the union of multiple subbases each
+independently optimized to different eigenstates. The superbasis is no longer
+orthonormal, as each subbasis is allowed to vary its variational parameters
+independently. As well, the superbasis tends towards overcompleteness as more
+states are added. For a numerical method such as ours, we do need to be
+concerned with numerical instability or intractability introduced by linear
+dependence and overcompleteness within the superbasis. Despite this, we find
+that the variational procedure applied to each subbasis helps to ameliorate
+these problems with numerical instability. As a potential explanation, recall
+that each subbasis can be loosely associated with each energy eigenstate, and
+these eigenstates are orthogonal to each other. Serendipitously then, it seems
+the process of variational optimization mutually orthogonalizes the subbases and
+reduces numerical instability.

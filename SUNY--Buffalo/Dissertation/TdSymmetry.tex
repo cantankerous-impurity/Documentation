@@ -1,0 +1,344 @@
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{dcolumn}
+% \usepackage{array,multirow}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{braket}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+%\newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\mathrm{e}}
+%\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+
+%\begin{document}
+
+
+
+
+
+
+% \pagestyle{empty}
+
+\newpage
+% \pagebreak
+
+
+\newcolumntype{C}{>{$}c<{$}}
+
+\begin{equation*}
+\adjustbox{height=\textheight}
+{
+\rotatebox{90}
+{
+\begin{tabular}
+{
+    !{\vrule width 2pt}
+    CC
+    !{\vrule width 3pt}
+    C
+    !{\vrule width 1.5pt}
+    C|C|C
+    !{\vrule width 1.5pt}
+    C|C|C|C
+    !{\vrule width 1.5pt}
+    C|C|C|C
+    !{\vrule width 1.5pt}
+    C|C|C|C|C|C
+    !{\vrule width 1.5pt}
+    C|C|C|C|C|C
+    !{\vrule width 2pt}
+}
+    \noalign{\hrule height 2pt}
+    \multicolumn{2}{!{\vrule width 2pt}C!{\vrule width 3pt}}{} & 
+                                                            E     & \multicolumn{3}{C!{\vrule width 1.5pt}}{C_{2}}            & \multicolumn{4}{C!{\vrule width 1.5pt}}{C_{3}}                                & \multicolumn{4}{C!{\vrule width 1.5pt}}{C_{3}^{\prime}}                       & \multicolumn{6}{C!{\vrule width 1.5pt}}{\sigma_{d}}                                                                   & \multicolumn{6}{C!{\vrule width 2pt}}{S_{4}} \\
+    \multicolumn{2}{!{\vrule width 2pt}C!{\vrule width 3pt}}{} &
+                                                            (xyz)             & (x\bar{y}\bar{z}) & (\bar{x}y\bar{z}) & (\bar{x}\bar{y}z) & (yzx)             & (y\bar{z}\bar{x}) & (\bar{y}z\bar{x}) & (\bar{y}\bar{z}x) & (zxy)             & (\bar{z}x\bar{y}) & (\bar{z}\bar{x}y) & (z\bar{x}\bar{y}) & (xzy)             & (x\bar{z}\bar{y}) & (zyx)             & (\bar{z}y\bar{x}) & (yxz)             & (\bar{y}\bar{x}z) & (\bar{x}\bar{z}y) & (\bar{x}z\bar{y}) & (z\bar{y}\bar{x}) & (\bar{z}\bar{y}x) & (\bar{y}x\bar{z}) & (y\bar{x}\bar{z}) \\ \noalign{\hrule height 3pt}
+    E                                 & (xyz)             & (xyz)             & (x\bar{y}\bar{z}) & (\bar{x}y\bar{z}) & (\bar{x}\bar{y}z) & (yzx)             & (y\bar{z}\bar{x}) & (\bar{y}z\bar{x}) & (\bar{y}\bar{z}x) & (zxy)             & (\bar{z}x\bar{y}) & (\bar{z}\bar{x}y) & (z\bar{x}\bar{y}) & (xzy)             & (x\bar{z}\bar{y}) & (zyx)             & (\bar{z}y\bar{x}) & (yxz)             & (\bar{y}\bar{x}z) & (\bar{x}\bar{z}y) & (\bar{x}z\bar{y}) & (z\bar{y}\bar{x}) & (\bar{z}\bar{y}x) & (\bar{y}x\bar{z}) & (y\bar{x}\bar{z}) \\ \noalign{\hrule height 1.2pt}
+    \multirow{3}{*}{$C_{2}$}          & (x\bar{y}\bar{z}) & (x\bar{y}\bar{z}) & (xyz)             & (\bar{x}\bar{y}z) & (\bar{x}y\bar{z}) & (\bar{y}\bar{z}x) & (\bar{y}z\bar{x}) & (y\bar{z}\bar{x}) & (yzx)             & (\bar{z}x\bar{y}) & (zxy)             & (z\bar{x}\bar{y}) & (\bar{z}\bar{x}y) & (x\bar{z}\bar{y}) & (xzy)             & (\bar{z}\bar{y}x) & (z\bar{y}\bar{x}) & (\bar{y}x\bar{z}) & (y\bar{x}\bar{z}) & (\bar{x}z\bar{y}) & (\bar{x}\bar{z}y) & (\bar{z}y\bar{x}) & (zyx)             & (yxz)             & (\bar{y}\bar{x}z) \\ \cline{2-26}
+                                      & (\bar{x}y\bar{z}) & (\bar{x}y\bar{z}) & (\bar{x}\bar{y}z) & (xyz)             & (x\bar{y}\bar{z}) & (y\bar{z}\bar{x}) & (yzx)             & (\bar{y}\bar{z}x) & (\bar{y}z\bar{x}) & (\bar{z}\bar{x}y) & (z\bar{x}\bar{y}) & (zxy)             & (\bar{z}x\bar{y}) & (\bar{x}\bar{z}y) & (\bar{x}z\bar{y}) & (\bar{z}y\bar{x}) & (zyx)             & (y\bar{x}\bar{z}) & (\bar{y}x\bar{z}) & (xzy)             & (x\bar{z}\bar{y}) & (\bar{z}\bar{y}x) & (z\bar{y}\bar{x}) & (\bar{y}\bar{x}z) & (yxz)             \\ \cline{2-26}
+                                      & (\bar{x}\bar{y}z) & (\bar{x}\bar{y}z) & (\bar{x}y\bar{z}) & (x\bar{y}\bar{z}) & (xyz)             & (\bar{y}z\bar{x}) & (\bar{y}\bar{z}x) & (yzx)             & (y\bar{z}\bar{x}) & (z\bar{x}\bar{y}) & (\bar{z}\bar{x}y) & (\bar{z}x\bar{y}) & (zxy)             & (\bar{x}z\bar{y}) & (\bar{x}\bar{z}y) & (z\bar{y}\bar{x}) & (\bar{z}\bar{y}x) & (\bar{y}\bar{x}z) & (yxz)             & (x\bar{z}\bar{y}) & (xzy)             & (zyx)             & (\bar{z}y\bar{x}) & (y\bar{x}\bar{z}) & (\bar{y}x\bar{z}) \\ \noalign{\hrule height 1.2pt}
+    \multirow{4}{*}{$C_{4}$}          & (yzx)             & (yzx)             & (y\bar{z}\bar{x}) & (\bar{y}z\bar{x}) & (\bar{y}\bar{z}x) & (zxy)             & (z\bar{x}\bar{y}) & (\bar{z}x\bar{y}) & (\bar{z}\bar{x}y) & (xyz)             & (\bar{x}y\bar{z}) & (\bar{x}\bar{y}z) & (x\bar{y}\bar{z}) & (yxz)             & (y\bar{x}\bar{z}) & (xzy)             & (\bar{x}z\bar{y}) & (zyx)             & (\bar{z}\bar{y}x) & (\bar{y}\bar{x}z) & (\bar{y}x\bar{z}) & (x\bar{z}\bar{y}) & (\bar{x}\bar{z}y) & (\bar{z}y\bar{x}) & (z\bar{y}\bar{x}) \\ \cline{2-26}
+                                      & (y\bar{z}\bar{x}) & (y\bar{z}\bar{x}) & (yzx)             & (\bar{y}\bar{z}x) & (\bar{y}z\bar{x}) & (\bar{z}\bar{x}y) & (\bar{z}x\bar{y}) & (z\bar{x}\bar{y}) & (zxy)             & (\bar{x}y\bar{z}) & (xyz)             & (x\bar{y}\bar{z}) & (\bar{x}\bar{y}z) & (y\bar{x}\bar{z}) & (yxz)             & (\bar{x}\bar{z}y) & (x\bar{z}\bar{y}) & (\bar{z}y\bar{x}) & (z\bar{y}\bar{x}) & (\bar{y}x\bar{z}) & (\bar{y}\bar{x}z) & (\bar{x}z\bar{y}) & (xzy)             & (zyx)             & (\bar{z}\bar{y}x) \\ \cline{2-26}
+                                      & (\bar{y}z\bar{x}) & (\bar{y}z\bar{x}) & (\bar{y}\bar{z}x) & (yzx)             & (y\bar{z}\bar{x}) & (z\bar{x}\bar{y}) & (zxy)             & (\bar{z}\bar{x}y) & (\bar{z}x\bar{y}) & (\bar{x}\bar{y}z) & (x\bar{y}\bar{z}) & (xyz)             & (\bar{x}y\bar{z}) & (\bar{y}\bar{x}z) & (\bar{y}x\bar{z}) & (\bar{x}z\bar{y}) & (xzy)             & (z\bar{y}\bar{x}) & (\bar{z}y\bar{x}) & (yxz)             & (y\bar{x}\bar{z}) & (\bar{x}\bar{z}y) & (x\bar{z}\bar{y}) & (\bar{z}\bar{y}x) & (zyx)             \\ \cline{2-26}
+                                      & (\bar{y}\bar{z}x) & (\bar{y}\bar{z}x) & (\bar{y}z\bar{x}) & (y\bar{z}\bar{x}) & (yzx)             & (\bar{z}x\bar{y}) & (\bar{z}\bar{x}y) & (zxy)             & (z\bar{x}\bar{y}) & (x\bar{y}\bar{z}) & (\bar{x}\bar{y}z) & (\bar{x}y\bar{z}) & (xyz)             & (\bar{y}x\bar{z}) & (\bar{y}\bar{x}z) & (x\bar{z}\bar{y}) & (\bar{x}\bar{z}y) & (\bar{z}\bar{y}x) & (zyx)             & (y\bar{x}\bar{z}) & (yxz)             & (xzy)             & (\bar{x}z\bar{y}) & (z\bar{y}\bar{x}) & (\bar{z}y\bar{x}) \\ \noalign{\hrule height 1.2pt}
+    \multirow{4}{*}{$C_{4}^{\prime}$} & (zxy)             & (zxy)             & (z\bar{x}\bar{y}) & (\bar{z}x\bar{y}) & (\bar{z}\bar{x}y) & (xyz)             & (x\bar{y}\bar{z}) & (\bar{x}y\bar{z}) & (\bar{x}\bar{y}z) & (yzx)             & (\bar{y}z\bar{x}) & (\bar{y}\bar{z}x) & (y\bar{z}\bar{x}) & (zyx)             & (z\bar{y}\bar{x}) & (yxz)             & (\bar{y}x\bar{z}) & (xzy)             & (\bar{x}\bar{z}y) & (\bar{z}\bar{y}x) & (\bar{z}y\bar{x}) & (y\bar{x}\bar{z}) & (\bar{y}\bar{x}z) & (\bar{x}z\bar{y}) & (x\bar{z}\bar{y}) \\ \cline{2-26}
+                                      & (\bar{z}x\bar{y}) & (\bar{z}x\bar{y}) & (\bar{z}\bar{x}y) & (zxy)             & (z\bar{x}\bar{y}) & (x\bar{y}\bar{z}) & (xyz)             & (\bar{x}\bar{y}z) & (\bar{x}y\bar{z}) & (\bar{y}\bar{z}x) & (y\bar{z}\bar{x}) & (yzx)             & (\bar{y}z\bar{x}) & (\bar{z}\bar{y}x) & (\bar{z}y\bar{x}) & (\bar{y}x\bar{z}) & (yxz)             & (x\bar{z}\bar{y}) & (\bar{x}z\bar{y}) & (zyx)             & (z\bar{y}\bar{x}) & (\bar{y}\bar{x}z) & (y\bar{x}\bar{z}) & (\bar{x}\bar{z}y) & (xzy)             \\ \cline{2-26}
+                                      & (\bar{z}\bar{x}y) & (\bar{z}\bar{x}y) & (\bar{z}x\bar{y}) & (z\bar{x}\bar{y}) & (zxy)             & (\bar{x}y\bar{z}) & (\bar{x}\bar{y}z) & (xyz)             & (x\bar{y}\bar{z}) & (y\bar{z}\bar{x}) & (\bar{y}\bar{z}x) & (\bar{y}z\bar{x}) & (yzx)             & (\bar{z}y\bar{x}) & (\bar{z}\bar{y}x) & (y\bar{x}\bar{z}) & (\bar{y}\bar{x}z) & (\bar{x}\bar{z}y) & (xzy)             & (z\bar{y}\bar{x}) & (zyx)             & (yxz)             & (\bar{y}x\bar{z}) & (x\bar{z}\bar{y}) & (\bar{x}z\bar{y}) \\ \cline{2-26}
+                                      & (z\bar{x}\bar{y}) & (z\bar{x}\bar{y}) & (zxy)             & (\bar{z}\bar{x}y) & (\bar{z}x\bar{y}) & (\bar{x}\bar{y}z) & (\bar{x}y\bar{z}) & (x\bar{y}\bar{z}) & (xyz)             & (\bar{y}z\bar{x}) & (yzx)             & (y\bar{z}\bar{x}) & (\bar{y}\bar{z}x) & (z\bar{y}\bar{x}) & (zyx)             & (\bar{y}\bar{x}z) & (y\bar{x}\bar{z}) & (\bar{x}z\bar{y}) & (x\bar{z}\bar{y}) & (\bar{z}y\bar{x}) & (\bar{z}\bar{y}x) & (\bar{y}x\bar{z}) & (yxz)             & (xzy)             & (\bar{x}\bar{z}y) \\ \noalign{\hrule height 1.2pt}
+    \multirow{6}{*}{$\sigma_{d}$}     & (xzy)             & (xzy)             & (x\bar{z}\bar{y}) & (\bar{x}z\bar{y}) & (\bar{x}\bar{z}y) & (zyx)             & (z\bar{y}\bar{x}) & (\bar{z}y\bar{x}) & (\bar{z}\bar{y}x) & (yxz)             & (\bar{y}x\bar{z}) & (\bar{y}\bar{x}z) & (y\bar{x}\bar{z}) & (xyz)             & (x\bar{y}\bar{z}) & (yzx)             & (\bar{y}z\bar{x}) & (zxy)             & (\bar{z}\bar{x}y) & (\bar{x}\bar{y}z) & (\bar{x}y\bar{z}) & (y\bar{z}\bar{x}) & (\bar{y}\bar{z}x) & (\bar{z}x\bar{y}) & (z\bar{x}\bar{y}) \\ \cline{2-26}
+                                      & (x\bar{z}\bar{y}) & (x\bar{z}\bar{y}) & (xzy)             & (\bar{x}\bar{z}y) & (\bar{x}z\bar{y}) & (\bar{z}\bar{y}x) & (\bar{z}y\bar{x}) & (z\bar{y}\bar{x}) & (zyx)             & (\bar{y}x\bar{z}) & (yxz)             & (y\bar{x}\bar{z}) & (\bar{y}\bar{x}z) & (x\bar{y}\bar{z}) & (xyz)             & (\bar{y}\bar{z}x) & (y\bar{z}\bar{x}) & (\bar{z}x\bar{y}) & (z\bar{x}\bar{y}) & (\bar{x}y\bar{z}) & (\bar{x}\bar{y}z) & (\bar{y}z\bar{x}) & (yzx)             & (zxy)             & (\bar{z}\bar{x}y) \\ \cline{2-26}
+                                      & (zyx)             & (zyx)             & (z\bar{y}\bar{x}) & (\bar{z}y\bar{x}) & (\bar{z}\bar{y}x) & (yxz)             & (y\bar{x}\bar{z}) & (\bar{y}x\bar{z}) & (\bar{y}\bar{x}z) & (xzy)             & (\bar{x}z\bar{y}) & (\bar{x}\bar{z}y) & (x\bar{z}\bar{y}) & (zxy)             & (z\bar{x}\bar{y}) & (xyz)             & (\bar{x}y\bar{z}) & (yzx)             & (\bar{y}\bar{z}x) & (\bar{z}\bar{x}y) & (\bar{z}x\bar{y}) & (x\bar{y}\bar{z}) & (\bar{x}\bar{y}z) & (\bar{y}z\bar{x}) & (y\bar{z}\bar{x}) \\ \cline{2-26}
+                                      & (\bar{z}y\bar{x}) & (\bar{z}y\bar{x}) & (\bar{z}\bar{y}x) & (zyx)             & (z\bar{y}\bar{x}) & (y\bar{x}\bar{z}) & (yxz)             & (\bar{y}\bar{x}z) & (\bar{y}x\bar{z}) & (\bar{x}\bar{z}y) & (x\bar{z}\bar{y}) & (xzy)             & (\bar{x}z\bar{y}) & (\bar{z}\bar{x}y) & (\bar{z}x\bar{y}) & (\bar{x}y\bar{z}) & (xyz)             & (y\bar{z}\bar{x}) & (\bar{y}z\bar{x}) & (zxy)             & (z\bar{x}\bar{y}) & (\bar{x}\bar{y}z) & (x\bar{y}\bar{z}) & (\bar{y}\bar{z}x) & (yzx)             \\ \cline{2-26}
+                                      & (yxz)             & (yxz)             & (y\bar{x}\bar{z}) & (\bar{y}x\bar{z}) & (\bar{y}\bar{x}z) & (xzy)             & (x\bar{z}\bar{y}) & (\bar{x}z\bar{y}) & (\bar{x}\bar{z}y) & (zyx)             & (\bar{z}y\bar{x}) & (\bar{z}\bar{y}x) & (z\bar{y}\bar{x}) & (yzx)             & (y\bar{z}\bar{x}) & (zxy)             & (\bar{z}x\bar{y}) & (xyz)             & (\bar{x}\bar{y}z) & (\bar{y}\bar{z}x) & (\bar{y}z\bar{x}) & (z\bar{x}\bar{y}) & (\bar{z}\bar{x}y) & (\bar{x}y\bar{z}) & (x\bar{y}\bar{z}) \\ \cline{2-26}
+                                      & (\bar{y}\bar{x}z) & (\bar{y}\bar{x}z) & (\bar{y}x\bar{z}) & (y\bar{x}\bar{z}) & (yxz)             & (\bar{x}z\bar{y}) & (\bar{x}\bar{z}y) & (xzy)             & (x\bar{z}\bar{y}) & (z\bar{y}\bar{x}) & (\bar{z}\bar{y}x) & (\bar{z}y\bar{x}) & (zyx)             & (\bar{y}z\bar{x}) & (\bar{y}\bar{z}x) & (z\bar{x}\bar{y}) & (\bar{z}\bar{x}y) & (\bar{x}\bar{y}z) & (xyz)             & (y\bar{z}\bar{x}) & (yzx)             & (zxy)             & (\bar{z}x\bar{y}) & (x\bar{y}\bar{z}) & (\bar{x}y\bar{z}) \\ \noalign{\hrule height 1.2pt}
+    \multirow{6}{*}{$S_{4}$}          & (\bar{x}\bar{z}y) & (\bar{x}\bar{z}y) & (\bar{x}z\bar{y}) & (x\bar{z}\bar{y}) & (xzy)             & (\bar{z}y\bar{x}) & (\bar{z}\bar{y}x) & (zyx)             & (z\bar{y}\bar{x}) & (y\bar{x}\bar{z}) & (\bar{y}\bar{x}z) & (\bar{y}x\bar{z}) & (yxz)             & (\bar{x}y\bar{z}) & (\bar{x}\bar{y}z) & (y\bar{z}\bar{x}) & (\bar{y}\bar{z}x) & (\bar{z}\bar{x}y) & (zxy)             & (x\bar{y}\bar{z}) & (xyz)             & (yzx)             & (\bar{y}z\bar{x}) & (z\bar{x}\bar{y}) & (\bar{z}x\bar{y}) \\ \cline{2-26}
+                                      & (\bar{x}z\bar{y}) & (\bar{x}z\bar{y}) & (\bar{x}\bar{z}y) & (xzy)             & (x\bar{z}\bar{y}) & (z\bar{y}\bar{x}) & (zyx)             & (\bar{z}\bar{y}x) & (\bar{z}y\bar{x}) & (\bar{y}\bar{x}z) & (y\bar{x}\bar{z}) & (yxz)             & (\bar{y}x\bar{z}) & (\bar{x}\bar{y}z) & (\bar{x}y\bar{z}) & (\bar{y}z\bar{x}) & (yzx)             & (z\bar{x}\bar{y}) & (\bar{z}x\bar{y}) & (xyz)             & (x\bar{y}\bar{z}) & (\bar{y}\bar{z}x) & (y\bar{z}\bar{x}) & (\bar{z}\bar{x}y) & (zxy)             \\ \cline{2-26}
+                                      & (z\bar{y}\bar{x}) & (z\bar{y}\bar{x}) & (zyx)             & (\bar{z}\bar{y}x) & (\bar{z}y\bar{x}) & (\bar{y}\bar{x}z) & (\bar{y}x\bar{z}) & (y\bar{x}\bar{z}) & (yxz)             & (\bar{x}z\bar{y}) & (xzy)             & (x\bar{z}\bar{y}) & (\bar{x}\bar{z}y) & (z\bar{x}\bar{y}) & (zxy)             & (\bar{x}\bar{y}z) & (x\bar{y}\bar{z}) & (\bar{y}z\bar{x}) & (y\bar{z}\bar{x}) & (\bar{z}x\bar{y}) & (\bar{z}\bar{x}y) & (\bar{x}y\bar{z}) & (xyz)             & (yzx)             & (\bar{y}\bar{z}x) \\ \cline{2-26}
+                                      & (\bar{z}\bar{y}x) & (\bar{z}\bar{y}x) & (\bar{z}y\bar{x}) & (z\bar{y}\bar{x}) & (zyx)             & (\bar{y}x\bar{z}) & (\bar{y}\bar{x}z) & (yxz)             & (y\bar{x}\bar{z}) & (x\bar{z}\bar{y}) & (\bar{x}\bar{z}y) & (\bar{x}z\bar{y}) & (xzy)             & (\bar{z}x\bar{y}) & (\bar{z}\bar{x}y) & (x\bar{y}\bar{z}) & (\bar{x}\bar{y}z) & (\bar{y}\bar{z}x) & (yzx)             & (z\bar{x}\bar{y}) & (zxy)             & (xyz)             & (\bar{x}y\bar{z}) & (y\bar{z}\bar{x}) & (\bar{y}z\bar{x}) \\ \cline{2-26}
+                                      & (\bar{y}x\bar{z}) & (\bar{y}x\bar{z}) & (\bar{y}\bar{x}z) & (yxz)             & (y\bar{x}\bar{z}) & (x\bar{z}\bar{y}) & (xzy)             & (\bar{x}\bar{z}y) & (\bar{x}z\bar{y}) & (\bar{z}\bar{y}x) & (z\bar{y}\bar{x}) & (zyx)             & (\bar{z}y\bar{x}) & (\bar{y}\bar{z}x) & (\bar{y}z\bar{x}) & (\bar{z}x\bar{y}) & (zxy)             & (x\bar{y}\bar{z}) & (\bar{x}y\bar{z}) & (yzx)             & (y\bar{z}\bar{x}) & (\bar{z}\bar{x}y) & (z\bar{x}\bar{y}) & (\bar{x}\bar{y}z) & (xyz)             \\ \cline{2-26}
+                                      & (y\bar{x}\bar{z}) & (y\bar{x}\bar{z}) & (yxz)             & (\bar{y}\bar{x}z) & (\bar{y}x\bar{z}) & (\bar{x}\bar{z}y) & (\bar{x}z\bar{y}) & (x\bar{z}\bar{y}) & (xzy)             & (\bar{z}y\bar{x}) & (zyx)             & (z\bar{y}\bar{x}) & (\bar{z}\bar{y}x) & (y\bar{z}\bar{x}) & (yzx)             & (\bar{z}\bar{x}y) & (z\bar{x}\bar{y}) & (\bar{x}y\bar{z}) & (x\bar{y}\bar{z}) & (\bar{y}z\bar{x}) & (\bar{y}\bar{z}x) & (\bar{z}x\bar{y}) & (zxy)             & (xyz)             & (\bar{x}\bar{y}z) \\ \cline{2-26} 
+    \noalign{\hrule height 2pt}
+    \end{tabular}
+}
+}
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+\begin{equation*}
+    \left\{
+        (xyz),
+        (x\bar{y}\bar{z}),
+        (\bar{x}y\bar{z}),
+        (\bar{x}\bar{y}z)
+        (yzx),
+        (y\bar{z}\bar{x}),
+        (\bar{y}z\bar{x}),
+        (\bar{y}\bar{z}x),
+        (zxy),
+        (\bar{z}x\bar{y}),
+        (\bar{z}\bar{x}y),
+        (z\bar{x}\bar{y}),
+        (xzy),
+        (x\bar{z}\bar{y}),
+        (zyx),
+        (\bar{z}y\bar{x}),
+        (yxz),
+        (\bar{y}\bar{x}z),
+        (\bar{x}\bar{z}y),
+        (\bar{x}z\bar{y}),
+        (z\bar{y}\bar{x}),
+        (\bar{z}\bar{y}x),
+        (\bar{y}x\bar{z}),
+        (y\bar{x}\bar{z})
+    \right\}
+    \Rightarrow
+    1
+\end{equation*}
+
+\begin{gather*}
+    \left\{
+        (xyz),
+        (x\bar{y}\bar{z}),
+        (\bar{x}y\bar{z}),
+        (\bar{x}\bar{y}z),
+        (yzx),
+        (y\bar{z}\bar{x}),
+        (\bar{y}z\bar{x}),
+        (\bar{y}\bar{z}x),
+        (zxy),
+        (\bar{z}x\bar{y}),
+        (\bar{z}\bar{x}y),
+        (z\bar{x}\bar{y})
+    \right\}
+    \Rightarrow
+    1
+    \\
+    \left\{
+        (xzy),
+        (x\bar{z}\bar{y}),
+        (zyx),
+        (\bar{z}y\bar{x}),
+        (yxz),
+        (\bar{y}\bar{x}z),
+        (\bar{x}\bar{z}y),
+        (\bar{x}z\bar{y}),
+        (z\bar{y}\bar{x}),
+        (\bar{z}\bar{y}x),
+        (\bar{y}x\bar{z}),
+        (y\bar{x}\bar{z})
+    \right\}
+    \Rightarrow
+    -1
+\end{gather*}
+
+\begin{gather*}
+    \left\{
+        (xyz),
+        (x\bar{y}\bar{z}),
+        (\bar{x}y\bar{z}),
+        (\bar{x}\bar{y}z)
+    \right\}
+    \Rightarrow
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & 1 \\
+    \end{pmatrix}
+    \\
+    \left\{
+        (yzx),
+        (y\bar{z}\bar{x}),
+        (\bar{y}z\bar{x}),
+        (\bar{y}\bar{z}x)
+    \right\}
+    \Rightarrow
+    \begin{pmatrix}
+        \tau^{2} & 0    \\
+        0        & \tau \\
+    \end{pmatrix}
+    \\
+    \left\{
+        (zxy),
+        (\bar{z}x\bar{y}),
+        (\bar{z}\bar{x}y),
+        (z\bar{x}\bar{y})
+    \right\}
+    \Rightarrow
+    \begin{pmatrix}
+        \tau & 0        \\
+        0    & \tau^{2} \\
+    \end{pmatrix}
+    \\
+    \left\{
+        (xzy),
+        (x\bar{z}\bar{y}),
+        (\bar{x}\bar{z}y),
+        (\bar{x}z\bar{y})
+    \right\}
+    \Rightarrow
+    \begin{pmatrix}
+        0        & \tau \\
+        \tau^{2} & 0    \\
+    \end{pmatrix}
+    \\
+    \left\{
+        (zyx),
+        (\bar{z}y\bar{x}),
+        (z\bar{y}\bar{x}),
+        (\bar{z}\bar{y}x)
+    \right\}
+    \Rightarrow
+    \begin{pmatrix}
+        0    & \tau^{2} \\
+        \tau & 0        \\
+    \end{pmatrix}
+    \\
+    \left\{
+        (yxz),
+        (\bar{y}\bar{x}z),
+        (\bar{y}x\bar{z}),
+        (y\bar{x}\bar{z})
+    \right\}
+    \Rightarrow
+    \begin{pmatrix}
+        0 & 1 \\
+        1 & 0 \\
+    \end{pmatrix}
+\end{gather*}
+
+
+
+
+\begin{equation*}
+    \begin{tabular}{CC}
+    (xyz) &
+    \begin{pmatrix}
+        1 &  0 &  0 \\
+        0 &  1 &  0 \\
+        0 &  0 &  1 \\
+    \end{pmatrix}
+    \\
+    (x\bar{y}\bar{z}) &
+    \begin{pmatrix}
+        1 &  0 &  0 \\
+        0 & -1 &  0 \\
+        0 &  0 & -1 \\
+    \end{pmatrix}
+    \\
+    (\bar{x}y\bar{z}) &
+    \begin{pmatrix}
+        -1 &  0 &  0 \\
+        0 &  1 &  0 \\
+        0 &  0 & -1 \\
+    \end{pmatrix}
+    \\
+    (\bar{x}\bar{y}z) &
+    \begin{pmatrix}
+        -1 &  0 &  0 \\
+        0 & -1 &  0 \\
+        0` &  0 &  1 \\
+    \end{pmatrix}
+    \\
+    \end{tabular}
+    \end{equation*}
+
+    \begin{equation*}
+        \begin{tabular}{CC}
+        (yzx) &
+        \begin{pmatrix}
+             0 &  0 &  1 \\
+             1 &  0 &  0 \\
+             0 &  1 &  0 \\
+        \end{pmatrix}
+        \\
+        (y\bar{z}\bar{x}) &
+        \begin{pmatrix}
+             0 &  0 & -1  \\
+             1 &  0 & 0 \\
+             0 & -1 & 0  \\
+        \end{pmatrix}
+        \\
+        (\bar{y}z\bar{x}) &
+        \begin{pmatrix}
+             0 &  0 & -1 \\
+            -1 &  0 &  0 \\
+             0 &  1 &  0 \\
+        \end{pmatrix}
+        \\
+        (\bar{y}\bar{z}x) &
+        \begin{pmatrix}
+             0 &  0 &  1 \\
+            -1 &  0 &  0 \\
+             0 & -1 &  0 \\
+        \end{pmatrix}
+        \\
+        \end{tabular}
+    \end{equation*}
+
+    \begin{equation*}
+        \begin{tabular}{CC}
+        (zxy) &
+        \begin{pmatrix}
+             0 &  1 &  0 \\
+             0 &  0 &  1 \\
+             1 &  0 &  0 \\
+        \end{pmatrix}
+        \\
+        (\bar{z}x\bar{y}) &
+        \begin{pmatrix}
+             0 &  1 &  0 \\
+             0 &  0 & -1 \\
+            -1 &  0 &  0 \\
+        \end{pmatrix}
+        \\
+        (\bar{z}\bar{x}y) &
+        \begin{pmatrix}
+             0 & -1 &  0 \\
+             0 &  0 &  1 \\
+            -1 &  0 &  0 \\
+        \end{pmatrix}
+        \\
+        (z\bar{x}\bar{y}) &
+        \begin{pmatrix}
+             0 & -1 &  0 \\
+             0 &  0 & -1 \\
+             1 &  0 &  0 \\
+        \end{pmatrix}
+        \\
+        \end{tabular}
+    \end{equation*}
+
+
+% \end{document}

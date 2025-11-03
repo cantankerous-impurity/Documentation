@@ -1,0 +1,283 @@
+\documentclass[12pt]{report}
+
+% \DeclareMathVersion{normal}
+% \SetMathAlphabet{\mathbf}{normal}{OML}{mdput}{b}{n}
+% \SetMathAlphabet{\mathrm}{normal}{OML}{mdput}{m}{n}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{dcolumn}
+\usepackage{array,multirow,adjustbox}
+
+% \usepackage{bm}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{siunitx}
+
+\usepackage[utopia]{mathdesign}
+\usepackage[
+    OMLmathrm,OMLmathbf,OMLmathsf,OMLmathsfit,
+    % rmdefault=cmr,
+    % sfdefault=fav
+    sfdefault=fav,scaled=0.875
+    % sfdefault=fav,scaled=0.75
+    % sfdefault=iwona
+]{isomath}
+\usepackage[doublespacing]{setspace}
+\usepackage[width=150mm,top=25mm,bottom=25mm]{geometry}
+
+\graphicspath{ {images/} }
+
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue
+}
+
+\NewCommandCopy{\originalleft}{\left}
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\NewCommandCopy{\originalright}{\right}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+
+\renewcommand{\vec}[1]{\mathsfbfit{#1}}
+\newcommand{\state}[1]{\mathbfit{#1}}
+\newcommand{\real}[1]{\mathsf{#1}}
+
+\newcommand{\bm}[1]{\vec{#1}}
+
+\NewCommandCopy{\oldpi}{\pi}
+\renewcommand{\pi}{\real{\oldpi}}
+% \NewCommandCopy{\oldhbar}{\hbar}
+% \renewcommand{\hbar}{\real{\oldhbar}}
+
+
+\newcommand{\rvec}{\vec{r}}
+\newcommand{\kvec}{\vec{k}}
+
+\newcommand{\q}{\real{q}}
+\newcommand{\e}{\real{e}}
+\newcommand{\x}{\real{x}}
+\newcommand{\y}{\real{y}}
+\newcommand{\z}{\real{z}}
+
+\newcommand{\im}{i}
+
+\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\diff}{\mathrm{d}}
+
+
+
+
+\NewCommandCopy{\oldket}{\ket}
+\renewcommand{\ket}[1]{\oldket{\state{#1}}}
+
+\DeclareMathOperator{\atantwo}{atan2}
+
+% \DeclareMathAlphabet{\mathsfup}
+% \SetMathAlphabet{\mathbf}{normal}{OML}{mdput}{b}{n}
+% \SetMathAlphabet{\mathrm}{normal}{OML}{mdput}{m}{n}
+
+\title{An open source software package to compare and extend effective mass models of the phosphorous donor in silicon}
+\author{Luke Pendo}
+\date{}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+
+        \textbf{ 
+            An open source software package to compare and extend effective
+            mass models of the phosphorous donor in silicon.
+        }
+
+        \vfill
+
+        by
+        \\
+        Luke Pendo
+        \\
+        January 23, 2024
+
+        \vfill
+
+        \begin{singlespace}
+            A dissertation submitted to the faculty of the Graduate School of
+            the University at Buffalo, The State University of New York in
+            partial fulfillment of the requirements for the degree of
+
+            \vspace{0.5cm}
+            Doctor of Philosophy \\
+            Department of Physics
+        \end{singlespace}
+    \end{center}
+\end{titlepage}
+
+\addtocounter{page}{1}
+
+\null\vfill
+\noindent
+\begin{center}
+    Copyright by \\
+    Luke Pendo \\
+    2024 \\
+    All Rights Reserved
+\end{center}
+
+\newpage
+
+\null\vfill
+\noindent
+\begin{center}
+    \begin{singlespace}
+        I dedicate this work to those who have been with me every step of the
+        way in this process, holding me up and pushing me forward. I have
+        benefited greatly from the support of my father and mother, as well as
+        the support of my sister, Katie and my brother-in-law, Jonathan. There
+        is of course, a special dedication to be made. Without the endless
+        support and love of my wife, Aniqua Hasan, I don't think this
+        dissertation would ever have been finished and defended.
+    \end{singlespace}
+\end{center}
+\vfill
+
+\newpage
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+First, I need to acknowledge the steady support of my PhD advising committee. In
+my principal advisor, Dr. Xuedong Hu, I found a strong voice to guide me through
+the substantial challenges I've had as I've worked to complete this PhD. Dr.
+Hu's substantial patience and insight regarding my personal and work habits is a
+large part of what brought this dissertation work to completion. I want to thank
+Dr. Doreen Wackeroth for her patient enthusiasm and her physics perspective from
+outside solid state. Finally, Dr. Jong Han was invaluable for his hard questions
+and challenging insights.
+
+The other physics students I've met at UB have been an important source of
+perspective and wisdom. Science is inherently a communal and human pursuit. I
+especially want to call out the advice from and conversations with Omar
+Elsherif, Courtney Fitzgerald, John Truong, Bilal Tariq, Lauren Hay, Xinyu Zhao,
+Jiawei Wang, and Zongye Wang.
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+We have put together \emph{Cantankerous Impurity}, an open source software
+package to explore the limits of the effective mass model. Evaluating effective
+mass models of an isolated phosphorus donor in silicon requires disentangling
+various sources of error. In an effort to suppress the error resulting from
+state approximation, we construct states using envelope functions expanded in
+freely extensible basis sets equipped with tunable parameters. Additionally, a
+full consideration of the effect of symmetry is applied to this basis set. This
+robust symmetrized basis set allows us, in principle, to compute arbitrarily
+precise approximate eigenstates of the effective mass Hamiltonian. We can, in
+principle, closely approximate the exact donor electron wavefunction for a broad
+class of model potentials, which in turn allows us to evaluate and compare
+extant and new effective potential models.
+
+In this dissertation, we'll describe the history of the effective mass model
+used to describe the motion of an excess electron around an isolated
+substitutional impurity within silicon. We'll use that history to construct a
+suite of software that will allow us to explore a very broad class of model
+potentials. We reveal and explain some of the features of the software, and
+present a few benchmarking results.
+
+All materials related to \emph{Cantankerous Impurity} can be found
+\href{https://gitlab.com/cantankerous-impurity/}{online}.
+
+\tableofcontents
+
+\chapter{Context}
+\pagenumbering{arabic}
+\addtocounter{page}{7}
+
+    \section{Overview of Quantum Computing}
+        \input{QuantumComputing.tex}
+        \input{QuantumComputingSystems.tex}
+        % \input{WhySolidState.tex}
+    \section{Historical Narrative of EMA}
+        \input{Kohn-Luttinger.tex}
+        \input{Faulkner.tex}
+        \input{Shindo-Nara.tex}
+        \input{Gamble.tex}
+        \input{Models.tex}
+
+\chapter{Analytical Model}
+\label{AnalyticalModel}
+    \section{Derivation of EMA Energy Functional}
+        \input{Shallow.tex}
+        \input{GenEigenValue.tex}
+        \input{SymmConcerns.tex}
+        \input{BasisExpansion.tex}
+        \input{Silicon_EffectiveMass.tex}
+        \input{Silicon_VariationalAnisotropy.tex}
+        \input{Silicon_SymmConcerns.tex}
+        \input{Silicon_SymmWavefunction.tex}
+        \input{Silicon_SingleValleyWf.tex}
+        \input{Silicon_MultiValleyWf.tex}
+    %     \item Symmetry concerns
+    %     \begin{enumerate}
+    %         \item Symmetrizing potential
+    %         \item Symmetry and computation of matrix element integrals
+    %     \end{enumerate}
+    %     \item Considering the effective mean field potential.
+    %     \begin{enumerate}
+    %         \item Statically screened Coulomb potential
+    %         \item Dynamically screened Coulomb potential
+    %         \item Center-cell corrections
+    %         \begin{enumerate}
+    %             \item Symmetry and bond distortion
+    %             \item Potential cutoff and exchange-correlation
+    %         \end{enumerate}
+    %     \end{enumerate}
+    % \end{enumerate}
+
+\chapter{Computational Description}
+    \section{Overall Program Flow}
+    \label{section:overall}
+        \input{OverallProgram.tex}
+    \section{Precalculation}
+    \label{section:precalculation}
+        \input{Precalculation.tex}
+
+\chapter{Benchmarking}
+\label{chapter:results}
+    \section{Statically screened Coulomb potential}
+        \input{ExploringSingleEigenstates.tex}
+
+\chapter{Potential for future work}
+
+\appendix
+\chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendices}
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
+    \section{System units}
+    \label{appendix:units}
+        \input{AtomicUnits.tex}
+        \pagebreak
+    \section{Transformations}
+    \label{appendix:transformations}
+        \input{Transformations.tex}
+        \pagebreak
+    \section{Calculation of matrix elements I: Setup}
+    \label{appendix:elements}
+        \input{MatrixElementsSetup.tex}
+        \pagebreak
+    \section{Calculation of matrix elements II: Analytical results}
+    \label{appendix:elements}
+        \input{MatrixElements.tex}
+        \pagebreak
+
+\bibliographystyle{plain}
+\bibliography{dissertation}
+
+\end{document}

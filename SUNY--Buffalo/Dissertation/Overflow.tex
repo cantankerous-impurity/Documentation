@@ -1,0 +1,373 @@
+% % \documentclass[aps, prl, preprint]{revtex4-2}
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{dcolumn}
+% \usepackage{array,multirow,adjustbox}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{braket}
+
+% % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+% % \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+% % \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+
+% \let\originalleft\left
+% \let\originalright\right
+% \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+% \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% \newcommand{\im}{\mathrm{i}}
+% \newcommand{\e}{\mathrm{e}}
+% \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+% \newcommand{\diff}{\mathrm{d}}
+
+% \DeclareMathOperator{\atantwo}{atan2}
+
+% \begin{document}
+
+\subsection{Single valley wavefunction eqs}
+\begin{equation}
+    \Phi_{\eta\lambda;m\zeta lk}^{(W\kappa p)}
+    = 
+    \left(\frac{\hbar^{2}}{2m_{0}a_{\perp}^{2}\eta^{2}}\right)^{\kappa}
+    \hat{Q}_{m\zeta}^{(p)}
+    \sum_{s=-\kappa}^{+\kappa}
+    \mathfrak{H}^{(\kappa)}_{\lambda;lm,s}
+    \hat{\mathcal{P}}_{\lambda;(l+2s)m}^{(p)}
+    \hat{\mathcal{R}}_{\tilde{\eta}_{\lambda};lk,s}^{(W\kappa p)}
+\end{equation}
+
+
+
+\begin{align*}
+    \mathfrak{H}^{(\kappa)}_{\lambda;lm,s}
+    & = 
+    \delta_{s,0}-\kappa\left(1-\gamma\lambda^{2}\right)\mathfrak{Y}_{lm}^{(s)}
+    \\
+    \mathfrak{Y}^{(0)}_{lm}
+    & =
+    \frac{ 2l^2-2m^2+2l-1 } { (2l-1)(2l+3) }
+    \\
+    \mathfrak{Y}^{(-1)}_{lm}
+    & =
+    \sqrt{\frac{
+        \left((l-1)^2-m^2\right)\left(l^2-m^2\right)
+    }{
+        (2l-3)(2l-1)^{2}(2l+1)
+    }}
+    \\
+    \mathfrak{Y}^{(+1)}_{lm}
+    & =
+    \sqrt{\frac{
+        \left((l+1)^2-m^2\right)\left((l+2)^2-m^2\right)
+    }{
+        (2l+1)(2l+3)^{2}(2l+5)
+    }}
+\end{align*}
+
+
+\begin{align*}
+    \vartheta_{\lambda\chi}
+    & =
+    \sqrt{1 + \left(\lambda^2-1\right)\chi^2}
+    \\
+    \tilde{\chi}_{\lambda}^{\left(q\right)}
+    & =
+    \frac{\lambda\chi_{q}}{\vartheta_{\lambda\chi_{q}}}
+    \\
+    \hat{\mathcal{P}}_{\lambda;lm}^{(p)}
+    & = 
+    \sqrt{\frac{ \lambda }{ \vartheta_{\lambda\chi}^{3} }}
+    \sqrt{
+        \left(l+\frac{1}{2}\right)
+        \frac{ \left(l-m\right)! }{ \left(l+m\right)! }
+    }
+    P_{lm;\hat{\chi}_{\lambda}^{\left(p\right)}}
+    \\
+    \hat{Q}_{m\zeta}^{(p)}
+    & = 
+    \frac{1}{\sqrt{2\pi}}
+    \left(
+        \frac
+        {
+            \mathrm{e}^{\mathrm{i}m \phi_{p}}
+            +
+            \zeta\mathrm{e}^{-\mathrm{i}m \phi_{p}}
+        }
+        {2\delta_{m0} + \sqrt{2}\left(1-\delta_{m0}\right)}
+    \right)
+\end{align*}
+
+
+\begin{align*}
+    \alpha_{l}^{\left(W\right)}
+    & =
+    \frac{2}{W}\left(l+\frac{1}{W}\right)
+    \\
+    \tilde{\eta}_{\lambda}
+    & =
+    \frac{ \eta }{ \vartheta_{\lambda\left\{\chi_{q}\right\}} }
+    \\
+    \hat{\mathcal{R}}_{\eta;lk,s}^{(W\kappa p)}
+    & =
+    \left(
+        \frac{2}{Wa_{\perp}\eta}
+    \right)^{\frac{3}{2}}
+    \left[
+        \sqrt{W}
+        \rho^{\frac{l}{W}-\kappa\delta_{W,1}-\delta_{s,-1}}\mathrm{e}^{-\rho/2}
+        \sum_{v=-2\kappa}^{\kappa+\delta_{s,-1}}
+        h_{lk,sv}^{(\kappa)}
+        \hat{L}_{k+v}^{\left(
+            \alpha_{l}^{\left(W\right)}+\kappa-\delta_{s,-1}
+        \right)}
+    \right|_{
+        \rho
+        \rightarrow 
+        \left(
+            \frac{2r}{Wa_{\perp}\eta}
+        \right)^{W}
+    }
+\end{align*}
+
+\begin{align*}
+    h_{lk,v}^{(\kappa s)}
+    & =
+    \left(1-\kappa\right)\delta_{s0}\delta_{v0} + \kappa g_{lk,v}^{(s)}
+\end{align*}
+
+\begin{gather*}
+    g_{lk,-2}^{(-1)}
+    =
+    -\sqrt{(k-1)k(k-1+\alpha)(k+\alpha)}
+    \\
+    g_{lk,-1}^{(-1)}
+    =
+    2\sqrt{k(k+\alpha)}\left(\alpha-2-3\delta_{W,2}\right)
+    \\
+    g_{lk,0}^{(-1)}
+    =
+    2k^{2}
+    -
+    4\left(\alpha-1+\delta_{W,2}\right)\left(\alpha-3+2\delta_{W,2}\right)
+    +
+    \left(\alpha+1\right)\left(2k+3\alpha-8+6\delta_{W,2}\right)
+    \\
+    g_{lk,+1}^{(-1)}
+    =
+    -2\sqrt{(k+1)(k+1+\alpha)}\left(\alpha-5+3\delta_{W,2}\right)
+    \\
+    g_{lk,+2}^{(-1)}
+    =
+    -\sqrt{(k+1)(k+2)(k+1+\alpha)(k+2+\alpha)}
+\end{gather*}
+
+\begin{gather*}
+    g_{lk,-2}^{(0)}
+    =
+    -\sqrt{(k-1)k(k+\alpha)}
+    \\
+    g_{lk,-1}^{(0)}
+    =
+    -\sqrt{k}\left(k+3-2\delta_{W,2}\right)
+    \\
+    g_{lk,0}^{(0)}
+    =
+    \sqrt{k+\alpha+1}
+    \left(k+\alpha-2+2\delta_{W,2}\right)
+    \\
+    g_{lk,+1}^{(0)}
+    =
+    \sqrt{(k+1)(k+1+\alpha)(k+2+\alpha)}
+\end{gather*}
+
+\begin{gather*}
+    g_{lk,-2}^{(+1)}
+    =
+    -\sqrt{(k-1)k(k+\alpha)}
+    \\
+    g_{lk,-1}^{(+1)}
+    =
+    -\sqrt{k}\left(k+2\alpha+5-2\delta_{W,2}\right)
+    \\
+    g_{lk,0}^{(+1)}
+    =
+    \sqrt{k+\alpha+1}
+    \left(k-\alpha-4+2\delta_{W,2}\right)
+    \\
+    g_{lk,+1}^{(+1)}
+    =
+    \sqrt{(k+1)(k+1+\alpha)(k+2+\alpha)}
+\end{gather*}
+
+\pagebreak
+\subsection{Multi valley / Fully symmetric wavefunction eqs}
+
+\begin{align*}
+    \Psi_{\eta\lambda;m_{e}lk;A^{\left(\sigma\right)}}^{\left(W\kappa\right)}
+    & =
+    \sum_{q = x,y,z} 
+    \left(\frac{1}{\sqrt{3}}\right)
+    \Phi_{\eta\lambda;m_{e}(\sigma\mathrm{i}^{m_{e}})lk}^{(W\kappa q)}
+    \Theta^{(q)}_{\sigma\mathrm{i}^{m_{e}}(-1)^{l}}
+    \\
+    \Psi_{\eta\lambda;m_{e}lk\sigma;E_{i}}^{\left(W\kappa\right)}
+    & =
+    \sum_{q = x,y,z}
+    \left(\beta_{E_{i}}^{(\sigma)}\right)_{q}
+    \Phi_{\eta\lambda;m_{e}(\sigma\mathrm{i}^{m_{e}})lk}^{(W\kappa q)}
+    \Theta^{(q)}_{\sigma\mathrm{i}^{m_{e}}(-1)^{l}}
+    \\
+    \Psi_{\eta\lambda;m_{e}lkT_{q}^{(\sigma)}}^{\left(W\kappa\right)}
+    & =
+    \Phi_{\eta\lambda;m_{e}(\sigma\mathrm{i}^{m_{e}})lk}^{(W\kappa q)}
+    \Theta_{-\sigma\mathrm{i}^{m_{e}}(-1)^{l}}^{(q)}
+\end{align*}
+
+\begin{align*}
+    \Psi_{\eta\lambda;m_{o}lkhT_{q_{1}}^{(\sigma)}}^{\left(W\kappa\right)}
+    =
+    \frac
+    {
+    \Phi_{\eta\lambda;m_{o}hlk}^{\left(W\kappa q_{2}\right)}\Theta_{h(-1)^{l}}^{(q_{2})}
+    - h\sigma\mathrm{i}^{m_{o}}\Phi_{\eta\lambda;m_{o}\bar{h}lk}^{\left(W\kappa q_{3}\right)}\Theta_{h(-1)^{l}}^{(q_{3})}
+    }
+    {\sqrt{2}}
+\end{align*}
+
+\begin{align*}
+    \Theta^{(q)}
+    & =
+    \mathrm{e}^{\mathrm{i}\bm{k}_q\cdot \bm{r}}u_{\bm{k}_q}
+    \\
+    \Theta_{\Omega}^{(q)}
+    & =
+    \frac
+    {
+    \Theta^{(q)}
+    +
+    \Omega\Theta^{(-q)}
+    }
+    {\sqrt{2}}
+    \\
+\end{align*}
+
+\begin{equation*}
+    \bm{\beta}_{E_{1}}^{(\sigma)}
+    =
+    \mathrm{i}^{\frac{1-\sigma}{2}}
+    \frac{1}{\sqrt{3}}
+    \left\{\tau, \tau^{2}, 1\right\}
+\end{equation*}
+
+\begin{equation*}
+    \bm{\beta}_{E_{2}}
+    =
+    \left(\bm{\beta}_{E_{1}}\right)^{*}
+\end{equation*}
+
+\begin{equation*}
+    \tau = -\frac{1}{2} + \mathrm{i}\frac{\sqrt{3}}{2}
+\end{equation*}
+
+\pagebreak
+
+\subsection{Reducing number of integrand terms using transformations}
+
+\begin{equation}
+    \Psi_{\mathcal{W}}
+    =
+    \sum_{q}
+    \alpha_{q}^{\mathcal{W}}\psi^{(q)}
+\end{equation}
+
+\begin{align*}
+    (\bm{\mathcal{M}})_{\mathcal{V}\mathcal{W}}
+    & =
+        \int \mathrm{d}\bm{r}\,
+        \Psi_{\mathcal{V}}^{*}
+        \Psi_{\mathcal{W}}
+        U_{xyz}
+    \\
+    & =
+        \int \mathrm{d}\bm{r}\,
+        \sum_{pq}
+        \left(\alpha_{p}^{\mathcal{V}}\psi^{(p)}\right)^{*}
+        \alpha_{q}^{\mathcal{W}}\psi^{(q)}
+        U_{xyz}
+    \\
+    & =
+        \int \mathrm{d}\bm{r}\,
+        \sum_{pq}
+        \left(\alpha_{p}^{\mathcal{V}}\right)^{*}
+        U_{xyz}
+        \alpha_{q}^{\mathcal{W}}
+        \left(\psi^{(p)}\right)^{*}
+        \psi^{(q)}
+    \\
+    & =
+        \int \mathrm{d}\bm{r}\,
+        \left[
+        \bm{\alpha}_{\mathcal{V}}^{\dagger}
+        \bm{U}_{\parallel}
+        \bm{\alpha}_{\mathcal{W}}
+        \left(\psi_{\mathcal{V}}^{(z)}\right)^{*}
+        \psi_{\mathcal{W}}^{(z)} 
+        +
+        \bm{\alpha}_{\mathcal{V}}^{\dagger}
+        \bm{U}_{\perp}
+        \bm{\alpha}_{\mathcal{W}}
+        \left(\psi_{\mathcal{V}}^{(y)}\right)^{*}
+        \psi_{\mathcal{W}}^{(x)}
+        \right]
+    \\
+    & =
+        \int \mathrm{d}\bm{r}\,
+        \left[
+        U_{\parallel}^{\left(\mathcal{V}\mathcal{W}\right)}
+        \left(\psi_{\mathcal{V}}^{(z)}\right)^{*}
+        \psi_{\mathcal{W}}^{(z)} 
+        +
+        U_{\perp}^{\left(\mathcal{V}\mathcal{W}\right)}
+        \left(\psi_{\mathcal{V}}^{(y)}\right)^{*}
+        \psi_{\mathcal{W}}^{(x)} 
+        \right]
+    \\
+\end{align*}
+
+\begin{align}
+    \bm{U}_{\parallel}
+    =
+        \begin{pmatrix}
+            U_{zxy} & 0       & 0       \\
+            0       & U_{yzx} & 0       \\
+            0       & 0       & U_{xyz}
+        \end{pmatrix}
+    \\
+    \bm{U}_{\perp}
+    =
+        \begin{pmatrix}
+            0 & \sigma_{0}\sigma_{1}U_{yxz} & U_{yzx} \\
+            U_{xyz} & 0 & \sigma_{0}\sigma_{1}U_{zyx} \\
+            \sigma_{0}\sigma_{1}U_{xzy} & U_{zxy} & 0
+        \end{pmatrix}
+\end{align}
+
+\begin{equation}
+    U_{\parallel\slash\perp}^{\left(\mathcal{V}\mathcal{W}\right)}
+    = 
+    \hat{\bm{\beta}}_{\mathcal{V}}^{\dagger}
+    \bm{U}_{\parallel\slash\perp}
+    \hat{\bm{\beta}}_{\mathcal{W}}
+\end{equation}
+
+
+
+% \end{document}
+
+
+
+
+
+

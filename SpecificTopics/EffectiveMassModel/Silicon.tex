@@ -1,0 +1,139 @@
+%\documentclass[aps, prl, preprint]{revtex4-1}
+%
+%\usepackage{graphicx}
+%\usepackage{dcolumn}
+%\usepackage{bm}
+%\usepackage{amsfonts, amssymb, amsmath}
+%\usepackage{multirow}
+%
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+%\newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\mathrm{e}}
+%\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+%
+%\begin{document}
+
+\subsection{The silicon effective mass.}
+So far the analysis has been somewhat general, applicable to all
+``shallow'' potentials in the semiconductor bulk. The system of most
+interest in this document is the phosphorous donor in silicon. As
+such, we want to consider the meaning of ``effective mass'' in the
+context of silicon band structure. In silicon, the six equivalent
+conduction band minima each lie along one of the three coordinate
+axes, $\hat{k}_x$, $\hat{k}_y$, or $\hat{k}_z$. Additionally, each
+valley is anisotropic. To the second order in the valley at $\bm{k}^{(q)}
+= k_0\hat{k}_{q}$, we find that the conduction band energy goes as
+\begin{equation}
+  E^{(q)}(\bm{k})
+  \approx 
+  \frac{\hbar^2}{2 m_\parallel}\left(k_q - k_0\right)^2
+  + \frac{\hbar^2}{2 m_\perp}\left(k_{r}^2 + k_{s}^2\right)
+  \label{emin}
+\end{equation}
+The quantities $m_{\parallel}$ and $m_{\perp}$ are defined here from
+the empirical structure of the silicon conduction band, and they take
+the role of an effective and anisotropic mass in the kinetic
+expectation energy. To satisfy Eq. \eqref{tdef} and Eq. \eqref{emin}
+we may define the effective kinetic energy operator $\hat{T}^{(q)}$ as
+\begin{equation}
+  \hat{T}^{(q)}
+  =
+  - \frac{\hbar^2}{2m_\parallel}\frac{\partial^2}{\partial r_{q}^2}
+  - \frac{\hbar^2}{2m_\perp}\left(
+  \frac{\partial^2}{\partial r_{r}^2}
+  + \frac{\partial^2}{\partial r_{s}^2}
+  \right),
+\end{equation}
+which will be utilized to find the quantity $T^{(q)}$ as defined in
+Eq. \eqref{tidef}.
+
+We see that the band structure of silicon influences the motion of
+excess electrons bound to the shallow impurity, emerging as an
+ellipsoidal anisotropic effective mass. Since an electron occupying a
+particular bandstructure valley is effectively heavier along the
+longitudinal axis of the valley, we expect that the individual
+components of the complete wavefunction corresponding to each valley
+will show a deformation, leading to an ellipsoidal structure, rather
+then the spherical structure that might be assumed as the solution to
+a hydrogenic problem.
+
+\subsection{Definition of orbital basis states.}
+
+We wish to model our system by using a set of basis states that
+incorporate the hydrogen-like nature of the isolated donor with the
+anisotropic character of nearly free electrons travelling in the
+bulk. As such, we consider a set of elliptically scaled Slater or
+Gaussian orbitals as our variational basis. The states are defined as
+\begin{multline}
+  \Phi_{nlm}^{(\pm q)}\left(\bm{r};\eta\lambda\bm{\epsilon}\right) \\
+  = \mathcal{N}_{nl}\left(\eta\lambda\bm{\epsilon}\right)
+  F\left(\frac{r\vartheta(\chi_q;\lambda)}{\eta}\right)
+  \left[\sum_{j=l}^{n-1}
+    \epsilon_{j}\left(\frac{r\vartheta(\chi_q;\lambda)}{\eta}\right)^{j}
+    \right]
+  \hat{P}_{lm}\left(\frac{\lambda \chi_{q}}{\vartheta(\chi_q;\lambda)}\right)
+  \frac{\e^{\pm \im m \phi_q}}{\sqrt{2\pi}}.
+\end{multline}
+The functions $F(r)$ specify the Slater- or Gaussian-type radial
+dependence of the underlying prescaled functions, going as
+\begin{equation}
+  F(r) = \exp\left(-r\right)
+  \quad\mbox{or}\quad
+  F(r) = \exp\left(-\frac{r^2}{2}\right)
+\end{equation}
+The $\hat{P}_{lm}\left(\chi\right)$ denote normalized associated
+Legendre polynomials. These functions may be more precisely defined as
+solutions to the following equation
+\begin{equation}
+  \frac{\diff}{\diff \chi}\left[
+    \left(1-\chi^2\right)\frac{\diff}{\diff \chi}\hat{P}_{lm}\left(\chi\right)
+    \right]
+  +\left[l(l+1)-\frac{m^2}{1-\chi^2}\right]\hat{P}_{lm}\left(\chi\right)
+  = 0
+\end{equation}
+with $l, m$ integers such that $0 \le l \le n - 1$, and $-l \le m \le
+l$. The functions are normalized in the sense that
+\begin{equation}
+  \int_{-1}^{+1}\diff \chi\,
+  \hat{P}_{km}\left(\chi\right)\hat{P}_{lm}\left(\chi\right)
+  = 1.
+\end{equation}
+
+The angular coordinates $\chi_q$ and $\phi_q$ of a basis
+state are defined by the valley index $q = x$, $y$, $z$. Each state
+has a longitudinal coordinate $\chi_q$ associated with the $q$th
+valley, namely
+\begin{align}
+  \chi_{x} &= \frac{x}{r} = \sin(\theta)\cos(\phi), \\
+  \chi_{y} &= \frac{y}{r} = \sin(\theta)\sin(\phi), \\
+  \chi_{z} &= \frac{z}{r} = \cos(\theta), 
+\end{align}
+and $\phi_q$ is defined as the argument of a complex number of unit
+magnitude, such that
+\begin{equation}
+  \e^{\pm \im m \phi_{q_1}} = \left(\frac{\chi_{q_2} \pm \im \chi_{q_3}}
+    {\sqrt{\chi_{q_2}^2 + \chi_{q_3}^2}}\right)^m,
+    \quad\quad \mbox{\begin{tabular}{|c|cc|}
+        \hline
+        $q_1$ & $q_2$ & $q_3$ \\
+        \hline
+        $x$ & $y$ & $z$ \\
+        $y$ & $z$ & $x$ \\
+        $z$ & $x$ & $y$ \\
+        \hline
+    \end{tabular}}
+\end{equation}
+The variational parameters are $\eta$, $\lambda$, and $\bm{\epsilon}$
+where $\eta$ specifies the radial extent of the basis state, and
+$\bm{\epsilon}$ encodes the node structure. The elliptical anisotropy
+introduced by the scaling of the valley coordinate of the state
+expresses itself via the variational parameter $\lambda$ and the
+function $\vartheta$ which is defined as
+\begin{equation}
+  \vartheta(\chi;\lambda) = \sqrt{1 + \left(\lambda^2-1\right)\chi^2}
+\end{equation}
+and emerges in the $F(r)$ and $\hat{P}_{lm}(\chi)$ as modification of
+the radial and valley longitudal coordinates.

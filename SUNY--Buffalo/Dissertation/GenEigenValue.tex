@@ -1,0 +1,124 @@
+\subsection{The generalized eigenvalue problem emerges.}
+One of the concerns with the variational method is selection of the
+wavefunction. The wavefunction must reflect the form of the actual wavefunction,
+though this form may not be known in any detail. In this work, we consider
+replacing a single variational wavefunction with a "variational basis". In this
+section, we will explore the implications of this expanding the envelope
+function with a set of specially selected states. 
+
+Assume there exists a linearly independent countably infinite set of functions
+such that
+\begin{equation}
+  \alpha_{q}\Phi^{(q)}_{\bm{r}}
+  =
+  \sum_{i} c_{q,i} \phi_{i\bm{r}}.
+  \label{expand_def}
+\end{equation}
+We assume the functions of this set can be normalized. For reasons we will
+explore in a later section, we do not assume this set of functions is
+orthonormal, but that they do span the function space $L^{2}\left(
+\mathbb{R}^{3}\right)$ while remaining linearly independent. We note that $q$
+indexes the conduction valley minima of our system. 
+
+We can insert this expansion into our variational model of the donors, yielding
+for the effective kinetic term
+\begin{equation}
+  \mathcal{T}
+  =
+  \sum_{pq}
+  \int \diff\bm{r}\,
+  \mathrm{e}^{\im\left(\bm{k}_{q}-\bm{k}_{p}\right)\cdot\bm{r}}
+  \left\{
+    \sum_{i} c_{p,i} \phi_{i\bm{r}}
+  \right\}^{*}
+  \hat{T}^{(q)}
+  \left\{
+    \sum_{j} c_{q,j} \phi_{j\bm{r}}
+  \right\}.
+\end{equation}
+A little reorganization allows to articulate the following structure for this
+term,
+\begin{equation}
+  \mathcal{T}
+  =
+  \sum_{pq}\sum_{ij} c_{p,i}^{*}c_{q,j}
+  \int \diff\bm{r}\,
+  \mathrm{e}^{\im\left(\bm{k}_{q}-\bm{k}_{p}\right)\cdot\bm{r}}
+  \phi_{i\bm{r}}^{*}
+  \hat{T}^{(q)}
+  \left\{ \phi_{j\bm{r}} \right\}.
+\end{equation}
+With little effort, the above equation can be reinterpreted as a vector-matrix
+equation, namely
+\begin{equation}
+  \mathcal{T}
+  =
+  \bm{c}^{\dagger}\bm{\mathbb{T}}\bm{c},
+\end{equation}
+where
+\begin{equation}
+  \left(\bm{\mathbb{T}}\right)_{pi,qj}
+  \equiv
+  \int \diff\bm{r}\,
+  \mathrm{e}^{\im\left(\bm{k}_{q}-\bm{k}_{p}\right)\cdot\bm{r}}
+  \phi_{i\bm{r}}^{*}
+  \hat{T}^{(q)}
+  \left\{ \phi_{j\bm{r}} \right\}.
+\end{equation}
+Similarly, the potential term can be reformulated as
+\begin{equation}
+  \mathcal{U}
+  =
+  \bm{c}^{\dagger}\bm{\mathbb{U}}\bm{c},
+\end{equation}
+and
+\begin{equation}
+  \left(\bm{\mathbb{U}}\right)_{pi,qj}
+  \equiv
+  \int \diff\bm{r}\,
+  \mathrm{e}^{\im\left(\bm{k}_{q}-\bm{k}_{p}\right)\cdot\bm{r}}
+  u_{\bm{k}_{p}\bm{r}}^{*}u_{\bm{k}_{q}\bm{r}}^{}
+  U_{\bm{r}}
+  \phi_{i\bm{r}}^{*}
+  \phi_{j\bm{r}}
+.
+\end{equation}
+An important observation to make here is how the nonorthogonality of the basis
+affects the normalization condition of the eigenstate.
+\begin{equation}
+  \bm{c}^{\dagger}\bm{\mathbb{S}}\bm{c}
+  =
+  1
+\end{equation}
+\begin{equation}
+  \left(\bm{\mathbb{S}}\right)_{pi,qj}
+  \equiv
+  \int \diff\bm{r}\,
+  \mathrm{e}^{\im\left(\bm{k}_{q}-\bm{k}_{p}\right)\cdot\bm{r}}
+  \phi_{i\bm{r}}^{*}
+  \phi_{j\bm{r}}
+\end{equation}
+These pieces together allow us to restate the problem as a generalized
+eigenvalue problem by noting that \ref{definition:ExpectationEnergy} may be
+rewritten as
+\begin{equation}
+  \bm{c}^{\dagger}
+  \left(\bm{\mathbb{T}}+\bm{\mathbb{U}}-\mathcal{E}\bm{\mathbb{S}}\right)
+  \bm{c}
+  =
+  0.
+  \label{geneig_bridge}
+\end{equation}
+The linear independence asserted above means that for \ref{geneig_bridge} to be
+true it must be the case that
+\begin{equation}
+  \left(\bm{\mathbb{T}}+\bm{\mathbb{U}}\right)\bm{c}
+  =
+  \mathcal{E}\bm{\mathbb{S}}\bm{c}
+  \label{gen_ev}
+\end{equation}
+This restatement of our problem is especially amenable to variational
+optimization. Solving the eigenvalue problem here automatically optimizes the
+expansion coefficients, so no additional optimization beyond the variational
+parameters we introduce explicitly into the basis states themselves are
+necessary.

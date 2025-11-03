@@ -1,0 +1,1682 @@
+% \documentclass{report}
+
+% \usepackage{graphicx}
+% \usepackage{dcolumn}
+% \usepackage{bm}
+% \usepackage{amsfonts, amssymb, amsmath}
+% \usepackage{braket}
+
+%\newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle}
+%\newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle}
+%\newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2 \right\rangle\right. \displaystyle}
+%\newcommand{\im}{\mathrm{i}}
+%\newcommand{\e}{\mathrm{e}}
+%\newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\diff}{\mathrm{d}}
+
+%\begin{document}
+
+\subsection{ Full symmetrized wavefunction, including envelope function
+    anisotropy }
+\label{section:full_wavefunctions}
+
+This section is a collection of information derived in previous sections, and is
+collected here to make referencing of the form of our wavefunctions for various
+symmetries swift and convenient for users and maintainers of the software.
+
+We have a few preliminaries to define. We may start with what we in this
+document call the \emph{axial Bloch function}. In our system, the Bloch
+functions we are most concerned are the six energy minima of the conduction band
+of bulk silicon. Each lies along a particular crystallographic $k$-space axis,
+which may be labeled $x$, $y$, and $z$. We denote the location in $k$-space where each minima is located as follows
+\begin{equation}
+    \bm{k}_{\pm q} = \pm \eta_{\text{Si}}k_{0}\hat{q},
+\end{equation}
+where
+\begin{equation}
+    k_{0} = \frac{2\pi}{a_{\text{Si}}}.
+\end{equation}
+Above $a_{\text{Si}} = \SI{.5431020511}{\nano\metre}$ is the lattice parameter of the silicon crystal, and $\eta_{\text{Si}} \approx .85$.
+
+We use the following notation to describe one of these valley Bloch functions
+\begin{align}
+\Theta^{\left(\pm q\right)}
+    &\coloneqq
+        \e^{\im \bm{k}_{\pm q}\cdot\bm{r}}
+        u_{\bm{k}_{\pm q}\bm{r}}
+,\\
+    &=
+        \e^{\im \eta_{\text{Si}}k_{0}r\chi_{q}}
+        u_{\bm{k}_{\pm q}\bm{r}}
+.
+\end{align}
+In the previous section we found that our choice of envelope function
+basis, along with certain parameters specifying functions within that basis,
+allowed us to factor the envelope function from the Bloch functions of opposite
+valleys. These factored out Bloch function summations have the following form
+\begin{equation}
+    \Theta^{\left(q\right)}_{\xi}
+    =
+        \Theta^{\left(+q\right)}
+            +
+        \xi
+        \Theta^{\left(-q\right)}.
+\end{equation}
+We describe this form as the \emph{axial Bloch function}.
+
+There is a feature of notation below we should discuss; previously, we defined
+the $m$ index of functions in our basis to extend over the nonnegative integers.
+Because some of the basis functions must be set to zero depending on the parity
+of $m$, we introduce new notation to reflect this. Namely, $m_{e}$ extends over
+the nonegative even integers, including zero. Whereas, $m_{o}$ should be
+understood to extend over the nonnegative odd integers. When invoked without
+subscript, $m$ retains its original domain of all nonnegative integers.
+
+Now, as we build up our multi-valley wavefunctions we consider what we will
+describe here as the \emph{$z$-longitudinal single-axis basis wavefunctions}.
+These wavefunction terms are longitudinal in the sense that they only include
+parts of the full wavefunction with only $z$-axial Bloch functions used in their
+construction. We found that, for $\left(\kappa,i\right) = \left(A_{n},0\right)$,
+$\left(E,i\right)$, and $\left(T_{n},z\right)$ the $z$-longitudinal single-axis
+basis wavefunctions to go as
+\begin{align}
+    \psi_{\parallel_{0},m_{e}lk\sigma\omega}^{\left(z\right)}
+        & \coloneqq
+            \phi_{klm_{e}\zeta}^{(z)}
+            \Theta^{\left(z\right)}
+            _{\sigma\omega\left(-1\right)^{l+m_{e}/2}}
+\tag{\ref{envelope:longitudinal:z:0}+\ref{single-axis:longitudinal:z:0}}
+,\\
+    \psi_{\parallel_{1},mlk\sigma\omega}^{\left(z\right)}
+        & \coloneqq
+            \left\{
+                \phi_{klm\zeta_{0}}^{(x)}
+                +
+                \sigma\left(-1\right)^{l+m}\im^{+m}
+                \phi_{klm\zeta_{1}}^{(y)}
+            \right\}
+            \Theta^{\left(z\right)}
+            _{\omega\left(-1\right)^{m}}
+\tag{\ref{envelope:longitudinal:z:1}+\ref{single-axis:longitudinal:z:1}}
+.
+\end{align}
+These $z$-longitudinal functions were constructed from the \emph{naive envelope
+basis function} denoted by lowercase $\phi$ with suitable azimuthal constants
+$\zeta$ as given below. 
+\begin{align}
+    \zeta
+        & =
+            \sigma\left(-1\right)^{m_{e}/2}
+,\\
+    \zeta_{0}
+        &=
+            \left(-1\right)^{l}
+\quad
+    \zeta_{1}
+        =
+            \left(-1\right)^{l+m}
+.
+\end{align}
+
+We have enough information now to construct the full wavefunctions for the
+$\kappa = A,E$ symmetries. For those states, we will need $q$-longitudinal
+single-axis wavefunctions for $q = x, y$ as well as $q = z$. Fortunately, we can
+invoke \eqref{idx:env:xz} and \eqref{idx:env:yz} to find the single-axis
+wavefunctions for the $x$ and $y$ axes. The relevant cyclic transformations go
+simply as $\psi^{\left(x\right)} = \left(yzx\right)\psi^{\left(z\right)}$ and
+$\psi^{\left(y\right)} = \left(zxy\right)\psi^{\left(z\right)}$. These
+transformations straightforwardly swap the $z$ index in the above expressions
+for the $x$ and $y$ expressions respectively. Following this line of reasoning
+and using the equations mentioned above we can state the forms of the full $A$,
+$E$ wavefunctions to be
+\begin{align}
+    \Psi_{\varrho,mlk}^{\left(A_{n}\right)}
+        &=
+            \frac{1}{3}
+            \psi_{\varrho,mlk\sigma^{\left(A_{n}\right)}\left(+1\right)}
+            ^{\left(z\right)}
+                +
+            \frac{1}{3}
+            \psi_{\varrho,mlk\sigma^{\left(A_{n}\right)}\left(+1\right)}
+            ^{\left(x\right)}
+                +
+            \frac{1}{3}
+            \psi_{\varrho,mlk\sigma^{\left(A_{n}\right)}\left(+1\right)}
+            ^{\left(y\right)}
+\label{wavefunction:A}
+,\\
+    \Psi_{\varrho,mlk\sigma}^{\left(E,0\right)}
+        &=
+            \frac{1}{3}
+            \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(z\right)}
+                +
+            \frac{\tau}{3}
+            \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(x\right)}
+                +
+            \frac{\tau^{2}}{3}
+            \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(y\right)}
+\label{wavefunction:E:0}
+,\\
+    \Psi_{\varrho,mlk\sigma}^{\left(E,1\right)}
+        &=
+            \frac{1}{3}
+            \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(z\right)}
+                +
+            \frac{\tau^{2}}{3}
+            \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(x\right)}
+                +
+            \frac{\tau}{3}
+            \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(y\right)}
+\label{wavefunction:E:1}
+.
+\end{align}
+Above $\tau = -\frac{1}{2} + \im\frac{\sqrt{3}}{2}$, one of the third roots of
+unity. The $A$-type states are nondegenerate, so we drop the degeneracy index
+above. We retain the degeneracy index for the doubly degenerate $E$-type states.
+While $\sigma$ is a good quantum number for the $A$ and $T$ states, it is not
+for the $E$ states. As such, since our basis respects this symmetry, we should
+include contributions from both $\sigma=-1$ and $\sigma=+1$ when considering
+$\kappa = E$. When necessary we can treat $\sigma$ as a basis index like $m$,
+$l$, or $k$. Finally, we introduce a $\varrho = \parallel_{0}, \parallel_{1}$
+index that we will describe here as the single-axis functional form index.
+
+For the $A$ and $E$ symmetries, only $q$-longitudinal single valley terms are
+necessary to construct the full multi-valley wavefunction. In essence the idea
+of a "$z$-longitudinal" or "$z$-transverse" single-axis wavefunction is
+irrelevant for these symmetries -- the three axes are all present in the
+wavefunction, and are in some sense interchangeable. As we will see, however,
+for $T$ symmetries this distinction between longitudinal and transverse in
+relation to a given valley is relevant. In the previous section we were able to
+find an expression for transverse forms for $\kappa = T_{n}$ states. The
+$T$-states are triply degenerate, and each degeneracy may be valley indexed. If
+we consider the $\left(\kappa, i\right) = \left(T_{n},q\right)$ state, we can
+define $q$-longitudinal wavefunction terms to be those that include the
+$q$-valley axial Bloch functions, while $q$-transverse wavefunction terms are
+defined as those which include axial Bloch functions with valleys perpendicular
+to $q$.
+
+To wit, we found these \emph{$z$-transverse single-axis basis wavefunctions} to
+be
+\begin{align}
+\Psi_{\perp_{0},m_{o}lk\zeta}^{\left(T_{n},z\right)}
+    &=
+        \phi_{m_{o}lk\zeta}^{\left(x\right)}
+        \Theta^{\left(x\right)}_{\zeta\left(-1\right)^{l}}
+        -
+        \zeta\sigma^{\left(T_{n}\right)}\im^{+m}
+        \phi_{m_{o}lk\bar{\zeta}}^{\left(y\right)}
+        \Theta^{\left(y\right)}_{\zeta\left(-1\right)^{l}}        
+,\\
+\Psi_{\perp_{1},mlk}^{\left(T_{n},z\right)}
+    &=
+        % \phi_{mlk\left(-1\right)^{l+1}}^{\left(y\right)}
+        \phi_{mlk\bar{\zeta}_{0}}^{\left(y\right)}
+        \Theta^{\left(x\right)}_{\left(-1\right)^{m+1}}
+        -
+        \sigma^{\left(T_{n}\right)}\left(-1\right)^{l+m}\im^{+m}
+        % \phi_{mlk\left(-1\right)^{l+m+1}}^{\left(x\right)}
+        \phi_{mlk\bar{\zeta}_{1}}^{\left(x\right)}
+        \Theta^{\left(y\right)}_{\left(-1\right)^{m+1}}        
+,\\
+\Psi_{\perp_{2},mlk}^{\left(T_{n},z\right)}
+    &=
+        \phi_{mlk\bar{\zeta}_{1}}^{\left(z\right)}
+        \Theta^{\left(x\right)}_{\left(-1\right)^{m}}
+        -
+        \sigma^{\left(T_{n}\right)}\left(-1\right)^{l}\im^{+m}
+        \phi_{mlk\bar{\zeta}_{0}}^{\left(z\right)}
+        \Theta^{\left(y\right)}_{\left(-1\right)^{m}}
+.
+\end{align}
+It should be made clear that in transverse forms, by definition, the valley
+index of the Bloch functions functions are perpendicular to the valley index of
+the degeneracy index. As we examine the naive envelope basis functions, it is
+clear that various valley indices are used above and that which valley index is
+used for the naive functions depends upon which form index $\perp_{0}$,
+$\perp_{1}$, and $\perp_{2}$ is used. This is similar to the 
+
+
+We can articulate longitudinal forms for the multi-valley wavefunction with
+$\kappa = T_{n}$ built up from the \emph{$z$-longitudinal single-axis basis
+wavefunction} we introduced earlier. Namely, for $\rho = \parallel_{0},
+\parallel_{1}$ we find
+\begin{equation}
+    \Psi_{\varrho,mlk}^{\left(T_{n},z\right)}
+        =
+            \psi_
+            {\varrho,mlk\sigma^{\left(T_{n}\right)}\left(-1\right)}
+            ^{\left(z\right)}
+.
+\end{equation}
+
+Above, we articulated wavefunctions for the states of $\left(\kappa,i\right) =
+\left(T_{n},z\right)$. For the other degenerate states, $\left(T_{n},x\right)$
+and $\left(T_{n},y\right)$, we can once again use the appropriate cyclic
+transformations to swap valley axes.
+
+% ------------------------------------------------------------------------------
+
+We will summarize the findings of the preceding chapter here. To that end, we
+will articulate a condensed form to collate all information required to specify
+a particular state within a wider basis. We apply the following notational
+nicety; by writing the symbol $\mathtt{I}$ in a fixed-width typewrite font, we
+are denoting a single arbitrary basis state term of our full multi-valley
+wavefunction. In particular, we imagine that $\mathtt{I}$ may function as a
+label for the particular state, and as an subscript on a quantity denoting
+membership in the collection of properties associated with the $\mathtt{I}$
+state. We expect $\mathtt{I}$ to include all primary quantities necessary to
+define a particular basis state. Information we might expect to be contained in
+this structure would include the $\left(\kappa,i\right)$ (symmetry and
+degeneracy), and $\varrho$ (single-axis function form) indices. It would also
+necessarily include the full or implicit definitions of the naive envelope basis
+functions in the form of discrete indices and continuous parameters. This
+definition consists of the collection of discrete free parameters such as the
+$m$, $l$, and $k$ indices, the $\eta$ and $\lambda$ continuous free parameters,
+and the derived $\zeta$ acyclic transformation index. For convenience we can
+imagine that, in addition to the necessary primary independent parameters, the
+collection will also include derived secondary quantities used to construct the
+full wavefunction, such the $\Omega$ index used in the axial Bloch functions. 
+
+It should be made clear that the exact composition of elements in the collection
+$\mathtt{I}$ is not static insofar as the number and nature of the values may
+vary between different possible basis states we wish to explore. The structure
+of $\mathtt{I}$ and will depend upon the type of symmetry denoted by $\kappa$
+and the envelope function form denoted by $\varrho$. For example, all functions
+include the $k$, $l$, and $m$ free discrete indices associated with the naive
+envelope functions. For most states, $0\le m\le l$, and $0\le k$ are indices and
+may take on arbitrary integer values satisfying the given constraints. However,
+states using the $\parallel_{0}$ envelope function form do not include states
+with odd $m$. Comparatively, states of the $\kappa = T_{n}$ symmetry using the
+$\perp_{0}$ envelope function form only include states with $m$ odd but also
+include the free index $h = \pm 1$ in addition to $\left(mlk\right)$. Similarly,
+states with the $\kappa = E$ type of symmetry also require four independent
+indices, where $\sigma = h$ than having its value determined by the symmetry
+index $\kappa$ as it would be for the $\kappa = A_{n},T_{n}$ states.
+
+We introduce this construct $\mathtt{I}$ as useful notation for denoting the
+source of information and properties used within the analysis and software of
+Cantankerous Impurity. For example, in this document it will see use in formulae
+to compute the matrix elements of the Hamiltonian and overlap matrices. However,
+we feel the primary value of introducing $\mathtt{I}$ lies in the manner in
+which it will help guide and structure later software design. More precise and
+rigorous definition of $\mathtt{I}$, if required, can be found in the relevant
+software documentation.
+
+We can articulate the following form for the multi-valley basis functions as a
+combination of the so-called single-axis basis functions defined earlier in this
+document.
+\begin{equation}
+\Psi_{\mathtt{I}}
+    =
+    \sum_{p}
+        \left(\bm{\alpha}_{\mathtt{I}}\right)_{p}
+        \psi_{\mathtt{I}}^{\left(p\right)}
+,
+\end{equation}
+where $\alpha$ above has the same values as defined in subsection
+\ref{subsection:symm_silicon}. We identify the set of indices
+$p=\left(0,1,2\right)$ as given in that section with the valley-indices as
+defined above going as $p=\left(z,x,y\right)$ respectively. Briefly, we may
+reiterate that
+\begin{equation}
+\bm{\alpha}_{A_{n}}
+    =
+        \frac{1}{3}\left(1,1,1\right)
+,
+\end{equation}
+as well as
+\begin{align}
+\bm{\alpha}_{\left(E,0\right)}
+    &=
+        \frac{1}{3}\left(1,\tau,\tau^{2}\right)
+,&
+\bm{\alpha}_{\left(E,1\right)}
+    &=
+        \frac{1}{3}\left(1,\tau^{2},\tau\right)
+,
+\end{align}
+and
+\begin{equation}
+\bm{\alpha}_{\left(T_{n},i\right)}
+    =
+        \left(\delta_{ix},\delta_{iy},\delta_{iz}\right)
+.
+\end{equation}
+As articulated previously for all multi-valley states there are multiple
+independent constructions possible. Following the convention established earlier
+in the document, we denote which construction is used with the state form index
+$\varrho$. For most states, there are only two constructions of the single
+valley basis possible, which we denote with $\varrho = \parallel_{0}$, or
+$\varrho = \parallel_{1}$. For $\kappa = T_{n}$ there are five such
+constructions possible. We denote the additional form indices using $\perp_{0}$,
+$\perp_{1}$, and $\perp_{2}$. We refer to the $\parallel$ forms as
+\emph{longitudinal} and the $\perp$ forms as \emph{transverse}, but the
+distinction only exists and is only relevant for $T_{n}$ states.
+
+%-------------------------------------------------------------------------------
+
+% Another way we can articulate the multi-valley wavefunction is directly as the
+% summation 
+% \begin{equation}
+% \Psi_{\mathtt{I}}
+%     =
+%     \sum_{q}
+%         \left(\bm{\alpha}_{\mathtt{I}}\right)_{q}
+%         \Phi_{\mathtt{I}}^{\left(p\right)}
+%         \Theta_{ \Omega_\mathtt{I} }^{\left(q\right)}
+% .
+% \end{equation}
+
+% \begin{equation}
+% \Phi_{\mathtt{I}}^{\left(p\right)}
+%     =
+%     \sum_{p}
+%         \left(\bm{\beta}_{\mathtt{I}}\right)_{pq}
+%         \phi_{ 
+%             \left(mlk\right)_{\mathtt{I}}
+%             \left(\zeta_{\mathtt{I}}\right)_{pq} 
+%         }^{\left(p\right)}
+% \end{equation}
+
+
+
+% The relevant values of $\bm{\beta}_{\mathtt{I}}$ and $\zeta_{\mathtt{I}}$
+
+
+
+% \begin{equation}
+% \xi
+%     =
+%         \sigma\left(-1\right)^{l+m}\im^{+m}
+% \end{equation}
+
+
+% where
+% \begin{align}
+% \bm{\beta}_{A_{n},\parallel_{0}}
+% \bm{\beta}_{\left(E,0\right),\parallel_{0}}
+% \bm{\beta}_{\left(E,1\right),\parallel_{0}}
+% \bm{\beta}_{\left(T_{n},x\right),\parallel_{0}}
+% &=
+%     \hat{\bm{I}}_{3}
+% ,
+% \bm{\beta}_{A_{n},\parallel_{0}}
+% \bm{\beta}_{\left(E,0\right),\parallel_{0}}
+% \bm{\beta}_{\left(E,1\right),\parallel_{0}}
+% &=
+%     \hat{\bm{I}}_{3}
+% ,
+% \end{align}
+
+
+
+
+
+% \begin{align}
+% \bm{\beta}_{\left(T_{n},x\right),\parallel_{0}}
+%     &=
+%         \begin{pmatrix}
+%             1 & 0 & 0 \\
+%             0 & 0 & 0 \\
+%             0 & 0 & 0
+%         \end{pmatrix}
+% ,
+% \end{align}
+
+% \begin{align}
+% \bm{\beta}_{\left(T_{n},y\right),\parallel_{0}}
+%     &=
+%         \begin{pmatrix}
+%             0 & 0 & 0 \\
+%             0 & 1 & 0 \\
+%             0 & 0 & 0
+%         \end{pmatrix}
+% ,
+% \end{align}
+
+
+% \begin{align}
+% \bm{\beta}_{\left(T_{n},z\right),\parallel_{0}}
+%     &=
+%         \begin{pmatrix}
+%             0 & 0 & 0 \\
+%             0 & 0 & 0 \\
+%             0 & 0 & 1
+%         \end{pmatrix}
+% ,
+% \end{align}
+
+
+% \begin{align}
+% \zeta_{\parallel_{0}}
+%     &=
+%         \xi\left(-1\right)^{l+m}
+% ,&
+% \Omega_{\parallel_{0}}
+%     &=
+%         \omega\xi\left(-1\right)^{m}
+% ,
+% \end{align}
+
+
+
+
+% \pagebreak
+
+
+
+
+
+
+% \begin{align}
+% \bm{\beta}_{A_{n},\parallel_{1}}
+% \bm{\beta}_{\left(E,0\right),\parallel_{1}}
+% \bm{\beta}_{\left(E,0\right),\parallel_{1}}
+%     &=
+%         \frac{1}{3}
+%         \begin{pmatrix}
+%             0   & \xi & 1   \\
+%             1   & 0   & \xi \\
+%             \xi & 1   & 0
+%         \end{pmatrix}
+% ,
+% \end{align}
+
+
+
+% \begin{align}
+% \bm{\beta}_{\left(T_{n},x\right),\parallel_{1}}
+%     &=
+%         \begin{pmatrix}
+%             0   & 0 & 0 \\
+%             1   & 0 & 0 \\
+%             \xi & 0 & 0
+%         \end{pmatrix}
+% ,
+% \end{align}
+
+% \begin{align}
+% \bm{\beta}_{\left(T_{n},y\right),\parallel_{1}}
+%     &=
+%         \begin{pmatrix}
+%             0 & \xi & 0 \\
+%             0 & 0   & 0 \\
+%             0 & 1   & 0
+%         \end{pmatrix}
+% ,
+% \end{align}
+
+
+% \begin{align}
+% \bm{\beta}_{\left(T_{n},z\right),\parallel_{1}}
+%     &=
+%         \begin{pmatrix}
+%             0 & 0 & 1   \\
+%             0 & 0 & \xi \\
+%             0 & 0 & 0
+%         \end{pmatrix}
+% ,
+% \end{align}
+
+% \begin{align}
+% \left(\zeta_{\parallel_{1}}\right)_{p\left(p+1\right)}
+%     &=
+%         \left(-1\right)^{l}
+% ,&
+% \left(\zeta_{\parallel_{1}}\right)_{p\left(p+2\right)}
+%     &=
+%     \left(-1\right)^{l+m}
+% ,&
+% \Omega_{\parallel_{1}}
+%     &=
+%         \omega\left(-1\right)^{m}
+% ,
+% \end{align}
+
+
+
+
+
+% \pagebreak
+
+
+
+
+
+% \begin{align}
+% \left(\zeta_{\perp_{0}}\right)_{p\left(p+1\right)}
+%     &=
+%         h
+% ,&
+% \left(\zeta_{\perp_{0}}\right)_{p\left(p+2\right)}
+%     &=
+%         -h
+% ,&
+% \Omega_{\perp_{0}}
+%     &=
+%         h\left(-1\right)^{m}
+% ,
+% \end{align}
+    
+
+
+
+% \begin{align}
+% \left(\zeta_{\perp_{1}}\right)_{p\left(p+1\right)}
+%         &=
+%             -\left(-1\right)^{l}
+%     ,&
+% \left(\zeta_{\perp_{1}}\right)_{p\left(p+2\right)}
+%         &=
+%             -\left(-1\right)^{l+m}
+% \end{align}
+
+
+% \begin{align}
+% \left(\zeta_{\perp_{2}}\right)_{p\left(p+1\right)}
+%     &=
+%         -\left(-1\right)^{l+m}
+%     ,&
+% \left(\zeta_{\perp_{2}}\right)_{p\left(p+2\right)}
+% &=
+%     -\left(-1\right)^{l}
+% \end{align}
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+% \begin{align}
+%     \bm{\beta}_{\left(T_{n},z\right),\perp_{0}}
+%         &=
+%             \begin{pmatrix}
+%                 1 & 0 & 0 \\
+%                 0 & -\zeta\xi\left(-1\right)^{l+m} & 0 \\
+%                 0 & 0 & 0
+%             \end{pmatrix}
+%     ,&
+%     \bm{\beta}_{\left(T_{n},z\right),\perp_{1}}
+%         &=
+%             \begin{pmatrix}
+%                 0 & -\xi & 0   \\
+%                 1 & 0 & 0 \\
+%                 0 & 0 & 0
+%             \end{pmatrix}
+%     ,&
+%     \bm{\beta}_{\left(T_{n},z\right),\perp_{2}}
+%         &=
+%             \begin{pmatrix}
+%                 0 & 0 & 0   \\
+%                 0 & 0 & 0 \\
+%                 1 & -\xi\left(-1\right)^{m} & 0
+%             \end{pmatrix}
+%     ,
+% \end{align}
+
+
+% \begin{align}
+%     \bm{\beta}_{\left(T_{n},x\right),\perp_{0}}
+%         &=
+%             \begin{pmatrix}
+%                 0 & 0 & 0 \\
+%                 0 & 1 & 0 \\
+%                 0 & 0 & -\zeta\xi\left(-1\right)^{l+m} \\
+%             \end{pmatrix}
+%     ,&
+%     \bm{\beta}_{\left(T_{n},x\right),\perp_{1}}
+%         &=
+%             \begin{pmatrix}
+%                 0 & 0 & 0   \\
+%                 0 & 0 & -\xi \\
+%                 0 & 1 & 0
+%             \end{pmatrix}
+%     ,&
+%     \bm{\beta}_{\left(T_{n},x\right),\perp_{2}}
+%         &=
+%             \begin{pmatrix}
+%                 0 & 1 & -\xi\left(-1\right)^{m} \\
+%                 0 & 0 & 0                       \\
+%                 0 & 0 & 0
+%             \end{pmatrix}
+%     ,
+% \end{align}
+
+
+% \begin{align}
+%     \bm{\beta}_{\left(T_{n},y\right),\perp_{0}}
+%         &=
+%             \begin{pmatrix}
+%                 -\zeta\xi\left(-1\right)^{l+m} & 0 & 0 \\
+%                 0                          & 0 & 0 \\
+%                 0                          & 0 & 1 \\
+%             \end{pmatrix}
+%     ,&
+%     \bm{\beta}_{\left(T_{n},y\right),\perp_{1}}
+%         &=
+%             \begin{pmatrix}
+%                 0    & 0 & 1 \\
+%                 0    & 0 & 0 \\
+%                 -\xi & 0 & 0
+%             \end{pmatrix}
+%     ,&
+%     \bm{\beta}_{\left(T_{n},y\right),\perp_{2}}
+%         &=
+%             \begin{pmatrix}
+%                 0                       & 0 & 0 \\
+%                 -\xi\left(-1\right)^{m} & 0 & 1 \\
+%                 0                       & 0 & 0
+%             \end{pmatrix}
+%     ,
+% \end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Another way we can articulate the multi-valley wavefunction is directly as the
+summation 
+% \begin{equation}
+% \Psi_{\mathtt{I}}
+%     =
+%     \sum_{pq\in\left(xyz\right)}
+%         \left(\bm{\beta}_{\mathtt{I}}\right)_{pq}
+%         \phi_{ 
+%             \left(mlk\right)_{\mathtt{I}}
+%             \left(\zeta_{\mathtt{I}}\right)_{pq} 
+%         }^{\left(p\right)}
+%         \Theta_{ \Omega_\mathtt{I} }^{\left(q\right)}
+% .
+% \end{equation}
+\begin{equation}
+\Psi_{\mathtt{I}}
+    =
+        \sum_{q}
+            \Phi_{\mathtt{I}}^{\left(q\right)}
+            \Theta_{ \Omega_\mathtt{I} }^{\left(q\right)}
+.
+\end{equation}
+% The relevant values of $\bm{\beta}_{\mathtt{I}}$ and $\zeta_{\mathtt{I}}$
+
+
+\begin{equation}
+\Phi_{\mathtt{I}}^{\left(q\right)}
+    =
+        \sum_{p}
+            \left(\bm{\beta}_{\mathtt{I}}\right)_{pq}
+            \phi_{ 
+                \left(mlk\right)_{\mathtt{I}}
+                \left(\zeta_{\mathtt{I}}\right)_{pq} 
+            }^{\left(p\right)}
+.
+\end{equation}
+
+
+
+\begin{equation}
+\xi
+    =
+        \sigma\left(-1\right)^{l+m}\im^{+m}
+\end{equation}
+
+
+where
+\begin{align}
+\left(\bm{\beta}_{\left(\kappa,i\right),\parallel_{0}}\right)_{pq}
+    &=
+        \left(\bm{\alpha}_{\left(\kappa,i\right)}\right)_{q}
+        \delta_{pq}
+,&
+\zeta_{\parallel_{0}}
+    &=
+        \xi\left(-1\right)^{l+m}
+,&
+\Omega_{\parallel_{0}}
+    &=
+        \omega\xi\left(-1\right)^{m}
+,
+\end{align}
+
+
+
+
+\pagebreak
+
+
+
+
+
+
+\begin{align}
+\bm{\beta}_{A_{n},\parallel_{1}}
+    &=
+        \frac{1}{3}
+        \begin{pmatrix}
+            0   & \xi & 1   \\
+            1   & 0   & \xi \\
+            \xi & 1   & 0
+        \end{pmatrix}
+,
+\end{align}
+
+\begin{align}
+\bm{\beta}_{\left(E,0\right),\parallel_{1}}
+    &=
+        \frac{1}{3}
+        \begin{pmatrix}
+            0       & \tau^{2}\xi & 1   \\
+            \tau    & 0           & \xi \\
+            \tau\xi & \tau^{2}    & 0
+        \end{pmatrix}
+,
+\end{align}
+
+\begin{align}
+\bm{\beta}_{\left(E,0\right),\parallel_{1}}
+    &=
+        \frac{1}{3}
+        \begin{pmatrix}
+            0           & \tau\xi & 1   \\
+            \tau^{2}    & 0       & \xi \\
+            \tau^{2}\xi & \tau    & 0
+        \end{pmatrix}
+,
+\end{align}
+
+
+
+\begin{align}
+\bm{\beta}_{\left(T_{n},x\right),\parallel_{1}}
+    &=
+        \begin{pmatrix}
+            0   & 0 & 0 \\
+            1   & 0 & 0 \\
+            \xi & 0 & 0
+        \end{pmatrix}
+,
+\end{align}
+
+\begin{align}
+\bm{\beta}_{\left(T_{n},y\right),\parallel_{1}}
+    &=
+        \begin{pmatrix}
+            0 & \xi & 0 \\
+            0 & 0   & 0 \\
+            0 & 1   & 0
+        \end{pmatrix}
+,
+\end{align}
+
+
+\begin{align}
+\bm{\beta}_{\left(T_{n},z\right),\parallel_{1}}
+    &=
+        \begin{pmatrix}
+            0 & 0 & 1   \\
+            0 & 0 & \xi \\
+            0 & 0 & 0
+        \end{pmatrix}
+,
+\end{align}
+
+\begin{align}
+\left(\zeta_{\parallel_{1}}\right)_{\left(q+1\right)q}
+    &=
+        \left(-1\right)^{l}
+,&
+\left(\zeta_{\parallel_{1}}\right)_{\left(q+2\right)q}
+    &=
+        \left(-1\right)^{m}
+        \left(\zeta_{\parallel_{1}}\right)_{q\left(q+1\right)}
+,&
+\Omega_{\parallel_{1}}
+    &=
+        \omega\left(-1\right)^{m}
+,
+\end{align}
+
+
+
+
+
+\pagebreak
+
+
+
+
+
+\begin{align}
+\left(\zeta_{\perp_{0}}\right)_{\left(q+1\right)\left(q+1\right)}
+    &=
+        h
+,&
+\left(\zeta_{\perp_{0}}\right)_{\left(q+2\right)\left(q+2\right)}
+    &=
+        \left(-1\right)^{m}
+        \left(\zeta_{\perp_{0}}\right)_{\left(q+1\right)\left(q+1\right)}
+,&
+\Omega_{\perp_{0}}
+    &=
+        h\left(-1\right)^{m}
+,
+\end{align}
+    
+
+
+
+\begin{align}
+\left(\zeta_{\perp_{1}}\right)_{\left(q+1\right)\left(q+2\right)}
+        &=
+            -\left(-1\right)^{l}
+    ,&
+\left(\zeta_{\perp_{1}}\right)_{\left(q+2\right)\left(q+1\right)}
+        &=
+            \left(-1\right)^{m}
+            \left(\zeta_{\perp_{1}}\right)_{\left(q+1\right)\left(q+2\right)}
+\end{align}
+
+
+\begin{align}
+\left(\zeta_{\perp_{2}}\right)_{q\left(q+1\right)}
+    &=
+        -\left(-1\right)^{l+m}
+,&
+\left(\zeta_{\perp_{2}}\right)_{q\left(q+2\right)}
+&=
+    \left(-1\right)^{m}
+    \left(\zeta_{\perp_{2}}\right)_{q\left(q+1\right)}
+\end{align}
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+\begin{align}
+    \bm{\beta}_{\left(T_{n},z\right),\perp_{0}}
+        &=
+            \begin{pmatrix}
+                1 & 0 & 0 \\
+                0 & -\zeta\xi\left(-1\right)^{l+m} & 0 \\
+                0 & 0 & 0
+            \end{pmatrix}
+    ,&
+    \bm{\beta}_{\left(T_{n},z\right),\perp_{1}}
+        &=
+            \begin{pmatrix}
+                0 & -\xi & 0   \\
+                1 & 0 & 0 \\
+                0 & 0 & 0
+            \end{pmatrix}
+    ,&
+    \bm{\beta}_{\left(T_{n},z\right),\perp_{2}}
+        &=
+            \begin{pmatrix}
+                0 & 0 & 0   \\
+                0 & 0 & 0 \\
+                1 & -\xi\left(-1\right)^{m} & 0
+            \end{pmatrix}
+    ,
+\end{align}
+
+
+\begin{align}
+    \bm{\beta}_{\left(T_{n},x\right),\perp_{0}}
+        &=
+            \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 1 & 0 \\
+                0 & 0 & -\zeta\xi\left(-1\right)^{l+m} \\
+            \end{pmatrix}
+    ,&
+    \bm{\beta}_{\left(T_{n},x\right),\perp_{1}}
+        &=
+            \begin{pmatrix}
+                0 & 0 & 0   \\
+                0 & 0 & -\xi \\
+                0 & 1 & 0
+            \end{pmatrix}
+    ,&
+    \bm{\beta}_{\left(T_{n},x\right),\perp_{2}}
+        &=
+            \begin{pmatrix}
+                0 & 1 & -\xi\left(-1\right)^{m} \\
+                0 & 0 & 0                       \\
+                0 & 0 & 0
+            \end{pmatrix}
+    ,
+\end{align}
+
+
+\begin{align}
+    \bm{\beta}_{\left(T_{n},y\right),\perp_{0}}
+        &=
+            \begin{pmatrix}
+                -\zeta\xi\left(-1\right)^{l+m} & 0 & 0 \\
+                0                          & 0 & 0 \\
+                0                          & 0 & 1 \\
+            \end{pmatrix}
+    ,&
+    \bm{\beta}_{\left(T_{n},y\right),\perp_{1}}
+        &=
+            \begin{pmatrix}
+                0    & 0 & 1 \\
+                0    & 0 & 0 \\
+                -\xi & 0 & 0
+            \end{pmatrix}
+    ,&
+    \bm{\beta}_{\left(T_{n},y\right),\perp_{2}}
+        &=
+            \begin{pmatrix}
+                0                       & 0 & 0 \\
+                -\xi\left(-1\right)^{m} & 0 & 1 \\
+                0                       & 0 & 0
+            \end{pmatrix}
+    ,
+\end{align}
+
+
+
+
+
+
+
+
+
+In short, we imagine 
+
+
+
+
+we can imagine the collection $\mathtt{I}$ includes at least 3, and
+sometimes 4, discrete free parameters. We can denote those parameters by
+$\left(mlkh\right)$ with h representing the value of the fourth discrete free
+parameters if present and ignored otherwise.To fully define the complete
+multi-valley 
+
+
+
+
+\begin{align}
+\Psi_{\varrho,mlk}^{\left(A_{n}\right)}
+    &=
+        \frac{1}{3}
+        \psi_{\varrho,mlk\sigma^{\left(A_{n}\right)}\left(+1\right)}
+        ^{\left(z\right)}
+            +
+        \frac{1}{3}
+        \psi_{\varrho,mlk\sigma^{\left(A_{n}\right)}\left(+1\right)}
+        ^{\left(x\right)}
+            +
+        \frac{1}{3}
+        \psi_{\varrho,mlk\sigma^{\left(A_{n}\right)}\left(+1\right)}
+        ^{\left(y\right)}
+\label{wavefunction:A}
+,\\
+\Psi_{\varrho,mlk\sigma}^{\left(E,0\right)}
+    &=
+        \frac{1}{3}
+        \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(z\right)}
+            +
+        \frac{\tau}{3}
+        \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(x\right)}
+            +
+        \frac{\tau^{2}}{3}
+        \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(y\right)}
+\label{wavefunction:E:0}
+,\\
+\Psi_{\varrho,mlk\sigma}^{\left(E,1\right)}
+    &=
+        \frac{1}{3}
+        \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(z\right)}
+            +
+        \frac{\tau^{2}}{3}
+        \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(x\right)}
+            +
+        \frac{\tau}{3}
+        \psi_{\varrho,mlk\sigma\left(+1\right)}^{\left(y\right)}
+\label{wavefunction:E:1}
+.\\
+\Psi_{\varrho,mlk}^{\left(T_{n},q\right)}
+    &=
+        \delta_{qz}
+        \psi_{\varrho,mlk\sigma^{\left(T_{n}\right)}\left(-1\right)}
+        ^{\left(z\right)}
+            +
+        \delta_{qx}
+        \psi_{\varrho,mlk\sigma^{\left(T_{n}\right)}\left(-1\right)}
+        ^{\left(x\right)}
+            +
+        \delta_{qy}
+        \psi_{\varrho,mlk\sigma^{\left(T_{n}\right)}\left(-1\right)}
+        ^{\left(y\right)}
+\label{wavefunction:T:q}
+.
+\end{align}
+\begin{align}
+\psi_{\parallel_{0},m_{e}lk\sigma\omega}^{\left(z\right)}
+        & \coloneqq
+            \phi_{klm_{e}\zeta}^{(z)}
+            \Theta^{\left(z\right)}
+            _{\sigma\omega\left(-1\right)^{l+m_{e}/2}}
+\tag{\ref{envelope:longitudinal:z:0}+\ref{single-axis:longitudinal:z:0}}
+,\\
+\psi_{\parallel_{1},mlk\sigma\omega}^{\left(z\right)}
+    & \coloneqq
+        \left\{
+            \phi_{klm\zeta_{0}}^{(x)}
+            +
+            \sigma\left(-1\right)^{l+m}\im^{+m}
+            \phi_{klm\zeta_{1}}^{(y)}
+        \right\}
+        \Theta^{\left(z\right)}
+        _{\omega\left(-1\right)^{m}}
+\tag{\ref{envelope:longitudinal:z:1}+\ref{single-axis:longitudinal:z:1}}
+.
+\end{align}
+
+
+\begin{align}
+\Psi_{\perp_{0},m_{o}lk\zeta}^{\left(T_{n},z\right)}
+    &=
+        \phi_{m_{o}lk\zeta}^{\left(x\right)}
+        \Theta^{\left(x\right)}_{\zeta\left(-1\right)^{l}}
+        -
+        \zeta\sigma^{\left(T_{n}\right)}\im^{+m}
+        \phi_{m_{o}lk\bar{\zeta}}^{\left(y\right)}
+        \Theta^{\left(y\right)}_{\zeta\left(-1\right)^{l}}        
+,\\
+\Psi_{\perp_{1},mlk}^{\left(T_{n},z\right)}
+    &=
+        % \phi_{mlk\left(-1\right)^{l+1}}^{\left(y\right)}
+        \phi_{mlk\bar{\zeta}_{0}}^{\left(y\right)}
+        \Theta^{\left(x\right)}_{\left(-1\right)^{m+1}}
+        -
+        \sigma^{\left(T_{n}\right)}\left(-1\right)^{l+m}\im^{+m}
+        % \phi_{mlk\left(-1\right)^{l+m+1}}^{\left(x\right)}
+        \phi_{mlk\bar{\zeta}_{1}}^{\left(x\right)}
+        \Theta^{\left(y\right)}_{\left(-1\right)^{m+1}}        
+,\\
+\Psi_{\perp_{2},mlk}^{\left(T_{n},z\right)}
+    &=
+        \phi_{mlk\bar{\zeta}_{1}}^{\left(z\right)}
+        \Theta^{\left(x\right)}_{\left(-1\right)^{m}}
+        -
+        \sigma^{\left(T_{n}\right)}\left(-1\right)^{l}\im^{+m}
+        \phi_{mlk\bar{\zeta}_{0}}^{\left(z\right)}
+        \Theta^{\left(y\right)}_{\left(-1\right)^{m}}
+.
+\end{align}
+
+% \begin{align}
+%     \Psi_{\perp_{0},m_{o}lk\zeta}^{\left(T_{n},z\right)}
+%         &=
+%             \Phi_{\perp_{0},m_{o}lk\zeta}^{\left(x\right)}
+%             \Theta^{\left(x\right)}_{\Omega}
+%             -
+%             \zeta\sigma^{\left(T_{n}\right)}\im^{+m}
+%             \Phi_{\perp_{0},m_{o}lk\zeta}^{\left(y\right)}
+%             \Theta^{\left(y\right)}_{\Omega}
+%     ,&
+%     \Omega
+%         &=
+%             \zeta\left(-1\right)^{l}
+%     ,\\
+%     \Psi_{\perp_{1},mlk}^{\left(T_{n},z\right)}
+%         &=
+%             % \phi_{mlk\left(-1\right)^{l+1}}^{\left(y\right)}
+%             \Phi_{\perp_{1},mlk}^{\left(x\right)}
+%             \Theta^{\left(x\right)}_{\Omega}
+%             -
+%             \sigma^{\left(T_{n}\right)}\left(-1\right)^{l}\im^{-m}
+%             % \phi_{mlk\left(-1\right)^{l+m+1}}^{\left(x\right)}
+%             \Phi_{\perp_{1},mlk}^{\left(y\right)}
+%             \Theta^{\left(y\right)}_{\Omega}
+%     ,&
+%     \Omega
+%         &=
+%             \left(-1\right)^{m+1}
+%     ,\\
+%     \Psi_{\perp_{2},mlk}^{\left(T_{n},z\right)}
+%         &=
+%             \Phi_{\perp_{2},mlk}^{\left(x\right)}
+%             \Theta^{\left(x\right)}_{\Omega}
+%             -
+%             \sigma^{\left(T_{n}\right)}\left(-1\right)^{l}\im^{+m}
+%             \Phi_{\perp_{2},mlk}^{\left(u\right)}
+%             \Theta^{\left(y\right)}_{\Omega}
+%     &
+%     \Omega
+%         &=
+%             \left(-1\right)^{m}
+%     .
+% \end{align}
+
+
+% \begin{equation}
+% \psi_{\mathtt{I}}^{\left(p\right)}
+%     =
+%     \sum_{qr}
+%         \beta_{qr}^{\left(\varrho,p\right)}
+%         \phi_{\mathtt{I}}^{\left(q\right)}
+%         \Theta_{\mathtt{I}}^{\left(r\right)}
+% .
+% \end{equation}
+
+
+% We define the following as our \emph{naive envelope basis function} with
+% anisotropy included as follows,
+% \begin{equation}
+%   \Phi_{klm;\zeta;\eta\lambda;\bm{r}}^{(Wq)}
+%   \coloneqq
+%   F_{lk;\eta\lambda;r\chi_{q}}^{\left(W\right)}
+%   P_{lm;\lambda;\chi_{q}}
+%   Q_{m\zeta;\phi_{q}}
+%   ,
+% \tag{\ref{env:naive}}
+% \end{equation}
+
+
+% ------------------------------------------------------------------------------
+
+\begin{align}
+\mathcal{H}
+    &=
+        \int \diff \bm{r}\,
+        \left(\Psi_{\mathtt{L}}\right)^{\dagger}
+        \hat{U}_{\bm{r}}\,
+        \Psi_{\mathtt{R}}
+,\\
+    &=
+        \int \diff \bm{r}\,
+        \left\{
+            \sum_{q_{\mathtt{L}}}
+            \Phi_{\mathtt{L}}^{\left(q_{\mathtt{L}}\right)}
+            \Theta_{ \Omega_\mathtt{L} }^{\left(q_{\mathtt{L}}\right)}
+        \right\}^{\dagger}
+        \hat{U}_{\bm{r}}\,
+        \left\{
+            \sum_{q_{\mathtt{R}}}
+            \Phi_{\mathtt{R}}^{\left(q_{\mathtt{R}}\right)}
+            \Theta_{ \Omega_\mathtt{R} }^{\left(q_{\mathtt{R}}\right)}
+        \right\}
+,\\
+    &=
+        \int \diff \bm{r}\,
+        \sum_{q_{\mathtt{L}}}
+        \sum_{q_{\mathtt{R}}}
+            \tilde{\Phi_{\mathtt{L}}}^{\left(q_{\mathtt{L}}\right)}
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{R}}^{\left(q_{\mathtt{R}}\right)}
+        \Theta_{ \Omega_\mathtt{L} }^{\left(-q_{\mathtt{L}}\right)}
+        \Theta_{ \Omega_\mathtt{R} }^{\left(+q_{\mathtt{R}}\right)}
+,\\
+    &=
+        \mathcal{H}_{\parallel}
+            +
+        \mathcal{H}_{\perp}
+.
+\end{align}
+
+\begin{align}
+\mathcal{H}_{\parallel}
+    &=
+        \int \diff \bm{r}\,
+        \sum_{q=x,y,z}
+            \Phi_{\mathtt{L}}^{\left(q\right)*}
+            \hat{U}_{\bm{r}}\,
+            \Phi_{\mathtt{R}}^{\left(q\right)}
+            \Theta_{ \Omega_\mathtt{L} }^{\left(-q\right)}
+            \Theta_{ \Omega_\mathtt{R} }^{\left(q\right)}
+,\\
+    &=
+        \int \diff \bm{r}\,
+        \varphi_{\parallel}
+        \Theta_{ \Omega_\mathtt{L} }^{\left(-z\right)}
+        \Theta_{ \Omega_\mathtt{R} }^{\left(z\right)}
+.
+\end{align}
+\begin{align}
+\varphi_{\parallel}
+    &=
+        \Phi_{\mathtt{L}}^{\left(z\right)*}
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{R}}^{\left(z\right)}
+            +
+        \left(zxy\right)
+        \Phi_{\mathtt{L}}^{\left(x\right)*}
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{R}}^{\left(x\right)}
+            +
+        \left(yzx\right)
+        \Phi_{\mathtt{L}}^{\left(y\right)*}
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{R}}^{\left(y\right)}
+,\\
+    &=
+        \sum_{p_{\mathtt{L}},p_{\mathtt{R}}}
+            \left(
+                \bm{\beta}^{\left(z\right)}_{p_{\mathtt{L}}p_{\mathtt{R}}}
+                \hat{U}_{xyz}
+                \phi_{zz}^{\left(p_{\mathtt{L}}p_{\mathtt{R}}\right)}
+                    +
+                \bm{\beta}^{\left(x\right)}_{p_{\mathtt{L}}p_{\mathtt{R}}}
+                \hat{U}_{zxy}
+                \phi_{xx}^{\left(p_{\mathtt{L}}p_{\mathtt{R}}\right)}
+                    +
+                \bm{\beta}^{\left(y\right)}_{p_{\mathtt{L}}p_{\mathtt{R}}}
+                \hat{U}_{yzx}
+                \phi_{yy}^{\left(p_{\mathtt{L}}p_{\mathtt{R}}\right)}
+            \right)
+.
+\end{align}
+
+\begin{align}
+\bm{\beta}_{p_{\mathtt{L}}p_{\mathtt{R}}}
+^{\left(z-\Delta\right)}
+    &=
+        \left(\bm{\beta}_{\mathtt{L}}\right)
+        _{\left(p_{\mathtt{L}}-\Delta\right)\left(z-\Delta\right)}^{*}
+        \left(\bm{\beta}_{\mathtt{R}}\right)
+        _{\left(p_{\mathtt{R}}-\Delta\right)\left(z-\Delta\right)}
+,\\
+\phi_{\left(z-\Delta\right)\left(z-\Delta\right)}
+^{\left(p_{\mathtt{L}}p_{\mathtt{R}}\right)}
+    &=
+        \tilde{\phi}_{
+            \mathtt{L},
+            \left(\zeta_\mathtt{L}\right)
+            _{\left(p_{\mathtt{L}}-\Delta\right)\left(z-\Delta\right)}
+        }^{\left(p_{\mathtt{L}}\right)}
+        \phi_{
+            \mathtt{R},
+            \left(\zeta_\mathtt{R}\right)
+            _{\left(p_{\mathtt{R}}-\Delta\right)\left(z-\Delta\right)}
+        }^{\left(p_{\mathtt{R}}\right)}
+,\\
+\zeta_{\left(z-\Delta\right)\left(z-\Delta\right)}
+^{\left(p_{\mathtt{L}}p_{\mathtt{R}}\right)}
+    &=
+        \left(\zeta_\mathtt{L}\right)
+        _{\left(p_{\mathtt{L}}-\Delta\right)\left(z-\Delta\right)}^{*}
+        \left(\zeta_\mathtt{R}\right)
+        _{\left(p_{\mathtt{R}}-\Delta\right)\left(z-\Delta\right)}
+.
+\end{align}
+
+\begin{align}
+% \varphi_{\parallel}
+%     &=
+%         \varphi_{\parallel,zz}
+%             +
+%         \varphi_{\parallel,xx}
+%             +
+%         \varphi_{\parallel,yy}
+%             +
+%         \sum_{p_{\mathtt{L}},p_{\mathtt{R}}}
+%         \left(
+%             \left(\bm{\beta}_{\mathtt{L}\mathtt{R}}\right)^{\left(z\right)}
+%             _{p_{\mathtt{L}}p_{\mathtt{R}}}
+%             \hat{U}_{xyz}
+%                 +
+%             \left(\bm{\beta}_{\mathtt{L}\mathtt{R}}\right)^{\left(x\right)}
+%             _{p_{\mathtt{L}}p_{\mathtt{R}}}
+%             \hat{U}_{zxy}
+%                 +
+%             \left(\bm{\beta}_{\mathtt{L}\mathtt{R}}\right)
+%             _{p_{\mathtt{L}}p_{\mathtt{R}}}
+%             ^{\left(y\right)}
+%             \hat{U}_{yzx}
+%         \right)
+%         \tilde{\phi}_{\mathtt{L}}^{\left(p_{\mathtt{L}}\right)}
+%         \phi_{\mathtt{R}}^{\left(p_{\mathtt{R}}\right)}
+% ,\\
+\varphi_{\parallel,zz}
+    &=
+        \bm{\beta}^{\left(z\right)}_{zz}
+        \hat{U}_{xyz}
+        \phi_{zz}^{\left(zz\right)}
+            +
+        \bm{\beta}^{\left(x\right)}_{zz}
+        \hat{U}_{zxy}
+        \phi_{xx}^{\left(zz\right)}
+            +
+        \bm{\beta}^{\left(y\right)}_{zz}
+        \hat{U}_{yzx}
+        \phi_{yy}^{\left(zz\right)}
+,\\
+\varphi_{\parallel,xx}
+    &=
+        \bm{\beta}^{\left(z\right)}_{xx}
+        \hat{U}_{xyz}
+        \phi_{zz}^{\left(xx\right)}
+            +
+        \bm{\beta}^{\left(x\right)}_{xx}
+        \hat{U}_{zxy}
+        \phi_{xx}^{\left(xx\right)}
+            +
+        \bm{\beta}^{\left(y\right)}_{xx}
+        \hat{U}_{yzx}
+        \phi_{yy}^{\left(xx\right)}
+,\\
+\varphi_{\parallel,yy}
+    &=
+        \bm{\beta}^{\left(z\right)}_{yy}
+        \phi_{zz}^{\left(yy\right)}
+        \hat{U}_{xyz}
+            +
+        \bm{\beta}^{\left(x\right)}_{yy}
+        \hat{U}_{zxy}
+        \phi_{xx}^{\left(yy\right)}
+            +
+        \bm{\beta}^{\left(y\right)}_{yy}
+        \hat{U}_{yzx}
+        \phi_{yy}^{\left(yy\right)}
+\end{align}
+
+
+
+
+
+
+
+
+
+    
+
+\begin{align}
+\left(yxz\right)\varphi_{\parallel,zz}
+    &=
+        \bm{\beta}^{\left(z\right)}_{zz}
+        \left(\zeta_{zz}^{\left(zz\right)}\hat{U}_{yxz}\right)
+        \phi_{zz}^{\left(zz\right)}
+        +
+        \left(
+            \bm{\beta}^{\left(y\right)}_{zz}
+            \zeta_{yy}^{\left(zz\right)}
+            \hat{U}_{xzy}
+        \right)
+        \phi_{xx}^{\left(zz\right)}
+            +
+        \left(
+            \bm{\beta}^{\left(x\right)}_{zz}
+            \zeta_{xx}^{\left(zz\right)}
+            \hat{U}_{zyx}
+        \right)
+        \phi_{yy}^{\left(zz\right)}
+,\\
+\left(yxz\right)\varphi_{\parallel,xx}
+    &=
+        \bm{\beta}^{\left(z\right)}_{xx}
+        \hat{U}_{yxz}
+        \phi_{zz}^{\left(xx\right)}
+            +
+        \bm{\beta}^{\left(x\right)}_{xx}
+        \hat{U}_{zyx}
+        \phi_{xx}^{\left(xx\right)}
+            +
+        \bm{\beta}^{\left(y\right)}_{xx}
+        \hat{U}_{xzy}
+        \phi_{yy}^{\left(xx\right)}
+,\\
+\left(yxz\right)\varphi_{\parallel,yy}
+    &=
+        \bm{\beta}^{\left(z\right)}_{yy}
+        \hat{U}_{yxz}
+        \phi_{zz}^{\left(yy\right)}
+            +
+        \bm{\beta}^{\left(x\right)}_{yy}
+        \hat{U}_{zyx}
+        \phi_{xx}^{\left(yy\right)}
+            +
+        \bm{\beta}^{\left(y\right)}_{yy}
+        \hat{U}_{xzy}
+        \phi_{yy}^{\left(yy\right)}
+\end{align}
+    
+
+
+\begin{align}
+\left(\frac{\left(xyz\right)+\left(yxz\right)}{2}\right)\varphi_{\parallel,zz}
+    &=
+        \bm{\beta}^{\left(z\right)}_{zz}
+        \left(
+            \frac{\hat{U}_{xyz} + \zeta_{zz}^{\left(zz\right)}\hat{U}_{yxz}}{2}
+        \right)
+        \phi_{zz}^{\left(zz\right)}
+        +
+        \left(\frac{
+                \bm{\beta}^{\left(x\right)}_{zz}
+                \hat{U}_{zxy}
+                    +
+                \bm{\beta}^{\left(y\right)}_{zz}
+                \zeta_{yy}^{\left(zz\right)}
+                \hat{U}_{xzy}
+        }{2}\right)
+        \phi_{xx}^{\left(zz\right)}
+            +
+        \left(\frac{
+            \bm{\beta}^{\left(y\right)}_{zz}
+            \hat{U}_{yzx}
+                +
+            \bm{\beta}^{\left(x\right)}_{zz}
+            \zeta_{xx}^{\left(zz\right)}
+            \hat{U}_{zyx}
+        }{2}
+        \right)
+        \phi_{yy}^{\left(zz\right)}
+% ,\\
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{align}
+\mathcal{H}_{\perp}
+    &=
+        \int \diff \bm{r}\,
+        \sum_{q=x,y,z}
+        \left[
+            \left\{
+                \Phi_{\mathtt{L}}^{\left(q\right)}
+            \right\}^{\dagger}
+            \hat{U}_{\bm{r}}\,
+            \Phi_{\mathtt{R}}^{\left(q+1\right)}
+            \Theta_{ \Omega_\mathtt{L} }^{\left(-q\right)}
+            \Theta_{ \Omega_\mathtt{R} }^{\left(q+1\right)}
+                +
+            \left\{
+                \Phi_{\mathtt{L}}^{\left(q\right)}
+            \right\}^{\dagger}
+            \hat{U}_{\bm{r}}\,
+            \Phi_{\mathtt{R}}^{\left(q-1\right)}
+            \Theta_{ \Omega_\mathtt{L} }^{\left(-q\right)}
+            \Theta_{ \Omega_\mathtt{R} }^{\left(q-1\right)}
+        \right]
+,\\
+%     &=
+%         \int \diff \bm{r}\,
+%         \left[
+%             \hat{U}_{\bm{r}}\,
+%             \Phi_{\mathtt{L}}^{\left(x\right)*}
+%             \Phi_{\mathtt{R}}^{\left(y\right)}
+%                 +
+%             \left(zxy\right)
+%             \hat{U}_{\bm{r}}\,
+%             \Phi_{\mathtt{L}}^{\left(y\right)*}
+%             \Phi_{\mathtt{R}}^{\left(z\right)}
+%                 +
+%             \left(yzx\right)
+%             \hat{U}_{\bm{r}}\,
+%             \Phi_{\mathtt{L}}^{\left(z\right)*}
+%             \Phi_{\mathtt{R}}^{\left(x\right)}
+%         \right]
+%         \Theta_{ \Omega_\mathtt{L} }^{\left(-x\right)}
+%         \Theta_{ \Omega_\mathtt{R} }^{\left(y\right)}
+%                 +
+%         \left[
+%             \hat{U}_{\bm{r}}\,
+%             \Phi_{\mathtt{L}}^{\left(y\right)*}
+%             \Phi_{\mathtt{R}}^{\left(x\right)}
+%                 +
+%             \left(zxy\right)
+%             \hat{U}_{\bm{r}}\,
+%             \Phi_{\mathtt{L}}^{\left(z\right)*}
+%             \Phi_{\mathtt{R}}^{\left(y\right)}
+%                 +
+%             \left(yzx\right)
+%             \hat{U}_{\bm{r}}\,
+%             \Phi_{\mathtt{L}}^{\left(x\right)*}
+%             \Phi_{\mathtt{R}}^{\left(z\right)}
+%         \right]
+%         \Theta_{ \Omega_\mathtt{L} }^{\left(-y\right)}
+%         \Theta_{ \Omega_\mathtt{R} }^{\left(x\right)}
+% ,\\
+%     &=
+%         \int \diff \bm{r}\,
+%         \left\{
+%             \left(yxz\right)\left[
+%                 \hat{U}_{\bm{r}}\,
+%                 \Phi_{\mathtt{L}}^{\left(x\right)*}
+%                 \Phi_{\mathtt{R}}^{\left(y\right)}
+%                     +
+%                 \left(zxy\right)
+%                 \hat{U}_{\bm{r}}\,
+%                 \Phi_{\mathtt{L}}^{\left(y\right)*}
+%                 \Phi_{\mathtt{R}}^{\left(z\right)}
+%                     +
+%                 \left(yzx\right)
+%                 \hat{U}_{\bm{r}}\,
+%                 \Phi_{\mathtt{L}}^{\left(z\right)*}
+%                 \Phi_{\mathtt{R}}^{\left(x\right)}
+%             \right]
+%                 +
+%             \left[
+%                 \hat{U}_{\bm{r}}\,
+%                 \Phi_{\mathtt{L}}^{\left(y\right)*}
+%                 \Phi_{\mathtt{R}}^{\left(x\right)}
+%                     +
+%                 \left(zxy\right)
+%                 \hat{U}_{\bm{r}}\,
+%                 \Phi_{\mathtt{L}}^{\left(z\right)*}
+%                 \Phi_{\mathtt{R}}^{\left(y\right)}
+%                     +
+%                 \left(yzx\right)
+%                 \hat{U}_{\bm{r}}\,
+%                 \Phi_{\mathtt{L}}^{\left(x\right)*}
+%                 \Phi_{\mathtt{R}}^{\left(z\right)}
+%             \right]
+%         \right\}
+%         \Theta_{ \Omega_\mathtt{L} }^{\left(-y\right)}
+%         \Theta_{ \Omega_\mathtt{R} }^{\left(x\right)}
+% ,\\
+    &=
+        \int \diff \bm{r}\,
+        \left(\varphi_{\perp,0}+\left(yxz\right)\varphi_{\perp,0}\right)
+        \Theta_{ \Omega_\mathtt{L} }^{\left(-y\right)}
+        \Theta_{ \Omega_\mathtt{R} }^{\left(x\right)}
+.
+\end{align}
+\begin{align}
+\varphi_{\perp,0}
+    &=
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{L}}^{\left(y\right)*}
+        \Phi_{\mathtt{R}}^{\left(x\right)}
+            +
+        \left(zxy\right)
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{L}}^{\left(z\right)*}
+        \Phi_{\mathtt{R}}^{\left(y\right)}
+            +
+        \left(yzx\right)
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{L}}^{\left(x\right)*}
+        \Phi_{\mathtt{R}}^{\left(z\right)}
+,\\
+        % \left(yxz\right)
+        % \left\{
+        %     \hat{U}_{\bm{r}}
+        %         +
+        %     \left(zxy\right)
+        %     \hat{U}_{\bm{r}}
+        %         +
+        % \right\}
+        % \Phi_{\mathtt{L}}^{\left(x\right)*}
+        % \Phi_{\mathtt{R}}^{\left(y\right)}        
+        %     +
+        % \left(zyx\right)
+        % \hat{U}_{\bm{r}}\,
+        % \Phi_{\mathtt{L}}^{\left(y\right)*}
+        % \Phi_{\mathtt{R}}^{\left(z\right)}
+        %     +
+        % \left(xzy\right)
+        % \hat{U}_{\bm{r}}\,
+        % \Phi_{\mathtt{L}}^{\left(z\right)*}
+        % \Phi_{\mathtt{R}}^{\left(x\right)}
+        %     +
+        % \hat{U}_{\bm{r}}\,
+        % \Phi_{\mathtt{L}}^{\left(y\right)*}
+        % \Phi_{\mathtt{R}}^{\left(x\right)}
+        %     +
+        % \left(zxy\right)
+        % \hat{U}_{\bm{r}}\,
+        % \Phi_{\mathtt{L}}^{\left(z\right)*}
+        % \Phi_{\mathtt{R}}^{\left(y\right)}
+        %     +
+        % \left(yzx\right)
+        % \hat{U}_{\bm{r}}\,
+        % \Phi_{\mathtt{L}}^{\left(x\right)*}
+        % \Phi_{\mathtt{R}}^{\left(z\right)}
+\varphi_{\perp,1}
+    &=
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{L}}^{\left(x\right)*}
+        \Phi_{\mathtt{R}}^{\left(y\right)}
+            +
+        \left(zxy\right)
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{L}}^{\left(y\right)*}
+        \Phi_{\mathtt{R}}^{\left(z\right)}
+            +
+        \left(yzx\right)
+        \hat{U}_{\bm{r}}\,
+        \Phi_{\mathtt{L}}^{\left(z\right)*}
+        \Phi_{\mathtt{R}}^{\left(x\right)}
+.
+\end{align}

@@ -1,0 +1,125 @@
+\begin{thebibliography}{10}
+
+\bibitem{BellTheorem}
+J.~S. Bell and Alain Aspect.
+\newblock {\em Speakable and Unspeakable in Quantum Mechanics}.
+\newblock Cambridge University Press, 6 2004.
+
+\bibitem{Faulkner}
+R.~A. Faulkner.
+\newblock Higher donor excited states for prolate-spheroid conduction bands: A
+  reevaluation of silicon and germanium.
+\newblock {\em Physical Review}, 184:713--721, 8 1969.
+
+\bibitem{DownToBusiness}
+A.~K. Fedorov, N.~Gisin, S.~M. Beloussov, and A.~I. Lvovsky.
+\newblock Quantum computing at the quantum advantage threshold: a
+  down-to-business review.
+\newblock 3 2022.
+
+\bibitem{Fritzsche}
+H.~Fritzsche.
+\newblock Effect of stress on the donor wave functions in germanium.
+\newblock {\em Physical Review}, 125:1560--1567, 3 1962.
+
+\bibitem{Gamble}
+John~King Gamble, N.~Tobias Jacobson, Erik Nielsen, Andrew~D. Baczewski,
+  Jonathan~E. Moussa, Inès Montaño, and Richard~P. Muller.
+\newblock Multivalley effective mass theory simulation of donors in silicon.
+\newblock {\em Physical Review B}, 91:235318, 6 2015.
+
+\bibitem{SternGerlach}
+Walther Gerlach and Otto Stern.
+\newblock Der experimentelle nachweis der richtungsquantelung im magnetfeld.
+\newblock {\em Zeitschrift f\''\{u\}r Physik}, 9:349--352, 12 1922.
+
+\bibitem{Grover}
+Lov~K. Grover.
+\newblock A fast quantum mechanical algorithm for database search.
+\newblock pages 212--219. ACM Press, 1996.
+
+\bibitem{LaguerrePolynomials}
+Trygve Helgaker, Poul Jørgensen, and Jeppe Olsen.
+\newblock {\em Molecular Electronic‐Structure Theory}.
+\newblock Wiley, 8 2000.
+
+\bibitem{SuperconductingStateOfPlay}
+Morten Kjaergaard, Mollie~E. Schwartz, Jochen Braumüller, Philip Krantz, Joel
+  I.-J. Wang, Simon Gustavsson, and William~D. Oliver.
+\newblock Superconducting qubits: Current state of play.
+\newblock {\em Annual Review of Condensed Matter Physics}, 11:369--395, 3 2020.
+
+\bibitem{SnakeOptimizerQuantumControl}
+Paul~V. Klimov, Julian Kelly, John~M. Martinis, and Hartmut Neven.
+\newblock The snake optimizer for learning quantum processor control
+  parameters.
+\newblock 6 2020.
+
+\bibitem{KohnLuttinger2}
+W.~Kohn and J.~M. Luttinger.
+\newblock Theory of donor states in silicon.
+\newblock {\em Physical Review}, 98:915--922, 5 1955.
+
+\bibitem{KohnLuttinger1}
+J.~M. Luttinger and W.~Kohn.
+\newblock Motion of electrons and holes in perturbed periodic fields.
+\newblock {\em Physical Review}, 97:869--883, 2 1955.
+
+\bibitem{CommercialLandscape}
+Evan~R. MacQuarrie, Christoph Simon, Stephanie Simmons, and Elicia Maine.
+\newblock The emerging commercial landscape of quantum computing.
+\newblock {\em Nature Reviews Physics}, 2:596--598, 10 2020.
+
+\bibitem{PreskillNISQ}
+John Preskill.
+\newblock Quantum computing in the nisq era and beyond.
+\newblock {\em Quantum}, 2:79, 8 2018.
+
+\bibitem{RSA}
+R.~L. Rivest, A.~Shamir, and L.~Adleman.
+\newblock A method for obtaining digital signatures and public-key
+  cryptosystems.
+\newblock {\em Communications of the ACM}, 21:120--126, 2 1978.
+
+\bibitem{Salfi}
+J.~Salfi, J.~A. Mol, R.~Rahman, G.~Klimeck, M.~Y. Simmons, L.~C.~L. Hollenberg,
+  and S.~Rogge.
+\newblock Spatially resolving valley quantum interference of a donor in
+  silicon.
+\newblock {\em Nature Materials}, 13:605--610, 6 2014.
+
+\bibitem{ShindoNara}
+Koichi Shindo and Hisashi Nara.
+\newblock The effective mass equation for the multi-valley semiconductors.
+\newblock {\em Journal of the Physical Society of Japan}, 40:1640--1644, 6
+  1976.
+
+\bibitem{Shor}
+Peter~W. Shor.
+\newblock Polynomial-time algorithms for prime factorization and discrete
+  logarithms on a quantum computer.
+\newblock {\em SIAM Review}, 41:303--332, 1 1999.
+
+\bibitem{UniversalQuantumSimulators}
+Francesco Tacchino, Alessandro Chiesa, Stefano Carretta, and Dario Gerace.
+\newblock Quantum computers as universal quantum simulators:
+  State‐of‐the‐art and perspectives.
+\newblock {\em Advanced Quantum Technologies}, 3, 3 2020.
+
+\bibitem{Twose}
+W.~D. Twose.
+\newblock Effect of stress on the donor wave functions in germanium.
+\newblock {\em Physical Review}, 125:1566--1567, 3 1962.
+
+\bibitem{VonNeumann}
+John von Neumann.
+\newblock {\em Mathematical Foundations of Quantum Mechanics}.
+\newblock Princeton University Press, 3 2018.
+
+\bibitem{SuperconductingCalibrationWithoutReset}
+M.~Werninghaus, D.J. Egger, and S.~Filipp.
+\newblock High-speed calibration and characterization of superconducting
+  quantum processors without qubit reset.
+\newblock {\em PRX Quantum}, 2:020324, 5 2021.
+
+\end{thebibliography}

@@ -1,0 +1,256 @@
+% % % \documentclass[aps, prl, preprint]{revtex4-2} % \documentclass{report}
+
+% % \usepackage{graphicx} % \usepackage{dcolumn} %
+% \usepackage{array,multirow,adjustbox} % \usepackage{bm} %
+% \usepackage{amsfonts, amssymb, amsmath} % \usepackage{braket} %
+% \usepackage{siunitx}
+
+% % % \newcommand{\ket}[1]{\textstyle \left| #1 \right\rangle \displaystyle} % %
+% \newcommand{\bra}[1]{\textstyle \left\langle #1 \right| \displaystyle} % %
+% \newcommand{\braket}[2]{\textstyle \left\langle #1 \left|  #2
+% \right\rangle\right. \displaystyle}
+
+% % \let\originalleft\left % \let\originalright\right %
+% \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft} %
+% \renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% % \newcommand{\im}{\mathrm{i}} % \newcommand{\e}{\mathrm{e}} %
+% \newcommand{\pwrt}[2]{\frac{\partial #1}{\partial #2}} %
+% \newcommand{\diff}{\mathrm{d}}
+
+% % \DeclareMathOperator{\atantwo}{atan2}
+
+% % \title{An open source software package to compare and extend effective mass
+% models of the phosphorous donor in silicon} % \author{Luke Pendo} % \date{}
+
+% % \begin{document}
+
+\subsection{Kohn-Luttinger and donor states in silicon}
+
+In a 1955 paper\cite{KohnLuttinger1} W. Kohn and J.M Luttinger derived an
+expression for how electrons and holes would move in the presence of a localized
+perturbation to the periodic field, in particular the periodic fields of the Si
+and Ge semiconductors. These semiconductors do not have a simple conduction band
+with a single energy minima -- instead they have 6(Si) or 8(Ge) equivalent
+minima lying along different directions in $\mathsfbfit{k}$-space. In a later
+paper that year\cite{KohnLuttinger2}, Kohn and Luttinger (hereinafter referred
+in this section as KL) presented an application of the effective mass theory to
+donor states in silicon. An excess electron, bound by an impurity in silicon
+with an excess positive charge, becomes trapped in the crystal. Such a system
+can be referred to as an electron donor, conventionally just called a donor. In
+silicon, the focus is on the Group V substitutional impurities, such as
+phosphorous, which feature an outer electron shell that matches the outer shell
+of the silicon atom. This allows the phosphorous to participate in the crystal
+structure as though it were silicon. The net effect to the system through the
+introduction of this impurity is some minor deformation of the lattice at or
+near the donor site, and most importantly that such an atom participating in
+silicon bonds will have an excess positive charge that isn't satisfied by the
+electrons from its crystalline neighbors. This creates the situation above,
+where an excess electron is localized in the region of the donor. While deep
+donors exist, we limit our focus here to "shallow" donors. We will save further
+discussion of "shallowness" and its impact on the definition of the effective
+mass approximation in Section \ref{Shallow}.
+
+KL examined a single-valley model of the donor electron wavefunction that went
+as so
+\begin{equation}
+\Psi_{\rvec}^{}
+    =
+        F_{\rvec}^{}  \e^{\im \kvec_{\q}\cdot\rvec}u_{0\kvec_{\q};\rvec}
+\end{equation}
+Above $\kvec_{\q}$ is the point in $k$-space where the energy minima of the
+lowest conduction band are located. $F$ represents an envelope function that
+introduces spatial localization of the wavefunction. We can see that the
+wavefunction takes the form of a conduction band wavefunction attenuated and
+made a bound state by a leading envelope function factor.
+
+KL did not extend their model to consider intervalley coupling, and so this
+model's ground state manifold is 6-fold degenerate. In actuality, intervalley
+couplings lift this 6-fold degeneracy to create a 1-fold $A_{1}$ state,
+2-fold $E$ state, and a 3-fold $T_{2}$ state, with $A_{1}$, $E$ and $T_{2}$
+referring to the particular symmetries of the overall state. For now, we will
+table the discussion of multi-valley states. We will return to this topic in the
+next section. KL asserted that in the "shallow" limit when the effective mass
+approximation can be applied, $F$ will obey the following equation.
+\begin{equation}
+\left[
+        -
+    \frac{\hbar^{2}}{2\real{m}_{\parallel}}\frac{\partial^{2}}{\partial\x^{2}}
+        -
+    \frac{\hbar^{2}}{2\real{m}_{\parallel}}\frac{\partial^{2}}{\partial\y^{2}}
+        -
+    \frac{\hbar^{2}}{2\real{m}_{\perp}}\frac{\partial^{2}}{\partial\z^{2}}
+        -
+    \frac{\e^2}{4\pi\epsilon\sqrt{\x^2+\y^2+\z^2}}
+\right]
+F_{\rvec}^{}
+    =
+        \real{E} F_{\rvec}^{}
+\label{definition:SV-envelope}
+\end{equation}
+This is a nonseparable partial differential equation, and no closed form exact
+solution is known. However, we can make an educated guess as to the form of the
+envelope, and KL predicted that the envelope could be approximated as
+\begin{equation}
+F_{\rvec}^{}
+    \approx
+F_{\real{a}\real{b};\rvec}^{\prime}
+    \equiv
+        \frac{1}{\sqrt{\pi \real{a}^{2}\real{b}}}
+        \e^{-\sqrt{\frac{\x^2+\y^2}{\real{a}^2}+\frac{\z^{2}}{\real{b}^2}}}.
+\label{definition:KL-wavefunction}
+\end{equation}
+It is convenient to assert the above function is normalized in the
+sense that
+\begin{equation}
+\int\diff\rvec\,\left|F_{\real{a}\real{b};\rvec}^{\prime}\right|^{2} = 1.
+\end{equation}
+With a trial function such as this, one which includes arbitrary parameters, one
+can compute the expectation energy manifold as a function of the arbitrary
+parameters. KL formally combined \eqref{definition:SV-envelope} and
+\eqref{definition:KL-wavefunction} to create an effective energy function.
+\begin{align}
+E_{\real{a}\real{b}}
+    & = 
+        \frac{\hbar^{2}}{2\real{m}_{\parallel}}
+        \int\diff\rvec\,
+        \tilde{F}_{\real{a}\real{b};\rvec}^{\prime}
+        \left[
+                -
+            \frac{\partial^{2}}{\partial\x^{2}}
+                -
+            \frac{\partial^{2}}{\partial\y^{2}}
+                -
+            \real{\gamma}\frac{\partial^{2}}{\partial\z^{2}}
+                -
+            \frac{\e^2}{4\pi\epsilon\real{r}}
+        \right]
+        F_{\real{a}\real{b};\rvec}^{\prime}
+,\\
+    & =
+        \frac{\mathfrak{E}\mathfrak{r}^{2}}{3\real{a}^{2}}
+        \left[
+            2
+                +
+            \real{\gamma}\left(\frac{\real{a}}{\real{b}}\right)^2
+                -
+            6
+            \left(\frac{\real{a}}{\real{b}}\right)
+            \left(\frac{\real{a}}{\mathfrak{r}}\right)
+            \frac
+            {
+                \text{ArcTan}\left(
+                    \sqrt{\left(\frac{\real{a}}{\real{b}}\right)^{2}-1}
+                \right)
+            }
+            { \sqrt{\left(\frac{\real{a}}{\real{b}}\right)^{2}-1} }
+        \right]
+\label{equation:KL-energy}
+.
+\end{align}
+
+The quantities $\mathfrak{E}$ and $\mathfrak{r}$ are system units. Their
+definition and values may be found in Appendix \ref{appendix:units}.
+$\real{\gamma} = \real{m}_{\parallel}/\real{m}_{\perp}$ is the effective mass
+anisotropy.  We may implement $\real{a}$ and $\real{b}$ as unitful or
+dimensionless variational parameters. If a dimensionless representation is
+desired, we may take $\real{a},\real{b} \rightarrow \mathfrak{r}\real{a},
+\mathfrak{r}\real{b}$. When that is done, the $\mathfrak{r}$ drops out of the
+equation above and the minimization problem becomes purely numerical.
+
+It can be shown by applying the calculus of variations to quantum mechanics that
+an energy eigenstate is an energetic stationary point in state space, and in
+particular is a minimum of energy. If selecting from a parameterized subspace,
+the problem goes from the calculus of variations to normal real number calculus.
+In the \emph{variational method}, we can extend this principle and suggest that
+the best approximation to the energy eigenstate consists of selecting a trial
+wavefunction from a parameterized set by optimizing the parameters to minimize
+the energy. 
+
+Using a value of $\gamma = 0.207901$, we can minimize \eqref{equation:KL-energy}
+by varying $\real{a}$ and $\real{b}$. If we do so, we find
+\begin{align}
+    \real{E}_{\text{min}} &= -1.5653\mathfrak{E},\\
+    \real{a}_{\text{min}} &= 0.74832\mathfrak{r},\\
+    \real{b}_{\text{min}} &= 0.43001\mathfrak{r}.
+\end{align}
+This is a ground state energy of $\real{E}_{\text{min}} = \SI{-31.1}{\meV}$.
+Since the KL model does not include intervalley coupling, the model predicts a
+six-fold degenerate ground state. In Chapter \ref{chapter:results} we will
+explore in greater detail how our software package can directly replicate and
+freely extend these results. In particular, we wish to examine the implications
+of introducing multi-valley interactions.
+
+In their paper, KL suggest a few more trial wavefunctions to approximate various
+excited states of the silicon donor. KL found reasonable, but not exact,
+agreement with the excited states. We believe that it is worthwhile to consider
+the sources of error within the KL model and procedure, especially as one
+considers an approach to improve or replace parts of the model.
+
+As an initial examination, we might consider, compare, and contrast the
+following two sources of error. To begin with, Let's consider the effective mass
+approximation itself. The singular nature of the positive charge center of the
+donor is likely to cause some degree of interband coupling, leading to a degree
+of divergence between the predictions of the model and the values obtained via
+experiment. However, it seems uncertain to this author what degree of violation
+of the EMA is induced by the positive charge center. Additionally, the KL model
+neglects intervalley contributions to the expectation energy.
+
+Consider the process proceeding from choosing initial assumptions and model
+constructions, all the way to error analysis of the final results. We can
+imagine that introducing corrections to the EMA model or using a different model
+will introduce a change to that process very early on, likely introducing many
+downstream effects. If we were wanting to improve our predictions in a timely
+manner, we might instead explore a refinement to the prediction process farther
+down stream.
+
+As an example of such a downstream error that might be examined is the error
+introduced by the use of a variational wavefunction. A variational wavefunction,
+in general, is an approximation. The quality of that approximation depends on
+many factors, and so cannot be easily refined to produce high-quality
+improvements to the wavefunction.
+
+An alternative we can imagine is to express the wavefunction using a functional
+basis spanning the Hilbert space of the system in question. Additionally, we can
+imagine this basis itself being equipped with variational parameters allowing
+for refinement and optimization. Such an approach, combining a basis
+representation of the wavefunction with the variational method, is known as the
+\emph{Ritz method}.
+
+We can imagine that resolving these two sources of error will each introduce
+very different costs. The error that lies farther upstream in the prediction
+process will cost more analytical and software development time. In a broader
+collaboration, we can also imagine that such an error will require response from
+and delegation of work to more parts of the collaboration, introducing
+additional time cost in communication and management. An error farther
+downstream in the prediction process, on the other hand, will incur far less
+time and work costs. We can also imagine that development of such an improvement
+could be isolated to smaller working groups of the collaboration, possibly even
+a single individual.
+
+Here the authors assert that here we are beginning to see a distinction in
+sources of error between what we are calling \emph{technical} and \emph{model}
+error. We will explore in more detail what is meant by our usage of these terms,
+but as a starting point we can loosely identify that errors lying farther up the
+prediction process are \emph{model} errors while those lying father down the
+prediction process are \emph{technical} errors.
+
+The exact line between these two categories is contextual and somewhat
+arbitrary, and indeed it might be more philosophically accurate to identify the
+two as poles in an interpretational spectrum. Regardless of philosophical or
+formal ambiguity, we still find the above a useful distinction. As we identified
+earlier, this usefulness is particularly pointed when we consider how error
+management will be allocated amongst researchers and technicians in a larger
+academic or commercial research collaboration. Even the individual researcher
+might find themselves in a collaboration of sorts, even if the only members of
+such a collaboration are future and past versions of themself. For now, we will
+table the discussion of error analysis or improvement of the KL model and
+revisit it as part of the historical narrative of this document.
+
+
+
+While we can continue examining the other variational wavefunctions employed by
+KL in their exploration of the excited donor states of silicon, we find it
+convenient at this juncture to move forward. In the next section, we will
+examine a significant improvement upon the bespoke single-state variational
+method and discuss how R.A. Faulker used the Ritz method.
